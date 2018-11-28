@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <description>Contains types required for Excel automation.</description>
+    <tags>Excel</tags>
+    <iconUrl>https://raw.githubusercontent.com/OBeautifulCode/OBeautifulCode.Excel/master/OBeautifulCode.Excel/nuget-icon.png</iconUrl>
+  </metadata>
+</package>
