@@ -11,11 +11,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OBeautifulCode.Excel.Aspose")]
-[assembly: AssemblyDescription("Copyright (c) 2018 OBeautifulCode")]
+[assembly: AssemblyTitle("OBeautifulCode.Excel.AsposeCells")]
+[assembly: AssemblyDescription("OBeautifulCode.Excel.AsposeCells")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("OBeautifulCode")]
-[assembly: AssemblyProduct("OBeautifulCode.Excel.Aspose")]
+[assembly: AssemblyProduct("OBeautifulCode.Excel.AsposeCells")]
 [assembly: AssemblyCopyright("Copyright (c) 2018 OBeautifulCode")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -7,8 +7,8 @@
     <ProjectGuid>{21358F46-436B-400F-9D54-6BE37554CE4E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OBeautifulCode.Excel.Aspose</RootNamespace>
-    <AssemblyName>OBeautifulCode.Excel.Aspose</AssemblyName>
+    <RootNamespace>OBeautifulCode.Excel.AsposeCells</RootNamespace>
+    <AssemblyName>OBeautifulCode.Excel.AsposeCells</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Debug\OBeautifulCode.Excel.Aspose.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\OBeautifulCode.Excel.AsposeCells.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,20 +36,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Release\OBeautifulCode.Excel.Aspose.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\OBeautifulCode.Excel.AsposeCells.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=9.0.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.9.0.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeConversionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include=".analyzers\stylecop.json" />
     <None Include=".analyzers\release.ruleset" />
     <None Include="nuget-icon.png" />
-    <None Include="OBeautifulCode.Excel.Aspose.override-nuspec" />
+    <None Include="OBeautifulCode.Excel.AsposeCells.override-nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

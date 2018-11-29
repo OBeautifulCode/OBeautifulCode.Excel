@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Aspose", "OBeautifulCode.Excel.Aspose\OBeautifulCode.Excel.Aspose.csproj", "{21358F46-436B-400F-9D54-6BE37554CE4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.AsposeCells", "OBeautifulCode.Excel.AsposeCells\OBeautifulCode.Excel.AsposeCells.csproj", "{21358F46-436B-400F-9D54-6BE37554CE4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Aspose.Test", "OBeautifulCode.Excel.Aspose.Test\OBeautifulCode.Excel.Aspose.Test.csproj", "{9739D76C-8015-4850-8E0C-DFB32BD5E881}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.AsposeCells.Test", "OBeautifulCode.Excel.AsposeCells.Test\OBeautifulCode.Excel.AsposeCells.Test.csproj", "{9739D76C-8015-4850-8E0C-DFB32BD5E881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

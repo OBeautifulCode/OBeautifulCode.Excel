@@ -8,8 +8,8 @@
     <ProjectGuid>{9739D76C-8015-4850-8E0C-DFB32BD5E881}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OBeautifulCode.Excel.Aspose.Test</RootNamespace>
-    <AssemblyName>OBeautifulCode.Excel.Aspose.Test</AssemblyName>
+    <RootNamespace>OBeautifulCode.Excel.AsposeCells.Test</RootNamespace>
+    <AssemblyName>OBeautifulCode.Excel.AsposeCells.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -79,9 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OBeautifulCode.Excel.Aspose\OBeautifulCode.Excel.Aspose.csproj">
+    <ProjectReference Include="..\OBeautifulCode.Excel.AsposeCells\OBeautifulCode.Excel.AsposeCells.csproj">
       <Project>{21358f46-436b-400f-9d54-6be37554ce4e}</Project>
-      <Name>OBeautifulCode.Excel.Aspose</Name>
+      <Name>OBeautifulCode.Excel.AsposeCells</Name>
     </ProjectReference>
     <ProjectReference Include="..\OBeautifulCode.Excel\OBeautifulCode.Excel.csproj">
       <Project>{e4df95ea-31cb-439f-a2cb-d1a0f0debf1f}</Project>

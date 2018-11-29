@@ -3,6 +3,6 @@
   <metadata>
     <description>Enables Excel automation using the Aspose.Cells library.</description>
     <tags>Excel</tags>
-    <iconUrl>https://raw.githubusercontent.com/OBeautifulCode/OBeautifulCode.Excel/master/OBeautifulCode.Excel.Aspose/nuget-icon.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/OBeautifulCode/OBeautifulCode.Excel/master/OBeautifulCode.Excel.AsposeCells/nuget-icon.png</iconUrl>
   </metadata>
 </package>
