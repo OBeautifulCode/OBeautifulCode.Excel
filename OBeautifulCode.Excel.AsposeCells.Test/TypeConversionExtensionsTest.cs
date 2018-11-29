@@ -62,5 +62,19 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual1.Should().Be(expected1);
             actual2.Should().Be(expected2);
         }
+
+        [Fact]
+        public static void ToCellBorderType__Should_convert_borderStyle_to_a_CellBorderType___When_called()
+        {
+            // Arrange
+            var borderStyles = EnumExtensions.GetEnumValues<BorderStyle>();
+            var expected = borderStyles.Select(_ => Enum.Parse(typeof(CellBorderType), _.ToString())).ToList();
+
+            // Act
+            var actual = borderStyles.Select(_ => _.ToCellBorderType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
     }
 }
