@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Aspose", "OBeautifulCode.Excel.Aspose\OBeautifulCode.Excel.Aspose.csproj", "{21358F46-436B-400F-9D54-6BE37554CE4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Aspose.Test", "OBeautifulCode.Excel.Aspose.Test\OBeautifulCode.Excel.Aspose.Test.csproj", "{9739D76C-8015-4850-8E0C-DFB32BD5E881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A649FDCB-3CCA-4AF6-BF02-32E91CF75848}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A649FDCB-3CCA-4AF6-BF02-32E91CF75848}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A649FDCB-3CCA-4AF6-BF02-32E91CF75848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21358F46-436B-400F-9D54-6BE37554CE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21358F46-436B-400F-9D54-6BE37554CE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21358F46-436B-400F-9D54-6BE37554CE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21358F46-436B-400F-9D54-6BE37554CE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9739D76C-8015-4850-8E0C-DFB32BD5E881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9739D76C-8015-4850-8E0C-DFB32BD5E881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9739D76C-8015-4850-8E0C-DFB32BD5E881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9739D76C-8015-4850-8E0C-DFB32BD5E881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
