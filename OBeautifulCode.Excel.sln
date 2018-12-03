@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Aspose
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Serialization.Bson", "OBeautifulCode.Excel.Serialization.Bson\OBeautifulCode.Excel.Serialization.Bson.csproj", "{EEE080E2-B477-4C25-A329-63AF68AD0082}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Serialization.Test", "OBeautifulCode.Excel.Serialization.Test\OBeautifulCode.Excel.Serialization.Test.csproj", "{62333850-4613-4AF9-AE4E-BEE6DAB4B19F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EEE080E2-B477-4C25-A329-63AF68AD0082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE080E2-B477-4C25-A329-63AF68AD0082}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEE080E2-B477-4C25-A329-63AF68AD0082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62333850-4613-4AF9-AE4E-BEE6DAB4B19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62333850-4613-4AF9-AE4E-BEE6DAB4B19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62333850-4613-4AF9-AE4E-BEE6DAB4B19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62333850-4613-4AF9-AE4E-BEE6DAB4B19F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
