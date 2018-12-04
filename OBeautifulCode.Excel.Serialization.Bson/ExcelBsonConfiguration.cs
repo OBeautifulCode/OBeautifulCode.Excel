@@ -6,6 +6,8 @@
 
 namespace OBeautifulCode.Excel.Serialization.Bson
 {
+    using System;
+    using System.Collections.Generic;
     using System.Drawing;
 
     using MongoDB.Bson.Serialization;
@@ -15,6 +17,12 @@ namespace OBeautifulCode.Excel.Serialization.Bson
     /// <inheritdoc />
     public class ExcelBsonConfiguration : BsonConfigurationBase
     {
+        /// <inheritdoc />
+        protected override IReadOnlyCollection<Type> TypesToAutoRegister => new[]
+        {
+            typeof(Border),
+        };
+
         /// <inheritdoc />
         protected override void CustomConfiguration()
         {
