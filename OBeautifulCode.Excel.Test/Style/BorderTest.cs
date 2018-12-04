@@ -12,10 +12,12 @@ namespace OBeautifulCode.Excel.Test.Style
     using FakeItEasy;
 
     using FluentAssertions;
+
     using Naos.Serialization.Bson;
     using Naos.Serialization.Json;
 
     using OBeautifulCode.AutoFakeItEasy;
+    using OBeautifulCode.Excel.Serialization.Bson;
 
     using Xunit;
 
@@ -56,7 +58,7 @@ namespace OBeautifulCode.Excel.Test.Style
         {
             // Arrange
             var expected = A.Dummy<Border>();
-            var serializer = new NaosBsonSerializer();
+            var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
             var serializedJson = serializer.SerializeToString(expected);
 
