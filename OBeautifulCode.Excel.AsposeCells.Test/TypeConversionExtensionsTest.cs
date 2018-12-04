@@ -76,5 +76,70 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             // Act
             actual.Should().Equal(expected);
         }
+
+        [Fact]
+        public static void ToValidationType__Should_convert_dataValidationKind_to_a_ValidationType___When_called()
+        {
+            // Arrange
+            var dataValidationKinds = EnumExtensions.GetEnumValues<DataValidationKind>();
+            var expected = dataValidationKinds.Select(_ => Enum.Parse(typeof(ValidationType), _.ToString())).ToList();
+
+            // Act
+            var actual = dataValidationKinds.Select(_ => _.ToValidationType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToOperatorType__Should_convert_dataValidationOperator_to_an_OperatorType___When_called()
+        {
+            // Arrange
+            var dataValidationOperators = new[]
+            {
+                DataValidationOperator.Between,
+                DataValidationOperator.EqualTo,
+                DataValidationOperator.GreaterThan,
+                DataValidationOperator.GreaterThanOrEqualTo,
+                DataValidationOperator.LessThan,
+                DataValidationOperator.LessThanOrEqualTo,
+                DataValidationOperator.None,
+                DataValidationOperator.NotBetween,
+                DataValidationOperator.NotEqualTo,
+            };
+
+            var expected = new[]
+            {
+                OperatorType.Between,
+                OperatorType.Equal,
+                OperatorType.GreaterThan,
+                OperatorType.GreaterOrEqual,
+                OperatorType.LessThan,
+                OperatorType.LessOrEqual,
+                OperatorType.None,
+                OperatorType.NotBetween,
+                OperatorType.NotEqual,
+            };
+
+            // Act
+            var actual = dataValidationOperators.Select(_ => _.ToOperatorType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToValidationAlertType__Should_convert_dataValidationErrorAlertStyle_to_a_ValidationAlertType___When_called()
+        {
+            // Arrange
+            var dataValidationErrorAlertStyles = EnumExtensions.GetEnumValues<DataValidationErrorAlertStyle>();
+            var expected = dataValidationErrorAlertStyles.Select(_ => Enum.Parse(typeof(ValidationAlertType), _.ToString())).ToList();
+
+            // Act
+            var actual = dataValidationErrorAlertStyles.Select(_ => _.ToValidationAlertType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
     }
 }

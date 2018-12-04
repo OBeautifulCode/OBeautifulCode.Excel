@@ -44,11 +44,18 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include=".recipes\Its.MappingExpression\MappingExpression.cs" />
     <Compile Include=".recipes\OBeautifulCode.Math\HashCodeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Style\Border\Border.cs" />
     <Compile Include="Style\Border\BorderEdges.cs" />
     <Compile Include="Style\Border\BorderStyle.cs" />
+    <Compile Include="Style\DataValidation\TextDataValidation.cs" />
+    <Compile Include="Style\DataValidation\NumericDataValidation.cs" />
+    <Compile Include="Style\DataValidation\DataValidation.cs" />
+    <Compile Include="Style\DataValidation\DataValidationErrorAlertStyle.cs" />
+    <Compile Include="Style\DataValidation\DataValidationKind.cs" />
+    <Compile Include="Style\DataValidation\DataValidationOperator.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include=".analyzers\stylecop.json" />

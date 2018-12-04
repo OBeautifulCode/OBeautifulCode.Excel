@@ -26,14 +26,34 @@ namespace OBeautifulCode.Excel.Test.Style
         private static readonly Border ObjectForEquatableTests = A.Dummy<Border>();
 
         private static readonly Border ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
-            new Border { Color = ObjectForEquatableTests.Color, Edges = ObjectForEquatableTests.Edges, Style = ObjectForEquatableTests.Style };
+            new Border
+            {
+                Color = ObjectForEquatableTests.Color,
+                Edges = ObjectForEquatableTests.Edges,
+                Style = ObjectForEquatableTests.Style,
+            };
 
         private static readonly Border[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
             A.Dummy<Border>(),
-            new Border { Color = A.Dummy<Color>().ThatIsNot(ObjectForEquatableTests.Color), Edges = ObjectForEquatableTests.Edges, Style = ObjectForEquatableTests.Style },
-            new Border { Color = ObjectForEquatableTests.Color, Edges = A.Dummy<BorderEdges>().ThatIsNot(ObjectForEquatableTests.Edges), Style = ObjectForEquatableTests.Style },
-            new Border { Color = ObjectForEquatableTests.Color, Edges = ObjectForEquatableTests.Edges, Style = A.Dummy<BorderStyle>().ThatIsNot(ObjectForEquatableTests.Style) },
+            new Border
+            {
+                Color = A.Dummy<Color>().ThatIsNot(ObjectForEquatableTests.Color),
+                Edges = ObjectForEquatableTests.Edges,
+                Style = ObjectForEquatableTests.Style,
+            },
+            new Border
+            {
+                Color = ObjectForEquatableTests.Color,
+                Edges = A.Dummy<BorderEdges>().ThatIsNot(ObjectForEquatableTests.Edges),
+                Style = ObjectForEquatableTests.Style,
+            },
+            new Border
+            {
+                Color = ObjectForEquatableTests.Color,
+                Edges = ObjectForEquatableTests.Edges,
+                Style = A.Dummy<BorderStyle>().ThatIsNot(ObjectForEquatableTests.Style),
+            },
         };
 
         private static readonly string ObjectThatIsNotTheSameTypeAsObjectForEquatableTests = A.Dummy<string>();

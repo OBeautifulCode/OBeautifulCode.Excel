@@ -111,5 +111,96 @@ namespace OBeautifulCode.Excel.AsposeCells
                     throw new NotSupportedException(Invariant($"This {nameof(BorderStyle)} is not supported: {borderStyle}"));
             }
         }
+
+        /// <summary>
+        /// Converts a <see cref="DataValidationKind"/> to a <see cref="ValidationType"/>.
+        /// </summary>
+        /// <param name="dataValidationKind">The kind of validation.</param>
+        /// <returns>
+        /// A <see cref="ValidationType"/> converted from a <see cref="DataValidationKind"/>.
+        /// </returns>
+        public static ValidationType ToValidationType(
+            this DataValidationKind dataValidationKind)
+        {
+            switch (dataValidationKind)
+            {
+                case DataValidationKind.AnyValue:
+                    return ValidationType.AnyValue;
+                case DataValidationKind.Custom:
+                    return ValidationType.Custom;
+                case DataValidationKind.Date:
+                    return ValidationType.Date;
+                case DataValidationKind.Decimal:
+                    return ValidationType.Decimal;
+                case DataValidationKind.List:
+                    return ValidationType.List;
+                case DataValidationKind.TextLength:
+                    return ValidationType.TextLength;
+                case DataValidationKind.Time:
+                    return ValidationType.Time;
+                case DataValidationKind.WholeNumber:
+                    return ValidationType.WholeNumber;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(DataValidationKind)} is not supported: {dataValidationKind}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="DataValidationOperator"/> to a <see cref="OperatorType"/>.
+        /// </summary>
+        /// <param name="dataValidationOperator">The operator to apply to the data.</param>
+        /// <returns>
+        /// A <see cref="OperatorType"/> converted from a <see cref="DataValidationOperator"/>.
+        /// </returns>
+        public static OperatorType ToOperatorType(
+            this DataValidationOperator dataValidationOperator)
+        {
+            switch (dataValidationOperator)
+            {
+                case DataValidationOperator.Between:
+                    return OperatorType.Between;
+                case DataValidationOperator.EqualTo:
+                    return OperatorType.Equal;
+                case DataValidationOperator.GreaterThan:
+                    return OperatorType.GreaterThan;
+                case DataValidationOperator.GreaterThanOrEqualTo:
+                    return OperatorType.GreaterOrEqual;
+                case DataValidationOperator.LessThan:
+                    return OperatorType.LessThan;
+                case DataValidationOperator.LessThanOrEqualTo:
+                    return OperatorType.LessOrEqual;
+                case DataValidationOperator.None:
+                    return OperatorType.None;
+                case DataValidationOperator.NotBetween:
+                    return OperatorType.NotBetween;
+                case DataValidationOperator.NotEqualTo:
+                    return OperatorType.NotEqual;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(DataValidationOperator)} is not supported: {dataValidationOperator}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="DataValidationErrorAlertStyle"/> to a <see cref="ValidationAlertType"/>.
+        /// </summary>
+        /// <param name="dataValidationErrorAlertStyle">The style of error alert to show on a data validation.</param>
+        /// <returns>
+        /// A <see cref="ValidationAlertType"/> converted from a <see cref="DataValidationErrorAlertStyle"/>.
+        /// </returns>
+        public static ValidationAlertType ToValidationAlertType(
+            this DataValidationErrorAlertStyle dataValidationErrorAlertStyle)
+        {
+            switch (dataValidationErrorAlertStyle)
+            {
+                case DataValidationErrorAlertStyle.Information:
+                    return ValidationAlertType.Information;
+                case DataValidationErrorAlertStyle.Stop:
+                    return ValidationAlertType.Stop;
+                case DataValidationErrorAlertStyle.Warning:
+                    return ValidationAlertType.Warning;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(DataValidationErrorAlertStyle)} is not supported: {dataValidationErrorAlertStyle}"));
+            }
+        }
     }
 }

@@ -18,15 +18,21 @@ namespace OBeautifulCode.Excel.Serialization.Bson
     public class ExcelBsonConfiguration : BsonConfigurationBase
     {
         /// <inheritdoc />
+        protected override IReadOnlyDictionary<Type, IBsonSerializer> TypeToCustomSerializerMap => new Dictionary<Type, IBsonSerializer>
+        {
+            { typeof(Color), new ColorSerializer() },
+        };
+
+        /// <inheritdoc />
         protected override IReadOnlyCollection<Type> TypesToAutoRegister => new[]
         {
             typeof(Border),
         };
 
         /// <inheritdoc />
-        protected override void CustomConfiguration()
+        protected override IReadOnlyCollection<Type> ClassTypesToRegisterAlongWithInheritors => new[]
         {
-            BsonSerializer.RegisterSerializer(typeof(Color), new ColorSerializer());
-        }
+            typeof(DataValidation),
+        };
     }
 }
