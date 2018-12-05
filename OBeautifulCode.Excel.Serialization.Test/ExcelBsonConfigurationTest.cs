@@ -39,7 +39,7 @@ namespace OBeautifulCode.Excel.Serialization.Test
         {
             // Arrange
             var expected1 = new ExcelTestModel { Color = Color.Empty };
-            var expected2 = A.Dummy<ExcelTestModel>();
+            var expected2 = new ExcelTestModel { Color = A.Dummy<Color>() };
             var bytes1 = Serializer.SerializeToBytes(expected1);
             var bytes2 = Serializer.SerializeToBytes(expected2);
 
@@ -52,9 +52,29 @@ namespace OBeautifulCode.Excel.Serialization.Test
             actual2.Color.Should().Be(expected2.Color);
         }
 
+        [Fact]
+        public static void Deserialize___Should_roundtrip_a_model_containing_a_nullable_Color_property___When_called()
+        {
+            // Arrange
+            var expected1 = new ExcelTestModel();
+            var expected2 = new ExcelTestModel { NullableColor = A.Dummy<Color>() };
+            var bytes1 = Serializer.SerializeToBytes(expected1);
+            var bytes2 = Serializer.SerializeToBytes(expected2);
+
+            // Act
+            var actual1 = Serializer.Deserialize<ExcelTestModel>(bytes1);
+            var actual2 = Serializer.Deserialize<ExcelTestModel>(bytes2);
+
+            // Assert
+            actual1.NullableColor.Should().BeNull();
+            actual2.NullableColor.Should().Be(expected2.NullableColor);
+        }
+
         private class ExcelTestModel
         {
             public Color Color { get; set; }
+
+            public Color? NullableColor { get; set; }
         }
     }
 }

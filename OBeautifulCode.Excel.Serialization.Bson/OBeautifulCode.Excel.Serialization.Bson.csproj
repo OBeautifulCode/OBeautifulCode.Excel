@@ -70,7 +70,8 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\ParameterValidator.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
-    <Compile Include="ColorSerializer.cs" />
+    <Compile Include="Serializers\NullableColorSerializer.cs" />
+    <Compile Include="Serializers\ColorSerializer.cs" />
     <Compile Include="ExcelBsonConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
