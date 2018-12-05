@@ -224,5 +224,19 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             // Act
             actual.Should().Equal(expected);
         }
+
+        [Fact]
+        public static void ToFontUnderlineType__Should_convert_underlineKind_to_a_FontUnderlineType___When_called()
+        {
+            // Arrange
+            var underlineKinds = EnumExtensions.GetEnumValues<UnderlineKind>().ToList();
+            var expected = underlineKinds.Select(_ => Enum.Parse(typeof(FontUnderlineType), _.ToString())).ToList();
+
+            // Act
+            var actual = underlineKinds.Select(_ => _.ToFontUnderlineType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
     }
 }

@@ -19,6 +19,8 @@ namespace OBeautifulCode.Excel.Test
     {
         public DummyFactory()
         {
+            AutoFixtureBackedDummyFactory.UseRandomConcreteSubclassForDummy<DataValidation>();
+
             AutoFixtureBackedDummyFactory.ConstrainDummyToExclude(BorderEdges.Unknown);
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(() =>

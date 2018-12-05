@@ -28,8 +28,9 @@ namespace OBeautifulCode.Excel.Serialization.Bson
         protected override IReadOnlyCollection<Type> TypesToAutoRegister => new[]
         {
             typeof(Border),
-            typeof(DataValidation),
             typeof(Comment),
+            typeof(DataValidation),
+            typeof(RangeStyle),
         };
     }
 }

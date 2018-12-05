@@ -271,5 +271,62 @@ namespace OBeautifulCode.Excel.AsposeCells
                     throw new NotSupportedException(Invariant($"This {nameof(VerticalAlignment)} is not supported: {verticalAlignment}"));
             }
         }
+
+        /// <summary>
+        /// Converts a <see cref="UnderlineKind"/> to a <see cref="FontUnderlineType"/>.
+        /// </summary>
+        /// <param name="underlineKind">The vertical alignment.</param>
+        /// <returns>
+        /// A <see cref="FontUnderlineType"/> converted from a <see cref="UnderlineKind"/>.
+        /// </returns>
+        public static FontUnderlineType ToFontUnderlineType(
+            this UnderlineKind underlineKind)
+        {
+            switch (underlineKind)
+            {
+                case UnderlineKind.Accounting:
+                    return FontUnderlineType.Accounting;
+                case UnderlineKind.Dash:
+                    return FontUnderlineType.Dash;
+                case UnderlineKind.DashDotDotHeavy:
+                    return FontUnderlineType.DashDotDotHeavy;
+                case UnderlineKind.DashDotHeavy:
+                    return FontUnderlineType.DashDotHeavy;
+                case UnderlineKind.DashedHeavy:
+                    return FontUnderlineType.DashedHeavy;
+                case UnderlineKind.DashLong:
+                    return FontUnderlineType.DashLong;
+                case UnderlineKind.DashLongHeavy:
+                    return FontUnderlineType.DashLongHeavy;
+                case UnderlineKind.DotDash:
+                    return FontUnderlineType.DotDash;
+                case UnderlineKind.DotDotDash:
+                    return FontUnderlineType.DotDotDash;
+                case UnderlineKind.Dotted:
+                    return FontUnderlineType.Dotted;
+                case UnderlineKind.DottedHeavy:
+                    return FontUnderlineType.DottedHeavy;
+                case UnderlineKind.Double:
+                    return FontUnderlineType.Double;
+                case UnderlineKind.DoubleAccounting:
+                    return FontUnderlineType.DoubleAccounting;
+                case UnderlineKind.Heavy:
+                    return FontUnderlineType.Heavy;
+                case UnderlineKind.None:
+                    return FontUnderlineType.None;
+                case UnderlineKind.Single:
+                    return FontUnderlineType.Single;
+                case UnderlineKind.Wave:
+                    return FontUnderlineType.Wave;
+                case UnderlineKind.WavyDouble:
+                    return FontUnderlineType.WavyDouble;
+                case UnderlineKind.WavyHeavy:
+                    return FontUnderlineType.WavyHeavy;
+                case UnderlineKind.Words:
+                    return FontUnderlineType.Words;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(UnderlineKind)} is not supported: {underlineKind}"));
+            }
+        }
     }
 }

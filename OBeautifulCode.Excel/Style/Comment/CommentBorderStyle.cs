@@ -32,7 +32,7 @@ namespace OBeautifulCode.Excel
         ThinThick,
 
         /// <summary>
-        /// Thini line followed by a thin line (outside-in).
+        /// Thin line followed by a thin line (outside-in).
         /// </summary>
         ThickThin,
 

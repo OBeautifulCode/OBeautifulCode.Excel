@@ -40,8 +40,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             };
 
         private static readonly NumericDataValidation[] ObjectsThatAreNotEqualToObjectForEquatableTests =
@@ -62,8 +62,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -80,8 +80,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -98,8 +98,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -116,8 +116,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -134,8 +134,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -152,8 +152,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -170,8 +170,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -188,8 +188,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -206,8 +206,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -224,8 +224,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -242,8 +242,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = A.Dummy<string>(),
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -260,8 +260,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = A.Dummy<string>(),
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -278,8 +278,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = !ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -296,8 +296,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = A.Dummy<long?>().ThatIsNot(ObjectForEquatableTests.Operand1Value),
-                Operand2Value = ObjectForEquatableTests.Operand2Value,
+                Operand1NumericValue = A.Dummy<long?>().ThatIsNot(ObjectForEquatableTests.Operand1NumericValue),
+                Operand2NumericValue = ObjectForEquatableTests.Operand2NumericValue,
             },
             new NumericDataValidation
             {
@@ -314,8 +314,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1Value = ObjectForEquatableTests.Operand1Value,
-                Operand2Value = A.Dummy<long?>().ThatIsNot(ObjectForEquatableTests.Operand2Value),
+                Operand1NumericValue = ObjectForEquatableTests.Operand1NumericValue,
+                Operand2NumericValue = A.Dummy<long?>().ThatIsNot(ObjectForEquatableTests.Operand2NumericValue),
             },
         };
 

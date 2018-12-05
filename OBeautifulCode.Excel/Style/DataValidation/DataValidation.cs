@@ -6,12 +6,16 @@
 
 namespace OBeautifulCode.Excel
 {
+    using System;
+    using System.ComponentModel;
+
     using OBeautifulCode.Math.Recipes;
 
     /// <summary>
     /// Represents validation applied to data entered by a user.
     /// </summary>
-    public abstract class DataValidation
+    [Bindable(true)]
+    public abstract class DataValidation : IEquatable<DataValidation>
     {
         /// <summary>
         /// Gets or sets the kind of validation to perform.
@@ -77,6 +81,53 @@ namespace OBeautifulCode.Excel
         /// Gets or sets a value indicating whether a list dropdown should be shown.
         /// </summary>
         public bool ShowListDropdown { get; set; }
+
+        /// <summary>
+        /// Determines whether two objects of type <see cref="DataValidation" /> are equal.
+        /// </summary>
+        /// <param name="left">The first item to compare.</param>
+        /// <param name="right">The second item to compare.</param>
+        /// <returns>true if the two items are equal; false otherwise.</returns>
+        public static bool operator ==(
+            DataValidation left,
+            DataValidation right)
+        {
+            if (ReferenceEquals(left, right))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
+            {
+                return false;
+            }
+
+            var result = left.Equals((object)right);
+            return result;
+        }
+
+        /// <summary>
+        /// Determines whether two objects of type <see cref="DataValidation" /> are not equal.
+        /// </summary>
+        /// <param name="left">The first item to compare.</param>
+        /// <param name="right">The second item to compare.</param>
+        /// <returns>true if the two item are not equal; false otherwise.</returns>
+        public static bool operator !=(
+            DataValidation left,
+            DataValidation right)
+            => !(left == right);
+
+        /// <inheritdoc />
+        public bool Equals(
+            DataValidation other)
+            => this == other;
+
+        /// <inheritdoc />
+        public abstract override bool Equals(
+            object obj);
+
+        /// <inheritdoc />
+        public abstract override int GetHashCode();
 
         /// <summary>
         /// Creates a clone of this object.

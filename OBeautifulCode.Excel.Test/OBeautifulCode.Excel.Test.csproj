@@ -102,6 +102,8 @@
     <Compile Include="DummyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Style\BorderTest.cs" />
+    <Compile Include="Style\DataValidationTest.cs" />
+    <Compile Include="Style\RangeStyleTest.cs" />
     <Compile Include="Style\CommentTest.cs" />
     <Compile Include="Style\NumericDataValidationTest.cs" />
     <Compile Include="Style\TextDataValidationTest.cs" />

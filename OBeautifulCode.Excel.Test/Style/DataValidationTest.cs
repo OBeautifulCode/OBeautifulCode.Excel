@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TextDataValidationTest.cs" company="OBeautifulCode">
+// <copyright file="DataValidationTest.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -20,12 +20,12 @@ namespace OBeautifulCode.Excel.Test.Style
 
     using Xunit;
 
-    public static class TextDataValidationTest
+    public static class DataValidationTest
     {
-        private static readonly TextDataValidation ObjectForEquatableTests = A.Dummy<TextDataValidation>();
+        private static readonly DataValidation ObjectForEquatableTests = A.Dummy<NumericDataValidation>();
 
-        private static readonly TextDataValidation ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
-            new TextDataValidation
+        private static readonly DataValidation ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -40,14 +40,14 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             };
 
-        private static readonly TextDataValidation[] ObjectsThatAreNotEqualToObjectForEquatableTests =
+        private static readonly DataValidation[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
-            A.Dummy<TextDataValidation>(),
-            new TextDataValidation
+            A.Dummy<DataValidation>(),
+            new NumericDataValidation
             {
                 Kind = A.Dummy<DataValidationKind>().ThatIsNot(ObjectForEquatableTests.Kind),
                 Operator = ObjectForEquatableTests.Operator,
@@ -62,10 +62,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = A.Dummy<DataValidationOperator>().ThatIsNot(ObjectForEquatableTests.Operator),
@@ -80,10 +80,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -98,10 +98,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -116,10 +116,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -134,10 +134,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -152,10 +152,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -170,10 +170,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -188,10 +188,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -206,10 +206,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -224,10 +224,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -242,10 +242,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = A.Dummy<string>(),
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -260,10 +260,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = A.Dummy<string>(),
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -278,10 +278,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = !ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -296,10 +296,10 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = A.Dummy<string>(),
-                Operand2TextValue = ObjectForEquatableTests.Operand2TextValue,
+                Operand1NumericValue = A.Dummy<long?>().ThatIsNot(((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue),
+                Operand2NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue,
             },
-            new TextDataValidation
+            new NumericDataValidation
             {
                 Kind = ObjectForEquatableTests.Kind,
                 Operator = ObjectForEquatableTests.Operator,
@@ -314,8 +314,8 @@ namespace OBeautifulCode.Excel.Test.Style
                 ErrorAlertTitle = ObjectForEquatableTests.ErrorAlertTitle,
                 ErrorAlertBody = ObjectForEquatableTests.ErrorAlertBody,
                 ShowListDropdown = ObjectForEquatableTests.ShowListDropdown,
-                Operand1TextValue = ObjectForEquatableTests.Operand1TextValue,
-                Operand2TextValue = A.Dummy<string>(),
+                Operand1NumericValue = ((NumericDataValidation)ObjectForEquatableTests).Operand1NumericValue,
+                Operand2NumericValue = A.Dummy<long?>().ThatIsNot(((NumericDataValidation)ObjectForEquatableTests).Operand2NumericValue),
             },
         };
 
@@ -325,12 +325,12 @@ namespace OBeautifulCode.Excel.Test.Style
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosJsonSerializer()
         {
             // Arrange
-            var expected = A.Dummy<TextDataValidation>();
+            var expected = A.Dummy<DataValidation>();
             var serializer = new NaosJsonSerializer();
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<TextDataValidation>(serializedJson);
+            var actual = serializer.Deserialize<DataValidation>(serializedJson);
 
             // Assert
             actual.Should().Be(expected);
@@ -340,13 +340,13 @@ namespace OBeautifulCode.Excel.Test.Style
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosBsonSerializer()
         {
             // Arrange
-            var expected = A.Dummy<TextDataValidation>();
+            var expected = A.Dummy<DataValidation>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<TextDataValidation>(serializedJson);
+            var actual = serializer.Deserialize<DataValidation>(serializedJson);
 
             // Assert
             actual.Should().Be(expected);
@@ -356,8 +356,8 @@ namespace OBeautifulCode.Excel.Test.Style
         public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
         {
             // Arrange
-            TextDataValidation systemUnderTest1 = null;
-            TextDataValidation systemUnderTest2 = null;
+            DataValidation systemUnderTest1 = null;
+            DataValidation systemUnderTest2 = null;
 
             // Act
             var result = systemUnderTest1 == systemUnderTest2;
@@ -370,7 +370,7 @@ namespace OBeautifulCode.Excel.Test.Style
         public static void EqualsOperator___Should_return_false___When_one_side_of_operator_is_null_and_the_other_side_is_not_null()
         {
             // Arrange
-            TextDataValidation systemUnderTest = null;
+            DataValidation systemUnderTest = null;
 
             // Act
             var result1 = systemUnderTest == ObjectForEquatableTests;
@@ -417,8 +417,8 @@ namespace OBeautifulCode.Excel.Test.Style
         public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
         {
             // Arrange
-            TextDataValidation systemUnderTest1 = null;
-            TextDataValidation systemUnderTest2 = null;
+            DataValidation systemUnderTest1 = null;
+            DataValidation systemUnderTest2 = null;
 
             // Act
             var result = systemUnderTest1 != systemUnderTest2;
@@ -431,7 +431,7 @@ namespace OBeautifulCode.Excel.Test.Style
         public static void NotEqualsOperator___Should_return_true___When_one_side_of_operator_is_null_and_the_other_side_is_not_null()
         {
             // Arrange
-            TextDataValidation systemUnderTest = null;
+            DataValidation systemUnderTest = null;
 
             // Act
             var result1 = systemUnderTest != ObjectForEquatableTests;
@@ -475,10 +475,10 @@ namespace OBeautifulCode.Excel.Test.Style
         }
 
         [Fact]
-        public static void Equals_with_TextDataValidation___Should_return_false___When_parameter_other_is_null()
+        public static void Equals_with_DataValidation___Should_return_false___When_parameter_other_is_null()
         {
             // Arrange
-            TextDataValidation systemUnderTest = null;
+            DataValidation systemUnderTest = null;
 
             // Act
             var result = ObjectForEquatableTests.Equals(systemUnderTest);
@@ -488,7 +488,7 @@ namespace OBeautifulCode.Excel.Test.Style
         }
 
         [Fact]
-        public static void Equals_with_TextDataValidation___Should_return_true___When_parameter_other_is_same_object()
+        public static void Equals_with_DataValidation___Should_return_true___When_parameter_other_is_same_object()
         {
             // Arrange, Act
             var result = ObjectForEquatableTests.Equals(ObjectForEquatableTests);
@@ -498,7 +498,7 @@ namespace OBeautifulCode.Excel.Test.Style
         }
 
         [Fact]
-        public static void Equals_with_TextDataValidation___Should_return_false___When_objects_being_compared_have_different_property_values()
+        public static void Equals_with_DataValidation___Should_return_false___When_objects_being_compared_have_different_property_values()
         {
             // Arrange, Act
             var results = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => ObjectForEquatableTests.Equals(_)).ToList();
@@ -508,7 +508,7 @@ namespace OBeautifulCode.Excel.Test.Style
         }
 
         [Fact]
-        public static void Equals_with_TextDataValidation___Should_return_true___When_objects_being_compared_have_same_property_values()
+        public static void Equals_with_DataValidation___Should_return_true___When_objects_being_compared_have_same_property_values()
         {
             // Arrange, Act
             var result = ObjectForEquatableTests.Equals(ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests);
@@ -587,20 +587,6 @@ namespace OBeautifulCode.Excel.Test.Style
 
             // Assert
             hash1.Should().Be(hash2);
-        }
-
-        [Fact]
-        public static void Clone___Should_clone_item___When_called()
-        {
-            // Arrange
-            var systemUnderTest = A.Dummy<TextDataValidation>();
-
-            // Act
-            var actual = systemUnderTest.Clone();
-
-            // Assert
-            actual.Should().Be(systemUnderTest);
-            actual.Should().NotBeSameAs(systemUnderTest);
         }
     }
 }

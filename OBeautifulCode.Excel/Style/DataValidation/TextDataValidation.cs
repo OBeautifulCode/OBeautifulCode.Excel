@@ -28,12 +28,12 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Gets or sets the first operand value.
         /// </summary>
-        public string Operand1Value { get; set; }
+        public string Operand1TextValue { get; set; }
 
         /// <summary>
         /// Gets or sets the second operand value.
         /// </summary>
-        public string Operand2Value { get; set; }
+        public string Operand2TextValue { get; set; }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="TextDataValidation"/> are equal.
@@ -49,8 +49,8 @@ namespace OBeautifulCode.Excel
             if (result && !ReferenceEquals(item1, null))
             {
                 // ReSharper disable once PossibleNullReferenceException
-                result = (item1.Operand1Value == item2.Operand1Value) &&
-                         (item1.Operand2Value == item2.Operand2Value);
+                result = (item1.Operand1TextValue == item2.Operand1TextValue) &&
+                         (item1.Operand2TextValue == item2.Operand2TextValue);
             }
 
             return result;
@@ -76,8 +76,8 @@ namespace OBeautifulCode.Excel
         /// <inheritdoc />
         public override int GetHashCode() =>
             new HashCodeHelper(GetHashCode(this))
-                .Hash(this.Operand1Value)
-                .Hash(this.Operand2Value)
+                .Hash(this.Operand1TextValue)
+                .Hash(this.Operand2TextValue)
                 .Value;
 
         /// <inheritdoc />
