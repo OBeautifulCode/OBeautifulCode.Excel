@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DataValidationErrorAlertStyle.cs" company="OBeautifulCode">
+// <copyright file="CommentBorderStyle.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -7,9 +7,9 @@
 namespace OBeautifulCode.Excel
 {
     /// <summary>
-    /// Determines the style of error alert to show on a data validation.
+    /// Specifies the style of a comment border.
     /// </summary>
-    public enum DataValidationErrorAlertStyle
+    public enum CommentBorderStyle
     {
         /// <summary>
         /// Unknown (default).
@@ -17,18 +17,28 @@ namespace OBeautifulCode.Excel
         Unknown,
 
         /// <summary>
-        /// Show an informational alert.
+        /// Single line border.
         /// </summary>
-        Information,
+        Single,
 
         /// <summary>
-        /// Show a stopping alert.  User won't be able to continue until the data validates.
+        /// Thick line between two thin lines.
         /// </summary>
-        Stop,
+        ThickBetweenThin,
 
         /// <summary>
-        /// Show a warning alert.  User will be given the option to continue with the invalid data or not.
+        /// Thin line followed by a think line (outside-in).
         /// </summary>
-        Warning,
+        ThinThick,
+
+        /// <summary>
+        /// Thini line followed by a thin line (outside-in).
+        /// </summary>
+        ThickThin,
+
+        /// <summary>
+        /// Two thin lines.
+        /// </summary>
+        ThinThin,
     }
 }

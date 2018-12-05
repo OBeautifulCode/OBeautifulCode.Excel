@@ -12,6 +12,11 @@ namespace OBeautifulCode.Excel
     public enum DataValidationKind
     {
         /// <summary>
+        /// Unknown (default).
+        /// </summary>
+        Unknown,
+
+        /// <summary>
         /// Any value is allowed.
         /// </summary>
         AnyValue,

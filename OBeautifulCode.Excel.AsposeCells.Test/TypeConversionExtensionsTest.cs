@@ -78,10 +78,21 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        public static void ToValidationType__Should_throw_ArgumentOutOfRangeException___When_parameter_dataValidationKind_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => DataValidationKind.Unknown.ToValidationType());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(DataValidationKind.Unknown));
+        }
+
+        [Fact]
         public static void ToValidationType__Should_convert_dataValidationKind_to_a_ValidationType___When_called()
         {
             // Arrange
-            var dataValidationKinds = EnumExtensions.GetEnumValues<DataValidationKind>();
+            var dataValidationKinds = EnumExtensions.GetEnumValues<DataValidationKind>().Where(_ => _ != DataValidationKind.Unknown).ToList();
             var expected = dataValidationKinds.Select(_ => Enum.Parse(typeof(ValidationType), _.ToString())).ToList();
 
             // Act
@@ -89,6 +100,17 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Act
             actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToOperatorType__Should_throw_ArgumentOutOfRangeException___When_parameter_dataValidationOperator_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => DataValidationOperator.Unknown.ToOperatorType());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(DataValidationOperator.Unknown));
         }
 
         [Fact]
@@ -129,14 +151,75 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        public static void ToValidationAlertType__Should_throw_ArgumentOutOfRangeException___When_parameter_dataValidationErrorAlertStyle_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => DataValidationErrorAlertStyle.Unknown.ToValidationAlertType());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(DataValidationErrorAlertStyle.Unknown));
+        }
+
+        [Fact]
         public static void ToValidationAlertType__Should_convert_dataValidationErrorAlertStyle_to_a_ValidationAlertType___When_called()
         {
             // Arrange
-            var dataValidationErrorAlertStyles = EnumExtensions.GetEnumValues<DataValidationErrorAlertStyle>();
+            var dataValidationErrorAlertStyles = EnumExtensions.GetEnumValues<DataValidationErrorAlertStyle>().Where(_ => _ != DataValidationErrorAlertStyle.Unknown).ToList();
             var expected = dataValidationErrorAlertStyles.Select(_ => Enum.Parse(typeof(ValidationAlertType), _.ToString())).ToList();
 
             // Act
             var actual = dataValidationErrorAlertStyles.Select(_ => _.ToValidationAlertType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToTextAlignmentType__Should_throw_ArgumentOutOfRangeException___When_parameter_horizontalAlignment_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => HorizontalAlignment.Unknown.ToTextAlignmentType());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(HorizontalAlignment.Unknown));
+        }
+
+        [Fact]
+        public static void ToTextAlignmentType__Should_convert_horizontalAlignment_to_a_TextAlignmentType___When_called()
+        {
+            // Arrange
+            var horizontalAlignments = EnumExtensions.GetEnumValues<HorizontalAlignment>().Where(_ => _ != HorizontalAlignment.Unknown).ToList();
+            var expected = horizontalAlignments.Select(_ => Enum.Parse(typeof(TextAlignmentType), _.ToString())).ToList();
+
+            // Act
+            var actual = horizontalAlignments.Select(_ => _.ToTextAlignmentType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToTextAlignmentType__Should_throw_ArgumentOutOfRangeException___When_parameter_verticalAlignment_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => VerticalAlignment.Unknown.ToTextAlignmentType());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(VerticalAlignment.Unknown));
+        }
+
+        [Fact]
+        public static void ToTextAlignmentType__Should_convert_verticalAlignment_to_a_TextAlignmentType___When_called()
+        {
+            // Arrange
+            var verticalAlignments = EnumExtensions.GetEnumValues<VerticalAlignment>().Where(_ => _ != VerticalAlignment.Unknown).ToList();
+            var expected = verticalAlignments.Select(_ => Enum.Parse(typeof(TextAlignmentType), _.ToString())).ToList();
+
+            // Act
+            var actual = verticalAlignments.Select(_ => _.ToTextAlignmentType()).ToList();
 
             // Act
             actual.Should().Equal(expected);

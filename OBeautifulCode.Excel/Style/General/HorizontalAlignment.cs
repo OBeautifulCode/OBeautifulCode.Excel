@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DataValidationErrorAlertStyle.cs" company="OBeautifulCode">
+// <copyright file="HorizontalAlignment.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -7,9 +7,9 @@
 namespace OBeautifulCode.Excel
 {
     /// <summary>
-    /// Determines the style of error alert to show on a data validation.
+    /// Specifies the horizontal alignment.
     /// </summary>
-    public enum DataValidationErrorAlertStyle
+    public enum HorizontalAlignment
     {
         /// <summary>
         /// Unknown (default).
@@ -17,18 +17,28 @@ namespace OBeautifulCode.Excel
         Unknown,
 
         /// <summary>
-        /// Show an informational alert.
+        /// Left align.
         /// </summary>
-        Information,
+        Left,
 
         /// <summary>
-        /// Show a stopping alert.  User won't be able to continue until the data validates.
+        /// Center align.
         /// </summary>
-        Stop,
+        Center,
 
         /// <summary>
-        /// Show a warning alert.  User will be given the option to continue with the invalid data or not.
+        /// Right align.
         /// </summary>
-        Warning,
+        Right,
+
+        /// <summary>
+        /// Justified aligned.
+        /// </summary>
+        Justify,
+
+        /// <summary>
+        /// Distributed aligned.
+        /// </summary>
+        Distributed,
     }
 }

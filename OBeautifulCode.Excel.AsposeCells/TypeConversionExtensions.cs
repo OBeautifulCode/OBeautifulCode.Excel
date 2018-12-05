@@ -119,9 +119,12 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A <see cref="ValidationType"/> converted from a <see cref="DataValidationKind"/>.
         /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="dataValidationKind"/> is <see cref="DataValidationKind.Unknown"/>.</exception>
         public static ValidationType ToValidationType(
             this DataValidationKind dataValidationKind)
         {
+            new { dataValidationKind }.Must().NotBeEqualTo(DataValidationKind.Unknown);
+
             switch (dataValidationKind)
             {
                 case DataValidationKind.AnyValue:
@@ -152,9 +155,12 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A <see cref="OperatorType"/> converted from a <see cref="DataValidationOperator"/>.
         /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="dataValidationOperator"/> is <see cref="DataValidationOperator.Unknown"/>.</exception>
         public static OperatorType ToOperatorType(
             this DataValidationOperator dataValidationOperator)
         {
+            new { dataValidationOperator }.Must().NotBeEqualTo(DataValidationOperator.Unknown);
+
             switch (dataValidationOperator)
             {
                 case DataValidationOperator.Between:
@@ -187,9 +193,12 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A <see cref="ValidationAlertType"/> converted from a <see cref="DataValidationErrorAlertStyle"/>.
         /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="dataValidationErrorAlertStyle"/> is <see cref="DataValidationErrorAlertStyle.Unknown"/>.</exception>
         public static ValidationAlertType ToValidationAlertType(
             this DataValidationErrorAlertStyle dataValidationErrorAlertStyle)
         {
+            new { dataValidationErrorAlertStyle }.Must().NotBeEqualTo(DataValidationErrorAlertStyle.Unknown);
+
             switch (dataValidationErrorAlertStyle)
             {
                 case DataValidationErrorAlertStyle.Information:
@@ -200,6 +209,66 @@ namespace OBeautifulCode.Excel.AsposeCells
                     return ValidationAlertType.Warning;
                 default:
                     throw new NotSupportedException(Invariant($"This {nameof(DataValidationErrorAlertStyle)} is not supported: {dataValidationErrorAlertStyle}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="HorizontalAlignment"/> to a <see cref="TextAlignmentType"/>.
+        /// </summary>
+        /// <param name="horizontalAlignment">The horizontal alignment.</param>
+        /// <returns>
+        /// A <see cref="TextAlignmentType"/> converted from a <see cref="HorizontalAlignment"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="horizontalAlignment"/> is <see cref="HorizontalAlignment.Unknown"/>.</exception>
+        public static TextAlignmentType ToTextAlignmentType(
+            this HorizontalAlignment horizontalAlignment)
+        {
+            new { horizontalAlignment }.Must().NotBeEqualTo(HorizontalAlignment.Unknown);
+
+            switch (horizontalAlignment)
+            {
+                case HorizontalAlignment.Center:
+                    return TextAlignmentType.Center;
+                case HorizontalAlignment.Distributed:
+                    return TextAlignmentType.Distributed;
+                case HorizontalAlignment.Justify:
+                    return TextAlignmentType.Justify;
+                case HorizontalAlignment.Left:
+                    return TextAlignmentType.Left;
+                case HorizontalAlignment.Right:
+                    return TextAlignmentType.Right;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(HorizontalAlignment)} is not supported: {horizontalAlignment}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="VerticalAlignment"/> to a <see cref="TextAlignmentType"/>.
+        /// </summary>
+        /// <param name="verticalAlignment">The vertical alignment.</param>
+        /// <returns>
+        /// A <see cref="TextAlignmentType"/> converted from a <see cref="VerticalAlignment"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="verticalAlignment"/> is <see cref="VerticalAlignment.Unknown"/>.</exception>
+        public static TextAlignmentType ToTextAlignmentType(
+            this VerticalAlignment verticalAlignment)
+        {
+            new { verticalAlignment }.Must().NotBeEqualTo(VerticalAlignment.Unknown);
+
+            switch (verticalAlignment)
+            {
+                case VerticalAlignment.Bottom:
+                    return TextAlignmentType.Bottom;
+                case VerticalAlignment.Center:
+                    return TextAlignmentType.Center;
+                case VerticalAlignment.Distributed:
+                    return TextAlignmentType.Distributed;
+                case VerticalAlignment.Justify:
+                    return TextAlignmentType.Justify;
+                case VerticalAlignment.Top:
+                    return TextAlignmentType.Top;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(VerticalAlignment)} is not supported: {verticalAlignment}"));
             }
         }
     }

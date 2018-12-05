@@ -14,6 +14,11 @@ namespace OBeautifulCode.Excel
     public enum DataValidationOperator
     {
         /// <summary>
+        /// Unknown (default).
+        /// </summary>
+        Unknown,
+
+        /// <summary>
         /// Data must be between two values.
         /// </summary>
         Between,

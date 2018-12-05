@@ -50,12 +50,16 @@
     <Compile Include="Style\Border\Border.cs" />
     <Compile Include="Style\Border\BorderEdges.cs" />
     <Compile Include="Style\Border\BorderStyle.cs" />
+    <Compile Include="Style\Comment\Comment.cs" />
+    <Compile Include="Style\Comment\CommentBorderStyle.cs" />
     <Compile Include="Style\DataValidation\TextDataValidation.cs" />
     <Compile Include="Style\DataValidation\NumericDataValidation.cs" />
     <Compile Include="Style\DataValidation\DataValidation.cs" />
     <Compile Include="Style\DataValidation\DataValidationErrorAlertStyle.cs" />
     <Compile Include="Style\DataValidation\DataValidationKind.cs" />
     <Compile Include="Style\DataValidation\DataValidationOperator.cs" />
+    <Compile Include="Style\General\HorizontalAlignment.cs" />
+    <Compile Include="Style\General\VerticalAlignment.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include=".analyzers\stylecop.json" />
