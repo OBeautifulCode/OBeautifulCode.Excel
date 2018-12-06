@@ -108,6 +108,7 @@
     <Compile Include="Style\CommentTest.cs" />
     <Compile Include="Style\NumericDataValidationTest.cs" />
     <Compile Include="Style\TextDataValidationTest.cs" />
+    <Compile Include="Style\WorksheetProtectionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OBeautifulCode.Excel.Serialization.Bson\OBeautifulCode.Excel.Serialization.Bson.csproj">

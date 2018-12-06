@@ -32,6 +32,7 @@ namespace OBeautifulCode.Excel.Serialization.Bson
             typeof(DataValidation),
             typeof(RangeStyle),
             typeof(CellValueConditionalFormattingRule),
+            typeof(WorksheetProtection),
         };
     }
 }

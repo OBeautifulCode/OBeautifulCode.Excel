@@ -62,8 +62,10 @@
     <Compile Include="Style\DataValidation\DataValidationKind.cs" />
     <Compile Include="Style\DataValidation\DataValidationOperator.cs" />
     <Compile Include="Style\General\HorizontalAlignment.cs" />
+    <Compile Include="Style\Worksheet\PaneKinds.cs" />
     <Compile Include="Style\General\UnderlineKind.cs" />
     <Compile Include="Style\General\VerticalAlignment.cs" />
+    <Compile Include="Style\Worksheet\WorksheetProtection.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include=".analyzers\stylecop.json" />
