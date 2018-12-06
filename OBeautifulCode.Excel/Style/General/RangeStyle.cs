@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
 
     using OBeautifulCode.Math.Recipes;
@@ -123,6 +124,7 @@ namespace OBeautifulCode.Excel
         /// <param name="item1">The first item to compare.</param>
         /// <param name="item2">The second item to compare.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex; there are a lot of ways to style a range.")]
         public static bool operator ==(
             RangeStyle item1,
             RangeStyle item2)

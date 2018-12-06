@@ -10,6 +10,7 @@ namespace OBeautifulCode.Excel
     using System.ComponentModel;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
     /// Represents validation applied to data entered by a user.
@@ -182,9 +183,12 @@ namespace OBeautifulCode.Excel
         /// <returns>
         /// A hash code for the specified item.
         /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="item"/> is null.</exception>
         protected static int GetHashCode(
             DataValidation item)
         {
+            new { item }.Must().NotBeNull();
+
             var result = HashCodeHelper.Initialize()
                 .Hash(item.Kind)
                 .Hash(item.Operator)

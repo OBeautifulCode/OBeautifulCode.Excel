@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel.AsposeCells.Test
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using Aspose.Cells;
@@ -31,6 +32,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "flag", Justification = "This is the most descriptive term to use in this case.")]
         public static void ToBorderType__Should_convert_borderEdges_to_a_BorderType___When_borderEdges_has_single_flag()
         {
             // Arrange
@@ -45,6 +47,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "flags", Justification = "This is the most descriptive term to use in this case.")]
         public static void ToBorderType__Should_convert_borderEdges_to_a_BorderType___When_borderEdges_has_multiple_flags()
         {
             // Arrange

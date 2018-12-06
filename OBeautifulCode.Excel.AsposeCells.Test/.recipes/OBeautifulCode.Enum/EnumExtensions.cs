@@ -307,6 +307,44 @@ namespace OBeautifulCode.Enum.Recipes
             return result;
         }
 
+        /// <summary>
+        /// Performs a bitwise OR on the specified enum values.
+        /// </summary>
+        /// <param name="value1">The first enum value.</param>
+        /// <param name="value2">The second enum value.</param>
+        /// <returns>
+        /// The result of performing a bitwise OR operation on the specified enum values.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value1"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="value2"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="value1"/> is not a flags enum.</exception>
+        /// <exception cref="ArgumentException"><paramref name="value1"/> Type != <paramref name="value2"/> Type.</exception>
+        public static Enum BitwiseOr(
+            this Enum value1, 
+            Enum value2)
+        {
+            new { value1 }.Must().NotBeNull();
+            new { value2 }.Must().NotBeNull();
+
+            var value1Type = value1.GetType();
+            var value2Type = value2.GetType();
+
+            value1Type.IsFlagsEnum().Named($"{nameof(value1)}.{nameof(GetType)}().{nameof(IsFlagsEnum)}()").Must().BeTrue();
+            (value1Type == value2Type).Named($"{nameof(value1)}.{nameof(GetType)}() == {nameof(value2)}.{nameof(GetType)}()").Must().BeTrue();
+            
+            Enum result;
+            if (Enum.GetUnderlyingType(value1Type) != typeof(ulong))
+            {
+                result = (Enum)Enum.ToObject(value1Type, Convert.ToInt64(value1, CultureInfo.InvariantCulture) | Convert.ToInt64(value2, CultureInfo.InvariantCulture));
+            }
+            else
+            {
+                result = (Enum)Enum.ToObject(value1Type, Convert.ToUInt64(value1, CultureInfo.InvariantCulture) | Convert.ToUInt64(value2, CultureInfo.InvariantCulture));
+            }
+
+            return result;
+        }
+
         private static IEnumerable<Enum> GetFlags(
             Enum value,
             IList<Enum> values)

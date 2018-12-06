@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq.Expressions;
 
     using OBeautifulCode.Math.Recipes;
@@ -41,6 +42,7 @@ namespace OBeautifulCode.Excel
         /// <param name="item1">The first item to compare.</param>
         /// <param name="item2">The second item to compare.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "1", Justification = "This is being validated via base.Equals")]
         public static bool operator ==(
             TextDataValidation item1,
             TextDataValidation item2)
