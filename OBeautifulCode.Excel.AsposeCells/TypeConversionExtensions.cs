@@ -115,7 +115,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <summary>
         /// Converts a <see cref="DataValidationKind"/> to a <see cref="ValidationType"/>.
         /// </summary>
-        /// <param name="dataValidationKind">The kind of validation.</param>
+        /// <param name="dataValidationKind">The kind of data validation to convert.</param>
         /// <returns>
         /// A <see cref="ValidationType"/> converted from a <see cref="DataValidationKind"/>.
         /// </returns>
@@ -151,16 +151,13 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <summary>
         /// Converts a <see cref="DataValidationOperator"/> to a <see cref="OperatorType"/>.
         /// </summary>
-        /// <param name="dataValidationOperator">The operator to apply to the data.</param>
+        /// <param name="dataValidationOperator">The data validation operator to convert.</param>
         /// <returns>
         /// A <see cref="OperatorType"/> converted from a <see cref="DataValidationOperator"/>.
         /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="dataValidationOperator"/> is <see cref="DataValidationOperator.Unknown"/>.</exception>
         public static OperatorType ToOperatorType(
             this DataValidationOperator dataValidationOperator)
         {
-            new { dataValidationOperator }.Must().NotBeEqualTo(DataValidationOperator.Unknown);
-
             switch (dataValidationOperator)
             {
                 case DataValidationOperator.Between:
@@ -189,7 +186,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <summary>
         /// Converts a <see cref="DataValidationErrorAlertStyle"/> to a <see cref="ValidationAlertType"/>.
         /// </summary>
-        /// <param name="dataValidationErrorAlertStyle">The style of error alert to show on a data validation.</param>
+        /// <param name="dataValidationErrorAlertStyle">The data validation error alert style to convert.</param>
         /// <returns>
         /// A <see cref="ValidationAlertType"/> converted from a <see cref="DataValidationErrorAlertStyle"/>.
         /// </returns>
@@ -215,7 +212,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <summary>
         /// Converts a <see cref="HorizontalAlignment"/> to a <see cref="TextAlignmentType"/>.
         /// </summary>
-        /// <param name="horizontalAlignment">The horizontal alignment.</param>
+        /// <param name="horizontalAlignment">The horizontal alignment to convert.</param>
         /// <returns>
         /// A <see cref="TextAlignmentType"/> converted from a <see cref="HorizontalAlignment"/>.
         /// </returns>
@@ -245,7 +242,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <summary>
         /// Converts a <see cref="VerticalAlignment"/> to a <see cref="TextAlignmentType"/>.
         /// </summary>
-        /// <param name="verticalAlignment">The vertical alignment.</param>
+        /// <param name="verticalAlignment">The vertical alignment to convert.</param>
         /// <returns>
         /// A <see cref="TextAlignmentType"/> converted from a <see cref="VerticalAlignment"/>.
         /// </returns>
@@ -275,7 +272,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <summary>
         /// Converts a <see cref="UnderlineKind"/> to a <see cref="FontUnderlineType"/>.
         /// </summary>
-        /// <param name="underlineKind">The vertical alignment.</param>
+        /// <param name="underlineKind">The kind of underline to convert.</param>
         /// <returns>
         /// A <see cref="FontUnderlineType"/> converted from a <see cref="UnderlineKind"/>.
         /// </returns>
@@ -326,6 +323,41 @@ namespace OBeautifulCode.Excel.AsposeCells
                     return FontUnderlineType.Words;
                 default:
                     throw new NotSupportedException(Invariant($"This {nameof(UnderlineKind)} is not supported: {underlineKind}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="ConditionalFormattingOperator"/> to a <see cref="OperatorType"/>.
+        /// </summary>
+        /// <param name="conditionalFormattingOperator">The conditional formatting operator to convert.</param>
+        /// <returns>
+        /// A <see cref="OperatorType"/> converted from a <see cref="ConditionalFormattingOperator"/>.
+        /// </returns>
+        public static OperatorType ToOperatorType(
+            this ConditionalFormattingOperator conditionalFormattingOperator)
+        {
+            switch (conditionalFormattingOperator)
+            {
+                case ConditionalFormattingOperator.Between:
+                    return OperatorType.Between;
+                case ConditionalFormattingOperator.EqualTo:
+                    return OperatorType.Equal;
+                case ConditionalFormattingOperator.GreaterThan:
+                    return OperatorType.GreaterThan;
+                case ConditionalFormattingOperator.GreaterThanOrEqualTo:
+                    return OperatorType.GreaterOrEqual;
+                case ConditionalFormattingOperator.LessThan:
+                    return OperatorType.LessThan;
+                case ConditionalFormattingOperator.LessThanOrEqualTo:
+                    return OperatorType.LessOrEqual;
+                case ConditionalFormattingOperator.None:
+                    return OperatorType.None;
+                case ConditionalFormattingOperator.NotBetween:
+                    return OperatorType.NotBetween;
+                case ConditionalFormattingOperator.NotEqualTo:
+                    return OperatorType.NotEqual;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(ConditionalFormattingOperator)} is not supported: {conditionalFormattingOperator}"));
             }
         }
     }

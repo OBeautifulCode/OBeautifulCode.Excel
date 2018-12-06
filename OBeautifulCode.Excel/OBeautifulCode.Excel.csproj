@@ -51,8 +51,10 @@
     <Compile Include="Style\Border\BorderEdges.cs" />
     <Compile Include="Style\Border\BorderStyle.cs" />
     <Compile Include="Style\General\RangeStyle.cs" />
+    <Compile Include="Style\ConditionalFormatting\CellValueConditionalFormattingRule.cs" />
     <Compile Include="Style\Comment\Comment.cs" />
     <Compile Include="Style\Comment\CommentBorderStyle.cs" />
+    <Compile Include="Style\ConditionalFormatting\ConditionalFormattingOperator.cs" />
     <Compile Include="Style\DataValidation\TextDataValidation.cs" />
     <Compile Include="Style\DataValidation\NumericDataValidation.cs" />
     <Compile Include="Style\DataValidation\DataValidation.cs" />

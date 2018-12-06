@@ -103,17 +103,6 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
-        public static void ToOperatorType__Should_throw_ArgumentOutOfRangeException___When_parameter_dataValidationOperator_is_Unknown()
-        {
-            // Arrange, Act
-            var actual = Record.Exception(() => DataValidationOperator.Unknown.ToOperatorType());
-
-            // Assert
-            actual.Should().BeOfType<ArgumentOutOfRangeException>();
-            actual.Message.Should().Contain(nameof(DataValidationOperator.Unknown));
-        }
-
-        [Fact]
         public static void ToOperatorType__Should_convert_dataValidationOperator_to_an_OperatorType___When_called()
         {
             // Arrange
@@ -234,6 +223,43 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Act
             var actual = underlineKinds.Select(_ => _.ToFontUnderlineType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToOperatorType__Should_convert_conditionalFormattingOperator_to_an_OperatorType___When_called()
+        {
+            // Arrange
+            var conditionalFormattingOperators = new[]
+            {
+                ConditionalFormattingOperator.Between,
+                ConditionalFormattingOperator.EqualTo,
+                ConditionalFormattingOperator.GreaterThan,
+                ConditionalFormattingOperator.GreaterThanOrEqualTo,
+                ConditionalFormattingOperator.LessThan,
+                ConditionalFormattingOperator.LessThanOrEqualTo,
+                ConditionalFormattingOperator.None,
+                ConditionalFormattingOperator.NotBetween,
+                ConditionalFormattingOperator.NotEqualTo,
+            };
+
+            var expected = new[]
+            {
+                OperatorType.Between,
+                OperatorType.Equal,
+                OperatorType.GreaterThan,
+                OperatorType.GreaterOrEqual,
+                OperatorType.LessThan,
+                OperatorType.LessOrEqual,
+                OperatorType.None,
+                OperatorType.NotBetween,
+                OperatorType.NotEqual,
+            };
+
+            // Act
+            var actual = conditionalFormattingOperators.Select(_ => _.ToOperatorType()).ToList();
 
             // Act
             actual.Should().Equal(expected);

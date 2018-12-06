@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DataValidationOperator.cs" company="OBeautifulCode">
+// <copyright file="ConditionalFormattingOperator.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -9,9 +9,9 @@ namespace OBeautifulCode.Excel
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// Specifies the operator to use to validate the data.
+    /// Specifies the operator to use to with conditional formatting.
     /// </summary>
-    public enum DataValidationOperator
+    public enum ConditionalFormattingOperator
     {
         /// <summary>
         /// No operator is applicable.
