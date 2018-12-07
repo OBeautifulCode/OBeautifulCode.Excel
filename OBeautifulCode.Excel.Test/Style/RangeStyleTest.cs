@@ -48,6 +48,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             };
 
         private static readonly RangeStyle[] ObjectsThatAreNotEqualToObjectForEquatableTests =
@@ -75,6 +77,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -98,6 +102,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -121,6 +127,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -144,6 +152,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -167,6 +177,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -190,6 +202,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -213,6 +227,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -236,6 +252,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -259,6 +277,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -282,6 +302,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -305,6 +327,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -328,6 +352,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -351,6 +377,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -374,6 +402,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -397,6 +427,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -420,6 +452,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -443,6 +477,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -466,6 +502,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = A.Dummy<Border>().ThatIsNot(ObjectForEquatableTests.InsideBorder),
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -489,6 +527,8 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = A.Dummy<Border>().ThatIsNot(ObjectForEquatableTests.OutsideBorder),
                 DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
             },
             new RangeStyle
             {
@@ -512,6 +552,58 @@ namespace OBeautifulCode.Excel.Test
                 InsideBorder = ObjectForEquatableTests.InsideBorder,
                 OutsideBorder = ObjectForEquatableTests.OutsideBorder,
                 DataValidation = A.Dummy<DataValidation>(),
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
+            },
+            new RangeStyle
+            {
+                BackgroundColor = ObjectForEquatableTests.BackgroundColor,
+                FontColor = ObjectForEquatableTests.FontColor,
+                FontName = ObjectForEquatableTests.FontName,
+                FontSize = ObjectForEquatableTests.FontSize,
+                FontIsItalic = ObjectForEquatableTests.FontIsItalic,
+                FontIsBold = ObjectForEquatableTests.FontIsBold,
+                FontUnderline = ObjectForEquatableTests.FontUnderline,
+                FontRotationAngle = ObjectForEquatableTests.FontRotationAngle,
+                TextIsWrapped = ObjectForEquatableTests.TextIsWrapped,
+                IndentLevel = ObjectForEquatableTests.IndentLevel,
+                NumberFormatCustomStyle = ObjectForEquatableTests.NumberFormatCustomStyle,
+                RowHeightInPixels = ObjectForEquatableTests.RowHeightInPixels,
+                ColumnWidthInPixels = ObjectForEquatableTests.ColumnWidthInPixels,
+                VerticalAlignment = ObjectForEquatableTests.VerticalAlignment,
+                HorizontalAlignment = ObjectForEquatableTests.HorizontalAlignment,
+                MergeCells = ObjectForEquatableTests.MergeCells,
+                AutofitRows = ObjectForEquatableTests.AutofitRows,
+                InsideBorder = ObjectForEquatableTests.InsideBorder,
+                OutsideBorder = ObjectForEquatableTests.OutsideBorder,
+                DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = A.Dummy<Format?>().ThatIsNot(ObjectForEquatableTests.Format),
+                CustomFormatString = ObjectForEquatableTests.CustomFormatString,
+            },
+            new RangeStyle
+            {
+                BackgroundColor = ObjectForEquatableTests.BackgroundColor,
+                FontColor = ObjectForEquatableTests.FontColor,
+                FontName = ObjectForEquatableTests.FontName,
+                FontSize = ObjectForEquatableTests.FontSize,
+                FontIsItalic = ObjectForEquatableTests.FontIsItalic,
+                FontIsBold = ObjectForEquatableTests.FontIsBold,
+                FontUnderline = ObjectForEquatableTests.FontUnderline,
+                FontRotationAngle = ObjectForEquatableTests.FontRotationAngle,
+                TextIsWrapped = ObjectForEquatableTests.TextIsWrapped,
+                IndentLevel = ObjectForEquatableTests.IndentLevel,
+                NumberFormatCustomStyle = ObjectForEquatableTests.NumberFormatCustomStyle,
+                RowHeightInPixels = ObjectForEquatableTests.RowHeightInPixels,
+                ColumnWidthInPixels = ObjectForEquatableTests.ColumnWidthInPixels,
+                VerticalAlignment = ObjectForEquatableTests.VerticalAlignment,
+                HorizontalAlignment = ObjectForEquatableTests.HorizontalAlignment,
+                MergeCells = ObjectForEquatableTests.MergeCells,
+                AutofitRows = ObjectForEquatableTests.AutofitRows,
+                InsideBorder = ObjectForEquatableTests.InsideBorder,
+                OutsideBorder = ObjectForEquatableTests.OutsideBorder,
+                DataValidation = ObjectForEquatableTests.DataValidation,
+                Format = ObjectForEquatableTests.Format,
+                CustomFormatString = A.Dummy<string>(),
             },
         };
 

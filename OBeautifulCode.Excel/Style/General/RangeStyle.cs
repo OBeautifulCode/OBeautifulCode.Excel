@@ -119,6 +119,16 @@ namespace OBeautifulCode.Excel
         public DataValidation DataValidation { get; set; }
 
         /// <summary>
+        /// Gets or sets the format.
+        /// </summary>
+        public Format? Format { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom format string.
+        /// </summary>
+        public string CustomFormatString { get; set; }
+
+        /// <summary>
         /// Determines whether two objects of type <see cref="RangeStyle"/> are equal.
         /// </summary>
         /// <param name="item1">The first item to compare.</param>
@@ -159,7 +169,9 @@ namespace OBeautifulCode.Excel
                 (item1.AutofitRows == item2.AutofitRows) &&
                 (item1.InsideBorder == item2.InsideBorder) &&
                 (item1.OutsideBorder == item2.OutsideBorder) &&
-                (item1.DataValidation == item2.DataValidation);
+                (item1.DataValidation == item2.DataValidation) &&
+                (item1.Format == item2.Format) &&
+                (item1.CustomFormatString == item2.CustomFormatString);
 
             return result;
         }
@@ -204,6 +216,8 @@ namespace OBeautifulCode.Excel
                 .Hash(this.InsideBorder)
                 .Hash(this.OutsideBorder)
                 .Hash(this.DataValidation)
+                .Hash(this.Format)
+                .Hash(this.CustomFormatString)
                 .Value;
     }
 }
