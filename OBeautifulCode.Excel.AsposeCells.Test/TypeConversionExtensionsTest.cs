@@ -82,6 +82,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mso", Justification = "This is the identifier used by Aspose.")]
         public static void ToMsoLineStyle__Should_throw_ArgumentOutOfRangeException___When_parameter_commentBorderStyle_is_Unknown()
         {
             // Arrange, Act
@@ -93,6 +94,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mso", Justification = "This is the identifier used by Aspose.")]
         public static void ToMsoLineStyle__Should_convert_commentBorderStyle_to_a_MsoLineStyle___When_called()
         {
             // Arrange

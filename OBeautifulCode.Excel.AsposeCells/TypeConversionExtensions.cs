@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     using Aspose.Cells;
     using Aspose.Cells.Drawing;
@@ -120,6 +121,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A <see cref="ToMsoLineStyle"/> converted from a <see cref="CommentBorderStyle"/>.
         /// </returns>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mso", Justification = "This is the identifier used by Aspose.")]
         public static MsoLineStyle ToMsoLineStyle(
             this CommentBorderStyle commentBorderStyle)
         {
