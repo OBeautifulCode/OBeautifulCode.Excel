@@ -59,10 +59,12 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\ParameterValidator.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
+    <Compile Include="Style\Formatting\CustomFormatString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Style\Border\Border.cs" />
     <Compile Include="Style\Border\BorderEdges.cs" />
     <Compile Include="Style\Border\BorderStyle.cs" />
+    <Compile Include="Style\Formatting\Format.cs" />
     <Compile Include="Style\General\RangeStyle.cs" />
     <Compile Include="Style\ConditionalFormatting\CellValueConditionalFormattingRule.cs" />
     <Compile Include="Style\Comment\Comment.cs" />

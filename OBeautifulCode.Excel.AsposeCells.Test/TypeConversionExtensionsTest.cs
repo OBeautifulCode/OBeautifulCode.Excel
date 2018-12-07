@@ -295,5 +295,21 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             // Act
             actual.Should().Equal(expected);
         }
+
+        [Fact]
+        public static void ToFormatNumber__Should_throw_ArgumentOutOfRangeException___When_parameter_format_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => Format.Unknown.ToFormatNumber());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(Format.Unknown));
+        }
+
+        [Fact(Skip = "No great way to test get other than just repeating the mapping in the method itself.")]
+        public static void ToFormatNumber__Should_convert_format_to_its_numeric_representation___When_called()
+        {
+        }
     }
 }

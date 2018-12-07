@@ -121,6 +121,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A <see cref="ToMsoLineStyle"/> converted from a <see cref="CommentBorderStyle"/>.
         /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="commentBorderStyle"/> is <see cref="CommentBorderStyle.Unknown"/>.</exception>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mso", Justification = "This is the identifier used by Aspose.")]
         public static MsoLineStyle ToMsoLineStyle(
             this CommentBorderStyle commentBorderStyle)
@@ -390,6 +391,98 @@ namespace OBeautifulCode.Excel.AsposeCells
                     return OperatorType.NotEqual;
                 default:
                     throw new NotSupportedException(Invariant($"This {nameof(ConditionalFormattingOperator)} is not supported: {conditionalFormattingOperator}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="Format"/> to it's numeric value.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <returns>
+        /// A numeric value representing a <see cref="Format"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="format"/> is <see cref="Format.Unknown"/>.</exception>
+        public static int ToFormatNumber(
+            this Format format)
+        {
+            new { format }.Must().NotBeEqualTo(Format.Unknown);
+
+            switch (format)
+            {
+                case Format.General:
+                    return 0;
+                case Format.Decimal1:
+                    return 1;
+                case Format.Decimal2:
+                    return 2;
+                case Format.Decimal3:
+                    return 3;
+                case Format.Decimal4:
+                    return 4;
+                case Format.Currency1:
+                    return 5;
+                case Format.Currency2:
+                    return 6;
+                case Format.Currency3:
+                    return 7;
+                case Format.Currency4:
+                    return 8;
+                case Format.Percentage1:
+                    return 9;
+                case Format.Percentage2:
+                    return 10;
+                case Format.Scientific1:
+                    return 11;
+                case Format.Fraction1:
+                    return 12;
+                case Format.Fraction2:
+                    return 13;
+                case Format.Date1:
+                    return 14;
+                case Format.Date2:
+                    return 15;
+                case Format.Date3:
+                    return 16;
+                case Format.Date4:
+                    return 17;
+                case Format.Time1:
+                    return 18;
+                case Format.Time2:
+                    return 19;
+                case Format.Time3:
+                    return 20;
+                case Format.Time4:
+                    return 21;
+                case Format.Time5:
+                    return 22;
+                case Format.Accounting1:
+                    return 37;
+                case Format.Accounting2:
+                    return 38;
+                case Format.Accounting3:
+                    return 39;
+                case Format.Accounting4:
+                    return 40;
+                case Format.Accounting5:
+                    return 41;
+                case Format.Currency5:
+                    return 42;
+                case Format.Accounting6:
+                    return 43;
+                case Format.Currency6:
+                    return 44;
+                case Format.Time6:
+                    return 45;
+                case Format.Time7:
+                    return 46;
+                case Format.Time8:
+                    return 47;
+                case Format.Scientific2:
+                    return 48;
+                case Format.Text:
+                    return 49;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(Format)} is not supported: {format}"));
             }
         }
     }
