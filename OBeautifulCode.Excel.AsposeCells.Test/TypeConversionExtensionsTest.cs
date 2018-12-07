@@ -11,6 +11,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
     using System.Linq;
 
     using Aspose.Cells;
+    using Aspose.Cells.Drawing;
 
     using FluentAssertions;
 
@@ -75,6 +76,31 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Act
             var actual = borderStyles.Select(_ => _.ToCellBorderType()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
+
+        [Fact]
+        public static void ToMsoLineStyle__Should_throw_ArgumentOutOfRangeException___When_parameter_commentBorderStyle_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CommentBorderStyle.Unknown.ToMsoLineStyle());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(CommentBorderStyle.Unknown));
+        }
+
+        [Fact]
+        public static void ToMsoLineStyle__Should_convert_commentBorderStyle_to_a_MsoLineStyle___When_called()
+        {
+            // Arrange
+            var commentBorderStyles = EnumExtensions.GetEnumValues<CommentBorderStyle>().Where(_ => _ != CommentBorderStyle.Unknown).ToList();
+            var expected = commentBorderStyles.Select(_ => Enum.Parse(typeof(MsoLineStyle), _.ToString())).ToList();
+
+            // Act
+            var actual = commentBorderStyles.Select(_ => _.ToMsoLineStyle()).ToList();
 
             // Act
             actual.Should().Equal(expected);

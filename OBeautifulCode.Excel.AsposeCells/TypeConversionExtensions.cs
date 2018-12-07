@@ -9,6 +9,7 @@ namespace OBeautifulCode.Excel.AsposeCells
     using System;
 
     using Aspose.Cells;
+    using Aspose.Cells.Drawing;
 
     using OBeautifulCode.Validation.Recipes;
 
@@ -109,6 +110,35 @@ namespace OBeautifulCode.Excel.AsposeCells
                     return CellBorderType.Thin;
                 default:
                     throw new NotSupportedException(Invariant($"This {nameof(BorderStyle)} is not supported: {borderStyle}"));
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="CommentBorderStyle"/> to a <see cref="ToMsoLineStyle"/>.
+        /// </summary>
+        /// <param name="commentBorderStyle">The comment border style to convert.</param>
+        /// <returns>
+        /// A <see cref="ToMsoLineStyle"/> converted from a <see cref="CommentBorderStyle"/>.
+        /// </returns>
+        public static MsoLineStyle ToMsoLineStyle(
+            this CommentBorderStyle commentBorderStyle)
+        {
+            new { commentBorderStyle }.Must().NotBeEqualTo(CommentBorderStyle.Unknown);
+
+            switch (commentBorderStyle)
+            {
+                case CommentBorderStyle.Single:
+                    return MsoLineStyle.Single;
+                case CommentBorderStyle.ThickBetweenThin:
+                    return MsoLineStyle.ThickBetweenThin;
+                case CommentBorderStyle.ThickThin:
+                    return MsoLineStyle.ThickThin;
+                case CommentBorderStyle.ThinThick:
+                    return MsoLineStyle.ThinThick;
+                case CommentBorderStyle.ThinThin:
+                    return MsoLineStyle.ThinThin;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(CommentBorderStyle)} is not supported: {commentBorderStyle}"));
             }
         }
 
