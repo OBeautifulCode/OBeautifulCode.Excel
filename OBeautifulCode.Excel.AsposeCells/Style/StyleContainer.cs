@@ -6,6 +6,7 @@
 
 namespace OBeautifulCode.Excel.AsposeCells
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
 
     using Aspose.Cells;
@@ -24,6 +25,8 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// </summary>
         /// <param name="style">The style.</param>
         /// <param name="styleFlag">The style flag.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="style"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="styleFlag"/> is null.</exception>
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Flag", Justification = "This is the best word in the parameter name.")]
         public StyleContainer(
             Style style,
@@ -54,6 +57,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A style container.
         /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static StyleContainer BuildNewFromRange(
             Range range)
         {
@@ -74,6 +78,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// A style container.
         /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         public static StyleContainer BuildExistingFromCell(
             Cell cell)
         {
@@ -91,6 +96,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Applies this style container to the specified range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public void ApplyToRange(
             Range range)
         {
@@ -103,6 +109,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Applies this style container to the specified cell.
         /// </summary>
         /// <param name="cell">The cell.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         public void ApplyToCell(
             Cell cell)
         {
