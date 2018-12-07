@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace OBeautifulCode.Excel.Test.Style
+namespace OBeautifulCode.Excel.Test
 {
     using System.Drawing;
     using System.Linq;
