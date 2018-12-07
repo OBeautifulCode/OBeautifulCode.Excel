@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".recipes\OBeautifulCode.String\StringExtensions.cs" />
@@ -61,9 +62,16 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
     <Compile Include="AsposeCellsLicense.cs" />
+    <Compile Include="General\CellManipulationExtensions.cs" />
+    <Compile Include="General\RangeManipulationExtensions.cs" />
+    <Compile Include="General\WorkbookManipulationExtensions.cs" />
+    <Compile Include="General\WorksheetManipulationExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Style\StyleContainer.cs" />
+    <Compile Include="Style\CellStyleExtensions.cs" />
+    <Compile Include="Style\RangeStyleExtensions.cs" />
+    <Compile Include="Style\WorksheetStyleExtensions.cs" />
     <Compile Include="TypeConversionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
