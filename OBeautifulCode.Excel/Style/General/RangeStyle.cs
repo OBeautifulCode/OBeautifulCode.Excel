@@ -68,11 +68,6 @@ namespace OBeautifulCode.Excel
         public int? IndentLevel { get; set; }
 
         /// <summary>
-        /// Gets or sets the number format.
-        /// </summary>
-        public string NumberFormatCustomStyle { get; set; }
-
-        /// <summary>
         /// Gets or sets the row height, in pixels. Set to 0 to hide row.
         /// </summary>
         public int? RowHeightInPixels { get; set; }
@@ -160,7 +155,6 @@ namespace OBeautifulCode.Excel
                 (item1.FontRotationAngle == item2.FontRotationAngle) &&
                 (item1.TextIsWrapped == item2.TextIsWrapped) &&
                 (item1.IndentLevel == item2.IndentLevel) &&
-                (item1.NumberFormatCustomStyle == item2.NumberFormatCustomStyle) &&
                 (item1.RowHeightInPixels == item2.RowHeightInPixels) &&
                 (item1.ColumnWidthInPixels == item2.ColumnWidthInPixels) &&
                 (item1.VerticalAlignment == item2.VerticalAlignment) &&
@@ -206,7 +200,6 @@ namespace OBeautifulCode.Excel
                 .Hash(this.FontRotationAngle)
                 .Hash(this.TextIsWrapped)
                 .Hash(this.IndentLevel)
-                .Hash(this.NumberFormatCustomStyle)
                 .Hash(this.RowHeightInPixels)
                 .Hash(this.ColumnWidthInPixels)
                 .Hash(this.VerticalAlignment)
