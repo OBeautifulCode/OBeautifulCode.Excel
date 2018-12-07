@@ -30,6 +30,12 @@ namespace OBeautifulCode.Excel
         /// </summary>
         public long? Operand2NumericValue { get; set; }
 
+        /// <inheritdoc />
+        public override object Operand1Value => this.Operand1NumericValue;
+
+        /// <inheritdoc />
+        public override object Operand2Value => this.Operand2NumericValue;
+
         /// <summary>
         /// Determines whether two objects of type <see cref="NumericDataValidation"/> are equal.
         /// </summary>

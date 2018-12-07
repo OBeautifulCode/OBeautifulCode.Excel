@@ -84,6 +84,16 @@ namespace OBeautifulCode.Excel
         public bool ShowListDropdown { get; set; }
 
         /// <summary>
+        /// Gets the first operand value.
+        /// </summary>
+        public abstract object Operand1Value { get; }
+
+        /// <summary>
+        /// Gets the second operand value.
+        /// </summary>
+        public abstract object Operand2Value { get; }
+
+        /// <summary>
         /// Determines whether two objects of type <see cref="DataValidation" /> are equal.
         /// </summary>
         /// <param name="left">The first item to compare.</param>

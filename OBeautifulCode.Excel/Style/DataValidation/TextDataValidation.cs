@@ -36,6 +36,12 @@ namespace OBeautifulCode.Excel
         /// </summary>
         public string Operand2TextValue { get; set; }
 
+        /// <inheritdoc />
+        public override object Operand1Value => this.Operand1TextValue;
+
+        /// <inheritdoc />
+        public override object Operand2Value => this.Operand2TextValue;
+
         /// <summary>
         /// Determines whether two objects of type <see cref="TextDataValidation"/> are equal.
         /// </summary>

@@ -37,7 +37,7 @@ namespace System.Linq.Expressions
             {
                 var fromMembers = typeof (TFrom).GetProperties().Cast<MemberInfo>()
                                                 .Concat(typeof (TFrom).GetFields());
-                var toMembers = typeof (TTo).GetProperties().Cast<MemberInfo>()
+                var toMembers = typeof(TTo).GetProperties().Where(_ => _.CanWrite).Cast<MemberInfo>()
                                             .Concat(typeof (TTo).GetFields());
 
                 var paramExpr = Expression.Parameter(typeof (TFrom), "from");
@@ -74,7 +74,7 @@ namespace System.Linq.Expressions
             {
                 var fromMembers = typeof (TFrom).GetProperties().Cast<MemberInfo>()
                                                 .Concat(typeof (TFrom).GetFields());
-                var toMembers = typeof (TTo).GetProperties().Cast<MemberInfo>()
+                var toMembers = typeof (TTo).GetProperties().Where(_ => _.CanWrite).Cast<MemberInfo>()
                                             .Concat(typeof (TTo).GetFields());
 
                 var toExpr = Expression.Parameter(typeof (TTo), "to");

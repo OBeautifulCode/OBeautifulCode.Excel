@@ -322,6 +322,32 @@ namespace OBeautifulCode.Excel.Test.Style
         private static readonly string ObjectThatIsNotTheSameTypeAsObjectForEquatableTests = A.Dummy<string>();
 
         [Fact]
+        public static void Operand1Value___Should_be_same_as_Operand1TextValue___When_getting()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<TextDataValidation>();
+
+            // Act
+            var actual = systemUnderTest.Operand1Value;
+
+            // Assert
+            actual.Should().Be(systemUnderTest.Operand1TextValue);
+        }
+
+        [Fact]
+        public static void Operand2Value___Should_be_same_as_Operand2TextValue___When_getting()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<TextDataValidation>();
+
+            // Act
+            var actual = systemUnderTest.Operand2Value;
+
+            // Assert
+            actual.Should().Be(systemUnderTest.Operand2TextValue);
+        }
+
+        [Fact]
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosJsonSerializer()
         {
             // Arrange
