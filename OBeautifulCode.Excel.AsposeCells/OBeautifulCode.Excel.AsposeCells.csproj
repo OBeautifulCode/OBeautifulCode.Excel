@@ -63,7 +63,7 @@
     <Compile Include="AsposeCellsLicense.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StyleContainer.cs" />
+    <Compile Include="Style\StyleContainer.cs" />
     <Compile Include="TypeConversionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
