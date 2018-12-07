@@ -8,6 +8,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Linq;
 
@@ -271,6 +272,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="customFormatString">The custom string to use.</param>
         /// <param name="styleContainer">The style container.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
+        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "This is a good usage of 'string'.")]
         public static void SetCustomFormat(
             this Range range,
             string customFormatString,

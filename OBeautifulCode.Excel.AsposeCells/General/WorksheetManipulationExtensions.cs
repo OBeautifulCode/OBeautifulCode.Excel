@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     using Aspose.Cells;
 
@@ -35,6 +36,8 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="startColumnNumber"/> is less than 1.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="endRowNumber"/> is less than <paramref name="startRowNumber"/>.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="endColumnNumber"/> is less than  <paramref name="startColumnNumber"/>.</exception>
+        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow", MessageId = "startRowNumber-1", Justification = "Overflow is not possible based on parameter validation.")]
+        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow", MessageId = "startColumnNumber-1", Justification = "Overflow is not possible based on parameter validation.")]
         public static Range GetRange(
             this Worksheet worksheet,
             int startRowNumber,
@@ -64,6 +67,8 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentNullException"><paramref name="worksheet"/> is null.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="rowNumber"/> is less than 1.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="columnNumber"/> is less than 1.</exception>
+        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow", MessageId = "rowNumber-1", Justification = "Overflow is not possible based on parameter validation.")]
+        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow", MessageId = "columnNumber-1", Justification = "Overflow is not possible based on parameter validation.")]
         public static Cell GetCell(
             this Worksheet worksheet,
             int rowNumber,

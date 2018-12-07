@@ -402,6 +402,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// A numeric value representing a <see cref="Format"/>.
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="format"/> is <see cref="Format.Unknown"/>.</exception>
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex.")]
         public static int ToFormatNumber(
             this Format format)
         {
