@@ -31,6 +31,11 @@ namespace OBeautifulCode.Excel
         public static readonly string YearNumberFormat = "###0";
 
         /// <summary>
+        /// A custom format that hides all values.
+        /// </summary>
+        public static readonly string HideCellValuesFormat = ";;;";
+
+        /// <summary>
         /// Builds a number format using commas to separated thousands, and showing decimals
         /// the specified number of decimal places (e.g. 18,202.392).
         /// </summary>
