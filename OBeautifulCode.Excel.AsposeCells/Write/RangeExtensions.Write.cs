@@ -25,6 +25,47 @@ namespace OBeautifulCode.Excel.AsposeCells
     public static partial class RangeExtensions
     {
         /// <summary>
+        /// Applies the specified range style to the specified range.
+        /// </summary>
+        /// <param name="range">The range to apply to the style to.</param>
+        /// <param name="rangeStyle">The style to apply.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="rangeStyle"/> is null.</exception>
+        public static void SetRangeStyle(
+            this Range range,
+            RangeStyle rangeStyle)
+        {
+            new { range }.Must().NotBeNull();
+            new { rangeStyle }.Must().NotBeNull();
+
+            var styleContainer = StyleContainer.BuildNewFromRange(range);
+
+            range.SetBackgroundColor(rangeStyle.BackgroundColor, styleContainer);
+            range.SetFontColor(rangeStyle.FontColor, styleContainer);
+            range.SetFontName(rangeStyle.FontName, styleContainer);
+            range.SetFontSize(rangeStyle.FontSize, styleContainer);
+            range.SetFontIsItalic(rangeStyle.FontIsItalic, styleContainer);
+            range.SetFontIsBold(rangeStyle.FontIsBold, styleContainer);
+            range.SetFontUnderline(rangeStyle.FontUnderline, styleContainer);
+            range.SetFontRotationAngle(rangeStyle.FontRotationAngle, styleContainer);
+            range.SetTextIsWrapped(rangeStyle.TextIsWrapped, styleContainer);
+            range.SetFormat(rangeStyle.Format, styleContainer);
+            range.SetCustomFormat(rangeStyle.CustomFormatString, styleContainer);
+            range.SetIndentLevel(rangeStyle.IndentLevel, styleContainer);
+            range.SetVerticalAlignment(rangeStyle.VerticalAlignment, styleContainer);
+            range.SetHorizontalAlignment(rangeStyle.HorizontalAlignment, styleContainer);
+            styleContainer.ApplyToRange(range);
+
+            range.SetRowHeightInPixels(rangeStyle.RowHeightInPixels);
+            range.SetColumnWidthInPixels(rangeStyle.ColumnWidthInPixels);
+            range.SetAutofitRows(rangeStyle.AutofitRows);
+            range.SetMergeCells(rangeStyle.MergeCells);
+            range.SetInsideBorder(rangeStyle.InsideBorder);
+            range.SetOutsideBorder(rangeStyle.OutsideBorder);
+            range.SetDataValidation(rangeStyle.DataValidation);
+        }
+
+        /// <summary>
         /// Sets the background color of a range.
         /// </summary>
         /// <param name="range">The range.</param>
