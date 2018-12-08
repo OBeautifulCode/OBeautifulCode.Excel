@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RangeManipulationExtensions.cs" company="OBeautifulCode">
+// <copyright file="RangeExtensions.Read.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -17,9 +17,9 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Range = Aspose.Cells.Range;
 
     /// <summary>
-    /// Extensions methods to manipulate <see cref="Range"/>.
+    /// Extensions methods on type <see cref="Range"/>.
     /// </summary>
-    public static class RangeManipulationExtensions
+    public static partial class RangeExtensions
     {
         /// <summary>
         /// Gets the row numbers in the specified range.
@@ -99,7 +99,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         {
             new { range }.Must().NotBeNull();
 
-            var result = range.GetCells().Select(_ => _.ToRange()).ToList();
+            var result = range.GetCells().Select(_ => _.GetRange()).ToList();
 
             return result;
         }

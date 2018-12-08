@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WorkbookManipulationExtensions.cs" company="OBeautifulCode">
+// <copyright file="WorkbookExtensions.Write.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -13,9 +13,9 @@ namespace OBeautifulCode.Excel.AsposeCells
     using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
-    /// Extensions methods to manipulate <see cref="Workbook"/>.
+    /// Extensions methods on type <see cref="Workbook"/>.
     /// </summary>
-    public static class WorkbookManipulationExtensions
+    public static partial class WorkbookExtensions
     {
         /// <summary>
         /// Adds a temporary worksheet to the workbook.

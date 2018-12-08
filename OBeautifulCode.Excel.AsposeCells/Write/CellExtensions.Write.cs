@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CellStyleExtensions.cs" company="OBeautifulCode">
+// <copyright file="CellExtensions.Write.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -16,12 +16,12 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Comment = OBeautifulCode.Excel.Comment;
 
     /// <summary>
-    /// Style-related extensions methods on type <see cref="Cell"/>.
+    /// Extension methods on type <see cref="Cell"/>.
     /// </summary>
-    public static class CellStyleExtensions
+    public static partial class CellExtensions
     {
         /// <summary>
-        /// Sets the freeze panes.
+        /// Freezes panes.
         /// </summary>
         /// <param name="cell">The cell at which to freeze panes.</param>
         /// <param name="paneKinds">The kinds of panes to freeze.</param>
@@ -49,7 +49,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// </summary>
         /// <param name="cell">The cell to unlock.</param>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
-        public static void Unlock(
+        public static void SetUnlocked(
             this Cell cell)
         {
             new { cell }.Must().NotBeNull();
@@ -63,7 +63,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         }
 
         /// <summary>
-        /// Sets the outside border of a range.
+        /// Adds a comment to a cell.
         /// </summary>
         /// <param name="cell">The cell.</param>
         /// <param name="comment">The comment.</param>

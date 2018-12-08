@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RangeStyleExtensions.cs" company="OBeautifulCode">
+// <copyright file="RangeExtensions.Write.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -20,9 +20,9 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Range = Aspose.Cells.Range;
 
     /// <summary>
-    /// Style-related extensions methods on type <see cref="Range"/>.
+    /// Extension methods on type <see cref="Range"/>.
     /// </summary>
-    public static class RangeStyleExtensions
+    public static partial class RangeExtensions
     {
         /// <summary>
         /// Sets the background color of a range.

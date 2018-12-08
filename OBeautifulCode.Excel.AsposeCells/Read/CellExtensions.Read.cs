@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CellManipulationExtensions.cs" company="OBeautifulCode">
+// <copyright file="CellExtensions.Read.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -15,9 +15,9 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Range = Aspose.Cells.Range;
 
     /// <summary>
-    /// Extensions methods to manipulate <see cref="Cell"/>.
+    /// Extensions methods on type <see cref="Cell"/>.
     /// </summary>
-    public static class CellManipulationExtensions
+    public static partial class CellExtensions
     {
         /// <summary>
         /// Converts a cell to a range.
@@ -27,7 +27,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// The range equivalent to the specified cell.
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
-        public static Range ToRange(
+        public static Range GetRange(
             this Cell cell)
         {
             new { cell }.Must().NotBeNull();

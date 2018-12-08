@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WorksheetManipulationExtensions.cs" company="OBeautifulCode">
+// <copyright file="WorksheetExtensions.Read.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -16,9 +16,9 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Range = Aspose.Cells.Range;
 
     /// <summary>
-    /// Extensions methods to manipulate <see cref="Worksheet"/>.
+    /// Extensions methods on type <see cref="Worksheet"/>.
     /// </summary>
-    public static class WorksheetManipulationExtensions
+    public static partial class WorksheetExtensions
     {
         /// <summary>
         /// Gets the specified range.

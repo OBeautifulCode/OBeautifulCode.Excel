@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WorksheetStyleExtensions.cs" company="OBeautifulCode">
+// <copyright file="WorksheetExtensions.Write.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -14,9 +14,9 @@ namespace OBeautifulCode.Excel.AsposeCells
     using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
-    /// Style-related extensions methods on type <see cref="Worksheet"/>.
+    /// Extensions methods on type <see cref="Worksheet"/>.
     /// </summary>
-    public static class WorksheetStyleExtensions
+    public static partial class WorksheetExtensions
     {
         /// <summary>
         /// Sets the worksheet tab color.

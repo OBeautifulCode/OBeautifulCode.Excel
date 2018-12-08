@@ -62,16 +62,16 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
     <Compile Include="AsposeCellsLicense.cs" />
-    <Compile Include="General\CellManipulationExtensions.cs" />
-    <Compile Include="General\RangeManipulationExtensions.cs" />
-    <Compile Include="General\WorkbookManipulationExtensions.cs" />
-    <Compile Include="General\WorksheetManipulationExtensions.cs" />
+    <Compile Include="Read\CellExtensions.Read.cs" />
+    <Compile Include="Read\RangeExtensions.Read.cs" />
+    <Compile Include="Write\WorkbookExtensions.Write.cs" />
+    <Compile Include="Read\WorksheetExtensions.Read.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Style\StyleContainer.cs" />
-    <Compile Include="Style\CellStyleExtensions.cs" />
-    <Compile Include="Style\RangeStyleExtensions.cs" />
-    <Compile Include="Style\WorksheetStyleExtensions.cs" />
+    <Compile Include="StyleContainer.cs" />
+    <Compile Include="Write\CellExtensions.Write.cs" />
+    <Compile Include="Write\RangeExtensions.Write.cs" />
+    <Compile Include="Write\WorksheetExtensions.Write.cs" />
     <Compile Include="TypeConversionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
