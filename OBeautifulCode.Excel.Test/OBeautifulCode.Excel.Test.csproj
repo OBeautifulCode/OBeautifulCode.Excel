@@ -108,6 +108,7 @@
     <Compile Include="CellValueConditionalFormattingRuleTest.cs" />
     <Compile Include="CustomFormatStringTest.cs" />
     <Compile Include="DataValidationTest.cs" />
+    <Compile Include="RangeStyleExtensionsTest.cs" />
     <Compile Include="RangeStyleTest.cs" />
     <Compile Include="CommentTest.cs" />
     <Compile Include="NumericDataValidationTest.cs" />
