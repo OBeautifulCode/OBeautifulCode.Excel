@@ -101,7 +101,7 @@
   <ItemGroup>
     <Compile Include=".recipes\OBeautifulCode.AutoFakeItEasy\AutoFakeItEasyBootstrapper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Math\ThreadSafeRandom.cs" />
-    <Compile Include="DummyFactory.cs" />
+    <Compile Include="ExcelDummyFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BorderTest.cs" />

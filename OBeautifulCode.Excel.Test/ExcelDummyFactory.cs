@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DummyFactory.cs" company="OBeautifulCode">
+// <copyright file="ExcelDummyFactory.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -15,9 +15,9 @@ namespace OBeautifulCode.Excel.Test
     using OBeautifulCode.Math.Recipes;
 
     /// <inheritdoc />
-    public class DummyFactory : IDummyFactory
+    public class ExcelDummyFactory : IDummyFactory
     {
-        public DummyFactory()
+        public ExcelDummyFactory()
         {
             AutoFixtureBackedDummyFactory.UseRandomConcreteSubclassForDummy<DataValidation>();
 

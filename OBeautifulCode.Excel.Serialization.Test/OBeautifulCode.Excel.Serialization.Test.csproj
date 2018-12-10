@@ -93,8 +93,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\OBeautifulCode.Excel.Test\DummyFactory.cs">
-      <Link>DummyFactory.cs</Link>
+    <Compile Include="..\OBeautifulCode.Excel.Test\ExcelDummyFactory.cs">
+      <Link>ExcelDummyFactory.cs</Link>
     </Compile>
     <Compile Include=".recipes\OBeautifulCode.AutoFakeItEasy\AutoFakeItEasyBootstrapper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Math\ThreadSafeRandom.cs" />
