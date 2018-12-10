@@ -82,5 +82,23 @@ namespace OBeautifulCode.Excel
                 .Hash(this.Style)
                 .Hash(this.Color)
                 .Value;
+
+        /// <summary>
+        /// Creates a clone of this object.
+        /// </summary>
+        /// <returns>
+        /// A clone of this object.
+        /// </returns>
+        public Border Clone()
+        {
+            var result = new Border
+            {
+                Edges = this.Edges,
+                Style = this.Style,
+                Color = this.Color,
+            };
+
+            return result;
+        }
     }
 }

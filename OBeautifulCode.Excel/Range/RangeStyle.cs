@@ -212,5 +212,41 @@ namespace OBeautifulCode.Excel
                 .Hash(this.Format)
                 .Hash(this.CustomFormatString)
                 .Value;
+
+        /// <summary>
+        /// Creates a clone of this object.
+        /// </summary>
+        /// <returns>
+        /// A clone of this object.
+        /// </returns>
+        public RangeStyle Clone()
+        {
+            var result = new RangeStyle
+            {
+                BackgroundColor = this.BackgroundColor,
+                FontColor = this.FontColor,
+                FontName = this.FontName,
+                FontSize = this.FontSize,
+                FontIsItalic = this.FontIsItalic,
+                FontIsBold = this.FontIsBold,
+                FontUnderline = this.FontUnderline,
+                FontRotationAngle = this.FontRotationAngle,
+                TextIsWrapped = this.TextIsWrapped,
+                IndentLevel = this.IndentLevel,
+                RowHeightInPixels = this.RowHeightInPixels,
+                ColumnWidthInPixels = this.ColumnWidthInPixels,
+                VerticalAlignment = this.VerticalAlignment,
+                HorizontalAlignment = this.HorizontalAlignment,
+                MergeCells = this.MergeCells,
+                AutofitRows = this.AutofitRows,
+                InsideBorder = this.InsideBorder.Clone(),
+                OutsideBorder = this.OutsideBorder.Clone(),
+                DataValidation = this.DataValidation.Clone(),
+                Format = this.Format,
+                CustomFormatString = this.CustomFormatString,
+            };
+
+            return result;
+        }
     }
 }

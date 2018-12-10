@@ -67,5 +67,21 @@ namespace OBeautifulCode.Excel
             HashCodeHelper.Initialize()
                 .Hash(this.ClearTextPassword)
                 .Value;
+
+        /// <summary>
+        /// Creates a clone of this object.
+        /// </summary>
+        /// <returns>
+        /// A clone of this object.
+        /// </returns>
+        public WorksheetProtection Clone()
+        {
+            var result = new WorksheetProtection
+            {
+                ClearTextPassword = this.ClearTextPassword,
+            };
+
+            return result;
+        }
     }
 }

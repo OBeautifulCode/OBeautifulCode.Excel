@@ -98,5 +98,25 @@ namespace OBeautifulCode.Excel
                 .Hash(this.StopIfTrue)
                 .Hash(this.RangeStyle)
                 .Value;
+
+        /// <summary>
+        /// Creates a clone of this object.
+        /// </summary>
+        /// <returns>
+        /// A clone of this object.
+        /// </returns>
+        public CellValueConditionalFormattingRule Clone()
+        {
+            var result = new CellValueConditionalFormattingRule
+            {
+                Operator = this.Operator,
+                Operand1Formula = this.Operand1Formula,
+                Operand2Formula = this.Operand2Formula,
+                StopIfTrue = this.StopIfTrue,
+                RangeStyle = this.RangeStyle.Clone(),
+            };
+
+            return result;
+        }
     }
 }

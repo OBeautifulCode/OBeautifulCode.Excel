@@ -8,7 +8,6 @@ namespace OBeautifulCode.Excel
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq.Expressions;
 
     using OBeautifulCode.Math.Recipes;
 
@@ -23,9 +22,6 @@ namespace OBeautifulCode.Excel
     /// </remarks>
     public class TextDataValidation : DataValidation, IEquatable<TextDataValidation>
     {
-        private static readonly Func<TextDataValidation, TextDataValidation> CloneFunc =
-            MappingExpression.From<TextDataValidation>.ToNew<TextDataValidation>().Compile();
-
         /// <summary>
         /// Gets or sets the first operand value.
         /// </summary>
@@ -91,7 +87,25 @@ namespace OBeautifulCode.Excel
         /// <inheritdoc />
         public override DataValidation Clone()
         {
-            var result = CloneFunc(this);
+            var result = new TextDataValidation
+            {
+                Kind = this.Kind,
+                Operator = this.Operator,
+                Operand1Formula = this.Operand1Formula,
+                Operand2Formula = this.Operand2Formula,
+                IgnoreBlank = this.IgnoreBlank,
+                ShowInputMessage = this.ShowInputMessage,
+                InputMessageTitle = this.InputMessageTitle,
+                InputMessageBody = this.InputMessageBody,
+                ShowErrorAlertAfterInvalidDataIsEntered = this.ShowErrorAlertAfterInvalidDataIsEntered,
+                ErrorAlertStyle = this.ErrorAlertStyle,
+                ErrorAlertTitle = this.ErrorAlertTitle,
+                ErrorAlertBody = this.ErrorAlertBody,
+                ShowListDropdown = this.ShowListDropdown,
+                Operand1TextValue = this.Operand1TextValue,
+                Operand2TextValue = this.Operand2TextValue,
+            };
+
             return result;
         }
     }

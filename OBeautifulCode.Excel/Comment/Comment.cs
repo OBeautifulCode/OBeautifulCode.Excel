@@ -8,7 +8,6 @@ namespace OBeautifulCode.Excel
 {
     using System;
     using System.Drawing;
-    using System.Linq.Expressions;
 
     using OBeautifulCode.Math.Recipes;
 
@@ -23,8 +22,6 @@ namespace OBeautifulCode.Excel
     /// </remarks>
     public class Comment : IEquatable<Comment>
     {
-        private static readonly Func<Comment, Comment> CloneFunc = MappingExpression.From<Comment>.ToNew<Comment>().Compile();
-
         /// <summary>
         /// Gets or sets the body of the comment.
         /// </summary>
@@ -191,7 +188,25 @@ namespace OBeautifulCode.Excel
         /// </returns>
         public Comment Clone()
         {
-            var result = CloneFunc(this);
+            var result = new Comment
+            {
+                Body = this.Body,
+                HtmlBody = this.HtmlBody,
+                FontName = this.FontName,
+                FontColor = this.FontColor,
+                FontSize = this.FontSize,
+                FontIsBold = this.FontIsBold,
+                HorizontalAlignment = this.HorizontalAlignment,
+                VerticalAlignment = this.VerticalAlignment,
+                AutoSize = this.AutoSize,
+                HeightInInches = this.HeightInInches,
+                WidthInInches = this.WidthInInches,
+                FillColor = this.FillColor,
+                FillTransparency = this.FillTransparency,
+                BorderColor = this.BorderColor,
+                BorderStyle = this.BorderStyle,
+                BorderWeightInPoints = this.BorderWeightInPoints,
+            };
 
             return result;
         }

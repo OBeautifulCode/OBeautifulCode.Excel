@@ -829,5 +829,23 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             hash1.Should().Be(hash2);
         }
+
+        [Fact]
+        public static void Clone___Should_clone_item___When_called()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<RangeStyle>();
+
+            // Act
+            var actual = systemUnderTest.Clone();
+
+            // Assert
+            actual.Should().Be(systemUnderTest);
+            actual.Should().NotBeSameAs(systemUnderTest);
+
+            actual.InsideBorder.Should().NotBeSameAs(systemUnderTest.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(systemUnderTest.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(systemUnderTest.DataValidation);
+        }
     }
 }

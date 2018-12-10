@@ -348,5 +348,21 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             hash1.Should().Be(hash2);
         }
+
+        [Fact]
+        public static void Clone___Should_clone_item___When_called()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellValueConditionalFormattingRule>();
+
+            // Act
+            var actual = systemUnderTest.Clone();
+
+            // Assert
+            actual.Should().Be(systemUnderTest);
+            actual.Should().NotBeSameAs(systemUnderTest);
+
+            actual.RangeStyle.Should().NotBeSameAs(systemUnderTest.RangeStyle);
+        }
     }
 }
