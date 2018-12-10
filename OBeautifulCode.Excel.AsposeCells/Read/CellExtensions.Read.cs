@@ -35,5 +35,37 @@ namespace OBeautifulCode.Excel.AsposeCells
             var result = cell.Worksheet.GetRange(cell.Row + 1, cell.Row + 1, cell.Column + 1, cell.Column + 1);
             return result;
         }
+
+        /// <summary>
+        /// Gets the width of a cell, in pixels, accounting for merged cells.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <returns>
+        /// The width of the cell in pixels.
+        /// </returns>
+        public static int GetWidthInPixels(
+            this Cell cell)
+        {
+            new { cell }.Must().NotBeNull();
+
+            var result = 0;
+
+            if (cell.IsMerged)
+            {
+                var mergedRange = cell.GetMergedRange();
+                foreach (var mergedRangeElement in mergedRange)
+                {
+                    // ReSharper disable once IdentifierTypo
+                    var subcell = (Cell)mergedRangeElement;
+                    result = result + cell.Worksheet.Cells.GetColumnWidthPixel(subcell.Column);
+                }
+            }
+            else
+            {
+                result = result + cell.Worksheet.Cells.GetColumnWidthPixel(cell.Column);
+            }
+
+            return result;
+        }
     }
 }
