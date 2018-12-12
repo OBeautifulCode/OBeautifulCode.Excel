@@ -94,6 +94,7 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
     <Compile Include="AsposeCellsLicenseTest.cs" />
+    <Compile Include="CellCursorTest.cs" />
     <Compile Include="AsposeCellsDummyFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -62,6 +62,7 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
     <Compile Include="AsposeCellsLicense.cs" />
+    <Compile Include="CellCursor.cs" />
     <Compile Include="Read\CellExtensions.Read.cs" />
     <Compile Include="Read\RangeExtensions.Read.cs" />
     <Compile Include="Write\WorkbookExtensions.Write.cs" />

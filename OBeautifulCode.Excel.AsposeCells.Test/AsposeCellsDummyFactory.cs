@@ -27,6 +27,13 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
                 return result;
             });
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(() =>
+            {
+                var result = new CellCursor(A.Dummy<Worksheet>(), A.Dummy<PositiveInteger>(), A.Dummy<PositiveInteger>());
+
+                return result;
+            });
         }
 
         /// <inheritdoc />
