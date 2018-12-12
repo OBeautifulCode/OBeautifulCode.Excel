@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel.AsposeCells.Test
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     using Aspose.Cells;
 
@@ -30,6 +31,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Flag", Justification = "'Flag' is the best term to use here.")]
         public static void Constructor___Should_throw_ArgumentNullException___When_parameter_styleFlag_is_null()
         {
             // Arrange, Act
@@ -56,6 +58,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Flag", Justification = "'Flag' is the best term to use here.")]
         public static void StyleFlag___Should_return_same_styleFlag_passed_to_constructor___When_getting()
         {
             // Arrange

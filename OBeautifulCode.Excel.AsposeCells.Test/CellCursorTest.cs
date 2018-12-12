@@ -23,22 +23,22 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
     {
         private const string DefaultMarkerNamePrefix = "marker-";
 
-        private static readonly int StartRowNumber = 3;
-        private static readonly int StartColumnNumber = 4;
+        private const int StartRowNumber = 3;
+        private const int StartColumnNumber = 4;
 
-        private static readonly int MoveDownBy = 4;
-        private static readonly int MoveRightBy = 8;
-        private static readonly int MoveLeftBy = 6;
-        private static readonly int MoveUpBy = 2;
+        private const int MoveDownBy = 4;
+        private const int MoveRightBy = 8;
+        private const int MoveLeftBy = 6;
+        private const int MoveUpBy = 2;
 
-        private static readonly int MaxRowNumber = StartRowNumber + MoveDownBy;
-        private static readonly int MaxColumnNumber = StartColumnNumber + MoveRightBy;
+        private const int MaxRowNumber = StartRowNumber + MoveDownBy;
+        private const int MaxColumnNumber = StartColumnNumber + MoveRightBy;
 
-        private static readonly int CurrentRowNumber = StartRowNumber + MoveDownBy - MoveUpBy;
-        private static readonly int CurrentColumnNumber = StartColumnNumber + MoveRightBy - MoveLeftBy;
+        private const int CurrentRowNumber = StartRowNumber + MoveDownBy - MoveUpBy;
+        private const int CurrentColumnNumber = StartColumnNumber + MoveRightBy - MoveLeftBy;
 
         [Fact]
-        public static void Constructor___Should_throw_ArgumentNullException___When_paramter_worksheet_is_null()
+        public static void Constructor___Should_throw_ArgumentNullException___When_parameter_worksheet_is_null()
         {
             // Arrange, Act
             var actual = Record.Exception(() => new CellCursor(null));
