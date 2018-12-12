@@ -98,8 +98,15 @@
     <Compile Include="AsposeCellsDummyFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Read\WorksheetExtensionsTest.Read.cs" />
+    <Compile Include="Read\RangeExtensionsTest.Read.cs" />
     <Compile Include="Read\CellExtensionsTest.Read.cs" />
+    <Compile Include="StyleContainerTest.cs" />
     <Compile Include="TypeConversionExtensionsTest.cs" />
+    <Compile Include="Write\CellExtensionsTest.Write.cs" />
+    <Compile Include="Write\RangeExtensionsTest.Write.cs" />
+    <Compile Include="Write\WorkbookExtensionsTest.Write.cs" />
+    <Compile Include="Write\WorksheetExtensionsTest.Write.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OBeautifulCode.Excel.AsposeCells\OBeautifulCode.Excel.AsposeCells.csproj">

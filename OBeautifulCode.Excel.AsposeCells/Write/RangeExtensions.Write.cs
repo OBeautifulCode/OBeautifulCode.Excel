@@ -38,7 +38,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             new { range }.Must().NotBeNull();
             new { rangeStyle }.Must().NotBeNull();
 
-            var styleContainer = StyleContainer.BuildNewFromRange(range);
+            var styleContainer = StyleContainer.BuildNew(range.Worksheet.Workbook);
 
             range.SetBackgroundColor(rangeStyle.BackgroundColor, styleContainer);
             range.SetFontColor(rangeStyle.FontColor, styleContainer);
@@ -648,7 +648,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             var applyToRange = styleContainer == null;
             if (styleContainer == null)
             {
-                styleContainer = StyleContainer.BuildNewFromRange(range);
+                styleContainer = StyleContainer.BuildNew(range.Worksheet.Workbook);
             }
 
             configureStyleContainer(styleContainer);

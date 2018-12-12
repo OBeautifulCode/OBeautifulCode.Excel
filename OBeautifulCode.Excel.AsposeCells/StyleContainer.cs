@@ -51,19 +51,19 @@ namespace OBeautifulCode.Excel.AsposeCells
         public StyleFlag StyleFlag { get; }
 
         /// <summary>
-        /// Builds a style-container using a new style for a range.
+        /// Builds a new style container whose underlying style is registered with the workbook.
         /// </summary>
-        /// <param name="range">The range.</param>
+        /// <param name="workbook">The workbook.</param>
         /// <returns>
-        /// A style container.
+        /// A new style container, who's underlying style is registered with the workbook.
         /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
-        public static StyleContainer BuildNewFromRange(
-            Range range)
+        /// <exception cref="ArgumentNullException"><paramref name="workbook"/> is null.</exception>
+        public static StyleContainer BuildNew(
+            Workbook workbook)
         {
-            new { range }.Must().NotBeNull();
+            new { workbook }.Must().NotBeNull();
 
-            var style = range.Worksheet.Workbook.CreateStyle();
+            var style = workbook.CreateStyle();
             var styleFlag = new StyleFlag();
 
             var result = new StyleContainer(style, styleFlag);
@@ -72,14 +72,14 @@ namespace OBeautifulCode.Excel.AsposeCells
         }
 
         /// <summary>
-        /// Builds a style-container using the existing style for the cell.
+        /// Builds a style-container using the existing style on a cell.
         /// </summary>
         /// <param name="cell">The cell.</param>
         /// <returns>
         /// A style container.
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
-        public static StyleContainer BuildExistingFromCell(
+        public static StyleContainer BuildUsingExistingCellStyle(
             Cell cell)
         {
             new { cell }.Must().NotBeNull();

@@ -54,7 +54,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         {
             new { cell }.Must().NotBeNull();
 
-            var styleContainer = StyleContainer.BuildExistingFromCell(cell);
+            var styleContainer = StyleContainer.BuildUsingExistingCellStyle(cell);
 
             styleContainer.Style.IsLocked = false;
             styleContainer.StyleFlag.Locked = true;
