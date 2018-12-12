@@ -130,7 +130,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ApplyToRange___Should_throw_ArgumentNullException___When_parameter_range_is_null()
         {
             // Arrange
-            var styleContainer = A.Dummy<StyleContainer>();
+            var styleContainer = new StyleContainer(new Style(), new StyleFlag());
 
             // Act
             var actual = Record.Exception(() => styleContainer.ApplyToRange(null));
@@ -149,7 +149,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ApplyToCell___Should_throw_ArgumentNullException___When_parameter_range_is_null()
         {
             // Arrange
-            var styleContainer = A.Dummy<StyleContainer>();
+            var styleContainer = new StyleContainer(new Style(), new StyleFlag());
 
             // Act
             var actual = Record.Exception(() => styleContainer.ApplyToCell(null));
