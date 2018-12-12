@@ -1127,8 +1127,8 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual2 = systemUnderTest2.GetMarkedRange(markerName);
 
             // Assert
-            actual1.Name.Should().Be(expected1.Name);
-            actual2.Name.Should().Be(expected2.Name);
+            actual1.RefersTo.Should().Be(expected1.RefersTo);
+            actual2.RefersTo.Should().Be(expected2.RefersTo);
         }
 
         [Fact]

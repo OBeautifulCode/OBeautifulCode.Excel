@@ -10,6 +10,8 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
+    using MoreLinq;
+
     using OBeautifulCode.Validation.Recipes;
 
     using Range = Aspose.Cells.Range;
@@ -43,6 +45,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <returns>
         /// The width of the cell in pixels.
         /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         public static int GetWidthInPixels(
             this Cell cell)
         {
@@ -53,11 +56,11 @@ namespace OBeautifulCode.Excel.AsposeCells
             if (cell.IsMerged)
             {
                 var mergedRange = cell.GetMergedRange();
-                foreach (var mergedRangeElement in mergedRange)
+                var cellsWithDistinctColumns = mergedRange.GetCells().DistinctBy(_ => _.Column);
+
+                foreach (var cellWithDistinctColumn in cellsWithDistinctColumns)
                 {
-                    // ReSharper disable once IdentifierTypo
-                    var subcell = (Cell)mergedRangeElement;
-                    result = result + cell.Worksheet.Cells.GetColumnWidthPixel(subcell.Column);
+                    result = result + cell.Worksheet.Cells.GetColumnWidthPixel(cellWithDistinctColumn.Column);
                 }
             }
             else

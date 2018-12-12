@@ -98,6 +98,7 @@
     <Compile Include="AsposeCellsDummyFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Read\CellExtensionsTest.Read.cs" />
     <Compile Include="TypeConversionExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
