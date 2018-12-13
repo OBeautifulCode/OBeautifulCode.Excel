@@ -20,7 +20,7 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Gets or sets a map of property kind to it's value.
         /// </summary>
-        public IReadOnlyDictionary<BuiltinDocumentPropertyKind, string> BuiltInDocumentPropertyKindToValueMap { get; set; }
+        public IReadOnlyDictionary<BuiltInDocumentPropertyKind, string> BuiltInDocumentPropertyKindToValueMap { get; set; }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="DocumentProperties"/> are equal.

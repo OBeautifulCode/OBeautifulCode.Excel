@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BuiltinDocumentPropertyKind.cs" company="OBeautifulCode">
+// <copyright file="BuiltInDocumentPropertyKind.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -9,7 +9,7 @@ namespace OBeautifulCode.Excel
     /// <summary>
     /// Represents all the built-in document properties for the workbook.
     /// </summary>
-    public enum BuiltinDocumentPropertyKind
+    public enum BuiltInDocumentPropertyKind
     {
         /// <summary>
         /// Unknown (default).

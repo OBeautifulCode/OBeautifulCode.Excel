@@ -24,22 +24,22 @@ namespace OBeautifulCode.Excel.Test
     {
         private static readonly DocumentProperties ObjectForEquatableTests = new DocumentProperties
         {
-            BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+            BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltInDocumentPropertyKind, string>
             {
-                { BuiltinDocumentPropertyKind.Author, "joe" },
-                { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
-                { BuiltinDocumentPropertyKind.Comments, "some comments" },
+                { BuiltInDocumentPropertyKind.Author, "joe" },
+                { BuiltInDocumentPropertyKind.Company, "mighty company inc." },
+                { BuiltInDocumentPropertyKind.Comments, "some comments" },
             },
         };
 
         private static readonly DocumentProperties ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
             new DocumentProperties
             {
-                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltInDocumentPropertyKind, string>
                 {
-                    { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
-                    { BuiltinDocumentPropertyKind.Comments, "some comments" },
-                    { BuiltinDocumentPropertyKind.Author, "joe" },
+                    { BuiltInDocumentPropertyKind.Company, "mighty company inc." },
+                    { BuiltInDocumentPropertyKind.Comments, "some comments" },
+                    { BuiltInDocumentPropertyKind.Author, "joe" },
                 },
             };
 
@@ -49,29 +49,29 @@ namespace OBeautifulCode.Excel.Test
             new DocumentProperties(),
             new DocumentProperties
             {
-                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltInDocumentPropertyKind, string>
                 {
-                    { BuiltinDocumentPropertyKind.Author, "joe" },
-                    { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
+                    { BuiltInDocumentPropertyKind.Author, "joe" },
+                    { BuiltInDocumentPropertyKind.Company, "mighty company inc." },
                 },
             },
             new DocumentProperties
             {
-                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltInDocumentPropertyKind, string>
                 {
-                    { BuiltinDocumentPropertyKind.Author, "joe" },
-                    { BuiltinDocumentPropertyKind.Company, "mighty comp inc." },
-                    { BuiltinDocumentPropertyKind.Comments, "some comments" },
+                    { BuiltInDocumentPropertyKind.Author, "joe" },
+                    { BuiltInDocumentPropertyKind.Company, "mighty comp inc." },
+                    { BuiltInDocumentPropertyKind.Comments, "some comments" },
                 },
             },
             new DocumentProperties
             {
-                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltInDocumentPropertyKind, string>
                 {
-                    { BuiltinDocumentPropertyKind.Author, "joe" },
-                    { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
-                    { BuiltinDocumentPropertyKind.Comments, "some comments" },
-                    { BuiltinDocumentPropertyKind.Keywords, "keyword" },
+                    { BuiltInDocumentPropertyKind.Author, "joe" },
+                    { BuiltInDocumentPropertyKind.Company, "mighty company inc." },
+                    { BuiltInDocumentPropertyKind.Comments, "some comments" },
+                    { BuiltInDocumentPropertyKind.Keywords, "keyword" },
                 },
             },
         };
