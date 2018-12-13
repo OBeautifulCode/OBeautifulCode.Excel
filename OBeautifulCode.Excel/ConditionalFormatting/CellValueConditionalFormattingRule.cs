@@ -113,7 +113,7 @@ namespace OBeautifulCode.Excel
                 Operand1Formula = this.Operand1Formula,
                 Operand2Formula = this.Operand2Formula,
                 StopIfTrue = this.StopIfTrue,
-                RangeStyle = this.RangeStyle.Clone(),
+                RangeStyle = this.RangeStyle?.Clone(),
             };
 
             return result;

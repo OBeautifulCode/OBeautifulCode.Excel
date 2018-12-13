@@ -239,9 +239,9 @@ namespace OBeautifulCode.Excel
                 HorizontalAlignment = this.HorizontalAlignment,
                 MergeCells = this.MergeCells,
                 AutofitRows = this.AutofitRows,
-                InsideBorder = this.InsideBorder.Clone(),
-                OutsideBorder = this.OutsideBorder.Clone(),
-                DataValidation = this.DataValidation.Clone(),
+                InsideBorder = this.InsideBorder?.Clone(),
+                OutsideBorder = this.OutsideBorder?.Clone(),
+                DataValidation = this.DataValidation?.Clone(),
                 Format = this.Format,
                 CustomFormatString = this.CustomFormatString,
             };

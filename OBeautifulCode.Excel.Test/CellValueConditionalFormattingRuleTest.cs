@@ -353,16 +353,19 @@ namespace OBeautifulCode.Excel.Test
         public static void Clone___Should_clone_item___When_called()
         {
             // Arrange
-            var systemUnderTest = A.Dummy<CellValueConditionalFormattingRule>();
+            var systemUnderTest1 = new CellValueConditionalFormattingRule();
+            var systemUnderTest2 = A.Dummy<CellValueConditionalFormattingRule>();
 
             // Act
-            var actual = systemUnderTest.Clone();
+            var actual1 = systemUnderTest1.Clone();
+            var actual2 = systemUnderTest2.Clone();
 
             // Assert
-            actual.Should().Be(systemUnderTest);
-            actual.Should().NotBeSameAs(systemUnderTest);
+            actual1.Should().Be(systemUnderTest1);
+            actual1.Should().NotBeSameAs(systemUnderTest1);
 
-            actual.RangeStyle.Should().NotBeSameAs(systemUnderTest.RangeStyle);
+            actual2.Should().Be(systemUnderTest2);
+            actual2.Should().NotBeSameAs(systemUnderTest2);
         }
     }
 }

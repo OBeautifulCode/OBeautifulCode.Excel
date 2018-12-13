@@ -834,18 +834,19 @@ namespace OBeautifulCode.Excel.Test
         public static void Clone___Should_clone_item___When_called()
         {
             // Arrange
-            var systemUnderTest = A.Dummy<RangeStyle>();
+            var systemUnderTest1 = new RangeStyle();
+            var systemUnderTest2 = A.Dummy<RangeStyle>();
 
             // Act
-            var actual = systemUnderTest.Clone();
+            var actual1 = systemUnderTest1.Clone();
+            var actual2 = systemUnderTest2.Clone();
 
             // Assert
-            actual.Should().Be(systemUnderTest);
-            actual.Should().NotBeSameAs(systemUnderTest);
+            actual1.Should().Be(systemUnderTest1);
+            actual1.Should().NotBeSameAs(systemUnderTest1);
 
-            actual.InsideBorder.Should().NotBeSameAs(systemUnderTest.InsideBorder);
-            actual.OutsideBorder.Should().NotBeSameAs(systemUnderTest.OutsideBorder);
-            actual.DataValidation.Should().NotBeSameAs(systemUnderTest.DataValidation);
+            actual2.Should().Be(systemUnderTest2);
+            actual2.Should().NotBeSameAs(systemUnderTest2);
         }
     }
 }
