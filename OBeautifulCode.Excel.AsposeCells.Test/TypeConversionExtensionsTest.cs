@@ -311,5 +311,91 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToFormatNumber__Should_convert_format_to_its_numeric_representation___When_called()
         {
         }
+
+        [Fact]
+        public static void ToBuiltInDocumentPropertyCollectionKey__Should_throw_ArgumentOutOfRangeException___When_parameter_builtInDocumentPropertyKind_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => BuiltInDocumentPropertyKind.Unknown.ToBuiltInDocumentPropertyCollectionKey());
+
+            // Assert
+            actual.Should().BeOfType<ArgumentOutOfRangeException>();
+            actual.Message.Should().Contain(nameof(BuiltInDocumentPropertyKind.Unknown));
+        }
+
+        [Fact]
+        public static void ToBuiltInDocumentPropertyCollectionKey__Should_convert_builtInDocumentPropertyKind_to_an_string_that_can_be_used_as_a_key_in_a_collection_of_built_in_document_properties___When_called()
+        {
+            // Arrange
+            var builtInDocumentPropertyKinds = new[]
+            {
+                BuiltInDocumentPropertyKind.Title,
+                BuiltInDocumentPropertyKind.Subject,
+                BuiltInDocumentPropertyKind.Author,
+                BuiltInDocumentPropertyKind.Keywords,
+                BuiltInDocumentPropertyKind.Comments,
+                BuiltInDocumentPropertyKind.Template,
+                BuiltInDocumentPropertyKind.LastAuthor,
+                BuiltInDocumentPropertyKind.RevisionNumber,
+                BuiltInDocumentPropertyKind.ApplicationName,
+                BuiltInDocumentPropertyKind.LastPrintDate,
+                BuiltInDocumentPropertyKind.CreationDate,
+                BuiltInDocumentPropertyKind.LastSaveTime,
+                BuiltInDocumentPropertyKind.TotalEditingTime,
+                BuiltInDocumentPropertyKind.NumberOfPages,
+                BuiltInDocumentPropertyKind.NumberOfWords,
+                BuiltInDocumentPropertyKind.NumberOfCharacters,
+                BuiltInDocumentPropertyKind.Security,
+                BuiltInDocumentPropertyKind.Category,
+                BuiltInDocumentPropertyKind.Format,
+                BuiltInDocumentPropertyKind.Manager,
+                BuiltInDocumentPropertyKind.Company,
+                BuiltInDocumentPropertyKind.NumberOfBytes,
+                BuiltInDocumentPropertyKind.NumberOfLines,
+                BuiltInDocumentPropertyKind.NumberOfParagraphs,
+                BuiltInDocumentPropertyKind.NumberOfSlides,
+                BuiltInDocumentPropertyKind.NumberOfNotes,
+                BuiltInDocumentPropertyKind.NumberOfHiddenSlides,
+                BuiltInDocumentPropertyKind.NumberOfMultimediaClips,
+            };
+
+            var expected = new[]
+            {
+                "Title",
+                "Subject",
+                "Author",
+                "Keywords",
+                "Comments",
+                "Template",
+                "Last Author",
+                "Revision Number",
+                "Application Name",
+                "Last Print Date",
+                "Creation Date",
+                "Last Save Time",
+                "Total Editing Time",
+                "Number of Pages",
+                "Number of Words",
+                "Number of Characters",
+                "Security",
+                "Category",
+                "Format",
+                "Manager",
+                "Company",
+                "Number of Bytes",
+                "Number of Lines",
+                "Number of Paragraphs",
+                "Number of Slides",
+                "Number of Notes",
+                "Number of Hidden Slides",
+                "Number of Multimedia Clips",
+            };
+
+            // Act
+            var actual = builtInDocumentPropertyKinds.Select(_ => _.ToBuiltInDocumentPropertyCollectionKey()).ToList();
+
+            // Act
+            actual.Should().Equal(expected);
+        }
     }
 }

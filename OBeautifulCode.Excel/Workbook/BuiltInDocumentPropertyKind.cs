@@ -7,7 +7,7 @@
 namespace OBeautifulCode.Excel
 {
     /// <summary>
-    /// Represents all the built-in document properties for the workbook.
+    /// Represents a built-in document property on a workbook.
     /// </summary>
     public enum BuiltInDocumentPropertyKind
     {

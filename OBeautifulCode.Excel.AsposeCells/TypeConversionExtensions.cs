@@ -486,5 +486,81 @@ namespace OBeautifulCode.Excel.AsposeCells
                     throw new NotSupportedException(Invariant($"This {nameof(Format)} is not supported: {format}"));
             }
         }
+
+        /// <summary>
+        /// Converts a <see cref="BuiltInDocumentPropertyKind"/> to a <see cref="string"/> key that can be used in a collection of built-in document properties.
+        /// </summary>
+        /// <param name="builtInDocumentPropertyKind">The built-in document property on a workbook.</param>
+        /// <returns>
+        /// A <see cref="string"/> key that can be used in a collection of built-in document properties, converted from a <see cref="BuiltInDocumentPropertyKind"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="builtInDocumentPropertyKind"/> is <see cref="BuiltInDocumentPropertyKind.Unknown"/>.</exception>
+        public static string ToBuiltInDocumentPropertyCollectionKey(
+            this BuiltInDocumentPropertyKind builtInDocumentPropertyKind)
+        {
+            new { builtInDocumentPropertyKind }.Must().NotBeEqualTo(BuiltInDocumentPropertyKind.Unknown);
+
+            switch (builtInDocumentPropertyKind)
+            {
+                case BuiltInDocumentPropertyKind.Title:
+                    return "Title";
+                case BuiltInDocumentPropertyKind.Subject:
+                    return "Subject";
+                case BuiltInDocumentPropertyKind.Author:
+                    return "Author";
+                case BuiltInDocumentPropertyKind.Keywords:
+                    return "Keywords";
+                case BuiltInDocumentPropertyKind.Comments:
+                    return "Comments";
+                case BuiltInDocumentPropertyKind.Template:
+                    return "Template";
+                case BuiltInDocumentPropertyKind.LastAuthor:
+                    return "Last Author";
+                case BuiltInDocumentPropertyKind.RevisionNumber:
+                    return "Revision Number";
+                case BuiltInDocumentPropertyKind.ApplicationName:
+                    return "Application Name";
+                case BuiltInDocumentPropertyKind.LastPrintDate:
+                    return "Last Print Date";
+                case BuiltInDocumentPropertyKind.CreationDate:
+                    return "Creation Date";
+                case BuiltInDocumentPropertyKind.LastSaveTime:
+                    return "Last Save Time";
+                case BuiltInDocumentPropertyKind.TotalEditingTime:
+                    return "Total Editing Time";
+                case BuiltInDocumentPropertyKind.NumberOfPages:
+                    return "Number of Pages";
+                case BuiltInDocumentPropertyKind.NumberOfWords:
+                    return "Number of Words";
+                case BuiltInDocumentPropertyKind.NumberOfCharacters:
+                    return "Number of Characters";
+                case BuiltInDocumentPropertyKind.Security:
+                    return "Security";
+                case BuiltInDocumentPropertyKind.Category:
+                    return "Category";
+                case BuiltInDocumentPropertyKind.Format:
+                    return "Format";
+                case BuiltInDocumentPropertyKind.Manager:
+                    return "Manager";
+                case BuiltInDocumentPropertyKind.Company:
+                    return "Company";
+                case BuiltInDocumentPropertyKind.NumberOfBytes:
+                    return "Number of Bytes";
+                case BuiltInDocumentPropertyKind.NumberOfLines:
+                    return "Number of Lines";
+                case BuiltInDocumentPropertyKind.NumberOfParagraphs:
+                    return "Number of Paragraphs";
+                case BuiltInDocumentPropertyKind.NumberOfSlides:
+                    return "Number of Slides";
+                case BuiltInDocumentPropertyKind.NumberOfNotes:
+                    return "Number of Notes";
+                case BuiltInDocumentPropertyKind.NumberOfHiddenSlides:
+                    return "Number of Hidden Slides";
+                case BuiltInDocumentPropertyKind.NumberOfMultimediaClips:
+                    return "Number of Multimedia Clips";
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(BuiltInDocumentPropertyKind)} is not supported: {builtInDocumentPropertyKind}"));
+            }
+        }
     }
 }
