@@ -495,6 +495,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// A <see cref="string"/> key that can be used in a collection of built-in document properties, converted from a <see cref="BuiltInDocumentPropertyKind"/>.
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="builtInDocumentPropertyKind"/> is <see cref="BuiltInDocumentPropertyKind.Unknown"/>.</exception>
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex.")]
         public static string ToBuiltInDocumentPropertyCollectionKey(
             this BuiltInDocumentPropertyKind builtInDocumentPropertyKind)
         {
