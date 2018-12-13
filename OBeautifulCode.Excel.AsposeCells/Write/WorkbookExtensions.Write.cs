@@ -47,5 +47,35 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             workbook.Worksheets.RemoveAt(0);
         }
+
+        /// <summary>
+        /// Sets workbook document properties.
+        /// </summary>
+        /// <param name="workbook">The workbook.</param>
+        /// <param name="documentProperties">The document properties to set.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="workbook"/> is null.</exception>
+        public static void SetDocumentProperties(
+            this Workbook workbook,
+            DocumentProperties documentProperties)
+        {
+            new { workbook }.Must().NotBeNull();
+
+            if (documentProperties != null)
+            {
+                var propertyKindToValueMap = documentProperties.BuiltInDocumentPropertyKindToValueMap;
+                if (propertyKindToValueMap != null)
+                {
+                    foreach (var propertyKind in propertyKindToValueMap.Keys)
+                    {
+                        var propertyValue = propertyKindToValueMap[propertyKind];
+
+                        if (propertyValue != null)
+                        {
+                            workbook.BuiltInDocumentProperties[propertyKind.ToBuiltInDocumentPropertyCollectionKey()].Value = propertyValue;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
