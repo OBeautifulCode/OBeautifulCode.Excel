@@ -54,6 +54,7 @@ namespace OBeautifulCode.Excel.Test
         private static readonly RangeStyle[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
             A.Dummy<RangeStyle>(),
+            new RangeStyle(),
             new RangeStyle
             {
                 BackgroundColor = A.Dummy<Color?>().ThatIsNot(ObjectForEquatableTests.BackgroundColor),

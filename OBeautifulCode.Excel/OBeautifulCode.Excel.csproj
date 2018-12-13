@@ -77,6 +77,8 @@
     <Compile Include="DataValidation\DataValidationOperator.cs" />
     <Compile Include="Alignment\HorizontalAlignment.cs" />
     <Compile Include="Range\RangeStyleExtensions.cs" />
+    <Compile Include="Workbook\DocumentProperties.cs" />
+    <Compile Include="Workbook\BuiltinDocumentPropertyKind.cs" />
     <Compile Include="Worksheet\PaneKinds.cs" />
     <Compile Include="Font\UnderlineKind.cs" />
     <Compile Include="Alignment\VerticalAlignment.cs" />

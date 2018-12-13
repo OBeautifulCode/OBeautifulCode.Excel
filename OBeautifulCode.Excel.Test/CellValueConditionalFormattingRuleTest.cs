@@ -37,6 +37,7 @@ namespace OBeautifulCode.Excel.Test
         private static readonly CellValueConditionalFormattingRule[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
             A.Dummy<CellValueConditionalFormattingRule>(),
+            new CellValueConditionalFormattingRule(),
             new CellValueConditionalFormattingRule
             {
                 Operator = A.Dummy<ConditionalFormattingOperator>().ThatIsNot(ObjectForEquatableTests.Operator),

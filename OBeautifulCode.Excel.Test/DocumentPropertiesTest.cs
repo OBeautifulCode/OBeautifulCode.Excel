@@ -1,12 +1,12 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BorderTest.cs" company="OBeautifulCode">
+// <copyright file="DocumentPropertiesTest.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace OBeautifulCode.Excel.Test
 {
-    using System.Drawing;
+    using System.Collections.Generic;
     using System.Linq;
 
     using FakeItEasy;
@@ -16,44 +16,63 @@ namespace OBeautifulCode.Excel.Test
     using Naos.Serialization.Bson;
     using Naos.Serialization.Json;
 
-    using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.Excel.Serialization.Bson;
 
     using Xunit;
 
-    public static class BorderTest
+    public static class DocumentPropertiesTest
     {
-        private static readonly Border ObjectForEquatableTests = A.Dummy<Border>();
-
-        private static readonly Border ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
-            new Border
+        private static readonly DocumentProperties ObjectForEquatableTests = new DocumentProperties
+        {
+            BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
             {
-                Color = ObjectForEquatableTests.Color,
-                Edges = ObjectForEquatableTests.Edges,
-                Style = ObjectForEquatableTests.Style,
+                { BuiltinDocumentPropertyKind.Author, "joe" },
+                { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
+                { BuiltinDocumentPropertyKind.Comments, "some comments" },
+            },
+        };
+
+        private static readonly DocumentProperties ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
+            new DocumentProperties
+            {
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                {
+                    { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
+                    { BuiltinDocumentPropertyKind.Comments, "some comments" },
+                    { BuiltinDocumentPropertyKind.Author, "joe" },
+                },
             };
 
-        private static readonly Border[] ObjectsThatAreNotEqualToObjectForEquatableTests =
+        private static readonly DocumentProperties[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
-            A.Dummy<Border>(),
-            new Border(),
-            new Border
+            A.Dummy<DocumentProperties>(),
+            new DocumentProperties(),
+            new DocumentProperties
             {
-                Color = A.Dummy<Color>().ThatIsNot(ObjectForEquatableTests.Color),
-                Edges = ObjectForEquatableTests.Edges,
-                Style = ObjectForEquatableTests.Style,
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                {
+                    { BuiltinDocumentPropertyKind.Author, "joe" },
+                    { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
+                },
             },
-            new Border
+            new DocumentProperties
             {
-                Color = ObjectForEquatableTests.Color,
-                Edges = A.Dummy<BorderEdges>().ThatIsNot(ObjectForEquatableTests.Edges),
-                Style = ObjectForEquatableTests.Style,
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                {
+                    { BuiltinDocumentPropertyKind.Author, "joe" },
+                    { BuiltinDocumentPropertyKind.Company, "mighty comp inc." },
+                    { BuiltinDocumentPropertyKind.Comments, "some comments" },
+                },
             },
-            new Border
+            new DocumentProperties
             {
-                Color = ObjectForEquatableTests.Color,
-                Edges = ObjectForEquatableTests.Edges,
-                Style = A.Dummy<BorderStyle>().ThatIsNot(ObjectForEquatableTests.Style),
+                BuiltInDocumentPropertyKindToValueMap = new Dictionary<BuiltinDocumentPropertyKind, string>
+                {
+                    { BuiltinDocumentPropertyKind.Author, "joe" },
+                    { BuiltinDocumentPropertyKind.Company, "mighty company inc." },
+                    { BuiltinDocumentPropertyKind.Comments, "some comments" },
+                    { BuiltinDocumentPropertyKind.Keywords, "keyword" },
+                },
             },
         };
 
@@ -63,12 +82,12 @@ namespace OBeautifulCode.Excel.Test
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosJsonSerializer()
         {
             // Arrange
-            var expected = A.Dummy<Border>();
+            var expected = A.Dummy<DocumentProperties>();
             var serializer = new NaosJsonSerializer();
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<Border>(serializedJson);
+            var actual = serializer.Deserialize<DocumentProperties>(serializedJson);
 
             // Assert
             actual.Should().Be(expected);
@@ -78,13 +97,13 @@ namespace OBeautifulCode.Excel.Test
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosBsonSerializer()
         {
             // Arrange
-            var expected = A.Dummy<Border>();
+            var expected = A.Dummy<DocumentProperties>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<Border>(serializedJson);
+            var actual = serializer.Deserialize<DocumentProperties>(serializedJson);
 
             // Assert
             actual.Should().Be(expected);
@@ -94,8 +113,8 @@ namespace OBeautifulCode.Excel.Test
         public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
         {
             // Arrange
-            Border systemUnderTest1 = null;
-            Border systemUnderTest2 = null;
+            DocumentProperties systemUnderTest1 = null;
+            DocumentProperties systemUnderTest2 = null;
 
             // Act
             var result = systemUnderTest1 == systemUnderTest2;
@@ -108,7 +127,7 @@ namespace OBeautifulCode.Excel.Test
         public static void EqualsOperator___Should_return_false___When_one_side_of_operator_is_null_and_the_other_side_is_not_null()
         {
             // Arrange
-            Border systemUnderTest = null;
+            DocumentProperties systemUnderTest = null;
 
             // Act
             var result1 = systemUnderTest == ObjectForEquatableTests;
@@ -155,8 +174,8 @@ namespace OBeautifulCode.Excel.Test
         public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
         {
             // Arrange
-            Border systemUnderTest1 = null;
-            Border systemUnderTest2 = null;
+            DocumentProperties systemUnderTest1 = null;
+            DocumentProperties systemUnderTest2 = null;
 
             // Act
             var result = systemUnderTest1 != systemUnderTest2;
@@ -169,7 +188,7 @@ namespace OBeautifulCode.Excel.Test
         public static void NotEqualsOperator___Should_return_true___When_one_side_of_operator_is_null_and_the_other_side_is_not_null()
         {
             // Arrange
-            Border systemUnderTest = null;
+            DocumentProperties systemUnderTest = null;
 
             // Act
             var result1 = systemUnderTest != ObjectForEquatableTests;
@@ -213,10 +232,10 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Equals_with_Border___Should_return_false___When_parameter_other_is_null()
+        public static void Equals_with_DocumentProperties___Should_return_false___When_parameter_other_is_null()
         {
             // Arrange
-            Border systemUnderTest = null;
+            DocumentProperties systemUnderTest = null;
 
             // Act
             var result = ObjectForEquatableTests.Equals(systemUnderTest);
@@ -226,7 +245,7 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Equals_with_Border___Should_return_true___When_parameter_other_is_same_object()
+        public static void Equals_with_DocumentProperties___Should_return_true___When_parameter_other_is_same_object()
         {
             // Arrange, Act
             var result = ObjectForEquatableTests.Equals(ObjectForEquatableTests);
@@ -236,7 +255,7 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Equals_with_Border___Should_return_false___When_objects_being_compared_have_different_property_values()
+        public static void Equals_with_DocumentProperties___Should_return_false___When_objects_being_compared_have_different_property_values()
         {
             // Arrange, Act
             var results = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => ObjectForEquatableTests.Equals(_)).ToList();
@@ -246,7 +265,7 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Equals_with_Border___Should_return_true___When_objects_being_compared_have_same_property_values()
+        public static void Equals_with_DocumentProperties___Should_return_true___When_objects_being_compared_have_same_property_values()
         {
             // Arrange, Act
             var result = ObjectForEquatableTests.Equals(ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests);
@@ -331,8 +350,8 @@ namespace OBeautifulCode.Excel.Test
         public static void Clone___Should_clone_item___When_called()
         {
             // Arrange
-            var systemUnderTest1 = new Border();
-            var systemUnderTest2 = A.Dummy<Border>();
+            var systemUnderTest1 = new DocumentProperties();
+            var systemUnderTest2 = A.Dummy<DocumentProperties>();
 
             // Act
             var actual1 = systemUnderTest1.Clone();

@@ -49,6 +49,7 @@ namespace OBeautifulCode.Excel.Test
         private static readonly Comment[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
             A.Dummy<Comment>(),
+            new Comment(),
             new Comment
             {
                 Body = A.Dummy<string>(),

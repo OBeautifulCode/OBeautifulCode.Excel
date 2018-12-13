@@ -47,6 +47,7 @@ namespace OBeautifulCode.Excel.Test
         private static readonly DataValidation[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
             A.Dummy<DataValidation>(),
+            new NumericDataValidation(),
             new NumericDataValidation
             {
                 Kind = A.Dummy<DataValidationKind>().ThatIsNot(ObjectForEquatableTests.Kind),

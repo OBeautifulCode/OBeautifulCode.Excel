@@ -32,6 +32,7 @@ namespace OBeautifulCode.Excel.Test
         private static readonly WorksheetProtection[] ObjectsThatAreNotEqualToObjectForEquatableTests =
         {
             A.Dummy<WorksheetProtection>(),
+            new WorksheetProtection(),
             new WorksheetProtection
             {
                 ClearTextPassword = A.Dummy<string>(),
