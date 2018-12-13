@@ -78,7 +78,7 @@
     <Compile Include="Alignment\HorizontalAlignment.cs" />
     <Compile Include="Range\RangeStyleExtensions.cs" />
     <Compile Include="Workbook\DocumentProperties.cs" />
-    <Compile Include="Workbook\BuiltInDocumentPropertyKind1.cs" />
+    <Compile Include="Workbook\BuiltInDocumentPropertyKind.cs" />
     <Compile Include="Worksheet\PaneKinds.cs" />
     <Compile Include="Font\UnderlineKind.cs" />
     <Compile Include="Alignment\VerticalAlignment.cs" />
