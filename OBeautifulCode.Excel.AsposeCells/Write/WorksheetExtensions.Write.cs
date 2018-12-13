@@ -7,6 +7,7 @@
 namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
 
     using Aspose.Cells;
@@ -69,6 +70,34 @@ namespace OBeautifulCode.Excel.AsposeCells
             if (isHidden != null)
             {
                 worksheet.IsRowColumnHeadersVisible = !(bool)isHidden;
+            }
+        }
+
+        /// <summary>
+        /// Protects the worksheet.
+        /// </summary>
+        /// <param name="worksheet">The worksheet to protect.</param>
+        /// <param name="worksheetProtection">The worksheet protection configuration.</param>
+        /// <param name="cellsToUnlock">The cells to unlock.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="worksheet"/> is null.</exception>
+        public static void SetProtection(
+            this Worksheet worksheet,
+            WorksheetProtection worksheetProtection,
+            IReadOnlyCollection<Cell> cellsToUnlock = null)
+        {
+            new { worksheet }.Must().NotBeNull();
+
+            if (worksheetProtection != null)
+            {
+                if (cellsToUnlock != null)
+                {
+                    foreach (var cellToUnlock in cellsToUnlock)
+                    {
+                        cellToUnlock?.SetUnlocked();
+                    }
+                }
+
+                worksheet.Protect(ProtectionType.All, worksheetProtection.ClearTextPassword, null);
             }
         }
     }
