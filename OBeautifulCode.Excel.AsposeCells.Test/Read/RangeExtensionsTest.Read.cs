@@ -208,5 +208,40 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual4.EndRow.Should().Be(3);
             actual4.EndColumn.Should().Be(3);
         }
+
+        [Fact]
+        public static void GetUpperLeftMostCell___Should_throw_ArgumentNullException___When_parameter_range_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => RangeExtensions.GetUpperLeftMostCell(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("range");
+        }
+
+        [Fact]
+        public static void GetUpperLeftMostCell___Should_return_upper_left_most_cell___When_called()
+        {
+            // Arrange
+            var worksheet = A.Dummy<Worksheet>();
+
+            var range1 = worksheet.Cells.CreateRange("B2");
+            var range2 = worksheet.Cells.CreateRange("B2:B4");
+            var range3 = worksheet.Cells.CreateRange("B2:D2");
+            var range4 = worksheet.Cells.CreateRange("B2:D4");
+
+            // Act
+            var actual1 = range1.GetUpperLeftMostCell();
+            var actual2 = range2.GetUpperLeftMostCell();
+            var actual3 = range3.GetUpperLeftMostCell();
+            var actual4 = range4.GetUpperLeftMostCell();
+
+            // Assert
+            actual1.Name.Should().Be("B2");
+            actual2.Name.Should().Be("B2");
+            actual3.Name.Should().Be("B2");
+            actual4.Name.Should().Be("B2");
+        }
     }
 }

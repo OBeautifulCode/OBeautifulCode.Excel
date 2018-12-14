@@ -130,5 +130,23 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             return result;
         }
+
+        /// <summary>
+        /// Gets the upper-left most cell in the specified range.
+        /// </summary>
+        /// <param name="range">The range.</param>
+        /// <returns>
+        /// The upper-left most cell in the specified range.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
+        public static Cell GetUpperLeftMostCell(
+            this Range range)
+        {
+            new { range }.Must().NotBeNull();
+
+            var result = range.Worksheet.Cells[range.FirstRow, range.FirstColumn];
+
+            return result;
+        }
     }
 }
