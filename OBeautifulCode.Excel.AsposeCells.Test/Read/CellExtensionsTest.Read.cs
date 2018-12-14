@@ -66,7 +66,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual = cell.GetWidthInPixels();
 
             // Assert
-            actual.Should().Be(64);
+            actual.Should().Be(Constants.DefaultColumnWidthInPixels);
         }
 
         [Fact]
@@ -101,10 +101,10 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             cell2B.IsMerged.Should().BeTrue();
             cell3.IsMerged.Should().BeTrue();
 
-            actual1.Should().Be(64);
-            actual2A.Should().Be(64 * 3);
-            actual2B.Should().Be(64 * 3);
-            actual3.Should().Be(64 * 3);
+            actual1.Should().Be(Constants.DefaultColumnWidthInPixels);
+            actual2A.Should().Be(Constants.DefaultColumnWidthInPixels * 3);
+            actual2B.Should().Be(Constants.DefaultColumnWidthInPixels * 3);
+            actual3.Should().Be(Constants.DefaultColumnWidthInPixels * 3);
         }
     }
 }
