@@ -70,5 +70,38 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             return result;
         }
+
+        /// <summary>
+        /// Gets the height of a cell, in pixels, accounting for merged cells.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <returns>
+        /// The height of the cell in pixels.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
+        public static int GetHeightInPixels(
+            this Cell cell)
+        {
+            new { cell }.Must().NotBeNull();
+
+            var result = 0;
+
+            if (cell.IsMerged)
+            {
+                var mergedRange = cell.GetMergedRange();
+                var cellsWithDistinctRows = mergedRange.GetCells().DistinctBy(_ => _.Row);
+
+                foreach (var cellWithDistinctRow in cellsWithDistinctRows)
+                {
+                    result = result + cell.Worksheet.Cells.GetRowHeightPixel(cellWithDistinctRow.Row);
+                }
+            }
+            else
+            {
+                result = result + cell.Worksheet.Cells.GetRowHeightPixel(cell.Row);
+            }
+
+            return result;
+        }
     }
 }

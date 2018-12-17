@@ -14,7 +14,7 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Specifies the default row height, in pixels.
         /// </summary>
-        public const int DefaultRowHeightInPixels = 20;
+        public const int DefaultRowHeightInPixels = 17;
 
         /// <summary>
         /// Specifies the maximum row height, in pixels.

@@ -73,10 +73,10 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void GetWidthInPixels___Should_return_width_of_merged_cell___When_called()
         {
             // Arrange
-            var worksheet1 = A.Dummy<Worksheet>();
-            var range1 = worksheet1.Cells.CreateRange("B2:B4");
+            var worksheet = A.Dummy<Worksheet>();
+            var range1 = worksheet.Cells.CreateRange("B2:B4");
             range1.SetMergeCells(true);
-            var cell1 = worksheet1.Cells[2, 1]; // B3
+            var cell1 = worksheet.Cells[2, 1]; // B3
 
             var worksheet2 = A.Dummy<Worksheet>();
             var range2 = worksheet2.Cells.CreateRange("B2:D2");
@@ -105,6 +105,69 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual2A.Should().Be(Constants.DefaultColumnWidthInPixels * 3);
             actual2B.Should().Be(Constants.DefaultColumnWidthInPixels * 3);
             actual3.Should().Be(Constants.DefaultColumnWidthInPixels * 3);
+        }
+
+        [Fact]
+        public static void GetHeightInPixels___Should_throw_ArgumentNullException___When_parameter_cell_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellExtensions.GetHeightInPixels(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("cell");
+        }
+
+        [Fact]
+        public static void GetHeightInPixels___Should_return_Height_of_unmerged_cell___When_called()
+        {
+            // Arrange,
+            var worksheet = A.Dummy<Worksheet>();
+            var cell = worksheet.Cells[1, 1];
+
+            // Act
+            var actual = cell.GetHeightInPixels();
+
+            // Assert
+            actual.Should().Be(Constants.DefaultRowHeightInPixels);
+        }
+
+        [Fact]
+        public static void GetHeightInPixels___Should_return_Height_of_merged_cell___When_called()
+        {
+            // Arrange
+            var worksheet = A.Dummy<Worksheet>();
+            var range1 = worksheet.Cells.CreateRange("B2:B4");
+            range1.SetMergeCells(true);
+            var cell1A = worksheet.Cells[1, 1]; // B2
+            var cell1B = worksheet.Cells[3, 1]; // B4
+
+            var worksheet2 = A.Dummy<Worksheet>();
+            var range2 = worksheet2.Cells.CreateRange("B2:D2");
+            range2.SetMergeCells(true);
+            var cell2 = worksheet2.Cells[1, 1]; // B2
+
+            var worksheet3 = A.Dummy<Worksheet>();
+            var range3 = worksheet3.Cells.CreateRange("A1:C3");
+            range3.SetMergeCells(true);
+            var cell3 = worksheet3.Cells[1, 1]; // B2
+
+            // Act
+            var actual1A = cell1A.GetHeightInPixels();
+            var actual1B = cell1B.GetHeightInPixels();
+            var actual2 = cell2.GetHeightInPixels();
+            var actual3 = cell3.GetHeightInPixels();
+
+            // Assert
+            cell1A.IsMerged.Should().BeTrue();
+            cell1B.IsMerged.Should().BeTrue();
+            cell2.IsMerged.Should().BeTrue();
+            cell3.IsMerged.Should().BeTrue();
+
+            actual1A.Should().Be(Constants.DefaultRowHeightInPixels * 3);
+            actual1B.Should().Be(Constants.DefaultRowHeightInPixels * 3);
+            actual2.Should().Be(Constants.DefaultRowHeightInPixels);
+            actual3.Should().Be(Constants.DefaultRowHeightInPixels * 3);
         }
     }
 }
