@@ -22,6 +22,7 @@ namespace OBeautifulCode.Excel.AsposeCells
     using static System.FormattableString;
 
     using Comment = OBeautifulCode.Excel.Comment;
+    using Range = Aspose.Cells.Range;
 
     /// <summary>
     /// Extension methods on type <see cref="Cell"/>.
@@ -38,6 +39,9 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="relativeOrientation">Optional specification of the orientation of images relative to each other.  Default is horizontal.  Doesn't matter if there is only one image.</param>
         /// <param name="cellSizeChanges">Optional specification of the changes to make to the size of a cell to fit the images.  Default is to expand both the row and column to fit the images.</param>
         /// <param name="autoLayoutProcedures">Optional specification of the automatic layout procedures to apply to the images.  Default is to auto-space and auto-align the images.</param>
+        /// <returns>
+        /// The range of cells that the images overlap with.
+        /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="imageUrls"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="imageUrls"/> is empty.</exception>
@@ -46,7 +50,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentException"><paramref name="imageHeightScale"/> is less than 1 or greater than 500.</exception>
         /// <exception cref="ArgumentException"><paramref name="relativeOrientation"/> is <see cref="ImagesRelativeOrientation.Unknown"/>.</exception>
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This is not excessively coupled.")]
-        public static void InsertImages(
+        public static Range InsertImages(
             this Cell cell,
             IReadOnlyCollection<string> imageUrls,
             int imageWidthScale = 100,
@@ -98,6 +102,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             var maxImageHeightInPixels = pictures.Max(_ => _.Height);
             var totalImageWidthInPixels = pictures.Sum(_ => _.Width);
 
+            int resultEndRow, resultEndColumn;
+            var resultStartRow = resultEndRow = cell.GetRowNumber();
+            var resultStartColumn = resultEndColumn = cell.GetColumnNumber();
+
             // setting the row height or column height could move the pictures so do that before positioning the pictures
             if (cellSizeChanges.HasFlag(ImagesCellSizeChanges.ExpandRowToFitImages))
             {
@@ -106,6 +114,20 @@ namespace OBeautifulCode.Excel.AsposeCells
                 {
                     cell.GetRange().SetTotalRowHeightInPixels(maxImageHeightInPixels);
                 }
+            }
+            else
+            {
+                var cursor = new CellCursor(worksheet, cell.GetRowNumber(), cell.GetColumnNumber());
+                var pixelsCovered = 0;
+
+                do
+                {
+                    pixelsCovered += cursor.Cell.GetHeightInPixels(includeMergedCells: false);
+                    cursor.MoveDown();
+                }
+                while (pixelsCovered < maxImageHeightInPixels);
+
+                resultEndRow = cursor.RowNumber - 1;
             }
 
             if (cellSizeChanges.HasFlag(ImagesCellSizeChanges.ExpandColumnToFitImages))
@@ -126,6 +148,20 @@ namespace OBeautifulCode.Excel.AsposeCells
                         cell.GetRange().SetTotalColumnWidthInPixels(maxImageWidthInPixels);
                     }
                 }
+            }
+            else
+            {
+                var cursor = new CellCursor(worksheet, cell.GetRowNumber(), cell.GetColumnNumber());
+                var pixelsCovered = 0;
+
+                do
+                {
+                    pixelsCovered += cursor.Cell.GetWidthInPixels(includeMergedCells: false);
+                    cursor.MoveRight();
+                }
+                while (pixelsCovered < maxImageWidthInPixels);
+
+                resultEndColumn = cursor.ColumnNumber - 1;
             }
 
             if (autoLayoutProcedures.HasFlag(ImagesAutoLayoutProcedures.AutoSpace))
@@ -151,6 +187,9 @@ namespace OBeautifulCode.Excel.AsposeCells
                     picture.Y += (maxImageHeightInPixels - picture.Height) / 2;
                 }
             }
+
+            var result = worksheet.GetRange(resultStartRow, resultEndRow, resultStartColumn, resultEndColumn);
+            return result;
         }
 
         /// <summary>
