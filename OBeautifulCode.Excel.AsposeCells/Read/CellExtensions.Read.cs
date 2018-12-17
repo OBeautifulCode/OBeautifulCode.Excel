@@ -42,18 +42,20 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Gets the width of a cell, in pixels, accounting for merged cells.
         /// </summary>
         /// <param name="cell">The cell.</param>
+        /// <param name="includeMergedCells">Optional value indicating whether to include other cells that are merged with the specified cell.  Default is to include merged cells.</param>
         /// <returns>
         /// The width of the cell in pixels.
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         public static int GetWidthInPixels(
-            this Cell cell)
+            this Cell cell,
+            bool includeMergedCells = true)
         {
             new { cell }.Must().NotBeNull();
 
             var result = 0;
 
-            if (cell.IsMerged)
+            if (includeMergedCells && cell.IsMerged)
             {
                 var mergedRange = cell.GetMergedRange();
                 var cellsWithDistinctColumns = mergedRange.GetCells().DistinctBy(_ => _.Column);
@@ -75,18 +77,20 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Gets the height of a cell, in pixels, accounting for merged cells.
         /// </summary>
         /// <param name="cell">The cell.</param>
+        /// <param name="includeMergedCells">Optional value indicating whether to include other cells that are merged with the specified cell.  Default is to include merged cells.</param>
         /// <returns>
         /// The height of the cell in pixels.
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         public static int GetHeightInPixels(
-            this Cell cell)
+            this Cell cell,
+            bool includeMergedCells = true)
         {
             new { cell }.Must().NotBeNull();
 
             var result = 0;
 
-            if (cell.IsMerged)
+            if (includeMergedCells && cell.IsMerged)
             {
                 var mergedRange = cell.GetMergedRange();
                 var cellsWithDistinctRows = mergedRange.GetCells().DistinctBy(_ => _.Row);
