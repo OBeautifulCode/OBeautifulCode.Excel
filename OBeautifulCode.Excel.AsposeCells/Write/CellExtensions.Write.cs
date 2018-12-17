@@ -7,11 +7,18 @@
 namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
 
     using Aspose.Cells;
+    using Aspose.Cells.Drawing;
 
     using OBeautifulCode.Validation.Recipes;
+
+    using static System.FormattableString;
 
     using Comment = OBeautifulCode.Excel.Comment;
 
@@ -20,6 +27,130 @@ namespace OBeautifulCode.Excel.AsposeCells
     /// </summary>
     public static partial class CellExtensions
     {
+        /// <summary>
+        /// Inserts a set of images into a cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <param name="imageUrls">The URLs of the images to insert.</param>
+        /// <param name="imageWidthScale">Optional scale to use for the image width.  Default is 100 which maintains the image's original width.  Lower is smaller; higher is larger.</param>
+        /// <param name="imageHeightScale">Optional scale to use for the image height.  Default is 100 which maintains the image's original height.  Lower is smaller; higher is larger.</param>
+        /// <param name="relativeOrientation">Optional specification of the orientation of images relative to each other.  Default is horizontal.  Doesn't matter if there is only one image.</param>
+        /// <param name="cellSizeChanges">Optional specification of the changes to make to the size of a cell to fit the images.  Default is to expand both the row and column to fit the images.</param>
+        /// <param name="autoLayoutProcedures">Optional specification of the automatic layout procedures to apply to the images.  Default is to auto-space and auto-align the images.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="imageUrls"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imageUrls"/> is empty.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imageUrls"/> contains a null or white space element.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imageWidthScale"/> is less than 1 or greater than 500.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imageHeightScale"/> is less than 1 or greater than 500.</exception>
+        /// <exception cref="ArgumentException"><paramref name="relativeOrientation"/> is <see cref="ImagesRelativeOrientation.Unknown"/>.</exception>
+        public static void InsertImages(
+            this Cell cell,
+            IReadOnlyCollection<string> imageUrls,
+            int imageWidthScale = 100,
+            int imageHeightScale = 100,
+            ImagesRelativeOrientation relativeOrientation = ImagesRelativeOrientation.Horizontal,
+            ImagesCellSizeChanges cellSizeChanges = ImagesCellSizeChanges.ExpandRowAndColumnToFitImages,
+            ImagesAutoLayoutProcedures autoLayoutProcedures = ImagesAutoLayoutProcedures.AutoSpaceAndAutoAlign)
+        {
+            new { cell }.Must().NotBeNull();
+            new { imageUrls }.Must().NotBeNullNorEmptyEnumerable().And().Each().BeNullOrNotWhiteSpace();
+            new { imageWidthScale }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
+            new { imageHeightScale }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
+            new { relativeOrientation }.Must().NotBeEqualTo(ImagesRelativeOrientation.Unknown);
+
+            if (relativeOrientation == ImagesRelativeOrientation.Vertical)
+            {
+                throw new NotImplementedException(Invariant($"This {nameof(ImagesRelativeOrientation)} is not yet implemented: {nameof(ImagesRelativeOrientation.Vertical)}"));
+            }
+
+            var worksheet = cell.Worksheet;
+
+            var pictures = new List<Picture>();
+
+            using (var webClient = new WebClient())
+            {
+                foreach (var imageUrl in imageUrls)
+                {
+                    var imageBytes = webClient.DownloadData(imageUrl);
+                    using (var imageStream = new MemoryStream(imageBytes))
+                    {
+                        var pictureIndex = worksheet.Pictures.Add(cell.Row, cell.Column, imageStream);
+
+                        var picture = worksheet.Pictures[pictureIndex];
+
+                        var imageBitmap = new Bitmap(imageStream);
+                        var imageHeightInPixels = imageBitmap.Height;
+                        var imageWidthInPixels = imageBitmap.Width;
+
+                        picture.Height = imageHeightInPixels;
+                        picture.Width = imageWidthInPixels;
+                        picture.HeightScale = imageHeightScale;
+                        picture.WidthScale = imageWidthScale;
+                        pictures.Add(picture);
+                    }
+                }
+            }
+
+            var maxImageWidthInPixels = pictures.Max(_ => _.Width);
+            var maxImageHeightInPixels = pictures.Max(_ => _.Height);
+            var totalImageWidthInPixels = pictures.Sum(_ => _.Width);
+
+            // setting the row height or column height could move the pictures so do that before positioning the pictures
+            if (cellSizeChanges.HasFlag(ImagesCellSizeChanges.ExpandRowToFitImages))
+            {
+                var rowHeight = cell.GetHeightInPixels();
+                if (maxImageHeightInPixels > rowHeight)
+                {
+                    cell.GetRange().SetTotalRowHeightInPixels(maxImageHeightInPixels);
+                }
+            }
+
+            if (cellSizeChanges.HasFlag(ImagesCellSizeChanges.ExpandColumnToFitImages))
+            {
+                var columnWidth = cell.GetWidthInPixels();
+
+                if (autoLayoutProcedures.HasFlag(ImagesAutoLayoutProcedures.AutoSpace))
+                {
+                    if (totalImageWidthInPixels > columnWidth)
+                    {
+                        cell.GetRange().SetTotalColumnWidthInPixels(totalImageWidthInPixels);
+                    }
+                }
+                else
+                {
+                    if (maxImageWidthInPixels > columnWidth)
+                    {
+                        cell.GetRange().SetTotalColumnWidthInPixels(maxImageWidthInPixels);
+                    }
+                }
+            }
+
+            if (autoLayoutProcedures.HasFlag(ImagesAutoLayoutProcedures.AutoSpace))
+            {
+                var columnWidthInPixels = cell.GetWidthInPixels();
+                var horizontalMarginInPixels = (columnWidthInPixels - totalImageWidthInPixels) / (pictures.Count + 1);
+                var horizontalPositionInPixels = pictures[0].X;
+
+                foreach (var picture in pictures)
+                {
+                    if (horizontalMarginInPixels >= 0)
+                    {
+                        picture.X = horizontalPositionInPixels + horizontalMarginInPixels;
+                        horizontalPositionInPixels = picture.X + picture.Width;
+                    }
+                }
+            }
+
+            if (autoLayoutProcedures.HasFlag(ImagesAutoLayoutProcedures.AutoAlign))
+            {
+                foreach (var picture in pictures)
+                {
+                    picture.Y += (maxImageHeightInPixels - picture.Height) / 2;
+                }
+            }
+        }
+
         /// <summary>
         /// Freezes panes.
         /// </summary>

@@ -60,6 +60,9 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Formatting\CustomFormatString.cs" />
+    <Compile Include="Image\ImagesCellSizeChanges.cs" />
+    <Compile Include="Image\ImagesAutoLayoutProcedures.cs" />
+    <Compile Include="Image\ImagesRelativeOrientation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Border\Border.cs" />
     <Compile Include="Border\BorderEdges.cs" />
