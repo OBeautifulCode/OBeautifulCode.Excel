@@ -169,5 +169,55 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual2.Should().Be(Constants.DefaultRowHeightInPixels);
             actual3.Should().Be(Constants.DefaultRowHeightInPixels * 3);
         }
+
+        [Fact]
+        public static void GetRowNumber___Should_throw_ArgumentNullException___When_parameter_cell_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellExtensions.GetRowNumber(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("cell");
+        }
+
+        [Fact]
+        public static void GetRowNumber___Should_return_row_number_of_cell___When_called()
+        {
+            // Arrange,
+            var worksheet = A.Dummy<Worksheet>();
+            var cell = worksheet.Cells["C9"];
+
+            // Act
+            var actual = cell.GetRowNumber();
+
+            // Assert
+            actual.Should().Be(9);
+        }
+
+        [Fact]
+        public static void GetColumnNumber___Should_throw_ArgumentNullException___When_parameter_cell_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellExtensions.GetColumnNumber(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("cell");
+        }
+
+        [Fact]
+        public static void GetColumnNumber___Should_return_column_number_of_cell___When_called()
+        {
+            // Arrange,
+            var worksheet = A.Dummy<Worksheet>();
+            var cell = worksheet.Cells["C9"];
+
+            // Act
+            var actual = cell.GetColumnNumber();
+
+            // Assert
+            actual.Should().Be(3);
+        }
     }
 }

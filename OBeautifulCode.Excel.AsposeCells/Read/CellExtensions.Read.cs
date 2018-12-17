@@ -103,5 +103,39 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             return result;
         }
+
+        /// <summary>
+        /// Gets the cell's row number.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <returns>
+        /// The cell's row number.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
+        public static int GetRowNumber(
+            this Cell cell)
+        {
+            new { cell }.Must().NotBeNull();
+
+            var result = cell.Row + 1;
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the cell's column number.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <returns>
+        /// The cell's column number.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
+        public static int GetColumnNumber(
+            this Cell cell)
+        {
+            new { cell }.Must().NotBeNull();
+
+            var result = cell.Column + 1;
+            return result;
+        }
     }
 }
