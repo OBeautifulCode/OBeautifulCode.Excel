@@ -8,6 +8,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using Aspose.Cells;
@@ -139,7 +140,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// The upper-left most cell in the specified range.
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
-        public static Cell GetUpperLeftMostCell(
+        public static Cell GetUpperLeftmostCell(
             this Range range)
         {
             new { range }.Must().NotBeNull();

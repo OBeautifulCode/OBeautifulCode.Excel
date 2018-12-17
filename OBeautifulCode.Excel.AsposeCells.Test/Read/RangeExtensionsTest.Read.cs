@@ -210,10 +210,10 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
-        public static void GetUpperLeftMostCell___Should_throw_ArgumentNullException___When_parameter_range_is_null()
+        public static void GetUpperLeftmostCell___Should_throw_ArgumentNullException___When_parameter_range_is_null()
         {
             // Arrange, Act
-            var actual = Record.Exception(() => RangeExtensions.GetUpperLeftMostCell(null));
+            var actual = Record.Exception(() => RangeExtensions.GetUpperLeftmostCell(null));
 
             // Assert
             actual.Should().BeOfType<ArgumentNullException>();
@@ -221,7 +221,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
-        public static void GetUpperLeftMostCell___Should_return_upper_left_most_cell___When_called()
+        public static void GetUpperLeftmostCell___Should_return_upper_leftmost_cell___When_called()
         {
             // Arrange
             var worksheet = A.Dummy<Worksheet>();
@@ -232,10 +232,10 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var range4 = worksheet.Cells.CreateRange("B2:D4");
 
             // Act
-            var actual1 = range1.GetUpperLeftMostCell();
-            var actual2 = range2.GetUpperLeftMostCell();
-            var actual3 = range3.GetUpperLeftMostCell();
-            var actual4 = range4.GetUpperLeftMostCell();
+            var actual1 = range1.GetUpperLeftmostCell();
+            var actual2 = range2.GetUpperLeftmostCell();
+            var actual3 = range3.GetUpperLeftmostCell();
+            var actual4 = range4.GetUpperLeftmostCell();
 
             // Assert
             actual1.Name.Should().Be("B2");

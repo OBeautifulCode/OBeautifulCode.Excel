@@ -8,6 +8,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.IO;
     using System.Linq;
@@ -44,6 +45,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentException"><paramref name="imageWidthScale"/> is less than 1 or greater than 500.</exception>
         /// <exception cref="ArgumentException"><paramref name="imageHeightScale"/> is less than 1 or greater than 500.</exception>
         /// <exception cref="ArgumentException"><paramref name="relativeOrientation"/> is <see cref="ImagesRelativeOrientation.Unknown"/>.</exception>
+        [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This is not excessively coupled.")]
         public static void InsertImages(
             this Cell cell,
             IReadOnlyCollection<string> imageUrls,
