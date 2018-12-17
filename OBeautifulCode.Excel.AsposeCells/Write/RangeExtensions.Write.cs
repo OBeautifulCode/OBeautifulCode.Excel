@@ -404,7 +404,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         }
 
         /// <summary>
-        /// Sets the row height for a range.
+        /// Sets the per-row height for a range, in pixels.
         /// </summary>
         /// <param name="range">The range.</param>
         /// <param name="rowHeightInPixels">The row height, in pixels.</param>
@@ -425,7 +425,30 @@ namespace OBeautifulCode.Excel.AsposeCells
         }
 
         /// <summary>
-        /// Sets the column width for a range.
+        /// Sets the total height for a range, in pixels.
+        /// </summary>
+        /// <param name="range">The range.</param>
+        /// <param name="totalHeightInPixels">The total height, in pixels.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
+        public static void SetTotalHeightInPixels(
+            this Range range,
+            int? totalHeightInPixels)
+        {
+            new { range }.Must().NotBeNull();
+
+            if (totalHeightInPixels != null)
+            {
+                var rowNumbers = range.GetRowNumbers();
+                var pixelsToUse = DivideEvenly((int)totalHeightInPixels, rowNumbers.Count).ToArray();
+                for (var x = 0; x < rowNumbers.Count; x++)
+                {
+                    range.Worksheet.Cells.SetRowHeightPixel(rowNumbers[x] - 1, pixelsToUse[x]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the per-column width for a range, in pixels.
         /// </summary>
         /// <param name="range">The range.</param>
         /// <param name="columnWidthInPixels">The column width, in pixels.</param>
@@ -441,6 +464,29 @@ namespace OBeautifulCode.Excel.AsposeCells
                 foreach (var columnNumber in range.GetColumnNumbers())
                 {
                     range.Worksheet.Cells.SetColumnWidthPixel(columnNumber - 1, (int)columnWidthInPixels);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the total width for a range, in pixels.
+        /// </summary>
+        /// <param name="range">The range.</param>
+        /// <param name="totalWidthInPixels">The total width, in pixels.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
+        public static void SetTotalWidthInPixels(
+            this Range range,
+            int? totalWidthInPixels)
+        {
+            new { range }.Must().NotBeNull();
+
+            if (totalWidthInPixels != null)
+            {
+                var columnNumbers = range.GetColumnNumbers();
+                var pixelsToUse = DivideEvenly((int)totalWidthInPixels, columnNumbers.Count).ToArray();
+                for (var x = 0; x < columnNumbers.Count; x++)
+                {
+                    range.Worksheet.Cells.SetColumnWidthPixel(columnNumbers[x] - 1, pixelsToUse[x]);
                 }
             }
         }
@@ -656,6 +702,20 @@ namespace OBeautifulCode.Excel.AsposeCells
             if (applyToRange)
             {
                 styleContainer.ApplyToRange(range);
+            }
+        }
+
+        private static IEnumerable<int> DivideEvenly(
+            int numerator,
+            int denominator)
+        {
+            // see: https://stackoverflow.com/a/577451/356790
+            int rem;
+            var div = Math.DivRem(numerator, denominator, out rem);
+
+            for (var i = 0; i < denominator; i++)
+            {
+                yield return i < rem ? div + 1 : div;
             }
         }
     }
