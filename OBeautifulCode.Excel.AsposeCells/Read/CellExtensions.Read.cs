@@ -34,7 +34,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         {
             new { cell }.Must().NotBeNull();
 
-            var result = cell.Worksheet.GetRange(cell.Row + 1, cell.Row + 1, cell.Column + 1, cell.Column + 1);
+            var result = cell.Worksheet.GetRange(cell.GetRowNumber(), cell.GetRowNumber(), cell.GetColumnNumber(), cell.GetColumnNumber());
             return result;
         }
 

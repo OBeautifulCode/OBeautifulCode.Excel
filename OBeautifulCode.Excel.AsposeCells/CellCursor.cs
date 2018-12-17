@@ -373,10 +373,10 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             var cells = this.markerNameToCellsMap[markerName];
 
-            var firstRow = cells.Min(_ => _.Row + 1);
-            var lastRow = cells.Max(_ => _.Row + 1);
-            var firstColumn = cells.Min(_ => _.Column + 1);
-            var lastColumn = cells.Max(_ => _.Column + 1);
+            var firstRow = cells.Min(_ => _.GetRowNumber());
+            var lastRow = cells.Max(_ => _.GetRowNumber());
+            var firstColumn = cells.Min(_ => _.GetColumnNumber());
+            var lastColumn = cells.Max(_ => _.GetColumnNumber());
 
             var result = this.Worksheet.GetRange(firstRow, lastRow, firstColumn, lastColumn);
 
@@ -458,8 +458,8 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             var markedCell = this.GetMarkedCell(markerName);
 
-            this.RowNumber = markedCell.Row + 1;
-            this.ColumnNumber = markedCell.Column + 1;
+            this.RowNumber = markedCell.GetRowNumber();
+            this.ColumnNumber = markedCell.GetColumnNumber();
 
             return this;
         }
