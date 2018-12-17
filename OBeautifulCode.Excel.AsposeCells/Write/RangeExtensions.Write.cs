@@ -56,8 +56,8 @@ namespace OBeautifulCode.Excel.AsposeCells
             range.SetHorizontalAlignment(rangeStyle.HorizontalAlignment, styleContainer);
             styleContainer.ApplyToRange(range);
 
-            range.SetRowHeightInPixels(rangeStyle.RowHeightInPixels);
-            range.SetColumnWidthInPixels(rangeStyle.ColumnWidthInPixels);
+            range.SetPerRowHeightInPixels(rangeStyle.RowHeightInPixels);
+            range.SetPerColumnWidthInPixels(rangeStyle.ColumnWidthInPixels);
             range.SetAutofitRows(rangeStyle.AutofitRows);
             range.SetMergeCells(rangeStyle.MergeCells);
             range.SetInsideBorder(rangeStyle.InsideBorder);
@@ -409,7 +409,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="range">The range.</param>
         /// <param name="rowHeightInPixels">The row height, in pixels.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
-        public static void SetRowHeightInPixels(
+        public static void SetPerRowHeightInPixels(
             this Range range,
             int? rowHeightInPixels)
         {
@@ -430,7 +430,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="range">The range.</param>
         /// <param name="totalHeightInPixels">The total height, in pixels.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
-        public static void SetTotalHeightInPixels(
+        public static void SetTotalRowHeightInPixels(
             this Range range,
             int? totalHeightInPixels)
         {
@@ -453,7 +453,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="range">The range.</param>
         /// <param name="columnWidthInPixels">The column width, in pixels.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
-        public static void SetColumnWidthInPixels(
+        public static void SetPerColumnWidthInPixels(
             this Range range,
             int? columnWidthInPixels)
         {
@@ -474,7 +474,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="range">The range.</param>
         /// <param name="totalWidthInPixels">The total width, in pixels.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
-        public static void SetTotalWidthInPixels(
+        public static void SetTotalColumnWidthInPixels(
             this Range range,
             int? totalWidthInPixels)
         {
