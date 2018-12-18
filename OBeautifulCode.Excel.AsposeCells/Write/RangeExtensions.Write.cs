@@ -683,6 +683,18 @@ namespace OBeautifulCode.Excel.AsposeCells
             }
         }
 
+        /// <summary>
+        /// Creates an auto-filter on the specified range.
+        /// </summary>
+        /// <param name="range">The range.</param>
+        public static void SetAutoFilter(
+            this Range range)
+        {
+            new { range }.Must().NotBeNull();
+
+            range.Worksheet.AutoFilter.Range = range.GetName();
+        }
+
         private static void SetStyle(
             this Range range,
             StyleContainer styleContainer,
