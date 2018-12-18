@@ -243,5 +243,40 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual3.Name.Should().Be("B2");
             actual4.Name.Should().Be("B2");
         }
+
+        [Fact]
+        public static void GetName___Should_throw_ArgumentNullException___When_parameter_range_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => RangeExtensions.GetName(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("range");
+        }
+
+        [Fact]
+        public static void GetName___Should_return_name_of_range___When_called()
+        {
+            // Arrange
+            var worksheet = A.Dummy<Worksheet>();
+
+            var range1 = worksheet.Cells.CreateRange("B2");
+            var range2 = worksheet.Cells.CreateRange("B2:B4");
+            var range3 = worksheet.Cells.CreateRange("B2:D2");
+            var range4 = worksheet.Cells.CreateRange("B2:D4");
+
+            // Act
+            var actual1 = range1.GetName();
+            var actual2 = range2.GetName();
+            var actual3 = range3.GetName();
+            var actual4 = range4.GetName();
+
+            // Assert
+            actual1.Should().Be("B2");
+            actual2.Should().Be("B2:B4");
+            actual3.Should().Be("B2:D2");
+            actual4.Should().Be("B2:D4");
+        }
     }
 }

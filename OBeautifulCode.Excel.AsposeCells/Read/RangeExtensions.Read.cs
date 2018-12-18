@@ -8,12 +8,13 @@ namespace OBeautifulCode.Excel.AsposeCells
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using Aspose.Cells;
 
     using OBeautifulCode.Validation.Recipes;
+
+    using static System.FormattableString;
 
     using Range = Aspose.Cells.Range;
 
@@ -146,6 +147,35 @@ namespace OBeautifulCode.Excel.AsposeCells
             new { range }.Must().NotBeNull();
 
             var result = range.Worksheet.Cells[range.FirstRow, range.FirstColumn];
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the name of the range (e.g. A3:B5).
+        /// </summary>
+        /// <param name="range">The range.</param>
+        /// <returns>
+        /// The name of the range (e.g. A3:B5).
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
+        public static string GetName(
+            this Range range)
+        {
+            new { range }.Must().NotBeNull();
+
+            var rowNumbers = range.GetRowNumbers();
+            var columnNumbers = range.GetColumnNumbers();
+
+            string result;
+            if ((rowNumbers.Count == 1) && (columnNumbers.Count == 1))
+            {
+                result = CellsHelper.CellIndexToName(rowNumbers.First() - 1, columnNumbers.First() - 1);
+            }
+            else
+            {
+                result = Invariant($"{CellsHelper.CellIndexToName(rowNumbers.First() - 1, columnNumbers.First() - 1)}:{CellsHelper.CellIndexToName(rowNumbers.Last() - 1, columnNumbers.Last() - 1)}");
+            }
 
             return result;
         }
