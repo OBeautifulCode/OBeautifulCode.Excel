@@ -695,6 +695,22 @@ namespace OBeautifulCode.Excel.AsposeCells
             range.Worksheet.AutoFilter.Range = range.GetName();
         }
 
+        /// <summary>
+        /// Creates an auto-filter on the specified range and
+        /// freezes the top row of that range.
+        /// </summary>
+        /// <param name="range">The range.</param>
+        public static void SetAutoFilterAndFreezeTopRow(
+            this Range range)
+        {
+            new { range }.Must().NotBeNull();
+
+            range.SetAutoFilter();
+
+            var cellToFreezeAt = range.Worksheet.Cells[range.GetRowNumbers().First(), 0];
+            cellToFreezeAt.SetFreezePanes(PaneKinds.Row);
+        }
+
         private static void SetStyle(
             this Range range,
             StyleContainer styleContainer,
