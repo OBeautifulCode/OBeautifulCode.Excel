@@ -717,9 +717,11 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Groups the columns in the range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <param name="collapseGroup">Optional value indicating whether to collapse the group.  Default is false; the group will be expanded.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static void SetGroupColumns(
-            this Range range)
+            this Range range,
+            bool collapseGroup = false)
         {
             new { range }.Must().NotBeNull();
 
@@ -729,16 +731,18 @@ namespace OBeautifulCode.Excel.AsposeCells
                 throw new ArgumentOutOfRangeException(nameof(range), "There are too few columns specified in the range.  To group columns, at least 2 columns must be specified.");
             }
 
-            range.Worksheet.Cells.GroupColumns(columnNumbers.First() - 1, columnNumbers.Last() - 1 - 1);
+            range.Worksheet.Cells.GroupColumns(columnNumbers.First() - 1, columnNumbers.Last() - 1 - 1, collapseGroup);
         }
 
         /// <summary>
         /// Groups the rows in the range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <param name="collapseGroup">Optional value indicating whether to collapse the group.  Default is false; the group will be expanded.</param>
         /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static void SetGroupRows(
-            this Range range)
+            this Range range,
+            bool collapseGroup = false)
         {
             new { range }.Must().NotBeNull();
 
@@ -748,7 +752,7 @@ namespace OBeautifulCode.Excel.AsposeCells
                 throw new ArgumentOutOfRangeException(nameof(range), "There are too few rows specified in the range.  To group rows, at least 2 rows must be specified.");
             }
 
-            range.Worksheet.Cells.GroupRows(rowNumbers.First() - 1, rowNumbers.Last() - 1 - 1);
+            range.Worksheet.Cells.GroupRows(rowNumbers.First() - 1, rowNumbers.Last() - 1 - 1, collapseGroup);
         }
 
         private static void SetStyle(
