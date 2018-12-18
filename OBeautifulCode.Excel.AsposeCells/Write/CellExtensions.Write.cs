@@ -38,6 +38,8 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="imageHeightScale">Optional scale to use for the image height.  Default is 100 which maintains the image's original height.  Lower is smaller; higher is larger.</param>
         /// <param name="relativeOrientation">Optional specification of the orientation of images relative to each other.  Default is horizontal.  Doesn't matter if there is only one image.</param>
         /// <param name="cellSizeChanges">Optional specification of the changes to make to the size of a cell to fit the images.  Default is to expand both the row and column to fit the images.</param>
+        /// <param name="rowHeightInPixels">Optional fixed height to use for all rows that the image overlaps with, when <paramref name="cellSizeChanges"/> is <see cref="ImagesCellSizeChanges.ResizeRowsToFixedHeight"/>.  Default is <see cref="Constants.DefaultRowHeightInPixels"/>.</param>
+        /// <param name="columnWidthInPixels">Optional fixed width to use for all columns that the image overlaps with, when <paramref name="cellSizeChanges"/> is <see cref="ImagesCellSizeChanges.ResizeColumnsToFixedWidth"/>.  Default is <see cref="Constants.DefaultColumnWidthInPixels"/>.</param>
         /// <param name="autoLayoutProcedures">Optional specification of the automatic layout procedures to apply to the images.  Default is to auto-space and auto-align the images.</param>
         /// <returns>
         /// The range of cells that the images overlap with.
@@ -49,6 +51,8 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentException"><paramref name="imageWidthScale"/> is less than 1 or greater than 500.</exception>
         /// <exception cref="ArgumentException"><paramref name="imageHeightScale"/> is less than 1 or greater than 500.</exception>
         /// <exception cref="ArgumentException"><paramref name="relativeOrientation"/> is <see cref="ImagesRelativeOrientation.Unknown"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="rowHeightInPixels"/> is less than 1.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="columnWidthInPixels"/> is less than 1.</exception>
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This is not excessively coupled.")]
         public static Range InsertImages(
             this Cell cell,
@@ -57,6 +61,8 @@ namespace OBeautifulCode.Excel.AsposeCells
             int imageHeightScale = 100,
             ImagesRelativeOrientation relativeOrientation = ImagesRelativeOrientation.Horizontal,
             ImagesCellSizeChanges cellSizeChanges = ImagesCellSizeChanges.ExpandRowAndColumnToFitImages,
+            int rowHeightInPixels = Constants.DefaultRowHeightInPixels,
+            int columnWidthInPixels = Constants.DefaultColumnWidthInPixels,
             ImagesAutoLayoutProcedures autoLayoutProcedures = ImagesAutoLayoutProcedures.AutoSpaceAndAutoAlign)
         {
             new { cell }.Must().NotBeNull();
@@ -64,6 +70,8 @@ namespace OBeautifulCode.Excel.AsposeCells
             new { imageWidthScale }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
             new { imageHeightScale }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
             new { relativeOrientation }.Must().NotBeEqualTo(ImagesRelativeOrientation.Unknown);
+            new { rowHeightInPixels }.Must().BeGreaterThanOrEqualTo(1);
+            new { columnWidthInPixels }.Must().BeGreaterThanOrEqualTo(1);
 
             if (relativeOrientation == ImagesRelativeOrientation.Vertical)
             {
@@ -122,6 +130,11 @@ namespace OBeautifulCode.Excel.AsposeCells
 
                 do
                 {
+                    if (cellSizeChanges.HasFlag(ImagesCellSizeChanges.ResizeRowsToFixedHeight))
+                    {
+                        cursor.CellRange.SetPerRowHeightInPixels(rowHeightInPixels);
+                    }
+
                     pixelsCovered += cursor.Cell.GetHeightInPixels(includeMergedCells: false);
                     cursor.MoveDown();
                 }
@@ -156,6 +169,11 @@ namespace OBeautifulCode.Excel.AsposeCells
 
                 do
                 {
+                    if (cellSizeChanges.HasFlag(ImagesCellSizeChanges.ResizeColumnsToFixedWidth))
+                    {
+                        cursor.CellRange.SetPerColumnWidthInPixels(columnWidthInPixels);
+                    }
+
                     pixelsCovered += cursor.Cell.GetWidthInPixels(includeMergedCells: false);
                     cursor.MoveRight();
                 }
@@ -166,8 +184,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             if (autoLayoutProcedures.HasFlag(ImagesAutoLayoutProcedures.AutoSpace))
             {
-                var columnWidthInPixels = cell.GetWidthInPixels();
-                var horizontalMarginInPixels = (columnWidthInPixels - totalImageWidthInPixels) / (pictures.Count + 1);
+                var horizontalMarginInPixels = (cell.GetWidthInPixels() - totalImageWidthInPixels) / (pictures.Count + 1);
                 var horizontalPositionInPixels = pictures[0].X;
 
                 foreach (var picture in pictures)

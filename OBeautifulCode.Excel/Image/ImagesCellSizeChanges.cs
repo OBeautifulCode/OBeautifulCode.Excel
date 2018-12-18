@@ -30,6 +30,16 @@ namespace OBeautifulCode.Excel
         ExpandColumnToFitImages = 2,
 
         /// <summary>
+        /// Resize all rows that overlap with the image to a fixed height.
+        /// </summary>
+        ResizeRowsToFixedHeight = 4,
+
+        /// <summary>
+        /// Resize all column that overlap with the image to a fixed height.
+        /// </summary>
+        ResizeColumnsToFixedWidth = 8,
+
+        /// <summary>
         /// Expands the size of the row and the column to fit the images.
         /// </summary>
         ExpandRowAndColumnToFitImages = ExpandRowToFitImages | ExpandColumnToFitImages,
