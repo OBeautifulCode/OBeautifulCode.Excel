@@ -687,6 +687,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Creates an auto-filter on the specified range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static void SetAutoFilter(
             this Range range)
         {
@@ -700,6 +701,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// freezes the top row of that range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static void SetAutoFilterAndFreezeTopRow(
             this Range range)
         {
@@ -715,6 +717,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Groups the columns in the range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static void SetGroupColumns(
             this Range range)
         {
@@ -723,7 +726,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             var columnNumbers = range.GetColumnNumbers();
             if (columnNumbers.Count == 1)
             {
-                throw new ArgumentOutOfRangeException("There are too few columns specified in the range.  To group columns, at least 2 columns must be specified.");
+                throw new ArgumentOutOfRangeException(nameof(range), "There are too few columns specified in the range.  To group columns, at least 2 columns must be specified.");
             }
 
             range.Worksheet.Cells.GroupColumns(columnNumbers.First() - 1, columnNumbers.Last() - 1 - 1);
@@ -733,13 +736,16 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Groups the rows in the range.
         /// </summary>
         /// <param name="range">The range.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="range"/> is null.</exception>
         public static void SetGroupRows(
             this Range range)
         {
+            new { range }.Must().NotBeNull();
+
             var rowNumbers = range.GetRowNumbers();
             if (rowNumbers.Count == 1)
             {
-                throw new ArgumentOutOfRangeException("There are too few rows specified in the range.  To group rows, at least 2 rows must be specified.");
+                throw new ArgumentOutOfRangeException(nameof(range), "There are too few rows specified in the range.  To group rows, at least 2 rows must be specified.");
             }
 
             range.Worksheet.Cells.GroupRows(rowNumbers.First() - 1, rowNumbers.Last() - 1 - 1);
