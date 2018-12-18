@@ -53,6 +53,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentException"><paramref name="relativeOrientation"/> is <see cref="ImagesRelativeOrientation.Unknown"/>.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="rowHeightInPixels"/> is less than 1.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="columnWidthInPixels"/> is less than 1.</exception>
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex.")]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This is not excessively coupled.")]
         public static Range InsertImages(
             this Cell cell,
