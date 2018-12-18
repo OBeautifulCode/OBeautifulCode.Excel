@@ -211,8 +211,11 @@ namespace OBeautifulCode.Excel.AsposeCells
         }
 
         /// <summary>
-        /// Freezes panes.
+        /// Freezes panes at the specified cell.
         /// </summary>
+        /// <remarks>
+        /// The space above and/or to the left of the specified cell will be frozen, based on <paramref name="paneKinds"/>.
+        /// </remarks>
         /// <param name="cell">The cell at which to freeze panes.</param>
         /// <param name="paneKinds">The kinds of panes to freeze.</param>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
