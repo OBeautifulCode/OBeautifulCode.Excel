@@ -156,8 +156,8 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// </returns>
         public CellCursor Reset()
         {
-            this.RowNumber = this.StartRowNumber;
-            this.ColumnNumber = this.StartColumnNumber;
+            this.ResetRow();
+            this.ResetColumn();
 
             return this;
         }
@@ -184,6 +184,48 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor ResetColumn()
         {
             this.ColumnNumber = this.StartColumnNumber;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Moves to the cursor to the bottom-right of the canvas.
+        /// </summary>
+        /// <returns>
+        /// This cursor.
+        /// </returns>
+        public CellCursor MoveToBottomRightOfCanvas()
+        {
+            this.MoveRightToMaxColumn();
+            this.MoveDownToMaxRow();
+
+            return this;
+        }
+
+        /// <summary>
+        /// Moves to the cursor all the way to the right
+        /// of the canvas, maintaining the current row.
+        /// </summary>
+        /// <returns>
+        /// This cursor.
+        /// </returns>
+        public CellCursor MoveRightToMaxColumn()
+        {
+            this.ColumnNumber = this.MaxColumnNumber;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Moves to the cursor all the way to the bottom
+        /// of the canvas, maintaining the current column.
+        /// </summary>
+        /// <returns>
+        /// This cursor.
+        /// </returns>
+        public CellCursor MoveDownToMaxRow()
+        {
+            this.RowNumber = this.MaxRowNumber;
 
             return this;
         }

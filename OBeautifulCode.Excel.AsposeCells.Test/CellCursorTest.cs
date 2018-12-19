@@ -391,6 +391,105 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        public static void MoveToBottomRightOfCanvas___Should_move_cursor_to_MaxRow_and_MaxColumn___When_called()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWithUniqueRowAndColumnNumbers();
+
+            // Act
+            systemUnderTest.MoveToBottomRightOfCanvas();
+
+            // Assert
+            systemUnderTest.RowNumber.Should().Be(MaxRowNumber);
+            systemUnderTest.ColumnNumber.Should().Be(MaxColumnNumber);
+
+            systemUnderTest.StartRowNumber.Should().Be(StartRowNumber);
+            systemUnderTest.StartColumnNumber.Should().Be(StartColumnNumber);
+
+            systemUnderTest.MaxRowNumber.Should().Be(MaxRowNumber);
+            systemUnderTest.MaxColumnNumber.Should().Be(MaxColumnNumber);
+        }
+
+        [Fact]
+        public static void MoveToBottomRightOfCanvas___Should_return_same_cursor___When_called()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWithUniqueRowAndColumnNumbers();
+
+            // Act
+            var actual = systemUnderTest.MoveToBottomRightOfCanvas();
+
+            // Assert
+            actual.Should().BeSameAs(systemUnderTest);
+        }
+
+        [Fact]
+        public static void MoveDownToMaxRow___Should_move_cursor_to_MaxRow___When_called()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWithUniqueRowAndColumnNumbers();
+
+            // Act
+            systemUnderTest.MoveDownToMaxRow();
+
+            // Assert
+            systemUnderTest.RowNumber.Should().Be(MaxRowNumber);
+            systemUnderTest.ColumnNumber.Should().Be(CurrentColumnNumber);
+
+            systemUnderTest.StartRowNumber.Should().Be(StartRowNumber);
+            systemUnderTest.StartColumnNumber.Should().Be(StartColumnNumber);
+
+            systemUnderTest.MaxRowNumber.Should().Be(MaxRowNumber);
+            systemUnderTest.MaxColumnNumber.Should().Be(MaxColumnNumber);
+        }
+
+        [Fact]
+        public static void MoveDownToMaxRow___Should_return_same_cursor___When_called()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWithUniqueRowAndColumnNumbers();
+
+            // Act
+            var actual = systemUnderTest.MoveDownToMaxRow();
+
+            // Assert
+            actual.Should().BeSameAs(systemUnderTest);
+        }
+
+        [Fact]
+        public static void MoveRightToMaxColumn___Should_move_cursor_to_MaxColumns___When_called()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWithUniqueRowAndColumnNumbers();
+
+            // Act
+            systemUnderTest.MoveRightToMaxColumn();
+
+            // Assert
+            systemUnderTest.RowNumber.Should().Be(CurrentRowNumber);
+            systemUnderTest.ColumnNumber.Should().Be(MaxColumnNumber);
+
+            systemUnderTest.StartRowNumber.Should().Be(StartRowNumber);
+            systemUnderTest.StartColumnNumber.Should().Be(StartColumnNumber);
+
+            systemUnderTest.MaxRowNumber.Should().Be(MaxRowNumber);
+            systemUnderTest.MaxColumnNumber.Should().Be(MaxColumnNumber);
+        }
+
+        [Fact]
+        public static void MoveRightToMaxColumn___Should_return_same_cursor___When_called()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWithUniqueRowAndColumnNumbers();
+
+            // Act
+            var actual = systemUnderTest.MoveRightToMaxColumn();
+
+            // Assert
+            actual.Should().BeSameAs(systemUnderTest);
+        }
+
+        [Fact]
         public static void MoveDown___Should_throw_ArgumentOutOfRangeException___When_parameter_by_is_less_than_0()
         {
             // Arrange
