@@ -45,10 +45,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public string LicenseXml { get; }
 
         /// <summary>
-        /// Determines whether the Aspose.Cells license is registered.
+        /// Determines whether an Aspose.Cells license is registered.
         /// </summary>
         /// <returns>
-        /// true if the Aspose.Cells license is registered; otherwise false.
+        /// true if an Aspose.Cells license is registered; otherwise false.
         /// </returns>
         public static bool IsRegistered()
         {
@@ -56,6 +56,18 @@ namespace OBeautifulCode.Excel.AsposeCells
             {
                 var result = workbook.IsLicensed;
                 return result;
+            }
+        }
+
+        /// <summary>
+        /// Throws an <see cref="InvalidOperationException"/> if an Aspose.Cells
+        /// license is not registered.
+        /// </summary>
+        public static void ThrowIfNotRegistered()
+        {
+            if (!IsRegistered())
+            {
+                throw new InvalidOperationException("An Aspose.Cells license has not been registered");
             }
         }
 
