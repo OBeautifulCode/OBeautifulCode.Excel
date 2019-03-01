@@ -18,14 +18,16 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Creates a new workbook within a "standard" environment which ensures that
         /// the range of write-related helper methods in this library behave as expected.
         /// </summary>
+        /// <param name="fileFormatType">The file format type to use.</param>
         /// <returns>
         /// A new workbook.
         /// </returns>
-        public static Workbook CreateStandardWorkbook()
+        public static Workbook CreateStandardWorkbook(
+            FileFormatType fileFormatType = FileFormatType.Xlsx)
         {
             EnsureSizingOperationsHonorPixelsSpecified();
 
-            var result = new Workbook();
+            var result = new Workbook(fileFormatType);
 
             return result;
         }
