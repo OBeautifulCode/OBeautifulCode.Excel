@@ -58,9 +58,9 @@ namespace OBeautifulCode.Excel
         public int ColumnNumber { get; private set; }
 
         /// <summary>
-        /// Gets the worksheet-qualified cell name (e.g. 'worksheet'!A5).
+        /// Gets the worksheet-qualified reference, using A1 notation (e.g. 'worksheet'!A5).
         /// </summary>
-        public string WorksheetQualifiedCellName => $"'{this.WorksheetName.Replace("'", "''")}'!{CellsHelper.GetColumnName(this.ColumnNumber)}{this.RowNumber}";
+        public string WorksheetQualifiedA1Reference => $"'{this.WorksheetName.Replace("'", "''")}'!{CellsHelper.GetColumnName(this.ColumnNumber)}{this.RowNumber}";
 
         /// <summary>
         /// Determines whether two objects of type <see cref="CellReference"/> are equal.

@@ -268,7 +268,7 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void WorksheetQualifiedCellName___Should_return_the_worksheet_qualified_cell_name___When_called()
+        public static void WorksheetQualifiedA1Reference___Should_return_the_worksheet_qualified_cell_name___When_called()
         {
             // Arrange
             var worksheetName1 = "my-worksheet";
@@ -284,8 +284,8 @@ namespace OBeautifulCode.Excel.Test
             var systemUnderTest2 = new CellReference(worksheetName2, rowNumber, columnNumber);
 
             // Act
-            var actual1 = systemUnderTest1.WorksheetQualifiedCellName;
-            var actual2 = systemUnderTest2.WorksheetQualifiedCellName;
+            var actual1 = systemUnderTest1.WorksheetQualifiedA1Reference;
+            var actual2 = systemUnderTest2.WorksheetQualifiedA1Reference;
 
             // Assert
             actual1.Should().Be(expected1);
