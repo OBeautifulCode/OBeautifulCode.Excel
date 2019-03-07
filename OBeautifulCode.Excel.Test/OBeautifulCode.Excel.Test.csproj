@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include=".recipes\OBeautifulCode.AutoFakeItEasy\AutoFakeItEasyBootstrapper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Math\ThreadSafeRandom.cs" />
+    <Compile Include="NamedCellTest.cs" />
     <Compile Include="CellReferenceTest.cs" />
     <Compile Include="CellsHelperTest.cs" />
     <Compile Include="DocumentPropertiesTest.cs" />

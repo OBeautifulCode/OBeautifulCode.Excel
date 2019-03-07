@@ -35,6 +35,7 @@ namespace OBeautifulCode.Excel.Serialization.Bson
             typeof(RangeStyle),
             typeof(CellValueConditionalFormattingRule),
             typeof(CellReference),
+            typeof(NamedCell),
         };
     }
 }

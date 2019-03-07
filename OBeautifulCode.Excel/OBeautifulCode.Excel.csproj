@@ -60,6 +60,7 @@
     <Compile Include=".recipes\OBeautifulCode.Validation\Range.cs" />
     <Compile Include=".recipes\OBeautifulCode.Validation\ValidatedNotNullAttribute.cs" />
     <Compile Include="Cell\CellsHelper.cs" />
+    <Compile Include="Cell\NamedCell.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Formatting\CustomFormatString.cs" />
     <Compile Include="Image\ImagesCellSizeChanges.cs" />
