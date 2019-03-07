@@ -370,10 +370,10 @@ namespace OBeautifulCode.Excel.Test
             var expected = A.Dummy<TextDataValidation>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
-            var serializedJson = serializer.SerializeToString(expected);
+            var serializedBson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<TextDataValidation>(serializedJson);
+            var actual = serializer.Deserialize<TextDataValidation>(serializedBson);
 
             // Assert
             actual.Should().Be(expected);

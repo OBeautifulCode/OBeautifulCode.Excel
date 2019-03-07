@@ -380,10 +380,10 @@ namespace OBeautifulCode.Excel.Test
             var expected = A.Dummy<Comment>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
-            var serializedJson = serializer.SerializeToString(expected);
+            var serializedBson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<Comment>(serializedJson);
+            var actual = serializer.Deserialize<Comment>(serializedBson);
 
             // Assert
             actual.Should().Be(expected);

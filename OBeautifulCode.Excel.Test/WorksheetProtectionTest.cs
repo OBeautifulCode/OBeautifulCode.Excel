@@ -63,10 +63,10 @@ namespace OBeautifulCode.Excel.Test
             var expected = A.Dummy<WorksheetProtection>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
-            var serializedJson = serializer.SerializeToString(expected);
+            var serializedBson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<WorksheetProtection>(serializedJson);
+            var actual = serializer.Deserialize<WorksheetProtection>(serializedBson);
 
             // Assert
             actual.Should().Be(expected);

@@ -81,10 +81,10 @@ namespace OBeautifulCode.Excel.Test
             var expected = A.Dummy<Border>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
-            var serializedJson = serializer.SerializeToString(expected);
+            var serializedBson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<Border>(serializedJson);
+            var actual = serializer.Deserialize<Border>(serializedBson);
 
             // Assert
             actual.Should().Be(expected);

@@ -104,10 +104,10 @@ namespace OBeautifulCode.Excel.Test
             var expected = A.Dummy<CellValueConditionalFormattingRule>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
-            var serializedJson = serializer.SerializeToString(expected);
+            var serializedBson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<CellValueConditionalFormattingRule>(serializedJson);
+            var actual = serializer.Deserialize<CellValueConditionalFormattingRule>(serializedBson);
 
             // Assert
             actual.Should().Be(expected);

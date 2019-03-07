@@ -100,10 +100,10 @@ namespace OBeautifulCode.Excel.Test
             var expected = A.Dummy<DocumentProperties>();
             var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
-            var serializedJson = serializer.SerializeToString(expected);
+            var serializedBson = serializer.SerializeToString(expected);
 
             // Act
-            var actual = serializer.Deserialize<DocumentProperties>(serializedJson);
+            var actual = serializer.Deserialize<DocumentProperties>(serializedBson);
 
             // Assert
             actual.Should().Be(expected);
