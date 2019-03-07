@@ -28,6 +28,15 @@ namespace OBeautifulCode.Excel.Test
                 var result = Color.FromArgb(ThreadSafeRandom.Next(256), ThreadSafeRandom.Next(256), ThreadSafeRandom.Next(256));
                 return result;
             });
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(() =>
+            {
+                var worksheetName = "worksheet-" + A.Dummy<Guid>().ToString().Substring(1, 10);
+                var rowNumber = A.Dummy<PositiveInteger>().ThatIs(_ => _ <= Constants.MaximumRowNumber);
+                var columnNumber = A.Dummy<PositiveInteger>().ThatIs(_ => _ <= Constants.MaximumColumnNumber);
+                var result = new CellReference(worksheetName, rowNumber, columnNumber);
+                return result;
+            });
         }
 
         /// <inheritdoc />

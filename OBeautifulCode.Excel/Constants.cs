@@ -30,5 +30,15 @@ namespace OBeautifulCode.Excel
         /// Specifies the maximum column width, in pixels.
         /// </summary>
         public const int MaximumColumnWidthInPixels = 1789;
+
+        /// <summary>
+        /// Specifies the maximum 1-based row number in a worksheet.
+        /// </summary>
+        public const int MaximumRowNumber = 1048576;
+
+        /// <summary>
+        /// Specifies the maximum 1-based column number in a worksheet.
+        /// </summary>
+        public const int MaximumColumnNumber = 16384;
     }
 }

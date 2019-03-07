@@ -83,6 +83,7 @@
     <Compile Include="DataValidation\DataValidationOperator.cs" />
     <Compile Include="Alignment\HorizontalAlignment.cs" />
     <Compile Include="Range\RangeStyleExtensions.cs" />
+    <Compile Include="Cell\CellReference.cs" />
     <Compile Include="Workbook\DocumentProperties.cs" />
     <Compile Include="Workbook\BuiltInDocumentPropertyKind.cs" />
     <Compile Include="Worksheet\PaneKinds.cs" />
