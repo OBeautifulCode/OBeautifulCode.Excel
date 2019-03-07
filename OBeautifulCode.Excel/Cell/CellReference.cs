@@ -12,6 +12,8 @@ namespace OBeautifulCode.Excel
     using OBeautifulCode.Math.Recipes;
     using OBeautifulCode.Validation.Recipes;
 
+    using static System.FormattableString;
+
     /// <summary>
     /// Represents a reference to a cell.
     /// </summary>
@@ -60,7 +62,7 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Gets the worksheet-qualified reference, using A1 notation (e.g. 'worksheet'!A5).
         /// </summary>
-        public string WorksheetQualifiedA1Reference => $"'{this.WorksheetName.Replace("'", "''")}'!{CellsHelper.GetColumnName(this.ColumnNumber)}{this.RowNumber}";
+        public string WorksheetQualifiedA1Reference => Invariant($"'{this.WorksheetName.Replace("'", "''")}'!{CellsHelper.GetColumnName(this.ColumnNumber)}{this.RowNumber}");
 
         /// <summary>
         /// Determines whether two objects of type <see cref="CellReference"/> are equal.
