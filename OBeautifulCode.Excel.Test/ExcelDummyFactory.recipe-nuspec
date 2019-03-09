@@ -10,6 +10,9 @@
         <dependency id="OBeautifulCode.AutoFakeItEasy" version ="1.0.109" />
         <dependency id="OBeautifulCode.Math.Recipes.ThreadSafeRandom" version ="1.0.63" />
     </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Drawing" />
+    </frameworkAssemblies>
   </metadata>
   <files>
     <file src="ExcelDummyFactory.cs" target="content\net462\.recipes\OBeautifulCode.Excel\ExcelDummyFactory.cs" />
