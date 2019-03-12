@@ -292,15 +292,15 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual.MaxColumnNumber.Should().Be(systemUnderTest.MaxColumnNumber);
             actual.Worksheet.Should().Be(worksheet);
 
-            actual.GetMarkedCell("marker-A1").ToCellReference().Should().Be(expectedA1);
-            actual.GetMarkedCell("marker-B1").ToCellReference().Should().Be(expectedB1);
-            actual.GetMarkedCell("marker-C1").ToCellReference().Should().Be(expectedC1);
-            actual.GetMarkedCell("marker-A2").ToCellReference().Should().Be(expectedA2);
-            actual.GetMarkedCell("marker-B2").ToCellReference().Should().Be(expectedB2);
-            actual.GetMarkedCell("marker-C2").ToCellReference().Should().Be(expectedC2);
-            actual.GetMarkedCell("marker-A3").ToCellReference().Should().Be(expectedA3);
-            actual.GetMarkedCell("marker-B3").ToCellReference().Should().Be(expectedB3);
-            actual.GetMarkedCell("marker-C3").ToCellReference().Should().Be(expectedC3);
+            actual.GetMarkedCellReference("marker-A1").Should().Be(expectedA1);
+            actual.GetMarkedCellReference("marker-B1").Should().Be(expectedB1);
+            actual.GetMarkedCellReference("marker-C1").Should().Be(expectedC1);
+            actual.GetMarkedCellReference("marker-A2").Should().Be(expectedA2);
+            actual.GetMarkedCellReference("marker-B2").Should().Be(expectedB2);
+            actual.GetMarkedCellReference("marker-C2").Should().Be(expectedC2);
+            actual.GetMarkedCellReference("marker-A3").Should().Be(expectedA3);
+            actual.GetMarkedCellReference("marker-B3").Should().Be(expectedB3);
+            actual.GetMarkedCellReference("marker-C3").Should().Be(expectedC3);
         }
 
         [Fact]
@@ -1410,6 +1410,89 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Assert
             actual.ToCellReference().A1Reference.Should().Be("B2");
+        }
+
+        [Fact]
+        public static void GetMarkedCellReference___Should_throw_ArgumentNullException___When_parameter_markerName_is_null()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellCursor>();
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.GetMarkedCellReference(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("markerName");
+        }
+
+        [Fact]
+        public static void GetMarkedCellReference___Should_throw_ArgumentException___When_parameter_markerName_is_white_space()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellCursor>();
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.GetMarkedCellReference("  \r\n  "));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentException>();
+            actual.Message.Should().Contain("markerName");
+            actual.Message.Should().Contain("white space");
+        }
+
+        [Fact]
+        public static void GetMarkedCellReference___Should_throw_InvalidOperationException___When_marker_does_not_exist()
+        {
+            // Arrange
+            var systemUnderTest1 = A.Dummy<CellCursor>();
+            var systemUnderTest2 = GetCursorWith3x3MarkedCanvas();
+
+            // Act
+            var actual1 = Record.Exception(() => systemUnderTest1.GetMarkedCellReference(A.Dummy<string>()));
+            var actual2 = Record.Exception(() => systemUnderTest2.GetMarkedCellReference(A.Dummy<string>()));
+
+            // Assert
+            actual1.Should().BeOfType<InvalidOperationException>();
+            actual1.Message.Should().Contain("marker does not exist");
+
+            actual2.Should().BeOfType<InvalidOperationException>();
+            actual2.Message.Should().Contain("marker does not exist");
+        }
+
+        [Fact]
+        public static void GetMarkedCellReference___Should_throw_InvalidOperationException___When_marker_exists_on_multiple_cells()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+
+            var markerName = A.Dummy<string>();
+            systemUnderTest.Reset();
+            systemUnderTest.AddMarker(markerName);
+            systemUnderTest.MoveDown().MoveRight();
+            systemUnderTest.AddMarker(markerName);
+            systemUnderTest.MoveDown().MoveRight();
+            systemUnderTest.AddMarker(markerName);
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.GetMarkedCellReference(markerName));
+
+            // Assert
+            actual.Should().BeOfType<InvalidOperationException>();
+            actual.Message.Should().Contain("Multiple cells are marked as");
+        }
+
+        [Fact]
+        public static void GetMarkedCellReference___Should_return_marked_cell___When_marker_exists_on_single_cell()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+
+            // Act
+            var actual = systemUnderTest.GetMarkedCellReference($"{DefaultMarkerNamePrefix}B2");
+
+            // Assert
+            actual.A1Reference.Should().Be("B2");
         }
 
         [Fact]

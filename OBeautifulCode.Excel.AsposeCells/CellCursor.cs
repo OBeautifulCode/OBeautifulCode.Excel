@@ -485,6 +485,27 @@ namespace OBeautifulCode.Excel.AsposeCells
         }
 
         /// <summary>
+        /// Gets a reference to the marked cell.
+        /// </summary>
+        /// <param name="markerName">The case-sensitive name of the marker.</param>
+        /// <returns>
+        /// A reference to the marked cell.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="markerName"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="markerName"/> is white space.</exception>
+        /// <exception cref="InvalidOperationException">The marker does not exist.</exception>
+        /// <exception cref="InvalidOperationException">Multiple cells are marked with <paramref name="markerName"/>.</exception>
+        public CellReference GetMarkedCellReference(
+            string markerName)
+        {
+            var cell = this.GetMarkedCell(markerName);
+
+            var result = cell.ToCellReference();
+
+            return result;
+        }
+
+        /// <summary>
         /// Moves the cursor to the marked cell.
         /// </summary>
         /// <param name="markerName">The case-sensitive name of the marker.</param>
