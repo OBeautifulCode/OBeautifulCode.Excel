@@ -192,7 +192,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual = systemUnderTest.Cell;
 
             // Assert
-            actual.Name.Should().Be("F5");
+            actual.ToCellReference().A1Reference.Should().Be("F5");
         }
 
         [Fact]
@@ -262,11 +262,23 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
-        public static void CloneWithWorksheet___Should_clone_the_CellCursor_but_replace_Worksheet_with_parameter_worksheet___When_called()
+        public static void CloneWithWorksheet___Should_clone_the_CellCursor_and_replace_worksheet_in_all_properties___When_called()
         {
             // Arrange
             var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+
             var worksheet = A.Dummy<Worksheet>();
+
+            var worksheetName = worksheet.Name;
+            var expectedA1 = new CellReference(worksheetName, 1, 1);
+            var expectedB1 = new CellReference(worksheetName, 1, 2);
+            var expectedC1 = new CellReference(worksheetName, 1, 3);
+            var expectedA2 = new CellReference(worksheetName, 2, 1);
+            var expectedB2 = new CellReference(worksheetName, 2, 2);
+            var expectedC2 = new CellReference(worksheetName, 2, 3);
+            var expectedA3 = new CellReference(worksheetName, 3, 1);
+            var expectedB3 = new CellReference(worksheetName, 3, 2);
+            var expectedC3 = new CellReference(worksheetName, 3, 3);
 
             // Act
             var actual = systemUnderTest.CloneWithWorksheet(worksheet);
@@ -280,15 +292,15 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             actual.MaxColumnNumber.Should().Be(systemUnderTest.MaxColumnNumber);
             actual.Worksheet.Should().Be(worksheet);
 
-            actual.GetMarkedCell("marker-A1").Name.Should().Be("A1");
-            actual.GetMarkedCell("marker-B1").Name.Should().Be("B1");
-            actual.GetMarkedCell("marker-C1").Name.Should().Be("C1");
-            actual.GetMarkedCell("marker-A2").Name.Should().Be("A2");
-            actual.GetMarkedCell("marker-B2").Name.Should().Be("B2");
-            actual.GetMarkedCell("marker-C2").Name.Should().Be("C2");
-            actual.GetMarkedCell("marker-A3").Name.Should().Be("A3");
-            actual.GetMarkedCell("marker-B3").Name.Should().Be("B3");
-            actual.GetMarkedCell("marker-C3").Name.Should().Be("C3");
+            actual.GetMarkedCell("marker-A1").ToCellReference().Should().Be(expectedA1);
+            actual.GetMarkedCell("marker-B1").ToCellReference().Should().Be(expectedB1);
+            actual.GetMarkedCell("marker-C1").ToCellReference().Should().Be(expectedC1);
+            actual.GetMarkedCell("marker-A2").ToCellReference().Should().Be(expectedA2);
+            actual.GetMarkedCell("marker-B2").ToCellReference().Should().Be(expectedB2);
+            actual.GetMarkedCell("marker-C2").ToCellReference().Should().Be(expectedC2);
+            actual.GetMarkedCell("marker-A3").ToCellReference().Should().Be(expectedA3);
+            actual.GetMarkedCell("marker-B3").ToCellReference().Should().Be(expectedB3);
+            actual.GetMarkedCell("marker-C3").ToCellReference().Should().Be(expectedC3);
         }
 
         [Fact]
@@ -910,8 +922,8 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Assert
             systemUnderTest.HasMarker(markerName).Should().BeTrue();
-            systemUnderTest.GetMarkedCell(markerName).Name.Should().Be("B2");
-            systemUnderTest.GetMarkedCells(markerName).SingleOrDefault().Name.Should().Be("B2");
+            systemUnderTest.GetMarkedCell(markerName).ToCellReference().A1Reference.Should().Be("B2");
+            systemUnderTest.GetMarkedCells(markerName).SingleOrDefault().ToCellReference().A1Reference.Should().Be("B2");
         }
 
         [Fact]
@@ -931,8 +943,8 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Assert
             systemUnderTest.HasMarker(markerName).Should().BeTrue();
-            systemUnderTest.GetMarkedCell(markerName).Name.Should().Be("B2");
-            systemUnderTest.GetMarkedCells(markerName).SingleOrDefault().Name.Should().Be("B2");
+            systemUnderTest.GetMarkedCell(markerName).ToCellReference().A1Reference.Should().Be("B2");
+            systemUnderTest.GetMarkedCells(markerName).SingleOrDefault().ToCellReference().A1Reference.Should().Be("B2");
         }
 
         [Fact]
@@ -1195,7 +1207,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual = systemUnderTest.GetMarkedRange($"{DefaultMarkerNamePrefix}B2");
 
             // Assert
-            actual.GetCells().SingleOrDefault().Name.Should().Be("B2");
+            actual.GetCells().SingleOrDefault().ToCellReference().A1Reference.Should().Be("B2");
         }
 
         [Fact]
@@ -1288,7 +1300,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual = systemUnderTest.GetMarkedCells($"{DefaultMarkerNamePrefix}B2");
 
             // Assert
-            actual.SingleOrDefault().Name.Should().Be("B2");
+            actual.SingleOrDefault().ToCellReference().A1Reference.Should().Be("B2");
         }
 
         [Fact]
@@ -1314,7 +1326,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Assert
             actual.Should().HaveCount(3);
-            actual.Select(_ => _.Name).Should().BeEquivalentTo("A1", "B2", "C3");
+            actual.Select(_ => _.ToCellReference().A1Reference).Should().BeEquivalentTo("A1", "B2", "C3");
         }
 
         [Fact]
@@ -1397,7 +1409,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual = systemUnderTest.GetMarkedCell($"{DefaultMarkerNamePrefix}B2");
 
             // Assert
-            actual.Name.Should().Be("B2");
+            actual.ToCellReference().A1Reference.Should().Be("B2");
         }
 
         [Fact]

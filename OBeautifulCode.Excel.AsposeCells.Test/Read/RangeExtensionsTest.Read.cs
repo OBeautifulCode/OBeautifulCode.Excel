@@ -118,10 +118,10 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual4 = range4.GetCells();
 
             // Assert
-            actual1.Select(_ => _.Name).Should().Equal("B2");
-            actual2.Select(_ => _.Name).Should().Equal("B2", "B3", "B4");
-            actual3.Select(_ => _.Name).Should().Equal("B2", "C2", "D2");
-            actual4.Select(_ => _.Name).Should().Equal("B2", "C2", "D2", "B3", "C3", "D3", "B4", "C4", "D4");
+            actual1.Select(_ => _.ToCellReference().A1Reference).Should().Equal("B2");
+            actual2.Select(_ => _.ToCellReference().A1Reference).Should().Equal("B2", "B3", "B4");
+            actual3.Select(_ => _.ToCellReference().A1Reference).Should().Equal("B2", "C2", "D2");
+            actual4.Select(_ => _.ToCellReference().A1Reference).Should().Equal("B2", "C2", "D2", "B3", "C3", "D3", "B4", "C4", "D4");
         }
 
         [Fact]
@@ -238,10 +238,10 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual4 = range4.GetUpperLeftmostCell();
 
             // Assert
-            actual1.Name.Should().Be("B2");
-            actual2.Name.Should().Be("B2");
-            actual3.Name.Should().Be("B2");
-            actual4.Name.Should().Be("B2");
+            actual1.ToCellReference().A1Reference.Should().Be("B2");
+            actual2.ToCellReference().A1Reference.Should().Be("B2");
+            actual3.ToCellReference().A1Reference.Should().Be("B2");
+            actual4.ToCellReference().A1Reference.Should().Be("B2");
         }
 
         [Fact]

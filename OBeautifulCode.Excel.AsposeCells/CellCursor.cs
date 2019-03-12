@@ -30,7 +30,7 @@ namespace OBeautifulCode.Excel.AsposeCells
     /// </remarks>
     public class CellCursor
     {
-        private IDictionary<string, IList<Cell>> markerNameToCellsMap = new Dictionary<string, IList<Cell>>();
+        private IDictionary<string, List<Cell>> markerNameToCellsMap = new Dictionary<string, List<Cell>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CellCursor"/> class.
@@ -142,7 +142,9 @@ namespace OBeautifulCode.Excel.AsposeCells
                 StartColumnNumber = this.StartColumnNumber,
                 MaxRowNumber = this.MaxRowNumber,
                 MaxColumnNumber = this.MaxColumnNumber,
-                markerNameToCellsMap = this.markerNameToCellsMap.ToDictionary(_ => _.Key, _ => (IList<Cell>)_.Value.ToList()),
+                markerNameToCellsMap = this.markerNameToCellsMap.ToDictionary(
+                    _ => _.Key,
+                    _ => _.Value.Select(cell => worksheet.Cells[cell.Row, cell.Column]).ToList()),
             };
 
             return result;
@@ -349,7 +351,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// </summary>
         public void RemoveAllMarkers()
         {
-            this.markerNameToCellsMap = new Dictionary<string, IList<Cell>>();
+            this.markerNameToCellsMap = new Dictionary<string, List<Cell>>();
         }
 
         /// <summary>

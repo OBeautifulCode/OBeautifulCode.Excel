@@ -196,7 +196,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             var actual = worksheet.GetCell(3, 4);
 
             // Assert
-            actual.Name.Should().Be("D3");
+            actual.ToCellReference().A1Reference.Should().Be("D3");
         }
     }
 }
