@@ -60,9 +60,14 @@ namespace OBeautifulCode.Excel
         public int ColumnNumber { get; private set; }
 
         /// <summary>
-        /// Gets the worksheet-qualified reference, using A1 notation (e.g. 'worksheet'!A5).
+        /// Gets the reference to the cell, using A1 notation (e.g. 'worksheet'!A5).
         /// </summary>
-        public string WorksheetQualifiedA1Reference => Invariant($"'{this.WorksheetName.Replace("'", "''")}'!{CellsHelper.GetColumnName(this.ColumnNumber)}{this.RowNumber}");
+        public string A1Reference => Invariant($"{CellsHelper.GetColumnName(this.ColumnNumber)}{this.RowNumber}");
+
+        /// <summary>
+        /// Gets the worksheet-qualified reference to the cell, using A1 notation (e.g. 'worksheet'!A5).
+        /// </summary>
+        public string WorksheetQualifiedA1Reference => Invariant($"'{this.WorksheetName.Replace("'", "''")}'!{A1Reference}");
 
         /// <summary>
         /// Determines whether two objects of type <see cref="CellReference"/> are equal.

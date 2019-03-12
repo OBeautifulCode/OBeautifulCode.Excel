@@ -141,5 +141,22 @@ namespace OBeautifulCode.Excel.AsposeCells
             var result = cell.Column + 1;
             return result;
         }
+
+        /// <summary>
+        /// Gets the <see cref="CellReference"/> corresponding to the specified cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <returns>
+        /// The cell reference corresponding to the specified cell.
+        /// </returns>
+        public static CellReference ToCellReference(
+            this Cell cell)
+        {
+            new { cell }.Must().NotBeNull();
+
+            var result = new CellReference(cell.Worksheet.Name, cell.Row + 1, cell.Column + 1);
+
+            return result;
+        }
     }
 }

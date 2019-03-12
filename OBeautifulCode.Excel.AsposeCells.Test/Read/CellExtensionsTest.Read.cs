@@ -323,5 +323,31 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
             // Assert
             actual.Should().Be(3);
         }
+
+        [Fact]
+        public static void ToCellReference___Should_throw_ArgumentNullException___When_parameter_cell_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellExtensions.ToCellReference(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("cell");
+        }
+
+        [Fact]
+        public static void ToCellReference___Should_get_the_CellReference_corresponding_to_the_specified_cell___When_called()
+        {
+            // Arrange,
+            var worksheet = A.Dummy<Worksheet>();
+            var cell = worksheet.Cells["C9"];
+            var expected = new CellReference("Sheet1", 9, 3);
+
+            // Act
+            var actual = cell.ToCellReference();
+
+            // Assert
+            actual.Should().Be(expected);
+        }
     }
 }

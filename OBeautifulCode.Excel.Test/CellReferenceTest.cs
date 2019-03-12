@@ -268,7 +268,27 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void WorksheetQualifiedA1Reference___Should_return_the_worksheet_qualified_cell_name___When_called()
+        public static void A1Reference___Should_return_the_A1_reference_to_the_cell___When_called()
+        {
+            // Arrange
+            var worksheetName = "my-worksheet";
+
+            var rowNumber = 569484;
+            var columnNumber = 904;
+
+            var expected = "AHT569484";
+
+            var systemUnderTest = new CellReference(worksheetName, rowNumber, columnNumber);
+
+            // Act
+            var actual = systemUnderTest.A1Reference;
+
+            // Assert
+            actual.Should().Be(expected);
+        }
+
+        [Fact]
+        public static void WorksheetQualifiedA1Reference___Should_return_the_worksheet_qualified_A1_reference_to_the_cell___When_called()
         {
             // Arrange
             var worksheetName1 = "my-worksheet";
