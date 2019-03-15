@@ -848,6 +848,9 @@ namespace OBeautifulCode.Excel.Test
 
             actual2.Should().Be(systemUnderTest2);
             actual2.Should().NotBeSameAs(systemUnderTest2);
+            actual2.InsideBorder.Should().NotBeSameAs(systemUnderTest2.InsideBorder);
+            actual2.OutsideBorder.Should().NotBeSameAs(systemUnderTest2.OutsideBorder);
+            actual2.DataValidation.Should().NotBeSameAs(systemUnderTest2.DataValidation);
         }
     }
 }

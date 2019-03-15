@@ -96,5 +96,18 @@ namespace OBeautifulCode.Excel
                 .Hash(this.Name)
                 .Hash(this.Cell)
                 .Value;
+
+        /// <summary>
+        /// Creates a deep clone of this object.
+        /// </summary>
+        /// <returns>
+        /// A deep clone of this object.
+        /// </returns>
+        public NamedCell DeepClone()
+        {
+            var result = new NamedCell(this.Name, this.Cell.DeepClone());
+
+            return result;
+        }
     }
 }

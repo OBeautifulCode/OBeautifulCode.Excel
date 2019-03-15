@@ -30,6 +30,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().Be(expected);
             actual.Should().NotBeSameAs(expected);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -45,6 +49,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().NotBe(expected);
             actual.FontColor.Should().Be(fontColor);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -59,6 +67,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().Be(expected);
             actual.Should().NotBeSameAs(expected);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -74,6 +86,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().NotBe(expected);
             actual.FontSize.Should().Be(fontSize);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -88,6 +104,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().Be(expected);
             actual.Should().NotBeSameAs(expected);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -103,6 +123,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().NotBe(expected);
             actual.FontIsBold.Should().Be(fontIsBold);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -117,6 +141,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().Be(expected);
             actual.Should().NotBeSameAs(expected);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -132,6 +160,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().NotBe(expected);
             actual.BackgroundColor.Should().Be(backgroundColor);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -146,6 +178,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().Be(expected);
             actual.Should().NotBeSameAs(expected);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -161,6 +197,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().NotBe(expected);
             actual.RowHeightInPixels.Should().Be(rowHeightInPixels);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -175,6 +215,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().Be(expected);
             actual.Should().NotBeSameAs(expected);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
 
         [Fact]
@@ -190,6 +234,10 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual.Should().NotBe(expected);
             actual.ColumnWidthInPixels.Should().Be(columnWidthInPixels);
+
+            actual.InsideBorder.Should().NotBeSameAs(expected.InsideBorder);
+            actual.OutsideBorder.Should().NotBeSameAs(expected.OutsideBorder);
+            actual.DataValidation.Should().NotBeSameAs(expected.DataValidation);
         }
     }
 }

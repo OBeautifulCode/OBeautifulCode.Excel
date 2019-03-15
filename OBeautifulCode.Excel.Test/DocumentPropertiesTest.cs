@@ -363,6 +363,7 @@ namespace OBeautifulCode.Excel.Test
 
             actual2.Should().Be(systemUnderTest2);
             actual2.Should().NotBeSameAs(systemUnderTest2);
+            actual2.BuiltInDocumentPropertyKindToValueMap.Should().NotBeSameAs(systemUnderTest2.BuiltInDocumentPropertyKindToValueMap);
         }
     }
 }

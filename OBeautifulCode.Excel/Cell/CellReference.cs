@@ -120,5 +120,18 @@ namespace OBeautifulCode.Excel
                 .Hash(this.RowNumber)
                 .Hash(this.ColumnNumber)
                 .Value;
+
+        /// <summary>
+        /// Creates a deep clone of this object.
+        /// </summary>
+        /// <returns>
+        /// A deep clone of this object.
+        /// </returns>
+        public CellReference DeepClone()
+        {
+            var result = new CellReference(this.WorksheetName, this.RowNumber, this.ColumnNumber);
+
+            return result;
+        }
     }
 }
