@@ -85,7 +85,7 @@ namespace OBeautifulCode.Excel
                 .Value;
 
         /// <inheritdoc />
-        public override DataValidation Clone()
+        public override DataValidation DeepClone()
         {
             var result = new TextDataValidation
             {

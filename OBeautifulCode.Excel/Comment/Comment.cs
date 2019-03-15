@@ -181,12 +181,12 @@ namespace OBeautifulCode.Excel
                 .Value;
 
         /// <summary>
-        /// Creates a clone of this object.
+        /// Creates a deep clone of this object.
         /// </summary>
         /// <returns>
-        /// A clone of this object.
+        /// A deep clone of this object.
         /// </returns>
-        public Comment Clone()
+        public Comment DeepClone()
         {
             var result = new Comment
             {

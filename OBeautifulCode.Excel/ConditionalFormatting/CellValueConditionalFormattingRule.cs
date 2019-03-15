@@ -100,12 +100,12 @@ namespace OBeautifulCode.Excel
                 .Value;
 
         /// <summary>
-        /// Creates a clone of this object.
+        /// Creates a deep clone of this object.
         /// </summary>
         /// <returns>
-        /// A clone of this object.
+        /// A deep clone of this object.
         /// </returns>
-        public CellValueConditionalFormattingRule Clone()
+        public CellValueConditionalFormattingRule DeepClone()
         {
             var result = new CellValueConditionalFormattingRule
             {
@@ -113,7 +113,7 @@ namespace OBeautifulCode.Excel
                 Operand1Formula = this.Operand1Formula,
                 Operand2Formula = this.Operand2Formula,
                 StopIfTrue = this.StopIfTrue,
-                RangeStyle = this.RangeStyle?.Clone(),
+                RangeStyle = this.RangeStyle?.DeepClone(),
             };
 
             return result;

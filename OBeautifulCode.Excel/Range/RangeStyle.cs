@@ -214,12 +214,12 @@ namespace OBeautifulCode.Excel
                 .Value;
 
         /// <summary>
-        /// Creates a clone of this object.
+        /// Creates a deep clone of this object.
         /// </summary>
         /// <returns>
-        /// A clone of this object.
+        /// A deep clone of this object.
         /// </returns>
-        public RangeStyle Clone()
+        public RangeStyle DeepClone()
         {
             var result = new RangeStyle
             {
@@ -239,9 +239,9 @@ namespace OBeautifulCode.Excel
                 HorizontalAlignment = this.HorizontalAlignment,
                 MergeCells = this.MergeCells,
                 AutofitRows = this.AutofitRows,
-                InsideBorder = this.InsideBorder?.Clone(),
-                OutsideBorder = this.OutsideBorder?.Clone(),
-                DataValidation = this.DataValidation?.Clone(),
+                InsideBorder = this.InsideBorder?.DeepClone(),
+                OutsideBorder = this.OutsideBorder?.DeepClone(),
+                DataValidation = this.DataValidation?.DeepClone(),
                 Format = this.Format,
                 CustomFormatString = this.CustomFormatString,
             };

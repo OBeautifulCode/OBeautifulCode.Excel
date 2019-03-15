@@ -627,15 +627,15 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Clone___Should_clone_item___When_called()
+        public static void DeepClone___Should_clone_item___When_called()
         {
             // Arrange
             var systemUnderTest1 = new Comment();
             var systemUnderTest2 = A.Dummy<Comment>();
 
             // Act
-            var actual1 = systemUnderTest1.Clone();
-            var actual2 = systemUnderTest2.Clone();
+            var actual1 = systemUnderTest1.DeepClone();
+            var actual2 = systemUnderTest2.DeepClone();
 
             // Assert
             actual1.Should().Be(systemUnderTest1);

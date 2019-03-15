@@ -141,12 +141,12 @@ namespace OBeautifulCode.Excel
         public abstract override int GetHashCode();
 
         /// <summary>
-        /// Creates a clone of this object.
+        /// Creates a deep clone of this object.
         /// </summary>
         /// <returns>
-        /// A clone of this object.
+        /// A deep clone of this object.
         /// </returns>
-        public abstract DataValidation Clone();
+        public abstract DataValidation DeepClone();
 
         /// <summary>
         /// Determines whether two objects of type <see cref="DataValidation"/> are equal.
