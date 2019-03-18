@@ -10,6 +10,7 @@ namespace OBeautifulCode.Excel
     using System.Text.RegularExpressions;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
     using OBeautifulCode.Validation.Recipes;
 
     using static System.FormattableString;
@@ -17,7 +18,7 @@ namespace OBeautifulCode.Excel
     /// <summary>
     /// Represents a reference to a cell.
     /// </summary>
-    public class CellReference : IEquatable<CellReference>
+    public class CellReference : IEquatable<CellReference>, IDeepCloneable<CellReference>
     {
         private static readonly Regex ValidWorksheetNameRegex = new Regex("^(?!.{32})(?=.*[\x20-\x26\x28-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E]$)[\x20-\x26\x28-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E][\x20-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E]{0,30}$", RegexOptions.Compiled);
 
@@ -121,12 +122,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.ColumnNumber)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public CellReference DeepClone()
         {
             var result = new CellReference(this.WorksheetName, this.RowNumber, this.ColumnNumber);

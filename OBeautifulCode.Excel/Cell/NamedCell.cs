@@ -9,6 +9,7 @@ namespace OBeautifulCode.Excel
     using System;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
     using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
@@ -17,7 +18,7 @@ namespace OBeautifulCode.Excel
     /// <remarks>
     /// Like an Excel named range, except scoped to a cell.
     /// </remarks>
-    public class NamedCell : IEquatable<NamedCell>
+    public class NamedCell : IEquatable<NamedCell>, IDeepCloneable<NamedCell>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NamedCell"/> class.
@@ -97,12 +98,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.Cell)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public NamedCell DeepClone()
         {
             var result = new NamedCell(this.Name, this.Cell.DeepClone());

@@ -10,6 +10,7 @@ namespace OBeautifulCode.Excel
     using System.Drawing;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// Represents a comment on a cell.
@@ -20,7 +21,7 @@ namespace OBeautifulCode.Excel
     /// Also, there are fewer kinds of formatting that can be applied to a comment.
     /// We have deliberately chosen NOT to consolidate many of the properties below into a single <see cref="RangeStyle"/> property.
     /// </remarks>
-    public class Comment : IEquatable<Comment>
+    public class Comment : IEquatable<Comment>, IDeepCloneable<Comment>
     {
         /// <summary>
         /// Gets or sets the body of the comment.
@@ -180,12 +181,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.BorderWeightInPoints)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public Comment DeepClone()
         {
             var result = new Comment

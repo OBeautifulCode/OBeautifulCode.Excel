@@ -10,13 +10,14 @@ namespace OBeautifulCode.Excel
     using System.ComponentModel;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
     using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
     /// Represents validation applied to data entered by a user.
     /// </summary>
     [Bindable(true)]
-    public abstract class DataValidation : IEquatable<DataValidation>
+    public abstract class DataValidation : IEquatable<DataValidation>, IDeepCloneable<DataValidation>
     {
         /// <summary>
         /// Gets or sets the kind of validation to perform.
@@ -140,12 +141,10 @@ namespace OBeautifulCode.Excel
         /// <inheritdoc />
         public abstract override int GetHashCode();
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public abstract DataValidation DeepClone();
 
         /// <summary>

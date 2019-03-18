@@ -9,11 +9,12 @@ namespace OBeautifulCode.Excel
     using System;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// The worksheet protection configuration.
     /// </summary>
-    public class WorksheetProtection : IEquatable<WorksheetProtection>
+    public class WorksheetProtection : IEquatable<WorksheetProtection>, IDeepCloneable<WorksheetProtection>
     {
         /// <summary>
         /// Gets or sets the clear text password.
@@ -68,12 +69,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.ClearTextPassword)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public WorksheetProtection DeepClone()
         {
             var result = new WorksheetProtection

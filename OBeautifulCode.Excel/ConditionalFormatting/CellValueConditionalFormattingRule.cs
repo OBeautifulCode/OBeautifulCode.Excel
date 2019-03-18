@@ -10,11 +10,12 @@ namespace OBeautifulCode.Excel
     using System.Diagnostics.CodeAnalysis;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// Specifies a conditional formatting rule based on the value of a cell.
     /// </summary>
-    public class CellValueConditionalFormattingRule : IEquatable<CellValueConditionalFormattingRule>
+    public class CellValueConditionalFormattingRule : IEquatable<CellValueConditionalFormattingRule>, IDeepCloneable<CellValueConditionalFormattingRule>
     {
         /// <summary>
         /// Gets or sets the operator to use.
@@ -99,12 +100,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.RangeStyle)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public CellValueConditionalFormattingRule DeepClone()
         {
             var result = new CellValueConditionalFormattingRule

@@ -11,11 +11,12 @@ namespace OBeautifulCode.Excel
     using System.Drawing;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// The style to apply to a range.
     /// </summary>
-    public class RangeStyle : IEquatable<RangeStyle>
+    public class RangeStyle : IEquatable<RangeStyle>, IDeepCloneable<RangeStyle>
     {
         /// <summary>
         /// Gets or sets the background color.
@@ -213,12 +214,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.CustomFormatString)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public RangeStyle DeepClone()
         {
             var result = new RangeStyle

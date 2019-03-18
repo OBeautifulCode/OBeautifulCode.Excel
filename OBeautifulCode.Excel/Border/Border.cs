@@ -10,11 +10,12 @@ namespace OBeautifulCode.Excel
     using System.Drawing;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// Defines a border.
     /// </summary>
-    public class Border : IEquatable<Border>
+    public class Border : IEquatable<Border>, IDeepCloneable<Border>
     {
         /// <summary>
         /// Gets or sets the edges of the border.
@@ -83,12 +84,10 @@ namespace OBeautifulCode.Excel
                 .Hash(this.Color)
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public Border DeepClone()
         {
             var result = new Border

@@ -11,11 +11,12 @@ namespace OBeautifulCode.Excel
     using System.Linq;
 
     using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// Specifies the properties of a workbook document.
     /// </summary>
-    public class DocumentProperties : IEquatable<DocumentProperties>
+    public class DocumentProperties : IEquatable<DocumentProperties>, IDeepCloneable<DocumentProperties>
     {
         /// <summary>
         /// Gets or sets a map of property kind to it's value.
@@ -87,12 +88,10 @@ namespace OBeautifulCode.Excel
                 .HashElements(this.BuiltInDocumentPropertyKindToValueMap?.OrderBy(_ => _.Value).Select(_ => _.Value))
                 .Value;
 
-        /// <summary>
-        /// Creates a deep clone of this object.
-        /// </summary>
-        /// <returns>
-        /// A deep clone of this object.
-        /// </returns>
+        /// <inheritdoc />
+        public object Clone() => this.DeepClone();
+
+        /// <inheritdoc />
         public DocumentProperties DeepClone()
         {
             var result = new DocumentProperties
