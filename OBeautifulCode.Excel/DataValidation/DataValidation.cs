@@ -151,37 +151,37 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="DataValidation"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         protected static bool Equals(
-            DataValidation item1,
-            DataValidation item2)
+            DataValidation left,
+            DataValidation right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.Kind == item2.Kind) &&
-                (item1.Operator == item2.Operator) &&
-                (item1.Operand1Formula == item2.Operand1Formula) &&
-                (item1.Operand2Formula == item2.Operand2Formula) &&
-                (item1.IgnoreBlank == item2.IgnoreBlank) &&
-                (item1.ShowInputMessage == item2.ShowInputMessage) &&
-                (item1.InputMessageTitle == item2.InputMessageTitle) &&
-                (item1.InputMessageBody == item2.InputMessageBody) &&
-                (item1.ShowErrorAlertAfterInvalidDataIsEntered == item2.ShowErrorAlertAfterInvalidDataIsEntered) &&
-                (item1.ErrorAlertStyle == item2.ErrorAlertStyle) &&
-                (item1.ErrorAlertTitle == item2.ErrorAlertTitle) &&
-                (item1.ErrorAlertBody == item2.ErrorAlertBody) &&
-                (item1.ShowListDropdown == item2.ShowListDropdown);
+                (left.Kind == right.Kind) &&
+                (left.Operator == right.Operator) &&
+                (left.Operand1Formula == right.Operand1Formula) &&
+                (left.Operand2Formula == right.Operand2Formula) &&
+                (left.IgnoreBlank == right.IgnoreBlank) &&
+                (left.ShowInputMessage == right.ShowInputMessage) &&
+                (left.InputMessageTitle == right.InputMessageTitle) &&
+                (left.InputMessageBody == right.InputMessageBody) &&
+                (left.ShowErrorAlertAfterInvalidDataIsEntered == right.ShowErrorAlertAfterInvalidDataIsEntered) &&
+                (left.ErrorAlertStyle == right.ErrorAlertStyle) &&
+                (left.ErrorAlertTitle == right.ErrorAlertTitle) &&
+                (left.ErrorAlertBody == right.ErrorAlertBody) &&
+                (left.ShowListDropdown == right.ShowListDropdown);
 
             return result;
         }

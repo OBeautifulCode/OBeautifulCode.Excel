@@ -46,42 +46,42 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="CellValueConditionalFormattingRule"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         public static bool operator ==(
-            CellValueConditionalFormattingRule item1,
-            CellValueConditionalFormattingRule item2)
+            CellValueConditionalFormattingRule left,
+            CellValueConditionalFormattingRule right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.Operator == item2.Operator) &&
-                (item1.Operand1Formula == item2.Operand1Formula) &&
-                (item1.Operand2Formula == item2.Operand2Formula) &&
-                (item1.StopIfTrue == item2.StopIfTrue) &&
-                (item1.RangeStyle == item2.RangeStyle);
+                (left.Operator == right.Operator) &&
+                (left.Operand1Formula == right.Operand1Formula) &&
+                (left.Operand2Formula == right.Operand2Formula) &&
+                (left.StopIfTrue == right.StopIfTrue) &&
+                (left.RangeStyle == right.RangeStyle);
             return result;
         }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="CellValueConditionalFormattingRule"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            CellValueConditionalFormattingRule item1,
-            CellValueConditionalFormattingRule item2)
-            => !(item1 == item2);
+            CellValueConditionalFormattingRule left,
+            CellValueConditionalFormattingRule right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(CellValueConditionalFormattingRule other) => this == other;

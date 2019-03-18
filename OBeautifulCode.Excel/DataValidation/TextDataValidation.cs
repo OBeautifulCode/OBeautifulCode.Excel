@@ -41,20 +41,20 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="TextDataValidation"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "1", Justification = "This is being validated via base.Equals")]
         public static bool operator ==(
-            TextDataValidation item1,
-            TextDataValidation item2)
+            TextDataValidation left,
+            TextDataValidation right)
         {
-            var result = Equals(item1, item2);
-            if (result && !ReferenceEquals(item1, null))
+            var result = Equals(left, right);
+            if (result && !ReferenceEquals(left, null))
             {
                 // ReSharper disable once PossibleNullReferenceException
-                result = (item1.Operand1TextValue == item2.Operand1TextValue) &&
-                         (item1.Operand2TextValue == item2.Operand2TextValue);
+                result = (left.Operand1TextValue == right.Operand1TextValue) &&
+                         (left.Operand2TextValue == right.Operand2TextValue);
             }
 
             return result;
@@ -63,13 +63,13 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="TextDataValidation"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            TextDataValidation item1,
-            TextDataValidation item2)
-            => !(item1 == item2);
+            TextDataValidation left,
+            TextDataValidation right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(TextDataValidation other) => this == other;

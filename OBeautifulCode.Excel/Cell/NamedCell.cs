@@ -50,39 +50,39 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="NamedCell"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         public static bool operator ==(
-            NamedCell item1,
-            NamedCell item2)
+            NamedCell left,
+            NamedCell right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.Name == item2.Name) &&
-                (item1.Cell == item2.Cell);
+                (left.Name == right.Name) &&
+                (left.Cell == right.Cell);
             return result;
         }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="NamedCell"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            NamedCell item1,
-            NamedCell item2)
-            => !(item1 == item2);
+            NamedCell left,
+            NamedCell right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(NamedCell other) => this == other;

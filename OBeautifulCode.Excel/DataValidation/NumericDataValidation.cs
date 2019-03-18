@@ -35,20 +35,20 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="NumericDataValidation"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "1", Justification = "This is being validated via base.Equals")]
         public static bool operator ==(
-            NumericDataValidation item1,
-            NumericDataValidation item2)
+            NumericDataValidation left,
+            NumericDataValidation right)
         {
-            var result = Equals(item1, item2);
-            if (result && !ReferenceEquals(item1, null))
+            var result = Equals(left, right);
+            if (result && !ReferenceEquals(left, null))
             {
                 // ReSharper disable once PossibleNullReferenceException
-                result = (item1.Operand1NumericValue == item2.Operand1NumericValue) &&
-                         (item1.Operand2NumericValue == item2.Operand2NumericValue);
+                result = (left.Operand1NumericValue == right.Operand1NumericValue) &&
+                         (left.Operand2NumericValue == right.Operand2NumericValue);
             }
 
             return result;
@@ -57,13 +57,13 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="NumericDataValidation"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            NumericDataValidation item1,
-            NumericDataValidation item2)
-            => !(item1 == item2);
+            NumericDataValidation left,
+            NumericDataValidation right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(NumericDataValidation other) => this == other;

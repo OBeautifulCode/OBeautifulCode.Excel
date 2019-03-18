@@ -34,40 +34,40 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="Border"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         public static bool operator ==(
-            Border item1,
-            Border item2)
+            Border left,
+            Border right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.Edges == item2.Edges) &&
-                (item1.Style == item2.Style) &&
-                (item1.Color == item2.Color);
+                (left.Edges == right.Edges) &&
+                (left.Style == right.Style) &&
+                (left.Color == right.Color);
             return result;
         }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="Border"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            Border item1,
-            Border item2)
-            => !(item1 == item2);
+            Border left,
+            Border right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(Border other) => this == other;

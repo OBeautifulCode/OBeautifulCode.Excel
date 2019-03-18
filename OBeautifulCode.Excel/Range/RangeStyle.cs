@@ -126,46 +126,46 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="RangeStyle"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex; there are a lot of ways to style a range.")]
         public static bool operator ==(
-            RangeStyle item1,
-            RangeStyle item2)
+            RangeStyle left,
+            RangeStyle right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.BackgroundColor == item2.BackgroundColor) &&
-                (item1.FontColor == item2.FontColor) &&
-                (item1.FontName == item2.FontName) &&
-                (item1.FontSize == item2.FontSize) &&
-                (item1.FontIsItalic == item2.FontIsItalic) &&
-                (item1.FontIsBold == item2.FontIsBold) &&
-                (item1.FontUnderline == item2.FontUnderline) &&
-                (item1.FontRotationAngle == item2.FontRotationAngle) &&
-                (item1.TextIsWrapped == item2.TextIsWrapped) &&
-                (item1.IndentLevel == item2.IndentLevel) &&
-                (item1.RowHeightInPixels == item2.RowHeightInPixels) &&
-                (item1.ColumnWidthInPixels == item2.ColumnWidthInPixels) &&
-                (item1.VerticalAlignment == item2.VerticalAlignment) &&
-                (item1.HorizontalAlignment == item2.HorizontalAlignment) &&
-                (item1.MergeCells == item2.MergeCells) &&
-                (item1.AutofitRows == item2.AutofitRows) &&
-                (item1.InsideBorder == item2.InsideBorder) &&
-                (item1.OutsideBorder == item2.OutsideBorder) &&
-                (item1.DataValidation == item2.DataValidation) &&
-                (item1.Format == item2.Format) &&
-                (item1.CustomFormatString == item2.CustomFormatString);
+                (left.BackgroundColor == right.BackgroundColor) &&
+                (left.FontColor == right.FontColor) &&
+                (left.FontName == right.FontName) &&
+                (left.FontSize == right.FontSize) &&
+                (left.FontIsItalic == right.FontIsItalic) &&
+                (left.FontIsBold == right.FontIsBold) &&
+                (left.FontUnderline == right.FontUnderline) &&
+                (left.FontRotationAngle == right.FontRotationAngle) &&
+                (left.TextIsWrapped == right.TextIsWrapped) &&
+                (left.IndentLevel == right.IndentLevel) &&
+                (left.RowHeightInPixels == right.RowHeightInPixels) &&
+                (left.ColumnWidthInPixels == right.ColumnWidthInPixels) &&
+                (left.VerticalAlignment == right.VerticalAlignment) &&
+                (left.HorizontalAlignment == right.HorizontalAlignment) &&
+                (left.MergeCells == right.MergeCells) &&
+                (left.AutofitRows == right.AutofitRows) &&
+                (left.InsideBorder == right.InsideBorder) &&
+                (left.OutsideBorder == right.OutsideBorder) &&
+                (left.DataValidation == right.DataValidation) &&
+                (left.Format == right.Format) &&
+                (left.CustomFormatString == right.CustomFormatString);
 
             return result;
         }
@@ -173,13 +173,13 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="RangeStyle"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            RangeStyle item1,
-            RangeStyle item2)
-            => !(item1 == item2);
+            RangeStyle left,
+            RangeStyle right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(RangeStyle other) => this == other;

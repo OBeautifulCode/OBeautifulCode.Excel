@@ -72,40 +72,40 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="CellReference"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         public static bool operator ==(
-            CellReference item1,
-            CellReference item2)
+            CellReference left,
+            CellReference right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.WorksheetName == item2.WorksheetName) &&
-                (item1.RowNumber == item2.RowNumber) &&
-                (item1.ColumnNumber == item2.ColumnNumber);
+                (left.WorksheetName == right.WorksheetName) &&
+                (left.RowNumber == right.RowNumber) &&
+                (left.ColumnNumber == right.ColumnNumber);
             return result;
         }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="CellReference"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            CellReference item1,
-            CellReference item2)
-            => !(item1 == item2);
+            CellReference left,
+            CellReference right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(CellReference other) => this == other;

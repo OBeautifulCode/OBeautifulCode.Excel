@@ -105,53 +105,53 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Determines whether two objects of type <see cref="Comment"/> are equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The second item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The object to the right of the operator.</param>
         /// <returns>True if the two items are equal; false otherwise.</returns>
         public static bool operator ==(
-            Comment item1,
-            Comment item2)
+            Comment left,
+            Comment right)
         {
-            if (ReferenceEquals(item1, item2))
+            if (ReferenceEquals(left, right))
             {
                 return true;
             }
 
-            if (ReferenceEquals(item1, null) || ReferenceEquals(item2, null))
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
             {
                 return false;
             }
 
             var result =
-                (item1.Body == item2.Body) &&
-                (item1.HtmlBody == item2.HtmlBody) &&
-                (item1.FontName == item2.FontName) &&
-                (item1.FontColor == item2.FontColor) &&
-                (item1.FontSize == item2.FontSize) &&
-                (item1.FontIsBold == item2.FontIsBold) &&
-                (item1.HorizontalAlignment == item2.HorizontalAlignment) &&
-                (item1.VerticalAlignment == item2.VerticalAlignment) &&
-                (item1.AutoSize == item2.AutoSize) &&
-                (item1.HeightInInches == item2.HeightInInches) &&
-                (item1.WidthInInches == item2.WidthInInches) &&
-                (item1.FillColor == item2.FillColor) &&
-                (item1.FillTransparency == item2.FillTransparency) &&
-                (item1.BorderColor == item2.BorderColor) &&
-                (item1.BorderStyle == item2.BorderStyle) &&
-                (item1.BorderWeightInPoints == item2.BorderWeightInPoints);
+                (left.Body == right.Body) &&
+                (left.HtmlBody == right.HtmlBody) &&
+                (left.FontName == right.FontName) &&
+                (left.FontColor == right.FontColor) &&
+                (left.FontSize == right.FontSize) &&
+                (left.FontIsBold == right.FontIsBold) &&
+                (left.HorizontalAlignment == right.HorizontalAlignment) &&
+                (left.VerticalAlignment == right.VerticalAlignment) &&
+                (left.AutoSize == right.AutoSize) &&
+                (left.HeightInInches == right.HeightInInches) &&
+                (left.WidthInInches == right.WidthInInches) &&
+                (left.FillColor == right.FillColor) &&
+                (left.FillTransparency == right.FillTransparency) &&
+                (left.BorderColor == right.BorderColor) &&
+                (left.BorderStyle == right.BorderStyle) &&
+                (left.BorderWeightInPoints == right.BorderWeightInPoints);
             return result;
         }
 
         /// <summary>
         /// Determines whether two objects of type <see cref="Comment"/> are not equal.
         /// </summary>
-        /// <param name="item1">The first item to compare.</param>
-        /// <param name="item2">The item to compare.</param>
+        /// <param name="left">The object to the left of the operator.</param>
+        /// <param name="right">The item to compare.</param>
         /// <returns>True if the two items not equal; false otherwise.</returns>
         public static bool operator !=(
-            Comment item1,
-            Comment item2)
-            => !(item1 == item2);
+            Comment left,
+            Comment right)
+            => !(left == right);
 
         /// <inheritdoc />
         public bool Equals(Comment other) => this == other;
