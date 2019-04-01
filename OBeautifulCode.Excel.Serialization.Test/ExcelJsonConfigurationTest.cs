@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExcelBsonConfigurationTest.cs" company="OBeautifulCode">
+// <copyright file="ExcelJsonConfigurationTest.cs" company="OBeautifulCode">
 //   Copyright (c) OBeautifulCode 2018. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -12,23 +12,23 @@ namespace OBeautifulCode.Excel.Serialization.Test
 
     using FluentAssertions;
 
-    using Naos.Serialization.Bson;
     using Naos.Serialization.Domain;
+    using Naos.Serialization.Json;
 
-    using OBeautifulCode.Excel.Serialization.Bson;
+    using OBeautifulCode.Excel.Serialization.Json;
 
     using Xunit;
 
-    public static class ExcelBsonConfigurationTest
+    public static class ExcelJsonConfigurationTest
     {
-        private static readonly NaosBsonSerializer Serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
+        private static readonly NaosJsonSerializer Serializer = new NaosJsonSerializer(configurationType: typeof(ExcelJsonConfiguration));
 
         [Fact]
         public static void Configure___Should_not_throw___When_called_multiple_times()
         {
             // Arrange, Act
-            var actual1 = Record.Exception(() => SerializationConfigurationManager.Configure<ExcelBsonConfiguration>());
-            var actual2 = Record.Exception(() => SerializationConfigurationManager.Configure<ExcelBsonConfiguration>());
+            var actual1 = Record.Exception(() => SerializationConfigurationManager.Configure<ExcelJsonConfiguration>());
+            var actual2 = Record.Exception(() => SerializationConfigurationManager.Configure<ExcelJsonConfiguration>());
 
             // Assert
             actual1.Should().BeNull();

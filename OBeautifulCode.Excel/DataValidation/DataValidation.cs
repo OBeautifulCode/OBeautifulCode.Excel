@@ -7,7 +7,6 @@
 namespace OBeautifulCode.Excel
 {
     using System;
-    using System.ComponentModel;
 
     using OBeautifulCode.Math.Recipes;
     using OBeautifulCode.Type;
@@ -16,7 +15,6 @@ namespace OBeautifulCode.Excel
     /// <summary>
     /// Represents validation applied to data entered by a user.
     /// </summary>
-    [Bindable(true)]
     public abstract class DataValidation : IEquatable<DataValidation>, IDeepCloneable<DataValidation>
     {
         /// <summary>

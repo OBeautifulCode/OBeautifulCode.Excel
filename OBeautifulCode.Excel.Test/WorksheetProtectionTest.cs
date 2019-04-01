@@ -16,6 +16,7 @@ namespace OBeautifulCode.Excel.Test
     using Naos.Serialization.Json;
 
     using OBeautifulCode.Excel.Serialization.Bson;
+    using OBeautifulCode.Excel.Serialization.Json;
 
     using Xunit;
 
@@ -46,7 +47,7 @@ namespace OBeautifulCode.Excel.Test
         {
             // Arrange
             var expected = A.Dummy<WorksheetProtection>();
-            var serializer = new NaosJsonSerializer();
+            var serializer = new NaosJsonSerializer(typeof(ExcelJsonConfiguration));
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act

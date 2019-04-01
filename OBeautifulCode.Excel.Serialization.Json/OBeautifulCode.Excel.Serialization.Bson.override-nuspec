@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <description>JSON serializers for Excel types.</description>
+    <tags>Excel</tags>
+    <iconUrl>https://raw.githubusercontent.com/OBeautifulCode/OBeautifulCode.Excel/master/OBeautifulCode.Excel.Serialization.Json/nuget-icon.png</iconUrl>
+  </metadata>
+</package>

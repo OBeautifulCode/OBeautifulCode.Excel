@@ -17,6 +17,7 @@ namespace OBeautifulCode.Excel.Test
 
     using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.Excel.Serialization.Bson;
+    using OBeautifulCode.Excel.Serialization.Json;
 
     using Xunit;
 
@@ -327,7 +328,7 @@ namespace OBeautifulCode.Excel.Test
         {
             // Arrange
             var expected = A.Dummy<DataValidation>();
-            var serializer = new NaosJsonSerializer();
+            var serializer = new NaosJsonSerializer(typeof(ExcelJsonConfiguration));
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act

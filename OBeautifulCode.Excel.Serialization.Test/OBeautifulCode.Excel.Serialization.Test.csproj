@@ -58,17 +58,23 @@
     <Reference Include="Naos.Compression.Domain, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Compression.Domain.1.0.15\lib\net462\Naos.Compression.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Serialization.Bson, Version=1.0.62.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Serialization.Bson.1.0.62\lib\net462\Naos.Serialization.Bson.dll</HintPath>
+    <Reference Include="Naos.Serialization.Bson, Version=1.0.89.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Serialization.Bson.1.0.89\lib\net462\Naos.Serialization.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Serialization.Domain, Version=1.0.62.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Serialization.Domain.1.0.62\lib\net462\Naos.Serialization.Domain.dll</HintPath>
+    <Reference Include="Naos.Serialization.Domain, Version=1.0.89.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Serialization.Domain.1.0.89\lib\net462\Naos.Serialization.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Naos.Serialization.Json, Version=1.0.89.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Serialization.Json.1.0.89\lib\net462\Naos.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OBeautifulCode.AutoFakeItEasy, Version=1.0.111.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OBeautifulCode.AutoFakeItEasy.1.0.111\lib\net462\OBeautifulCode.AutoFakeItEasy.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.TypeRepresentation, Version=1.0.16.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.TypeRepresentation.1.0.16\lib\net462\OBeautifulCode.TypeRepresentation.dll</HintPath>
+    <Reference Include="OBeautifulCode.Type, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Type.1.0.4\lib\net462\OBeautifulCode.Type.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,13 +104,19 @@
     </Compile>
     <Compile Include=".recipes\OBeautifulCode.AutoFakeItEasy\AutoFakeItEasyBootstrapper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Math\ThreadSafeRandom.cs" />
+    <Compile Include="ExcelJsonConfigurationTest.cs" />
     <Compile Include="ExcelBsonConfigurationTest.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OBeautifulCode.Excel.Serialization.Bson\OBeautifulCode.Excel.Serialization.Bson.csproj">
       <Project>{eee080e2-b477-4c25-a329-63af68ad0082}</Project>
       <Name>OBeautifulCode.Excel.Serialization.Bson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OBeautifulCode.Excel.Serialization.Json\OBeautifulCode.Excel.Serialization.Json.csproj">
+      <Project>{cbfa794c-dda1-4687-a21c-2cd64bd124b8}</Project>
+      <Name>OBeautifulCode.Excel.Serialization.Json</Name>
     </ProjectReference>
     <ProjectReference Include="..\OBeautifulCode.Excel\OBeautifulCode.Excel.csproj">
       <Project>{e4df95ea-31cb-439f-a2cb-d1a0f0debf1f}</Project>
