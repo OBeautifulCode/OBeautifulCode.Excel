@@ -132,5 +132,8 @@ namespace OBeautifulCode.Excel
 
             return result;
         }
+
+        /// <inheritdoc />
+        public override string ToString() => this.WorksheetQualifiedA1Reference;
     }
 }
