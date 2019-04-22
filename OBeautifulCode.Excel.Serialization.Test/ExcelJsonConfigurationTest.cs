@@ -6,6 +6,8 @@
 
 namespace OBeautifulCode.Excel.Serialization.Test
 {
+    using System;
+    using System.Collections.Generic;
     using System.Drawing;
 
     using FakeItEasy;
@@ -21,7 +23,7 @@ namespace OBeautifulCode.Excel.Serialization.Test
 
     public static class ExcelJsonConfigurationTest
     {
-        private static readonly NaosJsonSerializer Serializer = new NaosJsonSerializer(configurationType: typeof(ExcelJsonConfiguration));
+        private static readonly NaosJsonSerializer Serializer = new NaosJsonSerializer(typeof(ExcelTestJsonConfiguration));
 
         [Fact]
         public static void Configure___Should_not_throw___When_called_multiple_times()
@@ -69,6 +71,13 @@ namespace OBeautifulCode.Excel.Serialization.Test
             // Assert
             actual1.NullableColor.Should().BeNull();
             actual2.NullableColor.Should().Be(expected2.NullableColor);
+        }
+
+        private class ExcelTestJsonConfiguration : JsonConfigurationBase
+        {
+            public override IReadOnlyCollection<Type> DependentConfigurationTypes => new[] { typeof(ExcelJsonConfiguration) };
+
+            protected override IReadOnlyCollection<Type> TypesToAutoRegister => new[] { typeof(ExcelTestModel) };
         }
 
         private class ExcelTestModel

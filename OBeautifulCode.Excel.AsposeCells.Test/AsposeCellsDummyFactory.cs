@@ -21,7 +21,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         {
             AutoFixtureBackedDummyFactory.AddDummyCreator(() =>
             {
-                var workbook = new Workbook();
+                var workbook = General.CreateStandardWorkbook();
 
                 var result = workbook.Worksheets[0];
 

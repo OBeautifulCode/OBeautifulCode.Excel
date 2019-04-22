@@ -10,8 +10,6 @@ namespace OBeautifulCode.Excel.Serialization.Bson
     using System.Collections.Generic;
     using System.Drawing;
 
-    using MongoDB.Bson.Serialization;
-
     using Naos.Serialization.Bson;
 
     /// <inheritdoc />

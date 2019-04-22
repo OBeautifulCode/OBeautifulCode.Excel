@@ -51,7 +51,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void Constructor___Should_throw_ArgumentOutOfRangeException___When_parameter_rowNumber_is_less_than_1()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
 
             // Act
@@ -66,7 +66,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void Constructor___Should_throw_ArgumentOutOfRangeException___When_parameter_columnNumber_is_less_than_1()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
 
             // Act
@@ -81,7 +81,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void Worksheet___Should_return_same_worksheet_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var systemUnderTest = new CellCursor(worksheet);
 
@@ -95,7 +95,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void RowNumber___Should_return_same_rowNumber_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var rowNumber = A.Dummy<PositiveInteger>();
             var systemUnderTest = new CellCursor(worksheet, rowNumber: rowNumber);
@@ -110,7 +110,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void ColumnNumber___Should_return_same_columnNumber_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var columnNumber = A.Dummy<PositiveInteger>();
             var systemUnderTest = new CellCursor(worksheet, columnNumber: columnNumber);
@@ -125,7 +125,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void StartRowNumber___Should_return_same_rowNumber_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var rowNumber = A.Dummy<PositiveInteger>();
             var systemUnderTest = new CellCursor(worksheet, rowNumber: rowNumber);
@@ -140,7 +140,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void StartColumnNumber___Should_return_same_columnNumber_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var columnNumber = A.Dummy<PositiveInteger>();
             var systemUnderTest = new CellCursor(worksheet, columnNumber: columnNumber);
@@ -155,7 +155,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void MaxRowNumber___Should_return_same_rowNumber_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var rowNumber = A.Dummy<PositiveInteger>();
             var systemUnderTest = new CellCursor(worksheet, rowNumber: rowNumber);
@@ -170,7 +170,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void MaxColumnNumber___Should_return_same_columnNumber_passed_to_constructor___When_getting()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var columnNumber = A.Dummy<PositiveInteger>();
             var systemUnderTest = new CellCursor(worksheet, columnNumber: columnNumber);

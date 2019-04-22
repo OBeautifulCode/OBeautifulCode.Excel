@@ -22,7 +22,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRange___Should_throw_ArgumentNullException___When_parameter_worksheet_is_null()
         {
-            // Arrange,
+            // Arrange
             var startRowNumber = 5;
             var endRowNumber = 10;
             var startColumnNumber = 30;
@@ -39,7 +39,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRange___Should_throw_ArgumentOutOfRangeException___When_parameter_startRowNumber_is_less_than_1()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var endRowNumber = 10;
             var startColumnNumber = 30;
@@ -60,7 +60,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRange___Should_throw_ArgumentOutOfRangeException___When_parameter_startColumnNumber_is_less_than_1()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var startRowNumber = 5;
             var endRowNumber = 10;
@@ -81,7 +81,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRange___Should_throw_ArgumentOutOfRangeException___When_parameter_endRowNumber_is_less_than_startRowNumber()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var startRowNumber = 5;
             var startColumnNumber = 30;
@@ -102,7 +102,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRange___Should_throw_ArgumentOutOfRangeException___When_parameter_endColumnNumber_is_less_than_startRowNumber()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var startRowNumber = 5;
             var endRowNumber = 10;
@@ -123,7 +123,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRange___Should_return_range___When_called()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
 
             // Act

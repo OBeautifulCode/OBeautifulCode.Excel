@@ -58,7 +58,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetWidthInPixels___Should_return_width_of_unmerged_cell___When_includeMergedCells_is_true()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells[1, 1];
 
@@ -110,7 +110,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetWidthInPixels___Should_return_width_of_unmerged_cell___When_includeMergedCells_is_false()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells[1, 1];
 
@@ -173,7 +173,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetHeightInPixels___Should_return_Height_of_unmerged_cell___When_includeMergedCells_is_true()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells[1, 1];
 
@@ -225,7 +225,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetHeightInPixels___Should_return_Height_of_unmerged_cell___When_includeMergedCells_is_false()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells[1, 1];
 
@@ -288,7 +288,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetRowNumber___Should_return_row_number_of_cell___When_called()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells["C9"];
 
@@ -313,7 +313,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void GetColumnNumber___Should_return_column_number_of_cell___When_called()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells["C9"];
 
@@ -338,7 +338,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         [Fact]
         public static void ToCellReference___Should_get_the_CellReference_corresponding_to_the_specified_cell___When_called()
         {
-            // Arrange,
+            // Arrange
             var worksheet = A.Dummy<Worksheet>();
             var cell = worksheet.Cells["C9"];
             var expected = new CellReference("Sheet1", 9, 3);
