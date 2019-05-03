@@ -314,6 +314,45 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
+        public static void GetKnownMissing___Should_return_a_missing_cell_reference___When_called()
+        {
+            // Arrange
+            var expected = new CellReference(@" !""#$%&'()+,-.;<=>@^_`{|}~54320", 1, 1);
+
+            // Act
+            var actual = CellReference.GetKnownMissing();
+
+            // Assert
+            actual.Should().Be(expected);
+        }
+
+        [Fact]
+        public static void IsKnownMissing___Should_return_true___When_cellReference_indicates_a_missing_cell()
+        {
+            // Arrange
+            var subjectUnderTest = CellReference.GetKnownMissing();
+
+            // Act
+            var actual = subjectUnderTest.IsKnownMissing();
+
+            // Assert
+            actual.Should().BeTrue();
+        }
+
+        [Fact]
+        public static void IsKnownMissing___Should_return_false___When_cellReference_does_not_indicate_that_the_cell_is_missing()
+        {
+            // Arrange
+            var subjectUnderTest = A.Dummy<CellReference>();
+
+            // Act
+            var actual = subjectUnderTest.IsKnownMissing();
+
+            // Assert
+            actual.Should().BeFalse();
+        }
+
+        [Fact]
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosJsonSerializer()
         {
             // Arrange

@@ -22,6 +22,8 @@ namespace OBeautifulCode.Excel
     {
         private static readonly Regex ValidWorksheetNameRegex = new Regex("^(?!.{32})(?=.*[\x20-\x26\x28-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E]$)[\x20-\x26\x28-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E][\x20-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E]{0,30}$", RegexOptions.Compiled);
 
+        private static readonly CellReference KnownMissingCellReference = new CellReference(@" !""#$%&'()+,-.;<=>@^_`{|}~54320", 1, 1);
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CellReference"/> class.
         /// </summary>
@@ -107,6 +109,34 @@ namespace OBeautifulCode.Excel
             CellReference left,
             CellReference right)
             => !(left == right);
+
+        /// <summary>
+        /// Gets a cell reference to a cell that is known (before de-referencing) to be missing.
+        /// This is used when a cell reference object is required, but it is known/established that
+        /// the cell is missing.
+        /// </summary>
+        /// <returns>
+        /// A cell reference that indicates a known missing cell.
+        /// </returns>
+        public static CellReference GetKnownMissing()
+        {
+            var result = KnownMissingCellReference.DeepClone();
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if this object references a cell that is known (before de-referencing) to be missing.
+        /// </summary>
+        /// <returns>
+        /// true if the cell is known to be missing; otherwise, false.
+        /// </returns>
+        public bool IsKnownMissing()
+        {
+            var result = this == KnownMissingCellReference;
+
+            return result;
+        }
 
         /// <inheritdoc />
         public bool Equals(CellReference other) => this == other;
