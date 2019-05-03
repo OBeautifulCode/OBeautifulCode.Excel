@@ -66,6 +66,7 @@
     <Compile Include="CellCursor.cs" />
     <Compile Include=".recipes\MoreLinq\MoreEnumerable.DistinctBy.cs" />
     <Compile Include="Read\CellExtensions.Read.cs" />
+    <Compile Include="Read\CellReferenceExtensions.Read.cs" />
     <Compile Include="Read\RangeExtensions.Read.cs" />
     <Compile Include="General.cs" />
     <Compile Include="Write\WorkbookExtensions.Write.cs" />
