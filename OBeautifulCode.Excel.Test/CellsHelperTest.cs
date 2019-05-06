@@ -176,7 +176,7 @@ namespace OBeautifulCode.Excel.Test
             foreach (var actual in actuals)
             {
                 actual.Should().BeOfType<ArgumentOutOfRangeException>();
-                actual.Message.Should().Contain("result");
+                actual.Message.Should().Contain("columnNumber");
             }
         }
 

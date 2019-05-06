@@ -40,5 +40,10 @@ namespace OBeautifulCode.Excel
         /// Specifies the maximum 1-based column number in a worksheet.
         /// </summary>
         public const int MaximumColumnNumber = 16384;
+
+        /// <summary>
+        /// The maximum column name.
+        /// </summary>
+        public static readonly string MaximumColumnName = CellsHelper.GetColumnName(Constants.MaximumColumnNumber);
     }
 }

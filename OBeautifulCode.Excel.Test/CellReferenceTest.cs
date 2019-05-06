@@ -353,6 +353,247 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
+        public static void FromA1Reference___Should_throw_ArgumentNullException___When_a1Reference_is_null()
+        {
+            // Arrange
+            var worksheetName = "worksheet";
+
+            // Act
+            var actual = Record.Exception(() => CellReference.FromA1Reference(worksheetName, null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("a1Reference");
+        }
+
+        [Fact]
+        public static void FromA1Reference___Should_throw_ArgumentException___When_a1Reference_is_white_space()
+        {
+            // Arrange
+            var worksheetName = "worksheet";
+
+            // Act
+            var actual = Record.Exception(() => CellReference.FromA1Reference(worksheetName, "  \r\n  "));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentException>();
+            actual.Message.Should().Contain("a1Reference");
+            actual.Message.Should().Contain("white space");
+        }
+
+        [Fact]
+        public static void FromA1Reference___Should_throw_ArgumentException___When_a1Reference_is_invalid()
+        {
+            // Arrange
+            var worksheetName = "worksheet";
+            var a1References = new[] { "A", "5", " A5 ", "AAAA3", "A11111111", "*", "5A", "A5A", "5A5" };
+
+            // Act
+            var actuals = a1References.Select(_ => Record.Exception(() => CellReference.FromA1Reference(worksheetName, _))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentException>();
+                actual.Message.Should().Contain("a1Reference");
+                actual.Message.Should().Contain("is not matched by the specified regex");
+            }
+        }
+
+        [Fact]
+        public static void FromA1Reference___Should_throw_ArgumentOutOfRangeException___When_parsed_column_number_is_greater_than_MaximumColumnNumber()
+        {
+            // Arrange
+            var worksheetName = "worksheet";
+            var a1References = new[] { "XFE1", "ZZZ1" };
+
+            // Act
+            var actuals = a1References.Select(_ => Record.Exception(() => CellReference.FromA1Reference(worksheetName, _))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentOutOfRangeException>();
+                actual.Message.Should().Contain("columnNumber");
+                actual.Message.Should().Contain(Constants.MaximumColumnNumber.ToString());
+            }
+        }
+
+        [Fact]
+        public static void FromA1Reference___Should_throw_ArgumentOutOfRangeException___When_parsed_row_number_is_greater_than_MaximumRowNumber()
+        {
+            // Arrange
+            var worksheetName = "worksheet";
+            var a1References = new[] { "A1048577", "A9999999" };
+
+            // Act
+            var actuals = a1References.Select(_ => Record.Exception(() => CellReference.FromA1Reference(worksheetName, _))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentOutOfRangeException>();
+                actual.Message.Should().Contain("rowNumber");
+                actual.Message.Should().Contain(Constants.MaximumRowNumber.ToString());
+            }
+        }
+
+        [Fact]
+        public static void FromA1Reference___Should_return_CellReference_corresponding_to_specified_a1Reference___When_called()
+        {
+            var worksheetName = "worksheet-234234";
+
+            var a1ReferenceToExpectedCellReferenceMap = new Dictionary<string, CellReference>
+            {
+                { "A1", new CellReference(worksheetName, 1, 1) },
+                { "B1", new CellReference(worksheetName, 1, 2) },
+                { "A2", new CellReference(worksheetName, 2, 1) },
+                { "Z9", new CellReference(worksheetName, 9, 26) },
+                { "Z99", new CellReference(worksheetName, 99, 26) },
+                { "AA1", new CellReference(worksheetName, 1, 27) },
+                { "AZ423", new CellReference(worksheetName, 423, 52) },
+                { "BA99237", new CellReference(worksheetName, 99237, 53) },
+                { "ZY2992", new CellReference(worksheetName, 2992, 701) },
+                { "ZZ1048576", new CellReference(worksheetName, 1048576, 702) },
+                { "AAA1048576", new CellReference(worksheetName, 1048576, 703) },
+                { "AAB1048576", new CellReference(worksheetName, 1048576, 704) },
+                { "OGR1048576", new CellReference(worksheetName, 1048576, 10340) },
+                { "XFD1048576", new CellReference(worksheetName, 1048576, 16384) },
+            };
+
+            var expected = a1ReferenceToExpectedCellReferenceMap.OrderBy(_ => _.Key).Select(_ => _.Value);
+
+            // Act
+            var actual = a1ReferenceToExpectedCellReferenceMap.OrderBy(_ => _.Key).Select(_ => CellReference.FromA1Reference(worksheetName, _.Key)).ToList();
+
+            // Assert
+            expected.Should().Equal(actual);
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_throw_ArgumentNullException___When_worksheetQualifiedA1Reference_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellReference.FromWorksheetQualifiedA1Reference(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("worksheetQualifiedA1Reference");
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_throw_ArgumentException___When_worksheetQualifiedA1Reference_is_white_space()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellReference.FromWorksheetQualifiedA1Reference("  \r\n  "));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentException>();
+            actual.Message.Should().Contain("worksheetQualifiedA1Reference");
+            actual.Message.Should().Contain("white space");
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_throw_ArgumentException___When_worksheetQualifiedA1Reference_does_not_contain_exclamation_point()
+        {
+            // Arrange
+            var worksheetQualifiedA1References = new[] { "A1", "Worksheet", "WorksheetA1" };
+
+            // Act
+            var actuals = worksheetQualifiedA1References.Select(_ => Record.Exception(() => CellReference.FromWorksheetQualifiedA1Reference(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentException>();
+                actual.Message.Should().Contain("worksheetQualifiedA1Reference");
+                actual.Message.Should().Contain("does not contain the item to search for");
+                actual.Message.Should().Contain("!");
+            }
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_throw_ArgumentException___When_worksheetQualifiedA1Reference_contains_invalid_worksheet_name()
+        {
+            // Arrange
+            var worksheetQualifiedA1References = new[] { "!A1", "'!A1", "''!A1", "'''!A1", "''''!A1", "?A1", "'?'!A1" };
+
+            // Act
+            var actuals = worksheetQualifiedA1References.Select(_ => Record.Exception(() => CellReference.FromWorksheetQualifiedA1Reference(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                (actual is ArgumentException).Should().BeTrue();
+            }
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_throw_ArgumentException___When_worksheetQualifiedA1Reference_contains_worksheet_name_not_surrounded_with_single_quotes()
+        {
+            // Arrange
+            var worksheetQualifiedA1References = new[] { "worksheet'!a1", "'worksheet!a1", "worksheet!A1" };
+
+            // Act
+            var actuals = worksheetQualifiedA1References.Select(_ => Record.Exception(() => CellReference.FromWorksheetQualifiedA1Reference(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentException>();
+            }
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_throw_ArgumentException___When_worksheetQualifiedA1Reference_contains_invalid_a1Reference()
+        {
+            // Arrange
+            var worksheetQualifiedA1References = new[] { "'worksheet'!A", "'worksheet'!1", "'worksheet'!A1A" };
+
+            // Act
+            var actuals = worksheetQualifiedA1References.Select(_ => Record.Exception(() => CellReference.FromWorksheetQualifiedA1Reference(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentException>();
+            }
+        }
+
+        [Fact]
+        public static void FromWorksheetQualifiedA1Reference___Should_return_CellReference_corresponding_to_specified_worksheetQualifiedA1Reference___When_called()
+        {
+            var a1ReferenceToExpectedCellReferenceMap = new Dictionary<string, CellReference>
+            {
+                { "'a'!a1", new CellReference("a", 1, 1) },
+                { "'&'!a1", new CellReference("&", 1, 1) },
+                { "'my worksheet'!a1", new CellReference("my worksheet", 1, 1) },
+                { "'my worksheet'!A1", new CellReference("my worksheet", 1, 1) },
+                { "'my worksheet'!B1", new CellReference("my worksheet", 1, 2) },
+                { "'my worksheet'!A2", new CellReference("my worksheet", 2, 1) },
+                { "'my worksheet'!Z9", new CellReference("my worksheet", 9, 26) },
+                { "'my worksheet'!Z99", new CellReference("my worksheet", 99, 26) },
+                { "'my worksheet'!AA1", new CellReference("my worksheet", 1, 27) },
+                { "'my worksheet'!AZ423", new CellReference("my worksheet", 423, 52) },
+                { "'my worksheet'!BA99237", new CellReference("my worksheet", 99237, 53) },
+                { "'my worksheet'!ZY2992", new CellReference("my worksheet", 2992, 701) },
+                { "'my worksheet'!ZZ1048576", new CellReference("my worksheet", 1048576, 702) },
+                { "'my worksheet'!AAA1048576", new CellReference("my worksheet", 1048576, 703) },
+                { "'my worksheet'!AAB1048576", new CellReference("my worksheet", 1048576, 704) },
+                { "'my worksheet'!OGR1048576", new CellReference("my worksheet", 1048576, 10340) },
+                { "'my worksheet'!XFD1048576", new CellReference("my worksheet", 1048576, 16384) },
+            };
+
+            var expected = a1ReferenceToExpectedCellReferenceMap.OrderBy(_ => _.Key).Select(_ => _.Value);
+
+            // Act
+            var actual = a1ReferenceToExpectedCellReferenceMap.OrderBy(_ => _.Key).Select(_ => CellReference.FromWorksheetQualifiedA1Reference(_.Key)).ToList();
+
+            // Assert
+            expected.Should().Equal(actual);
+        }
+
+        [Fact]
         public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosJsonSerializer()
         {
             // Arrange
