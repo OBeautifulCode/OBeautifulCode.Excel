@@ -30,6 +30,33 @@ namespace OBeautifulCode.Excel
             return result;
         }
 
+        /// <summary>
+        /// Gets the 1-based column number for the specified column name.
+        /// </summary>
+        /// <param name="columnName">The column name.</param>
+        /// <returns>
+        /// The 1-based column number.
+        /// </returns>
+        public static int GetColumnNumber(
+            string columnName)
+        {
+            new { columnName }.Must().NotBeNullNorWhiteSpace().And().BeAlphabetic();
+
+            columnName = columnName.ToUpperInvariant();
+
+            var result = 0;
+
+            foreach (var columnNameCharacter in columnName)
+            {
+                result *= 26;
+                result += columnNameCharacter - 'A' + 1;
+            }
+
+            new { result }.Must().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+
+            return result;
+        }
+
         private static string GetColumnNameInternal(
             int columnNumber)
         {

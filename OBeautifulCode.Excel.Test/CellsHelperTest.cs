@@ -78,5 +78,89 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             expected.Should().Equal(actual);
         }
+
+        [Fact]
+        public static void GetColumnNumber___Should_throw_ArgumentNullException___When_parameter_columnName_is_null()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellsHelper.GetColumnNumber(null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("columnName");
+        }
+
+        [Fact]
+        public static void GetColumnNumber___Should_throw_ArgumentException___When_parameter_columnName_is_white_space()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => CellsHelper.GetColumnNumber(" \r\n "));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentException>();
+            actual.Message.Should().Contain("columnName");
+            actual.Message.Should().Contain("white space");
+        }
+
+        [Fact]
+        public static void GetColumnNumber___Should_throw_ArgumentException___When_parameter_columnName_is_not_alphabetic()
+        {
+            var columnNames = new[] { "-", " A", "B ", "4" };
+
+            // Act
+            var actuals = columnNames.Select(_ => Record.Exception(() => CellsHelper.GetColumnNumber(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentException>();
+                actual.Message.Should().Contain("columnName");
+                actual.Message.Should().Contain("alphabetic");
+            }
+        }
+
+        [Fact]
+        public static void GetColumnNumber___Should_return_column_numeric_corresponding_to_columnName___When_called()
+        {
+            var columnNameToExpectedColumnNumberMap = new Dictionary<string, int>
+            {
+                { "A", 1 },
+                { "B", 2 },
+                { "Z", 26 },
+                { "AA", 27 },
+                { "AZ", 52 },
+                { "BA", 53 },
+                { "ZY", 701 },
+                { "ZZ", 702 },
+                { "AAA", 703 },
+                { "AAB", 704 },
+                { "OGR", 10340 },
+                { "XFD", 16384 },
+            };
+
+            var expected = columnNameToExpectedColumnNumberMap.OrderBy(_ => _.Key).Select(_ => _.Value);
+
+            // Act
+            var actual = columnNameToExpectedColumnNumberMap.OrderBy(_ => _.Key).Select(_ => CellsHelper.GetColumnNumber(_.Key)).ToList();
+
+            // Assert
+            expected.Should().Equal(actual);
+        }
+
+        [Fact]
+        public static void GetColumnNumber___Should_throw_ArgumentOutOfRangeException___When_parameter_columnName_corresponds_to_column_number_that_is_greater_than_MaximumColumnNumber()
+        {
+            var columnNames = new[] { "XFE", "ZZZ" };
+
+            // Act
+            var actuals = columnNames.Select(_ => Record.Exception(() => CellsHelper.GetColumnNumber(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentOutOfRangeException>();
+                actual.Message.Should().Contain("result");
+            }
+        }
     }
 }
