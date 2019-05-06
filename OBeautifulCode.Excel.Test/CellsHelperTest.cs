@@ -162,5 +162,21 @@ namespace OBeautifulCode.Excel.Test
                 actual.Message.Should().Contain("result");
             }
         }
+
+        [Fact]
+        public static void GetColumnNumber___Should_roundtrip_columnNumber_through_GetColumnName___When_called()
+        {
+            for (int expected = 1; expected <= Constants.MaximumColumnNumber; expected++)
+            {
+                // Arrange
+                var columnName = CellsHelper.GetColumnName(expected);
+
+                // Act
+                var actual = CellsHelper.GetColumnNumber(columnName);
+
+                // Assert
+                actual.Should().Be(expected);
+            }
+        }
     }
 }
