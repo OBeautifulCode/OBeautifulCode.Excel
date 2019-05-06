@@ -120,6 +120,23 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
+        public static void GetColumnNumber___Should_throw_ArgumentOutOfRangeException___When_parameter_columnName_contains_too_many_characters()
+        {
+            var columnNames = new[] { "abcd", "wierupweiqrupwqieurpwieorupiwqeurpwoierupioqewurpioeurpoiweurpoiweurpioweurioweuriewoureipwurpiweurepwirupweuirwepoiruwepoiru" };
+
+            // Act
+            var actuals = columnNames.Select(_ => Record.Exception(() => CellsHelper.GetColumnNumber(_))).ToList();
+
+            // Assert
+            foreach (var actual in actuals)
+            {
+                actual.Should().BeOfType<ArgumentOutOfRangeException>();
+                actual.Message.Should().Contain("columnNameLength");
+                actual.Message.Should().Contain("3");
+            }
+        }
+
+        [Fact]
         public static void GetColumnNumber___Should_return_column_numeric_corresponding_to_columnName___When_called()
         {
             var columnNameToExpectedColumnNumberMap = new Dictionary<string, int>

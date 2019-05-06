@@ -13,6 +13,8 @@ namespace OBeautifulCode.Excel
     /// </summary>
     public static class CellsHelper
     {
+        private static readonly string MaximumColumnName = GetColumnName(Constants.MaximumColumnNumber);
+
         /// <summary>
         /// Gets the column name for the specified 1-based column number.
         /// </summary>
@@ -41,6 +43,8 @@ namespace OBeautifulCode.Excel
             string columnName)
         {
             new { columnName }.Must().NotBeNullNorWhiteSpace().And().BeAlphabetic();
+            var columnNameLength = columnName.Length;
+            new { columnNameLength }.Must().BeLessThanOrEqualTo(MaximumColumnName.Length);
 
             columnName = columnName.ToUpperInvariant();
 
