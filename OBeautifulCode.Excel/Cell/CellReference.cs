@@ -234,6 +234,6 @@ namespace OBeautifulCode.Excel
         }
 
         /// <inheritdoc />
-        public override string ToString() => this.WorksheetQualifiedA1Reference;
+        public override string ToString() => this.IsKnownMissing() ? "KNOWN MISSING" : this.WorksheetQualifiedA1Reference;
     }
 }
