@@ -6,6 +6,8 @@
 
 namespace OBeautifulCode.Excel.AsposeCells
 {
+    using System.IO;
+
     using Aspose.Cells;
 
     /// <summary>
@@ -25,9 +27,45 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static Workbook CreateStandardWorkbook(
             FileFormatType fileFormatType = FileFormatType.Xlsx)
         {
+            AsposeCellsLicense.ThrowIfNotRegistered();
+
             EnsureSizingOperationsHonorPixelsSpecified();
 
             var result = new Workbook(fileFormatType);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Opens a workbook.
+        /// </summary>
+        /// <param name="stream">A stream with the contents of the workbook.</param>
+        /// <returns>
+        /// An open workbook.
+        /// </returns>
+        public static Workbook OpenWorkbook(
+            Stream stream)
+        {
+            AsposeCellsLicense.ThrowIfNotRegistered();
+
+            var result = new Workbook(stream);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Opens a workbook.
+        /// </summary>
+        /// <param name="filePath">The path to the workbook file.</param>
+        /// <returns>
+        /// An open workbook.
+        /// </returns>
+        public static Workbook OpenWorkbook(
+            string filePath)
+        {
+            AsposeCellsLicense.ThrowIfNotRegistered();
+
+            var result = new Workbook(filePath);
 
             return result;
         }

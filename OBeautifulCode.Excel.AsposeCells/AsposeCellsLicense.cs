@@ -52,10 +52,19 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// </returns>
         public static bool IsRegistered()
         {
-            using (var workbook = new Workbook())
+            lock (RegisterLock)
             {
-                var result = workbook.IsLicensed;
-                return result;
+                // not registered via this class?
+                if (!hasBeenRegistered)
+                {
+                    // determine if registered in some other way
+                    using (var workbook = new Workbook())
+                    {
+                        hasBeenRegistered = workbook.IsLicensed;
+                    }
+                }
+
+                return hasBeenRegistered;
             }
         }
 

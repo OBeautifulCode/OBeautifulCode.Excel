@@ -21,7 +21,9 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         {
             AutoFixtureBackedDummyFactory.AddDummyCreator(() =>
             {
-                var workbook = General.CreateStandardWorkbook();
+                // can't use General.CreateStandardWorkbook because it will throw without a license.
+                var workbook = new Workbook();
+                General.EnsureSizingOperationsHonorPixelsSpecified();
 
                 var result = workbook.Worksheets[0];
 
