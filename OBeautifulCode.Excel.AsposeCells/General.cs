@@ -40,15 +40,18 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Opens a workbook.
         /// </summary>
         /// <param name="stream">A stream with the contents of the workbook.</param>
+        /// <param name="loadOptions">Optional load options to control how workbook is opened.</param>
         /// <returns>
         /// An open workbook.
         /// </returns>
         public static Workbook OpenWorkbook(
-            Stream stream)
+            Stream stream,
+            LoadOptions loadOptions = null)
         {
             AsposeCellsLicense.ThrowIfNotRegistered();
 
-            var result = new Workbook(stream);
+            var workbookLoadOptions = loadOptions ?? new LoadOptions();
+            var result = new Workbook(stream, workbookLoadOptions);
 
             return result;
         }
@@ -57,15 +60,18 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Opens a workbook.
         /// </summary>
         /// <param name="filePath">The path to the workbook file.</param>
+        /// <param name="loadOptions">Optional load options to control how workbook is opened.</param>
         /// <returns>
         /// An open workbook.
         /// </returns>
         public static Workbook OpenWorkbook(
-            string filePath)
+            string filePath,
+            LoadOptions loadOptions = null)
         {
             AsposeCellsLicense.ThrowIfNotRegistered();
 
-            var result = new Workbook(filePath);
+            var workbookLoadOptions = loadOptions ?? new LoadOptions();
+            var result = new Workbook(filePath, workbookLoadOptions);
 
             return result;
         }
