@@ -72,7 +72,7 @@
     <AdditionalFiles Include=".analyzers\stylecop.json" />
     <None Include=".analyzers\release.ruleset" />
     <None Include="nuget-icon.png" />
-    <None Include="OBeautifulCode.Excel.Serialization.Bson.override-nuspec" />
+    <None Include="OBeautifulCode.Excel.Serialization.Json.override-nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
