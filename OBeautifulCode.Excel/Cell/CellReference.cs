@@ -78,7 +78,7 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Gets the worksheet-qualified reference to the cell, using A1 notation (e.g. 'worksheet'!A5).
         /// </summary>
-        public string WorksheetQualifiedA1Reference => Invariant($"'{this.WorksheetName.Replace("'", "''")}'!{A1Reference}");
+        public string WorksheetQualifiedA1Reference => Invariant($"'{this.WorksheetName.Replace("'", "''")}'!{this.A1Reference}");
 
         /// <summary>
         /// Determines whether two objects of type <see cref="CellReference"/> are equal.
