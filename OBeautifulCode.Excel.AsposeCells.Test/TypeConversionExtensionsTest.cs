@@ -71,7 +71,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToCellBorderType__Should_convert_borderStyle_to_a_CellBorderType___When_called()
         {
             // Arrange
-            var borderStyles = EnumExtensions.GetEnumValues<BorderStyle>();
+            var borderStyles = EnumExtensions.GetDefinedEnumValues<BorderStyle>();
             var expected = borderStyles.Select(_ => Enum.Parse(typeof(CellBorderType), _.ToString())).ToList();
 
             // Act
@@ -98,7 +98,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToMsoLineStyle__Should_convert_commentBorderStyle_to_a_MsoLineStyle___When_called()
         {
             // Arrange
-            var commentBorderStyles = EnumExtensions.GetEnumValues<CommentBorderStyle>().Where(_ => _ != CommentBorderStyle.Unknown).ToList();
+            var commentBorderStyles = EnumExtensions.GetDefinedEnumValues<CommentBorderStyle>().Where(_ => _ != CommentBorderStyle.Unknown).ToList();
             var expected = commentBorderStyles.Select(_ => Enum.Parse(typeof(MsoLineStyle), _.ToString())).ToList();
 
             // Act
@@ -123,7 +123,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToValidationType__Should_convert_dataValidationKind_to_a_ValidationType___When_called()
         {
             // Arrange
-            var dataValidationKinds = EnumExtensions.GetEnumValues<DataValidationKind>().Where(_ => _ != DataValidationKind.Unknown).ToList();
+            var dataValidationKinds = EnumExtensions.GetDefinedEnumValues<DataValidationKind>().Where(_ => _ != DataValidationKind.Unknown).ToList();
             var expected = dataValidationKinds.Select(_ => Enum.Parse(typeof(ValidationType), _.ToString())).ToList();
 
             // Act
@@ -185,7 +185,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToValidationAlertType__Should_convert_dataValidationErrorAlertStyle_to_a_ValidationAlertType___When_called()
         {
             // Arrange
-            var dataValidationErrorAlertStyles = EnumExtensions.GetEnumValues<DataValidationErrorAlertStyle>().Where(_ => _ != DataValidationErrorAlertStyle.Unknown).ToList();
+            var dataValidationErrorAlertStyles = EnumExtensions.GetDefinedEnumValues<DataValidationErrorAlertStyle>().Where(_ => _ != DataValidationErrorAlertStyle.Unknown).ToList();
             var expected = dataValidationErrorAlertStyles.Select(_ => Enum.Parse(typeof(ValidationAlertType), _.ToString())).ToList();
 
             // Act
@@ -210,7 +210,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToTextAlignmentType__Should_convert_horizontalAlignment_to_a_TextAlignmentType___When_called()
         {
             // Arrange
-            var horizontalAlignments = EnumExtensions.GetEnumValues<HorizontalAlignment>().Where(_ => _ != HorizontalAlignment.Unknown).ToList();
+            var horizontalAlignments = EnumExtensions.GetDefinedEnumValues<HorizontalAlignment>().Where(_ => _ != HorizontalAlignment.Unknown).ToList();
             var expected = horizontalAlignments.Select(_ => Enum.Parse(typeof(TextAlignmentType), _.ToString())).ToList();
 
             // Act
@@ -235,7 +235,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToTextAlignmentType__Should_convert_verticalAlignment_to_a_TextAlignmentType___When_called()
         {
             // Arrange
-            var verticalAlignments = EnumExtensions.GetEnumValues<VerticalAlignment>().Where(_ => _ != VerticalAlignment.Unknown).ToList();
+            var verticalAlignments = EnumExtensions.GetDefinedEnumValues<VerticalAlignment>().Where(_ => _ != VerticalAlignment.Unknown).ToList();
             var expected = verticalAlignments.Select(_ => Enum.Parse(typeof(TextAlignmentType), _.ToString())).ToList();
 
             // Act
@@ -249,7 +249,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         public static void ToFontUnderlineType__Should_convert_underlineKind_to_a_FontUnderlineType___When_called()
         {
             // Arrange
-            var underlineKinds = EnumExtensions.GetEnumValues<UnderlineKind>().ToList();
+            var underlineKinds = EnumExtensions.GetDefinedEnumValues<UnderlineKind>().ToList();
             var expected = underlineKinds.Select(_ => Enum.Parse(typeof(FontUnderlineType), _.ToString())).ToList();
 
             // Act

@@ -9,7 +9,7 @@ namespace OBeautifulCode.Excel
     using System;
     using System.Diagnostics.CodeAnalysis;
 
-    using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
 
     /// <summary>

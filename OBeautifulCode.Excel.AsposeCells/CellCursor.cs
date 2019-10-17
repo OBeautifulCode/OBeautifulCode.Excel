@@ -12,7 +12,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using static System.FormattableString;
 
@@ -46,9 +46,9 @@ namespace OBeautifulCode.Excel.AsposeCells
             int rowNumber = 1,
             int columnNumber = 1)
         {
-            new { worksheet }.Must().NotBeNull();
-            new { rowNumber }.Must().BeGreaterThanOrEqualTo(1);
-            new { columnNumber }.Must().BeGreaterThanOrEqualTo(1);
+            new { worksheet }.AsArg().Must().NotBeNull();
+            new { rowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
 
             this.Worksheet = worksheet;
             this.RowNumber = rowNumber;
@@ -132,7 +132,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor CloneWithWorksheet(
             Worksheet worksheet)
         {
-            new { worksheet }.Must().NotBeNull();
+            new { worksheet }.AsArg().Must().NotBeNull();
 
             var result = new CellCursor(worksheet)
             {
@@ -243,7 +243,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveDown(
             int by = 1)
         {
-            new { by }.Must().BeGreaterThanOrEqualTo(0);
+            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
 
             this.RowNumber = this.RowNumber + by;
             this.MaxRowNumber = this.RowNumber > this.MaxRowNumber ? this.RowNumber : this.MaxRowNumber;
@@ -263,7 +263,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveUp(
             int by = 1)
         {
-            new { by }.Must().BeGreaterThanOrEqualTo(0);
+            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
 
             if (this.RowNumber - by < this.StartRowNumber)
             {
@@ -286,7 +286,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveRight(
             int by = 1)
         {
-            new { by }.Must().BeGreaterThanOrEqualTo(0);
+            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
 
             this.ColumnNumber = this.ColumnNumber + by;
             this.MaxColumnNumber = this.ColumnNumber > this.MaxColumnNumber ? this.ColumnNumber : this.MaxColumnNumber;
@@ -306,7 +306,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveLeft(
             int by = 1)
         {
-            new { by }.Must().BeGreaterThanOrEqualTo(0);
+            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
 
             if (this.ColumnNumber - by < this.StartColumnNumber)
             {
@@ -330,7 +330,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor AddMarker(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             if (!this.markerNameToCellsMap.ContainsKey(markerName))
             {
@@ -366,7 +366,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor RemoveMarker(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             if (this.markerNameToCellsMap.ContainsKey(markerName))
             {
@@ -388,7 +388,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public bool HasMarker(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             var result = this.markerNameToCellsMap.ContainsKey(markerName);
 
@@ -408,7 +408,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public Range GetMarkedRange(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             if (!this.HasMarker(markerName))
             {
@@ -440,7 +440,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public IReadOnlyList<Cell> GetMarkedCells(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             if (!this.HasMarker(markerName))
             {
@@ -466,7 +466,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public Cell GetMarkedCell(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             var markedCells = this.GetMarkedCells(markerName);
             if (markedCells.Count > 1)
@@ -519,7 +519,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveToMarkedCell(
             string markerName)
         {
-            new { markerName }.Must().NotBeNullNorWhiteSpace();
+            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             var markedCell = this.GetMarkedCell(markerName);
 

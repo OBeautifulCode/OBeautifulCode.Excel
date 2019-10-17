@@ -11,8 +11,8 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
+    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.String.Recipes;
-    using OBeautifulCode.Validation.Recipes;
 
     using static System.FormattableString;
 
@@ -34,7 +34,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public AsposeCellsLicense(
             string licenseXml)
         {
-            new { licenseXml }.Must().NotBeNullNorWhiteSpace();
+            new { licenseXml }.AsArg().Must().NotBeNullNorWhiteSpace();
 
             this.LicenseXml = licenseXml;
         }

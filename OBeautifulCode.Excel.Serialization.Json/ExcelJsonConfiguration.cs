@@ -9,7 +9,7 @@ namespace OBeautifulCode.Excel.Serialization.Json
     using System;
     using System.Collections.Generic;
 
-    using Naos.Serialization.Json;
+    using OBeautifulCode.Serialization.Json;
 
     /// <inheritdoc />
     public class ExcelJsonConfiguration : JsonConfigurationBase

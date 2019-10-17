@@ -8,9 +8,9 @@ namespace OBeautifulCode.Excel
 {
     using System;
 
-    using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
-    using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
     /// A cell that is referenced by a user-specified name.
@@ -29,8 +29,8 @@ namespace OBeautifulCode.Excel
             string name,
             CellReference cell)
         {
-            new { name }.Must().NotBeNullNorWhiteSpace();
-            new { cell }.Must().NotBeNull();
+            new { name }.AsArg().Must().NotBeNullNorWhiteSpace();
+            new { cell }.AsArg().Must().NotBeNull();
 
             this.Name = name;
             this.Cell = cell;

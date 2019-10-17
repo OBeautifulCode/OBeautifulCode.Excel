@@ -11,9 +11,9 @@ namespace OBeautifulCode.Excel
     using System.Globalization;
     using System.Text.RegularExpressions;
 
-    using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
-    using OBeautifulCode.Validation.Recipes;
 
     using static System.FormattableString;
 
@@ -43,9 +43,9 @@ namespace OBeautifulCode.Excel
             int rowNumber,
             int columnNumber)
         {
-            new { worksheetName }.Must().NotBeNullNorWhiteSpace().And().BeMatchedByRegex(ValidWorksheetNameRegex, "Worksheet names must have >= 1 and <= 31 characters.  The first or last character cannot be a single quote (').  Otherwise, all characters are allowed except for the characters in this set: {\\, /, *, [, ], :, ?}.");
-            new { rowNumber }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumRowNumber);
-            new { columnNumber }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+            new { worksheetName }.AsArg().Must().NotBeNullNorWhiteSpace().And().BeMatchedByRegex(ValidWorksheetNameRegex, "Worksheet names must have >= 1 and <= 31 characters.  The first or last character cannot be a single quote (').  Otherwise, all characters are allowed except for the characters in this set: {\\, /, *, [, ], :, ?}.");
+            new { rowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumRowNumber);
+            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
 
             this.WorksheetName = worksheetName;
             this.RowNumber = rowNumber;
@@ -146,7 +146,7 @@ namespace OBeautifulCode.Excel
             string worksheetName,
             string a1Reference)
         {
-            new { a1Reference }.Must().NotBeNullNorWhiteSpace().And().BeMatchedByRegex(ValidA1ReferenceRegex);
+            new { a1Reference }.AsArg().Must().NotBeNullNorWhiteSpace().And().BeMatchedByRegex(ValidA1ReferenceRegex);
 
             var columnNameInReference = ColumnNameInA1ReferenceRegex.Match(a1Reference).Value;
             var rowNumberInReference = RowNumberInA1ReferenceRegex.Match(a1Reference).Value;
@@ -170,20 +170,20 @@ namespace OBeautifulCode.Excel
         public static CellReference FromWorksheetQualifiedA1Reference(
             string worksheetQualifiedA1Reference)
         {
-            new { worksheetQualifiedA1Reference }.Must().NotBeNullNorWhiteSpace().And().Contain('!');
+            new { worksheetQualifiedA1Reference }.AsArg().Must().NotBeNullNorWhiteSpace().And().ContainString("!");
 
             var tokens = worksheetQualifiedA1Reference.Split(new[] { '!' }, 2);
 
             var worksheetNameToken = tokens[0];
 
             var worksheetNameTokenLength = worksheetNameToken.Length;
-            new { worksheetNameTokenLength }.Must().BeGreaterThanOrEqualTo(3);
+            new { worksheetNameTokenLength }.AsArg().Must().BeGreaterThanOrEqualTo(3);
 
             var worksheetNameTokenStartsWithApostrophe = worksheetNameToken.StartsWith("'", StringComparison.OrdinalIgnoreCase);
-            new { worksheetNameTokenStartsWithApostrophe }.Must().BeTrue();
+            new { worksheetNameTokenStartsWithApostrophe }.AsArg().Must().BeTrue();
 
             var worksheetNameTokenEndsWithApostrophe = worksheetNameToken.EndsWith("'", StringComparison.OrdinalIgnoreCase);
-            new { worksheetNameTokenEndsWithApostrophe }.Must().BeTrue();
+            new { worksheetNameTokenEndsWithApostrophe }.AsArg().Must().BeTrue();
 
             var worksheetName = worksheetNameToken.Remove(0, 1);
             worksheetName = worksheetName.Remove(worksheetName.Length - 1, 1);

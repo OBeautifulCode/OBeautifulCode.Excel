@@ -9,7 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBeautifulCode.Excel.Test",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB604C29-EE40-40D3-852F-F9FD7EFF13B8}"
 	ProjectSection(SolutionItems) = preProject
-		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md

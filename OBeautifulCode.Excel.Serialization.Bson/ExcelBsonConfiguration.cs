@@ -9,7 +9,7 @@ namespace OBeautifulCode.Excel.Serialization.Bson
     using System;
     using System.Collections.Generic;
 
-    using Naos.Serialization.Bson;
+    using OBeautifulCode.Serialization.Bson;
 
     /// <inheritdoc />
     public class ExcelBsonConfiguration : BsonConfigurationBase

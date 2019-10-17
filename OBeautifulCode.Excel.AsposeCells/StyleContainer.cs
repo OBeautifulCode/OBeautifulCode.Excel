@@ -11,7 +11,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using Range = Aspose.Cells.Range;
 
@@ -32,8 +32,8 @@ namespace OBeautifulCode.Excel.AsposeCells
             Style style,
             StyleFlag styleFlag)
         {
-            new { style }.Must().NotBeNull();
-            new { styleFlag }.Must().NotBeNull();
+            new { style }.AsArg().Must().NotBeNull();
+            new { styleFlag }.AsArg().Must().NotBeNull();
 
             this.Style = style;
             this.StyleFlag = styleFlag;
@@ -61,7 +61,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static StyleContainer BuildNew(
             Workbook workbook)
         {
-            new { workbook }.Must().NotBeNull();
+            new { workbook }.AsArg().Must().NotBeNull();
 
             var style = workbook.CreateStyle();
             var styleFlag = new StyleFlag();
@@ -82,7 +82,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static StyleContainer BuildUsingExistingCellStyle(
             Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var style = cell.GetStyle();
             var styleFlag = new StyleFlag();
@@ -100,7 +100,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public void ApplyToRange(
             Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             range.ApplyStyle(this.Style, this.StyleFlag);
         }
@@ -113,7 +113,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public void ApplyToCell(
             Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             cell.SetStyle(this.Style, this.StyleFlag);
         }

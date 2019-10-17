@@ -8,7 +8,7 @@ namespace OBeautifulCode.Excel
 {
     using System;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     /// <summary>
     /// Contains various custom format strings.
@@ -47,8 +47,8 @@ namespace OBeautifulCode.Excel
         public static string BuildCommonSeparatedThousandsWithDecimalsNumberFormat(
             int numberOfDecimalPlaces)
         {
-            new { numberOfDecimalPlaces }.Must().BeGreaterThanOrEqualTo(1);
-            new { numberOfDecimalPlaces }.Must().BeLessThanOrEqualTo(30);
+            new { numberOfDecimalPlaces }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            new { numberOfDecimalPlaces }.AsArg().Must().BeLessThanOrEqualTo(30);
 
             var result = "#,##0." + new string('0', numberOfDecimalPlaces);
             return result;

@@ -12,7 +12,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using static System.FormattableString;
 
@@ -34,7 +34,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static IReadOnlyList<int> GetRowNumbers(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var result = Enumerable.Range(range.FirstRow + 1, range.RowCount).ToList();
 
@@ -52,7 +52,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static IReadOnlyList<int> GetColumnNumbers(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var result = Enumerable.Range(range.FirstColumn + 1, range.ColumnCount).ToList();
 
@@ -70,7 +70,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static IReadOnlyCollection<Cell> GetCells(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var result = new List<Cell>();
 
@@ -99,7 +99,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static IReadOnlyCollection<Range> GetCellRanges(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var result = range.GetCells().Select(_ => _.GetRange()).ToList();
 
@@ -117,7 +117,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static CellArea GetCellArea(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var rowNumbers = range.GetRowNumbers();
             var columnNumbers = range.GetColumnNumbers();
@@ -144,7 +144,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static Cell GetUpperLeftmostCell(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var result = range.Worksheet.Cells[range.FirstRow, range.FirstColumn];
 
@@ -162,7 +162,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static string GetName(
             this Range range)
         {
-            new { range }.Must().NotBeNull();
+            new { range }.AsArg().Must().NotBeNull();
 
             var rowNumbers = range.GetRowNumbers();
             var columnNumbers = range.GetColumnNumbers();

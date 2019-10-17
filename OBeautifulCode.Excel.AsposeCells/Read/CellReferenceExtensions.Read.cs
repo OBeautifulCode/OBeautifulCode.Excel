@@ -10,7 +10,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     /// <summary>
     /// Extensions methods on type <see cref="CellReference"/>.
@@ -31,8 +31,8 @@ namespace OBeautifulCode.Excel.AsposeCells
             this CellReference cellReference,
             Workbook workbook)
         {
-            new { cellReference }.Must().NotBeNull();
-            new { workbook }.Must().NotBeNull();
+            new { cellReference }.AsArg().Must().NotBeNull();
+            new { workbook }.AsArg().Must().NotBeNull();
 
             var result = workbook.Worksheets[cellReference.WorksheetName].Cells[cellReference.RowNumber - 1, cellReference.ColumnNumber - 1];
 

@@ -17,7 +17,7 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Aspose.Cells;
     using Aspose.Cells.Drawing;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using static System.FormattableString;
 
@@ -66,13 +66,13 @@ namespace OBeautifulCode.Excel.AsposeCells
             int columnWidthInPixels = Constants.DefaultColumnWidthInPixels,
             ImagesAutoLayoutProcedures autoLayoutProcedures = ImagesAutoLayoutProcedures.AutoSpaceAndAutoAlign)
         {
-            new { cell }.Must().NotBeNull();
-            new { imageUrls }.Must().NotBeNullNorEmptyEnumerable().And().Each().BeNullOrNotWhiteSpace();
-            new { imageWidthScale }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
-            new { imageHeightScale }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
-            new { relativeOrientation }.Must().NotBeEqualTo(ImagesRelativeOrientation.Unknown);
-            new { rowHeightInPixels }.Must().BeGreaterThanOrEqualTo(1);
-            new { columnWidthInPixels }.Must().BeGreaterThanOrEqualTo(1);
+            new { cell }.AsArg().Must().NotBeNull();
+            new { imageUrls }.AsArg().Must().NotBeNullNorEmptyEnumerable().And().Each().BeNullOrNotWhiteSpace();
+            new { imageWidthScale }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
+            new { imageHeightScale }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
+            new { relativeOrientation }.AsArg().Must().NotBeEqualTo(ImagesRelativeOrientation.Unknown);
+            new { rowHeightInPixels }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            new { columnWidthInPixels }.AsArg().Must().BeGreaterThanOrEqualTo(1);
 
             if (relativeOrientation == ImagesRelativeOrientation.Vertical)
             {
@@ -223,7 +223,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Cell cell,
             PaneKinds paneKinds)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             if (paneKinds == PaneKinds.None)
             {
@@ -245,7 +245,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static void SetUnlocked(
             this Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var styleContainer = StyleContainer.BuildUsingExistingCellStyle(cell);
 
@@ -265,7 +265,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Cell cell,
             Comment comment)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             if (comment != null)
             {

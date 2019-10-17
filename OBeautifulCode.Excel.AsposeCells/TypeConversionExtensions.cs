@@ -12,7 +12,7 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Aspose.Cells;
     using Aspose.Cells.Drawing;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using static System.FormattableString;
 
@@ -32,7 +32,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static BorderType ToBorderType(
             this BorderEdges borderEdges)
         {
-            new { borderEdges }.Must().NotBeEqualTo(BorderEdges.Unknown);
+            new { borderEdges }.AsArg().Must().NotBeEqualTo(BorderEdges.Unknown);
 
             var result = default(BorderType);
 
@@ -126,7 +126,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static MsoLineStyle ToMsoLineStyle(
             this CommentBorderStyle commentBorderStyle)
         {
-            new { commentBorderStyle }.Must().NotBeEqualTo(CommentBorderStyle.Unknown);
+            new { commentBorderStyle }.AsArg().Must().NotBeEqualTo(CommentBorderStyle.Unknown);
 
             switch (commentBorderStyle)
             {
@@ -156,7 +156,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static ValidationType ToValidationType(
             this DataValidationKind dataValidationKind)
         {
-            new { dataValidationKind }.Must().NotBeEqualTo(DataValidationKind.Unknown);
+            new { dataValidationKind }.AsArg().Must().NotBeEqualTo(DataValidationKind.Unknown);
 
             switch (dataValidationKind)
             {
@@ -227,7 +227,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static ValidationAlertType ToValidationAlertType(
             this DataValidationErrorAlertStyle dataValidationErrorAlertStyle)
         {
-            new { dataValidationErrorAlertStyle }.Must().NotBeEqualTo(DataValidationErrorAlertStyle.Unknown);
+            new { dataValidationErrorAlertStyle }.AsArg().Must().NotBeEqualTo(DataValidationErrorAlertStyle.Unknown);
 
             switch (dataValidationErrorAlertStyle)
             {
@@ -253,7 +253,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static TextAlignmentType ToTextAlignmentType(
             this HorizontalAlignment horizontalAlignment)
         {
-            new { horizontalAlignment }.Must().NotBeEqualTo(HorizontalAlignment.Unknown);
+            new { horizontalAlignment }.AsArg().Must().NotBeEqualTo(HorizontalAlignment.Unknown);
 
             switch (horizontalAlignment)
             {
@@ -283,7 +283,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static TextAlignmentType ToTextAlignmentType(
             this VerticalAlignment verticalAlignment)
         {
-            new { verticalAlignment }.Must().NotBeEqualTo(VerticalAlignment.Unknown);
+            new { verticalAlignment }.AsArg().Must().NotBeEqualTo(VerticalAlignment.Unknown);
 
             switch (verticalAlignment)
             {
@@ -406,7 +406,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static int ToFormatNumber(
             this Format format)
         {
-            new { format }.Must().NotBeEqualTo(Format.Unknown);
+            new { format }.AsArg().Must().NotBeEqualTo(Format.Unknown);
 
             switch (format)
             {
@@ -499,7 +499,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static string ToBuiltInDocumentPropertyCollectionKey(
             this BuiltInDocumentPropertyKind builtInDocumentPropertyKind)
         {
-            new { builtInDocumentPropertyKind }.Must().NotBeEqualTo(BuiltInDocumentPropertyKind.Unknown);
+            new { builtInDocumentPropertyKind }.AsArg().Must().NotBeEqualTo(BuiltInDocumentPropertyKind.Unknown);
 
             switch (builtInDocumentPropertyKind)
             {

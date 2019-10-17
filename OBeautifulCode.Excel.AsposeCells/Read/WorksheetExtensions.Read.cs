@@ -11,7 +11,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using Range = Aspose.Cells.Range;
 
@@ -45,11 +45,11 @@ namespace OBeautifulCode.Excel.AsposeCells
             int startColumnNumber,
             int endColumnNumber)
         {
-            new { worksheet }.Must().NotBeNull();
-            new { startRowNumber }.Must().BeGreaterThanOrEqualTo(1);
-            new { startColumnNumber }.Must().BeGreaterThanOrEqualTo(1);
-            new { endRowNumber }.Must().BeGreaterThanOrEqualTo(startRowNumber);
-            new { endColumnNumber }.Must().BeGreaterThanOrEqualTo(startColumnNumber);
+            new { worksheet }.AsArg().Must().NotBeNull();
+            new { startRowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            new { startColumnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            new { endRowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(startRowNumber);
+            new { endColumnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(startColumnNumber);
 
             var result = worksheet.Cells.CreateRange(startRowNumber - 1, startColumnNumber - 1, endRowNumber - startRowNumber + 1, endColumnNumber - startColumnNumber + 1);
             return result;
@@ -74,9 +74,9 @@ namespace OBeautifulCode.Excel.AsposeCells
             int rowNumber,
             int columnNumber)
         {
-            new { worksheet }.Must().NotBeNull();
-            new { rowNumber }.Must().BeGreaterThanOrEqualTo(1);
-            new { columnNumber }.Must().BeGreaterThanOrEqualTo(1);
+            new { worksheet }.AsArg().Must().NotBeNull();
+            new { rowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
 
             var result = worksheet.Cells[rowNumber - 1, columnNumber - 1];
             return result;

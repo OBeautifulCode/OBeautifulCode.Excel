@@ -6,7 +6,7 @@
 
 namespace OBeautifulCode.Excel
 {
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     /// <summary>
     /// Helper methods related to cells.
@@ -23,7 +23,7 @@ namespace OBeautifulCode.Excel
         public static string GetColumnName(
             int columnNumber)
         {
-            new { columnNumber }.Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
 
             var result = GetColumnNameInternal(columnNumber);
 
@@ -40,9 +40,9 @@ namespace OBeautifulCode.Excel
         public static int GetColumnNumber(
             string columnName)
         {
-            new { columnName }.Must().NotBeNullNorWhiteSpace().And().BeAlphabetic();
+            new { columnName }.AsArg().Must().NotBeNullNorWhiteSpace().And().BeAlphabetic();
             var columnNameLength = columnName.Length;
-            new { columnNameLength }.Must().BeLessThanOrEqualTo(Constants.MaximumColumnName.Length);
+            new { columnNameLength }.AsArg().Must().BeLessThanOrEqualTo(Constants.MaximumColumnName.Length);
 
             columnName = columnName.ToUpperInvariant();
 
@@ -54,7 +54,7 @@ namespace OBeautifulCode.Excel
                 columnNumber += columnNameCharacter - 'A' + 1;
             }
 
-            new { columnNumber }.Must().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+            new { columnNumber }.AsArg().Must().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
 
             var result = columnNumber;
 

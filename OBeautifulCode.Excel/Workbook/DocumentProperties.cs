@@ -10,7 +10,7 @@ namespace OBeautifulCode.Excel
     using System.Collections.Generic;
     using System.Linq;
 
-    using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -84,8 +84,7 @@ namespace OBeautifulCode.Excel
         /// <inheritdoc />
         public override int GetHashCode() =>
             HashCodeHelper.Initialize()
-                .HashElements(this.BuiltInDocumentPropertyKindToValueMap?.OrderBy(_ => _.Key).Select(_ => _.Key))
-                .HashElements(this.BuiltInDocumentPropertyKindToValueMap?.OrderBy(_ => _.Value).Select(_ => _.Value))
+                .Hash(this.BuiltInDocumentPropertyKindToValueMap)
                 .Value;
 
         /// <inheritdoc />

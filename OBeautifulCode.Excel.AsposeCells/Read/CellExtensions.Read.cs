@@ -12,7 +12,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using MoreLinq;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     using Range = Aspose.Cells.Range;
 
@@ -32,7 +32,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static Range GetRange(
             this Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var result = cell.Worksheet.GetRange(cell.GetRowNumber(), cell.GetRowNumber(), cell.GetColumnNumber(), cell.GetColumnNumber());
             return result;
@@ -51,7 +51,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Cell cell,
             bool includeMergedCells = true)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var result = 0;
 
@@ -86,7 +86,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Cell cell,
             bool includeMergedCells = true)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var result = 0;
 
@@ -119,7 +119,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static int GetRowNumber(
             this Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var result = cell.Row + 1;
             return result;
@@ -136,7 +136,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static int GetColumnNumber(
             this Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var result = cell.Column + 1;
             return result;
@@ -152,7 +152,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static CellReference ToCellReference(
             this Cell cell)
         {
-            new { cell }.Must().NotBeNull();
+            new { cell }.AsArg().Must().NotBeNull();
 
             var result = new CellReference(cell.Worksheet.Name, cell.Row + 1, cell.Column + 1);
 

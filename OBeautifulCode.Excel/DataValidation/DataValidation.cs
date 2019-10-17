@@ -8,9 +8,9 @@ namespace OBeautifulCode.Excel
 {
     using System;
 
-    using OBeautifulCode.Math.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
-    using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
     /// Represents validation applied to data entered by a user.
@@ -194,7 +194,7 @@ namespace OBeautifulCode.Excel
         protected static int GetHashCode(
             DataValidation item)
         {
-            new { item }.Must().NotBeNull();
+            new { item }.AsArg().Must().NotBeNull();
 
             var result = HashCodeHelper.Initialize()
                 .Hash(item.Kind)

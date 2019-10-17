@@ -10,7 +10,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     /// <summary>
     /// Extensions methods on type <see cref="Workbook"/>.
@@ -28,7 +28,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static Worksheet AddTemporaryWorksheet(
             this Workbook workbook)
         {
-            new { workbook }.Must().NotBeNull();
+            new { workbook }.AsArg().Must().NotBeNull();
 
             var worksheetName = Guid.NewGuid().ToString().Substring(0, 31);
             var worksheet = workbook.Worksheets.Add(worksheetName);
@@ -43,7 +43,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static void RemoveDefaultWorksheet(
             this Workbook workbook)
         {
-            new { workbook }.Must().NotBeNull();
+            new { workbook }.AsArg().Must().NotBeNull();
 
             workbook.Worksheets.RemoveAt(0);
         }
@@ -58,7 +58,7 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Workbook workbook,
             DocumentProperties documentProperties)
         {
-            new { workbook }.Must().NotBeNull();
+            new { workbook }.AsArg().Must().NotBeNull();
 
             if (documentProperties != null)
             {

@@ -14,12 +14,11 @@ namespace OBeautifulCode.Excel.Test
 
     using FluentAssertions;
 
-    using Naos.Serialization.Bson;
-    using Naos.Serialization.Json;
-
     using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.Excel.Serialization.Bson;
     using OBeautifulCode.Excel.Serialization.Json;
+    using OBeautifulCode.Serialization.Bson;
+    using OBeautifulCode.Serialization.Json;
 
     using Xunit;
 
@@ -594,11 +593,11 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosJsonSerializer()
+        public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_ObcJsonSerializer()
         {
             // Arrange
             var expected = A.Dummy<CellReference>();
-            var serializer = new NaosJsonSerializer(typeof(ExcelJsonConfiguration));
+            var serializer = new ObcJsonSerializer(typeof(ExcelJsonConfiguration));
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act
@@ -609,11 +608,11 @@ namespace OBeautifulCode.Excel.Test
         }
 
         [Fact]
-        public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_NaosBsonSerializer()
+        public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_ObcBsonSerializer()
         {
             // Arrange
             var expected = A.Dummy<CellReference>();
-            var serializer = new NaosBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
+            var serializer = new ObcBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
 
             var serializedBson = serializer.SerializeToString(expected);
 

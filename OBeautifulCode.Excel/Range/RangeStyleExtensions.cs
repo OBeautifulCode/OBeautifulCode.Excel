@@ -9,7 +9,7 @@ namespace OBeautifulCode.Excel
     using System;
     using System.Drawing;
 
-    using OBeautifulCode.Validation.Recipes;
+    using OBeautifulCode.Assertion.Recipes;
 
     /// <summary>
     /// Extension methods on type <see cref="RangeStyle"/>.
@@ -29,7 +29,7 @@ namespace OBeautifulCode.Excel
             this RangeStyle rangeStyle,
             Color? fontColor)
         {
-            new { rangeStyle }.Must().NotBeNull();
+            new { rangeStyle }.AsArg().Must().NotBeNull();
 
             var result = rangeStyle.DeepClone();
             result.FontColor = fontColor;
@@ -50,7 +50,7 @@ namespace OBeautifulCode.Excel
             this RangeStyle rangeStyle,
             int? fontSize)
         {
-            new { rangeStyle }.Must().NotBeNull();
+            new { rangeStyle }.AsArg().Must().NotBeNull();
 
             var result = rangeStyle.DeepClone();
             result.FontSize = fontSize;
@@ -71,7 +71,7 @@ namespace OBeautifulCode.Excel
             this RangeStyle rangeStyle,
             bool? fontIsBold)
         {
-            new { rangeStyle }.Must().NotBeNull();
+            new { rangeStyle }.AsArg().Must().NotBeNull();
 
             var result = rangeStyle.DeepClone();
             result.FontIsBold = fontIsBold;
@@ -91,7 +91,7 @@ namespace OBeautifulCode.Excel
             this RangeStyle rangeStyle,
             Color? backgroundColor)
         {
-            new { rangeStyle }.Must().NotBeNull();
+            new { rangeStyle }.AsArg().Must().NotBeNull();
 
             var result = rangeStyle.DeepClone();
             result.BackgroundColor = backgroundColor;
@@ -112,7 +112,7 @@ namespace OBeautifulCode.Excel
             this RangeStyle rangeStyle,
             int? rowHeightInPixels)
         {
-            new { rangeStyle }.Must().NotBeNull();
+            new { rangeStyle }.AsArg().Must().NotBeNull();
 
             var result = rangeStyle.DeepClone();
             result.RowHeightInPixels = rowHeightInPixels;
@@ -133,7 +133,7 @@ namespace OBeautifulCode.Excel
             this RangeStyle rangeStyle,
             int? columnWidthInPixels)
         {
-            new { rangeStyle }.Must().NotBeNull();
+            new { rangeStyle }.AsArg().Must().NotBeNull();
 
             var result = rangeStyle.DeepClone();
             result.ColumnWidthInPixels = columnWidthInPixels;
