@@ -505,9 +505,8 @@ namespace OBeautifulCode.Excel.Test
             foreach (var actual in actuals)
             {
                 actual.Should().BeOfType<ArgumentException>();
-                actual.Message.Should().Contain("worksheetQualifiedA1Reference");
-                actual.Message.Should().Contain("does not contain the item to search for");
-                actual.Message.Should().Contain("!");
+                actual.Message.Should().Contain("Provided value (name: 'worksheetQualifiedA1Reference') does not contain the specified comparison value.");
+                actual.Message.Should().Contain("Specified 'comparisonValue' is '!'");
             }
         }
 
