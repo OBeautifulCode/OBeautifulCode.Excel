@@ -17,13 +17,17 @@ namespace OBeautifulCode.Excel.Test
     using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.Math.Recipes;
 
-    /// <inheritdoc />
-#if !OBeautifulCodeExcelRecipesProject
-    [System.Diagnostics.DebuggerStepThrough]
+    /// <summary>
+    /// Create dummy objects for types in <see cref="OBeautifulCode.Compression" />.
+    /// </summary>
+#if !OBeautifulCodeCompressionRecipesProject
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-    [System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.Excel", "See package version number")]
+    [System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.Compression.Recipes", "See package version number")]
+    internal
+#else
+    public
 #endif
-    public class ExcelDummyFactory : IDummyFactory
+    class ExcelDummyFactory : IDummyFactory
     {
         public ExcelDummyFactory()
         {
