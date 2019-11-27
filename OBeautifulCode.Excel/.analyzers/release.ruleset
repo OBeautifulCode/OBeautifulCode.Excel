@@ -93,7 +93,7 @@
             string productVersion,
             bool   runningAsAdmin)
         {
-            new { name }.AsArg().Must().NotBeNullNorWhiteSpace();
+            new { name }.Must().NotBeNullNorWhiteSpace();
 
             this.Name           = name;
             this.FilePath       = filePath;
