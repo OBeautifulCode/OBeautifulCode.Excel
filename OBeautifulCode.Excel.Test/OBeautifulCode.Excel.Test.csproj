@@ -185,23 +185,23 @@
     <Compile Include=".recipes\OBeautifulCode.Type\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
-    <Compile Include="NamedCellTest.cs" />
-    <Compile Include="CellReferenceTest.cs" />
-    <Compile Include="CellsHelperTest.cs" />
-    <Compile Include="DocumentPropertiesTest.cs" />
+    <Compile Include="Cell\NamedCellTest.cs" />
+    <Compile Include="Cell\CellReferenceTest.cs" />
+    <Compile Include="Cell\CellsHelperTest.cs" />
+    <Compile Include="Workbook\DocumentPropertiesTest.cs" />
     <Compile Include="ExcelDummyFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BorderTest.cs" />
-    <Compile Include="CellValueConditionalFormattingRuleTest.cs" />
-    <Compile Include="CustomFormatStringTest.cs" />
-    <Compile Include="DataValidationTest.cs" />
-    <Compile Include="RangeStyleExtensionsTest.cs" />
-    <Compile Include="RangeStyleTest.cs" />
-    <Compile Include="CommentTest.cs" />
-    <Compile Include="NumericDataValidationTest.cs" />
-    <Compile Include="TextDataValidationTest.cs" />
-    <Compile Include="WorksheetProtectionTest.cs" />
+    <Compile Include="Border\BorderTest.cs" />
+    <Compile Include="ConditionalFormatting\CellValueConditionalFormattingRuleTest.cs" />
+    <Compile Include="Formatting\CustomFormatStringTest.cs" />
+    <Compile Include="DataValidation\DataValidationTest.cs" />
+    <Compile Include="Range\RangeStyleExtensionsTest.cs" />
+    <Compile Include="Range\RangeStyleTest.cs" />
+    <Compile Include="Comment\CommentTest.cs" />
+    <Compile Include="DataValidation\NumericDataValidationTest.cs" />
+    <Compile Include="DataValidation\TextDataValidationTest.cs" />
+    <Compile Include="Worksheet\WorksheetProtectionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OBeautifulCode.Excel.Serialization.Bson\OBeautifulCode.Excel.Serialization.Bson.csproj">
@@ -235,6 +235,7 @@
   <ItemGroup>
     <Content Include=".analyzers\dictionary.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
