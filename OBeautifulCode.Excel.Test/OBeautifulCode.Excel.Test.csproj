@@ -188,6 +188,9 @@
     <Compile Include="Cell\NamedCellTest.cs" />
     <Compile Include="Cell\CellReferenceTest.cs" />
     <Compile Include="Cell\CellsHelperTest.cs" />
+    <Compile Include="ExcelDummyFactory.designer.cs">
+      <DependentUpon>ExcelDummyFactory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workbook\DocumentPropertiesTest.cs" />
     <Compile Include="ExcelDummyFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />

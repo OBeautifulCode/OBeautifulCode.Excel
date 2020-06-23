@@ -91,6 +91,9 @@
     <Compile Include="..\OBeautifulCode.Excel.Test\ExcelDummyFactory.cs">
       <Link>ExcelDummyFactory.cs</Link>
     </Compile>
+    <Compile Include="..\OBeautifulCode.Excel.Test\ExcelDummyFactory.designer.cs">
+      <Link>ExcelDummyFactory.designer.cs</Link>
+    </Compile>
     <Compile Include=".analyzers\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\Actions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\ApplyBecause.cs" />
