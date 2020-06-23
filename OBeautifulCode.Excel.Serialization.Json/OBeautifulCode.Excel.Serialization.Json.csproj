@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".analyzers\SuppressBecause.cs" />
-    <Compile Include="ExcelJsonConfiguration.cs" />
+    <Compile Include="ExcelJsonSerializationConfiguration.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

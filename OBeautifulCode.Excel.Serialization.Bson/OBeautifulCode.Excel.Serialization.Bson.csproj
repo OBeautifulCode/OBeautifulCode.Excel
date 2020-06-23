@@ -65,7 +65,7 @@
   <ItemGroup>
     <Compile Include=".analyzers\SuppressBecause.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="ExcelBsonConfiguration.cs" />
+    <Compile Include="ExcelBsonSerializationConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

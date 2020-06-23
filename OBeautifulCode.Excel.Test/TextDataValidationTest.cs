@@ -353,7 +353,7 @@ namespace OBeautifulCode.Excel.Test
         {
             // Arrange
             var expected = A.Dummy<TextDataValidation>();
-            var serializer = new ObcJsonSerializer(typeof(ExcelJsonConfiguration));
+            var serializer = new ObcJsonSerializer(typeof(ExcelJsonSerializationConfiguration).ToJsonSerializationConfigurationType());
             var serializedJson = serializer.SerializeToString(expected);
 
             // Act
@@ -368,7 +368,7 @@ namespace OBeautifulCode.Excel.Test
         {
             // Arrange
             var expected = A.Dummy<TextDataValidation>();
-            var serializer = new ObcBsonSerializer(configurationType: typeof(ExcelBsonConfiguration));
+            var serializer = new ObcBsonSerializer(typeof(ExcelBsonSerializationConfiguration).ToBsonSerializationConfigurationType());
 
             var serializedBson = serializer.SerializeToString(expected);
 
