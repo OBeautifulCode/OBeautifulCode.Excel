@@ -23,6 +23,7 @@ namespace OBeautifulCode.Excel.Serialization.Bson
             typeof(DataValidation).ToTypeToRegisterForBson(),
             typeof(DocumentProperties).ToTypeToRegisterForBson(),
             typeof(WorksheetProtection).ToTypeToRegisterForBson(),
+            typeof(WorkbookProtection).ToTypeToRegisterForBson(),
             typeof(RangeStyle).ToTypeToRegisterForBson(),
             typeof(CellValueConditionalFormattingRule).ToTypeToRegisterForBson(),
             typeof(CellReference).ToTypeToRegisterForBson(),

@@ -23,6 +23,7 @@ namespace OBeautifulCode.Excel.Serialization.Json
             typeof(DataValidation).ToTypeToRegisterForJson(),
             typeof(DocumentProperties).ToTypeToRegisterForJson(),
             typeof(WorksheetProtection).ToTypeToRegisterForJson(),
+            typeof(WorkbookProtection).ToTypeToRegisterForJson(),
             typeof(RangeStyle).ToTypeToRegisterForJson(),
             typeof(CellValueConditionalFormattingRule).ToTypeToRegisterForJson(),
             typeof(CellReference).ToTypeToRegisterForJson(),
