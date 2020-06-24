@@ -6,16 +6,12 @@
 
 namespace OBeautifulCode.Excel
 {
-    using System;
-
-    using OBeautifulCode.Assertion.Recipes;
-    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
 
     /// <summary>
     /// Represents validation applied to data entered by a user.
     /// </summary>
-    public abstract class DataValidation : IEquatable<DataValidation>, IDeepCloneable<DataValidation>
+    public abstract partial class DataValidation : IModelViaCodeGen
     {
         /// <summary>
         /// Gets or sets the kind of validation to perform.
@@ -91,128 +87,5 @@ namespace OBeautifulCode.Excel
         /// Gets the second operand value.
         /// </summary>
         public abstract object Operand2Value { get; }
-
-        /// <summary>
-        /// Determines whether two objects of type <see cref="DataValidation" /> are equal.
-        /// </summary>
-        /// <param name="left">The first item to compare.</param>
-        /// <param name="right">The second item to compare.</param>
-        /// <returns>true if the two items are equal; false otherwise.</returns>
-        public static bool operator ==(
-            DataValidation left,
-            DataValidation right)
-        {
-            if (ReferenceEquals(left, right))
-            {
-                return true;
-            }
-
-            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
-            {
-                return false;
-            }
-
-            var result = left.Equals((object)right);
-            return result;
-        }
-
-        /// <summary>
-        /// Determines whether two objects of type <see cref="DataValidation" /> are not equal.
-        /// </summary>
-        /// <param name="left">The first item to compare.</param>
-        /// <param name="right">The second item to compare.</param>
-        /// <returns>true if the two item are not equal; false otherwise.</returns>
-        public static bool operator !=(
-            DataValidation left,
-            DataValidation right)
-            => !(left == right);
-
-        /// <inheritdoc />
-        public bool Equals(
-            DataValidation other)
-            => this == other;
-
-        /// <inheritdoc />
-        public abstract override bool Equals(
-            object obj);
-
-        /// <inheritdoc />
-        public abstract override int GetHashCode();
-
-        /// <inheritdoc />
-        public object Clone() => this.DeepClone();
-
-        /// <inheritdoc />
-        public abstract DataValidation DeepClone();
-
-        /// <summary>
-        /// Determines whether two objects of type <see cref="DataValidation"/> are equal.
-        /// </summary>
-        /// <param name="left">The object to the left of the operator.</param>
-        /// <param name="right">The object to the right of the operator.</param>
-        /// <returns>True if the two items are equal; false otherwise.</returns>
-        protected static bool Equals(
-            DataValidation left,
-            DataValidation right)
-        {
-            if (ReferenceEquals(left, right))
-            {
-                return true;
-            }
-
-            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
-            {
-                return false;
-            }
-
-            var result =
-                (left.Kind == right.Kind) &&
-                (left.Operator == right.Operator) &&
-                (left.Operand1Formula == right.Operand1Formula) &&
-                (left.Operand2Formula == right.Operand2Formula) &&
-                (left.IgnoreBlank == right.IgnoreBlank) &&
-                (left.ShowInputMessage == right.ShowInputMessage) &&
-                (left.InputMessageTitle == right.InputMessageTitle) &&
-                (left.InputMessageBody == right.InputMessageBody) &&
-                (left.ShowErrorAlertAfterInvalidDataIsEntered == right.ShowErrorAlertAfterInvalidDataIsEntered) &&
-                (left.ErrorAlertStyle == right.ErrorAlertStyle) &&
-                (left.ErrorAlertTitle == right.ErrorAlertTitle) &&
-                (left.ErrorAlertBody == right.ErrorAlertBody) &&
-                (left.ShowListDropdown == right.ShowListDropdown);
-
-            return result;
-        }
-
-        /// <summary>
-        /// Gets the hash code for the specified item.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        /// <returns>
-        /// A hash code for the specified item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="item"/> is null.</exception>
-        protected static int GetHashCode(
-            DataValidation item)
-        {
-            new { item }.AsArg().Must().NotBeNull();
-
-            var result = HashCodeHelper.Initialize()
-                .Hash(item.Kind)
-                .Hash(item.Operator)
-                .Hash(item.Operand1Formula)
-                .Hash(item.Operand2Formula)
-                .Hash(item.IgnoreBlank)
-                .Hash(item.ShowInputMessage)
-                .Hash(item.InputMessageTitle)
-                .Hash(item.InputMessageBody)
-                .Hash(item.ShowErrorAlertAfterInvalidDataIsEntered)
-                .Hash(item.ErrorAlertStyle)
-                .Hash(item.ErrorAlertTitle)
-                .Hash(item.ErrorAlertBody)
-                .Hash(item.ShowListDropdown)
-                .Value;
-
-            return result;
-        }
     }
 }

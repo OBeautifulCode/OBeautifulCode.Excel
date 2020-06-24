@@ -14,52 +14,44 @@ namespace OBeautifulCode.Excel.Test
 
     using FluentAssertions;
 
-    using OBeautifulCode.AutoFakeItEasy;
-    using OBeautifulCode.Excel.Serialization.Bson;
-    using OBeautifulCode.Excel.Serialization.Json;
-    using OBeautifulCode.Serialization.Bson;
-    using OBeautifulCode.Serialization.Json;
+    using OBeautifulCode.CodeGen.ModelObject.Recipes;
 
     using Xunit;
 
-    public static class CellReferenceTest
+    public static partial class CellReferenceTest
     {
-        private static readonly CellReference ObjectForEquatableTests = A.Dummy<CellReference>();
-
-        private static readonly CellReference ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests =
-            new CellReference(ObjectForEquatableTests.WorksheetName, ObjectForEquatableTests.RowNumber, ObjectForEquatableTests.ColumnNumber);
-
-        private static readonly CellReference[] ObjectsThatAreNotEqualToObjectForEquatableTests =
+        static CellReferenceTest()
         {
-            A.Dummy<CellReference>(),
-            new CellReference("worksheet-" + A.Dummy<Guid>().ToString().Substring(1, 10), ObjectForEquatableTests.RowNumber, ObjectForEquatableTests.ColumnNumber),
-            new CellReference(ObjectForEquatableTests.WorksheetName, A.Dummy<PositiveInteger>().ThatIs(_ => (_ <= Constants.MaximumRowNumber) && (_ != ObjectForEquatableTests.RowNumber)), ObjectForEquatableTests.ColumnNumber),
-            new CellReference(ObjectForEquatableTests.WorksheetName, ObjectForEquatableTests.RowNumber, A.Dummy<PositiveInteger>().ThatIs(_ => (_ <= Constants.MaximumColumnNumber) && (_ != ObjectForEquatableTests.ColumnNumber))),
-        };
+            StringRepresentationTestScenarios
+                .RemoveAllScenarios()
+                .AddScenario(
+                    new StringRepresentationTestScenario<CellReference>
+                    {
+                        Name = "ToString() should return 'KNOWN MISSING' when the cell is Known Missing.",
+                        SystemUnderTestExpectedStringRepresentationFunc = () =>
+                            new SystemUnderTestExpectedStringRepresentation<CellReference>
+                            {
+                                SystemUnderTest = CellReference.GetKnownMissing(),
+                                ExpectedStringRepresentation = "KNOWN MISSING",
+                            },
+                    })
+                .AddScenario(
+                    new StringRepresentationTestScenario<CellReference>
+                    {
+                        Name = "ToString() should return WorksheetQualifiedA1Reference when cell is NOT Known Missing.",
+                        SystemUnderTestExpectedStringRepresentationFunc = () =>
+                        {
+                            var systemUnderTest = A.Dummy<CellReference>();
 
-        private static readonly string ObjectThatIsNotTheSameTypeAsObjectForEquatableTests = A.Dummy<string>();
+                            var result = new SystemUnderTestExpectedStringRepresentation<CellReference>
+                            {
+                                SystemUnderTest = systemUnderTest,
+                                ExpectedStringRepresentation = systemUnderTest.WorksheetQualifiedA1Reference,
+                            };
 
-        [Fact]
-        public static void Constructor___Should_throw_ArgumentNullException___When_parameter_worksheetName_is_null()
-        {
-            // Arrange, Act
-            var actual = Record.Exception(() => new CellReference(null, 1, 1));
-
-            // Assert
-            actual.Should().BeOfType<ArgumentNullException>();
-            actual.Message.Should().Contain("worksheetName");
-        }
-
-        [Fact]
-        public static void Constructor___Should_throw_ArgumentException___When_parameter_worksheetName_is_white_space()
-        {
-            // Arrange, Act
-            var actual = Record.Exception(() => new CellReference(" \r\n  ", 1, 1));
-
-            // Assert
-            actual.Should().BeOfType<ArgumentException>();
-            actual.Message.Should().Contain("worksheetName");
-            actual.Message.Should().Contain("white space");
+                            return result;
+                        },
+                    });
         }
 
         [Fact]
@@ -221,50 +213,6 @@ namespace OBeautifulCode.Excel.Test
             {
                 actual.Should().BeNull();
             }
-        }
-
-        [Fact]
-        public static void WorksheetName___Should_return_same_worksheetName_passed_to_constructor___When_called()
-        {
-            // Arrange
-            var expected = "my-worksheet";
-            var systemUnderTest = new CellReference(expected, 1, 1);
-
-            // Act
-            var actual = systemUnderTest.WorksheetName;
-
-            // Assert
-            actual.Should().Be(expected);
-        }
-
-        [Fact]
-        public static void RowNumber___Should_return_same_rowNumber_passed_to_constructor___When_called()
-        {
-            // Arrange
-            var worksheetName = "my-worksheet";
-            var expected = A.Dummy<PositiveInteger>().ThatIs(_ => _ <= Constants.MaximumRowNumber);
-            var systemUnderTest = new CellReference(worksheetName, expected, 1);
-
-            // Act
-            var actual = systemUnderTest.RowNumber;
-
-            // Assert
-            actual.Should().Be(expected);
-        }
-
-        [Fact]
-        public static void ColumnNumber___Should_return_same_columnNumber_passed_to_constructor___When_called()
-        {
-            // Arrange
-            var worksheetName = "my-worksheet";
-            var expected = A.Dummy<PositiveInteger>().ThatIs(_ => _ <= Constants.MaximumColumnNumber);
-            var systemUnderTest = new CellReference(worksheetName, 1, expected);
-
-            // Act
-            var actual = systemUnderTest.ColumnNumber;
-
-            // Assert
-            actual.Should().Be(expected);
         }
 
         [Fact]
@@ -589,288 +537,6 @@ namespace OBeautifulCode.Excel.Test
 
             // Assert
             expected.Should().Equal(actual);
-        }
-
-        [Fact]
-        public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_ObcJsonSerializer()
-        {
-            // Arrange
-            var expected = A.Dummy<CellReference>();
-            var serializer = new ObcJsonSerializer(typeof(ExcelJsonSerializationConfiguration).ToJsonSerializationConfigurationType());
-            var serializedJson = serializer.SerializeToString(expected);
-
-            // Act
-            var actual = serializer.Deserialize<CellReference>(serializedJson);
-
-            // Assert
-            actual.Should().Be(expected);
-        }
-
-        [Fact]
-        public static void Deserialize___Should_roundtrip_object___When_serializing_and_deserializing_using_ObcBsonSerializer()
-        {
-            // Arrange
-            var expected = A.Dummy<CellReference>();
-            var serializer = new ObcBsonSerializer(typeof(ExcelBsonSerializationConfiguration).ToBsonSerializationConfigurationType());
-
-            var serializedBson = serializer.SerializeToString(expected);
-
-            // Act
-            var actual = serializer.Deserialize<CellReference>(serializedBson);
-
-            // Assert
-            actual.Should().Be(expected);
-        }
-
-        [Fact]
-        public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
-        {
-            // Arrange
-            CellReference systemUnderTest1 = null;
-            CellReference systemUnderTest2 = null;
-
-            // Act
-            var result = systemUnderTest1 == systemUnderTest2;
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void EqualsOperator___Should_return_false___When_one_side_of_operator_is_null_and_the_other_side_is_not_null()
-        {
-            // Arrange
-            CellReference systemUnderTest = null;
-
-            // Act
-            var result1 = systemUnderTest == ObjectForEquatableTests;
-            var result2 = ObjectForEquatableTests == systemUnderTest;
-
-            // Assert
-            result1.Should().BeFalse();
-            result2.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void EqualsOperator___Should_return_true___When_same_object_is_on_both_sides_of_operator()
-        {
-            // Arrange, Act
-#pragma warning disable CS1718 // Comparison made to same variable
-            var result = ObjectForEquatableTests == ObjectForEquatableTests;
-#pragma warning restore CS1718 // Comparison made to same variable
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void EqualsOperator___Should_return_false___When_objects_being_compared_have_different_property_values()
-        {
-            // Arrange, Act
-            var results = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => ObjectForEquatableTests == _).ToList();
-
-            // Assert
-            results.ForEach(_ => _.Should().BeFalse());
-        }
-
-        [Fact]
-        public static void EqualsOperator___Should_return_true___When_objects_being_compared_have_same_property_values()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests == ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests;
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
-        {
-            // Arrange
-            CellReference systemUnderTest1 = null;
-            CellReference systemUnderTest2 = null;
-
-            // Act
-            var result = systemUnderTest1 != systemUnderTest2;
-
-            // Assert
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void NotEqualsOperator___Should_return_true___When_one_side_of_operator_is_null_and_the_other_side_is_not_null()
-        {
-            // Arrange
-            CellReference systemUnderTest = null;
-
-            // Act
-            var result1 = systemUnderTest != ObjectForEquatableTests;
-            var result2 = ObjectForEquatableTests != systemUnderTest;
-
-            // Assert
-            result1.Should().BeTrue();
-            result2.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void NotEqualsOperator___Should_return_false___When_same_object_is_on_both_sides_of_operator()
-        {
-            // Arrange, Act
-#pragma warning disable CS1718 // Comparison made to same variable
-            var result = ObjectForEquatableTests != ObjectForEquatableTests;
-#pragma warning restore CS1718 // Comparison made to same variable
-
-            // Assert
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void NotEqualsOperator___Should_return_true___When_objects_being_compared_have_different_property_values()
-        {
-            // Arrange, Act
-            var results = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => ObjectForEquatableTests != _).ToList();
-
-            // sAssert
-            results.ForEach(_ => _.Should().BeTrue());
-        }
-
-        [Fact]
-        public static void NotEqualsOperator___Should_return_false___When_objects_being_compared_have_same_property_values()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests != ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests;
-
-            // Assert
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void Equals_with_CellReference___Should_return_false___When_parameter_other_is_null()
-        {
-            // Arrange
-            CellReference systemUnderTest = null;
-
-            // Act
-            var result = ObjectForEquatableTests.Equals(systemUnderTest);
-
-            // Assert
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void Equals_with_CellReference___Should_return_true___When_parameter_other_is_same_object()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests.Equals(ObjectForEquatableTests);
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void Equals_with_CellReference___Should_return_false___When_objects_being_compared_have_different_property_values()
-        {
-            // Arrange, Act
-            var results = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => ObjectForEquatableTests.Equals(_)).ToList();
-
-            // Assert
-            results.ForEach(_ => _.Should().BeFalse());
-        }
-
-        [Fact]
-        public static void Equals_with_CellReference___Should_return_true___When_objects_being_compared_have_same_property_values()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests.Equals(ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests);
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void Equals_with_Object___Should_return_false___When_parameter_other_is_null()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests.Equals(null);
-
-            // Assert
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void Equals_with_Object___Should_return_false___When_parameter_other_is_not_of_the_same_type()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests.Equals((object)ObjectThatIsNotTheSameTypeAsObjectForEquatableTests);
-
-            // Assert
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public static void Equals_with_Object___Should_return_true___When_parameter_other_is_same_object()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests.Equals((object)ObjectForEquatableTests);
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void Equals_with_Object___Should_return_false___When_objects_being_compared_have_different_property_values()
-        {
-            // Arrange, Act
-            var results = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => ObjectForEquatableTests.Equals((object)_)).ToList();
-
-            // Assert
-            results.ForEach(_ => _.Should().BeFalse());
-        }
-
-        [Fact]
-        public static void Equals_with_Object___Should_return_true___When_objects_being_compared_have_same_property_values()
-        {
-            // Arrange, Act
-            var result = ObjectForEquatableTests.Equals((object)ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests);
-
-            // Assert
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public static void GetHashCode___Should_not_be_equal_for_two_objects___When_objects_have_different_property_values()
-        {
-            // Arrange, Act
-            var hashCode1 = ObjectForEquatableTests.GetHashCode();
-            var hashCode2 = ObjectsThatAreNotEqualToObjectForEquatableTests.Select(_ => _.GetHashCode()).ToList();
-
-            // Assert
-            hashCode2.ForEach(_ => _.Should().NotBe(hashCode1));
-        }
-
-        [Fact]
-        public static void GetHashCode___Should_be_equal_for_two_objects___When_objects_have_the_same_property_values()
-        {
-            // Arrange, Act
-            var hash1 = ObjectForEquatableTests.GetHashCode();
-            var hash2 = ObjectThatIsEqualButNotTheSameAsObjectForEquatableTests.GetHashCode();
-
-            // Assert
-            hash1.Should().Be(hash2);
-        }
-
-        [Fact]
-        public static void DeepClone___Should_clone_item___When_called()
-        {
-            // Arrange
-            var systemUnderTest = A.Dummy<CellReference>();
-
-            // Act
-            var actual = systemUnderTest.DeepClone();
-
-            // Assert
-            actual.Should().Be(systemUnderTest);
-            actual.Should().NotBeSameAs(systemUnderTest);
         }
     }
 }

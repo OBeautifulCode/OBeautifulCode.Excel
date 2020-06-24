@@ -185,21 +185,58 @@
     <Compile Include=".recipes\OBeautifulCode.Type\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
+    <Compile Include="Comment\CommentTest.designer.cs">
+      <DependentUpon>CommentTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionalFormatting\CellValueConditionalFormattingRuleTest.designer.cs">
+      <DependentUpon>CellValueConditionalFormattingRuleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataValidation\DataValidationTest.designer.cs">
+      <DependentUpon>DataValidationTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Range\RangeStyleTest.designer.cs">
+      <DependentUpon>RangeStyleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerializationConfigurationTypes.cs" />
+    <Compile Include="Workbook\DocumentPropertiesTest.designer.cs">
+      <DependentUpon>DocumentPropertiesTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Worksheet\WorksheetProtectionTest.designer.cs">
+      <DependentUpon>WorksheetProtectionTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cell\NamedCellTest.cs" />
     <Compile Include="Cell\CellReferenceTest.cs" />
     <Compile Include="Cell\CellsHelperTest.cs" />
+    <Compile Include="Border\BorderTest.designer.cs">
+      <DependentUpon>BorderTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\CellReferenceTest.designer.cs">
+      <DependentUpon>CellReferenceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\NamedCellTest.designer.cs">
+      <DependentUpon>NamedCellTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataValidation\NumericDataValidationTest.designer.cs">
+      <DependentUpon>NumericDataValidationTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataValidation\TextDataValidationTest.designer.cs">
+      <DependentUpon>TextDataValidationTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelDummyFactory.designer.cs">
       <DependentUpon>ExcelDummyFactory.cs</DependentUpon>
     </Compile>
     <Compile Include="Workbook\DocumentPropertiesTest.cs" />
     <Compile Include="ExcelDummyFactory.cs" />
+    <Compile Include="ExcelDummyFactoryTest.cs" />
+    <Compile Include="ExcelDummyFactoryTest.designer.cs">
+      <DependentUpon>ExcelDummyFactoryTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Border\BorderTest.cs" />
     <Compile Include="ConditionalFormatting\CellValueConditionalFormattingRuleTest.cs" />
     <Compile Include="Formatting\CustomFormatStringTest.cs" />
     <Compile Include="DataValidation\DataValidationTest.cs" />
-    <Compile Include="Range\RangeStyleExtensionsTest.cs" />
     <Compile Include="Range\RangeStyleTest.cs" />
     <Compile Include="Comment\CommentTest.cs" />
     <Compile Include="DataValidation\NumericDataValidationTest.cs" />

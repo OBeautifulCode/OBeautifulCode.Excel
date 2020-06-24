@@ -12,7 +12,6 @@ namespace OBeautifulCode.Excel
     using System.Text.RegularExpressions;
 
     using OBeautifulCode.Assertion.Recipes;
-    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
 
     using static System.FormattableString;
@@ -20,7 +19,7 @@ namespace OBeautifulCode.Excel
     /// <summary>
     /// Represents a reference to a cell.
     /// </summary>
-    public class CellReference : IEquatable<CellReference>, IDeepCloneable<CellReference>
+    public partial class CellReference : IModelViaCodeGen, IDeclareToStringMethod
     {
         private static readonly Regex ValidWorksheetNameRegex = new Regex("^(?!.{32})(?=.*[\x20-\x26\x28-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E]$)[\x20-\x26\x28-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E][\x20-\x29\x2B-\x2E\x30-\x39\x3B-\x3E\x40-\x5A\x5E-\x7E]{0,30}$", RegexOptions.Compiled);
 
@@ -55,19 +54,16 @@ namespace OBeautifulCode.Excel
         /// <summary>
         /// Gets the name of the worksheet.
         /// </summary>
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
         public string WorksheetName { get; private set; }
 
         /// <summary>
         /// Gets the 1-based row number.
         /// </summary>
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
         public int RowNumber { get; private set; }
 
         /// <summary>
         /// Gets the 1-based column number.
         /// </summary>
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
         public int ColumnNumber { get; private set; }
 
         /// <summary>
@@ -79,44 +75,6 @@ namespace OBeautifulCode.Excel
         /// Gets the worksheet-qualified reference to the cell, using A1 notation (e.g. 'worksheet'!A5).
         /// </summary>
         public string WorksheetQualifiedA1Reference => Invariant($"'{this.WorksheetName.Replace("'", "''")}'!{this.A1Reference}");
-
-        /// <summary>
-        /// Determines whether two objects of type <see cref="CellReference"/> are equal.
-        /// </summary>
-        /// <param name="left">The object to the left of the operator.</param>
-        /// <param name="right">The object to the right of the operator.</param>
-        /// <returns>True if the two items are equal; false otherwise.</returns>
-        public static bool operator ==(
-            CellReference left,
-            CellReference right)
-        {
-            if (ReferenceEquals(left, right))
-            {
-                return true;
-            }
-
-            if (ReferenceEquals(left, null) || ReferenceEquals(right, null))
-            {
-                return false;
-            }
-
-            var result =
-                (left.WorksheetName == right.WorksheetName) &&
-                (left.RowNumber == right.RowNumber) &&
-                (left.ColumnNumber == right.ColumnNumber);
-            return result;
-        }
-
-        /// <summary>
-        /// Determines whether two objects of type <see cref="CellReference"/> are not equal.
-        /// </summary>
-        /// <param name="left">The object to the left of the operator.</param>
-        /// <param name="right">The item to compare.</param>
-        /// <returns>True if the two items not equal; false otherwise.</returns>
-        public static bool operator !=(
-            CellReference left,
-            CellReference right)
-            => !(left == right);
 
         /// <summary>
         /// Gets a cell reference to a cell that is known (before de-referencing) to be missing.
@@ -208,32 +166,7 @@ namespace OBeautifulCode.Excel
             return result;
         }
 
-        /// <inheritdoc />
-        public bool Equals(CellReference other) => this == other;
-
-        /// <inheritdoc />
-        public override bool Equals(object obj) => this == (obj as CellReference);
-
-        /// <inheritdoc />
-        public override int GetHashCode() =>
-            HashCodeHelper.Initialize()
-                .Hash(this.WorksheetName)
-                .Hash(this.RowNumber)
-                .Hash(this.ColumnNumber)
-                .Value;
-
-        /// <inheritdoc />
-        public object Clone() => this.DeepClone();
-
-        /// <inheritdoc />
-        public CellReference DeepClone()
-        {
-            var result = new CellReference(this.WorksheetName, this.RowNumber, this.ColumnNumber);
-
-            return result;
-        }
-
-        /// <inheritdoc />
+        /// <inheritdoc cref="IDeclareToStringMethod.ToString" />
         public override string ToString() => this.IsKnownMissing() ? "KNOWN MISSING" : this.WorksheetQualifiedA1Reference;
     }
 }

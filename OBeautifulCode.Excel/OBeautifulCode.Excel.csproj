@@ -86,9 +86,33 @@
     <Compile Include=".recipes\OBeautifulCode.Type\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
+    <Compile Include="Border\Border.designer.cs">
+      <DependentUpon>Border.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cell\CellReference.designer.cs">
+      <DependentUpon>CellReference.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cell\CellsHelper.cs" />
     <Compile Include="Cell\NamedCell.cs" />
+    <Compile Include="Cell\NamedCell.designer.cs">
+      <DependentUpon>NamedCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comment\Comment.designer.cs">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionalFormatting\CellValueConditionalFormattingRule.designer.cs">
+      <DependentUpon>CellValueConditionalFormattingRule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="DataValidation\DataValidation.designer.cs">
+      <DependentUpon>DataValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataValidation\NumericDataValidation.designer.cs">
+      <DependentUpon>NumericDataValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataValidation\TextDataValidation.designer.cs">
+      <DependentUpon>TextDataValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formatting\CustomFormatString.cs" />
     <Compile Include="Image\ImagesCellSizeChanges.cs" />
     <Compile Include="Image\ImagesAutoLayoutProcedures.cs" />
@@ -110,14 +134,22 @@
     <Compile Include="DataValidation\DataValidationKind.cs" />
     <Compile Include="DataValidation\DataValidationOperator.cs" />
     <Compile Include="Alignment\HorizontalAlignment.cs" />
-    <Compile Include="Range\RangeStyleExtensions.cs" />
     <Compile Include="Cell\CellReference.cs" />
+    <Compile Include="Range\RangeStyle.designer.cs">
+      <DependentUpon>RangeStyle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workbook\DocumentProperties.cs" />
     <Compile Include="Workbook\BuiltInDocumentPropertyKind.cs" />
+    <Compile Include="Workbook\DocumentProperties.designer.cs">
+      <DependentUpon>DocumentProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Worksheet\PaneKinds.cs" />
     <Compile Include="Font\UnderlineKind.cs" />
     <Compile Include="Alignment\VerticalAlignment.cs" />
     <Compile Include="Worksheet\WorksheetProtection.cs" />
+    <Compile Include="Worksheet\WorksheetProtection.designer.cs">
+      <DependentUpon>WorksheetProtection.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include=".analyzers\stylecop.json" />
