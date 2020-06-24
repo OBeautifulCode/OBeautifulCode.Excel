@@ -113,6 +113,8 @@
     <Compile Include="DataValidation\TextDataValidation.designer.cs">
       <DependentUpon>TextDataValidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Error\ExcelErrorKind.cs" />
+    <Compile Include="Error\ExcelErrorKindExtensions.cs" />
     <Compile Include="Formatting\CustomFormatString.cs" />
     <Compile Include="Image\ImagesCellSizeChanges.cs" />
     <Compile Include="Image\ImagesAutoLayoutProcedures.cs" />
