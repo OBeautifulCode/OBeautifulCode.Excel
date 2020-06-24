@@ -77,5 +77,24 @@ namespace OBeautifulCode.Excel.AsposeCells
                 }
             }
         }
+
+        /// <summary>
+        /// Applies the configured workbook protection.
+        /// </summary>
+        /// <param name="workbook">The workbook.</param>
+        /// <param name="workbookProtection">The workbook protection.  If null then no protection is applied.</param>
+        public static void SetWorkbookProtection(
+            this Workbook workbook,
+            WorkbookProtection workbookProtection)
+        {
+            new { workbook }.Must().NotBeNull();
+
+            if (workbookProtection == null)
+            {
+                return;
+            }
+
+            workbook.Protect(ProtectionType.Structure, workbookProtection.ClearTextPassword);
+        }
     }
 }

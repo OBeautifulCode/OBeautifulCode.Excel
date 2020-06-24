@@ -48,6 +48,37 @@ namespace OBeautifulCode.Excel.Test
                                  A.Dummy<string>(),
                                  A.Dummy<CellReference>()));
 
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new Comment
+                             {
+                                 Body                 = A.Dummy<string>(),
+                                 HtmlBody             = A.Dummy<string>(),
+                                 FontName             = A.Dummy<string>(),
+                                 FontColor            = A.Dummy<Color?>(),
+                                 FontSize             = A.Dummy<int?>(),
+                                 FontIsBold           = A.Dummy<bool?>(),
+                                 HorizontalAlignment  = A.Dummy<HorizontalAlignment?>(),
+                                 VerticalAlignment    = A.Dummy<VerticalAlignment?>(),
+                                 AutoSize             = A.Dummy<bool?>(),
+                                 HeightInInches       = A.Dummy<decimal?>(),
+                                 WidthInInches        = A.Dummy<decimal?>(),
+                                 FillColor            = A.Dummy<Color?>(),
+                                 FillTransparency     = A.Dummy<decimal?>(),
+                                 BorderColor          = A.Dummy<Color?>(),
+                                 BorderStyle          = A.Dummy<CommentBorderStyle?>(),
+                                 BorderWeightInPoints = A.Dummy<decimal?>(),
+                             });
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new CellValueConditionalFormattingRule
+                             {
+                                 Operator        = A.Dummy<ConditionalFormattingOperator>(),
+                                 Operand1Formula = A.Dummy<string>(),
+                                 Operand2Formula = A.Dummy<string>(),
+                                 StopIfTrue      = A.Dummy<bool>(),
+                                 RangeStyle      = A.Dummy<RangeStyle>(),
+                             });
+
 
             AutoFixtureBackedDummyFactory.UseRandomConcreteSubclassForDummy<DataValidation>();
 
@@ -118,40 +149,15 @@ namespace OBeautifulCode.Excel.Test
                              });
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CellValueConditionalFormattingRule
-                             {
-                                 Operator        = A.Dummy<ConditionalFormattingOperator>(),
-                                 Operand1Formula = A.Dummy<string>(),
-                                 Operand2Formula = A.Dummy<string>(),
-                                 StopIfTrue      = A.Dummy<bool>(),
-                                 RangeStyle      = A.Dummy<RangeStyle>(),
-                             });
-
-            AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new Comment
-                             {
-                                 Body                 = A.Dummy<string>(),
-                                 HtmlBody             = A.Dummy<string>(),
-                                 FontName             = A.Dummy<string>(),
-                                 FontColor            = A.Dummy<Color?>(),
-                                 FontSize             = A.Dummy<int?>(),
-                                 FontIsBold           = A.Dummy<bool?>(),
-                                 HorizontalAlignment  = A.Dummy<HorizontalAlignment?>(),
-                                 VerticalAlignment    = A.Dummy<VerticalAlignment?>(),
-                                 AutoSize             = A.Dummy<bool?>(),
-                                 HeightInInches       = A.Dummy<decimal?>(),
-                                 WidthInInches        = A.Dummy<decimal?>(),
-                                 FillColor            = A.Dummy<Color?>(),
-                                 FillTransparency     = A.Dummy<decimal?>(),
-                                 BorderColor          = A.Dummy<Color?>(),
-                                 BorderStyle          = A.Dummy<CommentBorderStyle?>(),
-                                 BorderWeightInPoints = A.Dummy<decimal?>(),
-                             });
-
-            AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new DocumentProperties
                              {
                                  BuiltInDocumentPropertyKindToValueMap = A.Dummy<IReadOnlyDictionary<BuiltInDocumentPropertyKind, string>>(),
+                             });
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new WorkbookProtection
+                             {
+                                 ClearTextPassword = A.Dummy<string>(),
                              });
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(

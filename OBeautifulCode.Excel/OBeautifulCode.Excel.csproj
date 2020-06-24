@@ -145,6 +145,10 @@
     <Compile Include="Workbook\DocumentProperties.designer.cs">
       <DependentUpon>DocumentProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Workbook\WorkbookProtection.cs" />
+    <Compile Include="Workbook\WorkbookProtection.designer.cs">
+      <DependentUpon>WorkbookProtection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Worksheet\PaneKinds.cs" />
     <Compile Include="Font\UnderlineKind.cs" />
     <Compile Include="Alignment\VerticalAlignment.cs" />

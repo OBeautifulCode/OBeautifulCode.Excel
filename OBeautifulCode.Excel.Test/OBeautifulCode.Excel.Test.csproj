@@ -198,6 +198,10 @@
       <DependentUpon>RangeStyleTest.cs</DependentUpon>
     </Compile>
     <Compile Include="SerializationConfigurationTypes.cs" />
+    <Compile Include="Workbook\WorkbookProtectionTest.cs" />
+    <Compile Include="Workbook\WorkbookProtectionTest.designer.cs">
+      <DependentUpon>WorkbookProtectionTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workbook\DocumentPropertiesTest.designer.cs">
       <DependentUpon>DocumentPropertiesTest.cs</DependentUpon>
     </Compile>
