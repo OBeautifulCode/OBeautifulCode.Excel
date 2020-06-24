@@ -8,6 +8,7 @@ namespace OBeautifulCode.Excel.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using FakeItEasy;
@@ -15,11 +16,13 @@ namespace OBeautifulCode.Excel.Test
     using FluentAssertions;
 
     using OBeautifulCode.CodeGen.ModelObject.Recipes;
+    using OBeautifulCode.Excel.Test.Internal;
 
     using Xunit;
 
     public static partial class CellReferenceTest
     {
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = ObcSuppressBecause.CA1810_InitializeReferenceTypeStaticFieldsInline_FieldsDeclaredInCodeGeneratedPartialTestClass)]
         static CellReferenceTest()
         {
             StringRepresentationTestScenarios

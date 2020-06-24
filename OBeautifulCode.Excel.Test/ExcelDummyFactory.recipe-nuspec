@@ -1,14 +1,14 @@
-﻿<?xml version="1.0"?>
-<package >
+<?xml version="1.0"?>
+<package>
   <metadata>
     <id>OBeautifulCode.Excel.Recipes.DummyFactory</id>
     <description>A dummy factory for Excel types.</description>
     <tags>excel fakeiteasy autofixture dummy factory</tags>
     <iconUrl>https://raw.githubusercontent.com/OBeautifulCode/OBeautifulCode.Excel/master/OBeautifulCode.Excel.Test/nuget-icon.png</iconUrl>
     <dependencies>
-        <dependency id="OBeautifulCode.Excel" version="$version$" />
-        <dependency id="OBeautifulCode.AutoFakeItEasy" version ="1.0.126" />
-        <dependency id="OBeautifulCode.Math.Recipes.ThreadSafeRandom" version ="1.0.73" />
+      <dependency id="OBeautifulCode.Excel" version="$version$" />
+      <dependency id="OBeautifulCode.AutoFakeItEasy" version="1.0.127" />
+      <dependency id="OBeautifulCode.Math.Recipes.ThreadSafeRandom" version="1.0.75" />
     </dependencies>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Drawing" />
