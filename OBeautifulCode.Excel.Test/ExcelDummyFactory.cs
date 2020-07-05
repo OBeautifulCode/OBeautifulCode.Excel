@@ -10,8 +10,6 @@
 namespace OBeautifulCode.Excel.Test
 {
     using System;
-    using System.CodeDom.Compiler;
-    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
 
     using AutoFakeItEasy;
@@ -24,10 +22,13 @@ namespace OBeautifulCode.Excel.Test
     /// A Dummy Factory for types in <see cref="Excel"/>.
     /// </summary>
 #if !OBeautifulCodeExcelRecipesProject
-    [ExcludeFromCodeCoverage]
-    [GeneratedCode("OBeautifulCode.Excel.Test", "See package version number")]
-#endif
-    public class ExcelDummyFactory : DefaultExcelDummyFactory
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.Excel.Test", "See package version number")]
+    internal
+#else
+    public
+#endif 
+    class ExcelDummyFactory : DefaultExcelDummyFactory
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExcelDummyFactory"/> class.

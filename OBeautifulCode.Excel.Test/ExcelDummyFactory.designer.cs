@@ -7,11 +7,9 @@
 namespace OBeautifulCode.Excel.Test
 {
     using global::System;
-    using global::System.CodeDom.Compiler;
     using global::System.Collections.Concurrent;
     using global::System.Collections.Generic;
     using global::System.Collections.ObjectModel;
-    using global::System.Diagnostics.CodeAnalysis;
     using global::System.Drawing;
 
     using global::FakeItEasy;
@@ -23,9 +21,14 @@ namespace OBeautifulCode.Excel.Test
     /// The default (code generated) Dummy Factory.
     /// Derive from this class to add any overriding or custom registrations.
     /// </summary>
-    [ExcludeFromCodeCoverage]
-    [GeneratedCode("OBeautifulCode.CodeGen.ModelObject", "1.0.87.0")]
-    public abstract class DefaultExcelDummyFactory : IDummyFactory
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.CodeGen.ModelObject", "1.0.87.0")]
+#if !OBeautifulCodeExcelRecipesProject
+    internal
+#else
+    public
+#endif 
+    abstract class DefaultExcelDummyFactory : IDummyFactory
     {
         public DefaultExcelDummyFactory()
         {
