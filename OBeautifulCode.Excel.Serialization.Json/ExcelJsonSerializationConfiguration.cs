@@ -28,6 +28,7 @@ namespace OBeautifulCode.Excel.Serialization.Json
             typeof(CellValueConditionalFormattingRule).ToTypeToRegisterForJson(),
             typeof(CellReference).ToTypeToRegisterForJson(),
             typeof(NamedCell).ToTypeToRegisterForJson(),
+            typeof(ExcelErrorKind).ToTypeToRegisterForJson(),
         };
 
         /// <inheritdoc />

@@ -28,6 +28,7 @@ namespace OBeautifulCode.Excel.Serialization.Bson
             typeof(CellValueConditionalFormattingRule).ToTypeToRegisterForBson(),
             typeof(CellReference).ToTypeToRegisterForBson(),
             typeof(NamedCell).ToTypeToRegisterForBson(),
+            typeof(ExcelErrorKind).ToTypeToRegisterForBson(),
         };
 
         /// <inheritdoc />
