@@ -10,8 +10,6 @@ namespace OBeautifulCode.Excel.Serialization.Json
 
     using OBeautifulCode.Serialization.Json;
 
-    using static System.FormattableString;
-
     /// <inheritdoc />
     public class ExcelJsonSerializationConfiguration : JsonSerializationConfigurationBase
     {
@@ -30,8 +28,5 @@ namespace OBeautifulCode.Excel.Serialization.Json
             typeof(NamedCell).ToTypeToRegisterForJson(),
             typeof(ExcelErrorKind).ToTypeToRegisterForJson(),
         };
-
-        /// <inheritdoc />
-        protected override IReadOnlyCollection<string> TypeToRegisterNamespacePrefixFilters => new[] { Invariant($"{nameof(OBeautifulCode)}.{nameof(Excel)}") };
     }
 }

@@ -10,8 +10,6 @@ namespace OBeautifulCode.Excel.Serialization.Bson
 
     using OBeautifulCode.Serialization.Bson;
 
-    using static System.FormattableString;
-
     /// <inheritdoc />
     public class ExcelBsonSerializationConfiguration : BsonSerializationConfigurationBase
     {
@@ -30,8 +28,5 @@ namespace OBeautifulCode.Excel.Serialization.Bson
             typeof(NamedCell).ToTypeToRegisterForBson(),
             typeof(ExcelErrorKind).ToTypeToRegisterForBson(),
         };
-
-        /// <inheritdoc />
-        protected override IReadOnlyCollection<string> TypeToRegisterNamespacePrefixFilters => new[] { Invariant($"{nameof(OBeautifulCode)}.{nameof(Excel)}") };
     }
 }
