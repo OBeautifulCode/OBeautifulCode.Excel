@@ -10,8 +10,6 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     /// <summary>
     /// Extensions methods on type <see cref="Workbook"/>.
     /// </summary>
@@ -28,7 +26,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static Worksheet AddTemporaryWorksheet(
             this Workbook workbook)
         {
-            new { workbook }.AsArg().Must().NotBeNull();
+            if (workbook == null)
+            {
+                throw new ArgumentNullException(nameof(workbook));
+            }
 
             var worksheetName = Guid.NewGuid().ToString().Substring(0, 31);
             var worksheet = workbook.Worksheets.Add(worksheetName);
@@ -43,7 +44,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static void RemoveDefaultWorksheet(
             this Workbook workbook)
         {
-            new { workbook }.AsArg().Must().NotBeNull();
+            if (workbook == null)
+            {
+                throw new ArgumentNullException(nameof(workbook));
+            }
 
             workbook.Worksheets.RemoveAt(0);
         }
@@ -58,7 +62,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Workbook workbook,
             DocumentProperties documentProperties)
         {
-            new { workbook }.AsArg().Must().NotBeNull();
+            if (workbook == null)
+            {
+                throw new ArgumentNullException(nameof(workbook));
+            }
 
             if (documentProperties != null)
             {
@@ -87,7 +94,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Workbook workbook,
             WorkbookProtection workbookProtection)
         {
-            new { workbook }.Must().NotBeNull();
+            if (workbook == null)
+            {
+                throw new ArgumentNullException(nameof(workbook));
+            }
 
             if (workbookProtection == null)
             {

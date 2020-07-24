@@ -12,8 +12,6 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Aspose.Cells;
     using Aspose.Cells.Drawing;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     using static System.FormattableString;
 
     /// <summary>
@@ -32,7 +30,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static BorderType ToBorderType(
             this BorderEdges borderEdges)
         {
-            new { borderEdges }.AsArg().Must().NotBeEqualTo(BorderEdges.Unknown);
+            if (borderEdges == BorderEdges.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(borderEdges)}' == '{BorderEdges.Unknown}'"), (Exception)null);
+            }
 
             var result = default(BorderType);
 
@@ -126,7 +127,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static MsoLineStyle ToMsoLineStyle(
             this CommentBorderStyle commentBorderStyle)
         {
-            new { commentBorderStyle }.AsArg().Must().NotBeEqualTo(CommentBorderStyle.Unknown);
+            if (commentBorderStyle == CommentBorderStyle.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(commentBorderStyle)}' == '{CommentBorderStyle.Unknown}'"), (Exception)null);
+            }
 
             switch (commentBorderStyle)
             {
@@ -156,7 +160,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static ValidationType ToValidationType(
             this DataValidationKind dataValidationKind)
         {
-            new { dataValidationKind }.AsArg().Must().NotBeEqualTo(DataValidationKind.Unknown);
+            if (dataValidationKind == DataValidationKind.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(dataValidationKind)}' == '{DataValidationKind.Unknown}'"), (Exception)null);
+            }
 
             switch (dataValidationKind)
             {
@@ -227,7 +234,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static ValidationAlertType ToValidationAlertType(
             this DataValidationErrorAlertStyle dataValidationErrorAlertStyle)
         {
-            new { dataValidationErrorAlertStyle }.AsArg().Must().NotBeEqualTo(DataValidationErrorAlertStyle.Unknown);
+            if (dataValidationErrorAlertStyle == DataValidationErrorAlertStyle.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(dataValidationErrorAlertStyle)}' == '{DataValidationErrorAlertStyle.Unknown}'"), (Exception)null);
+            }
 
             switch (dataValidationErrorAlertStyle)
             {
@@ -253,7 +263,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static TextAlignmentType ToTextAlignmentType(
             this HorizontalAlignment horizontalAlignment)
         {
-            new { horizontalAlignment }.AsArg().Must().NotBeEqualTo(HorizontalAlignment.Unknown);
+            if (horizontalAlignment == HorizontalAlignment.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(horizontalAlignment)}' == '{HorizontalAlignment.Unknown}'"), (Exception)null);
+            }
 
             switch (horizontalAlignment)
             {
@@ -283,7 +296,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static TextAlignmentType ToTextAlignmentType(
             this VerticalAlignment verticalAlignment)
         {
-            new { verticalAlignment }.AsArg().Must().NotBeEqualTo(VerticalAlignment.Unknown);
+            if (verticalAlignment == VerticalAlignment.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(verticalAlignment)}' == '{VerticalAlignment.Unknown}'"), (Exception)null);
+            }
 
             switch (verticalAlignment)
             {
@@ -406,7 +422,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static int ToFormatNumber(
             this Format format)
         {
-            new { format }.AsArg().Must().NotBeEqualTo(Format.Unknown);
+            if (format == Format.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(format)}' == '{Format.Unknown}'"), (Exception)null);
+            }
 
             switch (format)
             {
@@ -499,7 +518,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static string ToBuiltInDocumentPropertyCollectionKey(
             this BuiltInDocumentPropertyKind builtInDocumentPropertyKind)
         {
-            new { builtInDocumentPropertyKind }.AsArg().Must().NotBeEqualTo(BuiltInDocumentPropertyKind.Unknown);
+            if (builtInDocumentPropertyKind == BuiltInDocumentPropertyKind.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(builtInDocumentPropertyKind)}' == '{BuiltInDocumentPropertyKind.Unknown}'"), (Exception)null);
+            }
 
             switch (builtInDocumentPropertyKind)
             {

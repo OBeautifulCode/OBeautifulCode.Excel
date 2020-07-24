@@ -103,8 +103,6 @@ namespace OBeautifulCode.Excel.Test
             foreach (var actual in actuals)
             {
                 actual.Should().BeOfType<ArgumentException>();
-                actual.Message.Should().Contain("worksheetName");
-                actual.Message.Should().Contain("specified regex");
                 actual.Message.Should().Contain("Worksheet names must have >= 1 and <= 31 characters");
             }
         }
@@ -456,8 +454,7 @@ namespace OBeautifulCode.Excel.Test
             foreach (var actual in actuals)
             {
                 actual.Should().BeOfType<ArgumentException>();
-                actual.Message.Should().Contain("Provided value (name: 'worksheetQualifiedA1Reference') does not contain the specified comparison value.");
-                actual.Message.Should().Contain("Specified 'comparisonValue' is '!'");
+                actual.Message.Should().Contain("'worksheetQualifiedA1Reference' does not contain '!'");
             }
         }
 

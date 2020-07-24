@@ -8,9 +8,9 @@ namespace OBeautifulCode.Excel
 {
     using System;
 
-    using OBeautifulCode.Assertion.Recipes;
-    using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.Type;
+
+    using static System.FormattableString;
 
     /// <summary>
     /// A cell that is referenced by a user-specified name.
@@ -29,8 +29,20 @@ namespace OBeautifulCode.Excel
             string name,
             CellReference cell)
         {
-            new { name }.AsArg().Must().NotBeNullNorWhiteSpace();
-            new { cell }.AsArg().Must().NotBeNull();
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(name)}' is white space"));
+            }
+
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
 
             this.Name = name;
             this.Cell = cell;

@@ -17,8 +17,6 @@ namespace OBeautifulCode.Excel.AsposeCells
     using Aspose.Cells;
     using Aspose.Cells.Drawing;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     using static System.FormattableString;
 
     using Comment = OBeautifulCode.Excel.Comment;
@@ -66,13 +64,60 @@ namespace OBeautifulCode.Excel.AsposeCells
             int columnWidthInPixels = Constants.DefaultColumnWidthInPixels,
             ImagesAutoLayoutProcedures autoLayoutProcedures = ImagesAutoLayoutProcedures.AutoSpaceAndAutoAlign)
         {
-            new { cell }.AsArg().Must().NotBeNull();
-            new { imageUrls }.AsArg().Must().NotBeNullNorEmptyEnumerable().And().Each().BeNullOrNotWhiteSpace();
-            new { imageWidthScale }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
-            new { imageHeightScale }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(500);
-            new { relativeOrientation }.AsArg().Must().NotBeEqualTo(ImagesRelativeOrientation.Unknown);
-            new { rowHeightInPixels }.AsArg().Must().BeGreaterThanOrEqualTo(1);
-            new { columnWidthInPixels }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
+
+            if (imageUrls == null)
+            {
+                throw new ArgumentNullException(nameof(imageUrls));
+            }
+
+            if (!imageUrls.Any())
+            {
+                throw new ArgumentException(Invariant($"'{nameof(imageUrls)}' is an empty enumerable"));
+            }
+
+            if (imageUrls.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException(Invariant($"{nameof(imageUrls)} contains an element that is null or white space"));
+            }
+
+            if (imageWidthScale < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(imageWidthScale)}' < '{1}'"), (Exception)null);
+            }
+
+            if (imageWidthScale > 500)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(imageWidthScale)}' > '{500}'"), (Exception)null);
+            }
+
+            if (imageHeightScale < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(imageHeightScale)}' < '{1}'"), (Exception)null);
+            }
+
+            if (imageHeightScale > 500)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(imageHeightScale)}' > '{500}'"), (Exception)null);
+            }
+
+            if (relativeOrientation == ImagesRelativeOrientation.Unknown)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(relativeOrientation)}' == '{ImagesRelativeOrientation.Unknown}'"), (Exception)null);
+            }
+
+            if (rowHeightInPixels < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(rowHeightInPixels)}' < '{1}'"), (Exception)null);
+            }
+
+            if (columnWidthInPixels < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnWidthInPixels)}' < '{1}'"), (Exception)null);
+            }
 
             if (relativeOrientation == ImagesRelativeOrientation.Vertical)
             {
@@ -223,7 +268,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Cell cell,
             PaneKinds paneKinds)
         {
-            new { cell }.AsArg().Must().NotBeNull();
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
 
             if (paneKinds == PaneKinds.None)
             {
@@ -245,7 +293,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static void SetUnlocked(
             this Cell cell)
         {
-            new { cell }.AsArg().Must().NotBeNull();
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
 
             var styleContainer = StyleContainer.BuildUsingExistingCellStyle(cell);
 
@@ -265,7 +316,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Cell cell,
             Comment comment)
         {
-            new { cell }.AsArg().Must().NotBeNull();
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
 
             if (comment != null)
             {

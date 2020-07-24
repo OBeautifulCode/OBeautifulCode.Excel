@@ -12,8 +12,6 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     /// <summary>
     /// Extensions methods on type <see cref="Worksheet"/>.
     /// </summary>
@@ -29,7 +27,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Worksheet worksheet,
             Color? color)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
 
             if (color != null)
             {
@@ -47,7 +48,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Worksheet worksheet,
             bool? isHidden)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
 
             if (isHidden != null)
             {
@@ -65,7 +69,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Worksheet worksheet,
             bool? isHidden)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
 
             if (isHidden != null)
             {
@@ -85,7 +92,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             WorksheetProtection worksheetProtection,
             IReadOnlyCollection<Cell> cellsToUnlock = null)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
 
             if (worksheetProtection != null)
             {

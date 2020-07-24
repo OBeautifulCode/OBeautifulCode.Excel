@@ -14,8 +14,6 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     using Border = OBeautifulCode.Excel.Border;
     using Range = Aspose.Cells.Range;
 
@@ -35,8 +33,15 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             RangeStyle rangeStyle)
         {
-            new { range }.AsArg().Must().NotBeNull();
-            new { rangeStyle }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
+
+            if (rangeStyle == null)
+            {
+                throw new ArgumentNullException(nameof(rangeStyle));
+            }
 
             var styleContainer = StyleContainer.BuildNew(range.Worksheet.Workbook);
 
@@ -77,7 +82,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             Color? color,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (color != null)
             {
@@ -102,7 +110,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             Color? color,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (color != null)
             {
@@ -126,7 +137,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             string fontName,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (fontName != null)
             {
@@ -150,7 +164,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             int? fontSize,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (fontSize != null)
             {
@@ -174,7 +191,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             bool? fontIsItalic,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (fontIsItalic != null)
             {
@@ -198,7 +218,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             bool? fontIsBold,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (fontIsBold != null)
             {
@@ -222,7 +245,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             UnderlineKind? underlineKind,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (underlineKind != null)
             {
@@ -246,7 +272,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             int? rotationAngle,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (rotationAngle != null)
             {
@@ -270,7 +299,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             bool? textIsWrapped,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (textIsWrapped != null)
             {
@@ -294,7 +326,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             Format? format,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (format != null)
             {
@@ -319,7 +354,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             string customFormatString,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (customFormatString != null)
             {
@@ -343,7 +381,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             int? indentLevel,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (indentLevel != null)
             {
@@ -367,7 +408,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             VerticalAlignment? verticalAlignment,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (verticalAlignment != null)
             {
@@ -391,7 +435,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             HorizontalAlignment? horizontalAlignment,
             StyleContainer styleContainer = null)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (horizontalAlignment != null)
             {
@@ -413,7 +460,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             int? rowHeightInPixels)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (rowHeightInPixels != null)
             {
@@ -434,7 +484,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             int? totalHeightInPixels)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (totalHeightInPixels != null)
             {
@@ -457,7 +510,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             int? columnWidthInPixels)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (columnWidthInPixels != null)
             {
@@ -478,7 +534,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             int? totalWidthInPixels)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (totalWidthInPixels != null)
             {
@@ -501,7 +560,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             bool? autofitRows)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if ((autofitRows != null) && (bool)autofitRows)
             {
@@ -534,7 +596,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             bool? mergeCells)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (mergeCells != null)
             {
@@ -559,7 +624,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             Border border)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (border != null)
             {
@@ -583,7 +651,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             Border border)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (border != null)
             {
@@ -603,7 +674,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             DataValidation dataValidation)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (dataValidation != null)
             {
@@ -656,7 +730,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             IReadOnlyList<CellValueConditionalFormattingRule> rules)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             if (rules != null)
             {
@@ -691,7 +768,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static void SetAutoFilter(
             this Range range)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             range.Worksheet.AutoFilter.Range = range.GetName();
         }
@@ -705,7 +785,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static void SetAutoFilterAndFreezeTopRow(
             this Range range)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             range.SetAutoFilter();
 
@@ -723,7 +806,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             bool collapseGroup = false)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             var columnNumbers = range.GetColumnNumbers();
             if (columnNumbers.Count == 1)
@@ -744,7 +830,10 @@ namespace OBeautifulCode.Excel.AsposeCells
             this Range range,
             bool collapseGroup = false)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             var rowNumbers = range.GetRowNumbers();
             if (rowNumbers.Count == 1)
@@ -760,8 +849,15 @@ namespace OBeautifulCode.Excel.AsposeCells
             StyleContainer styleContainer,
             Action<StyleContainer> configureStyleContainer)
         {
-            new { range }.AsArg().Must().NotBeNull();
-            new { configureStyleContainer }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
+
+            if (configureStyleContainer == null)
+            {
+                throw new ArgumentNullException(nameof(configureStyleContainer));
+            }
 
             var applyToRange = styleContainer == null;
             if (styleContainer == null)

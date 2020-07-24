@@ -12,8 +12,6 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     using static System.FormattableString;
 
     using Range = Aspose.Cells.Range;
@@ -46,9 +44,20 @@ namespace OBeautifulCode.Excel.AsposeCells
             int rowNumber = 1,
             int columnNumber = 1)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
-            new { rowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
-            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
+
+            if (rowNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(rowNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (columnNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' < '{1}'"), (Exception)null);
+            }
 
             this.Worksheet = worksheet;
             this.RowNumber = rowNumber;
@@ -132,7 +141,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor CloneWithWorksheet(
             Worksheet worksheet)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
 
             var result = new CellCursor(worksheet)
             {
@@ -243,7 +255,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveDown(
             int by = 1)
         {
-            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
+            if (by < 0)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(by)}' < '{0}'"), (Exception)null);
+            }
 
             this.RowNumber = this.RowNumber + by;
             this.MaxRowNumber = this.RowNumber > this.MaxRowNumber ? this.RowNumber : this.MaxRowNumber;
@@ -263,7 +278,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveUp(
             int by = 1)
         {
-            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
+            if (by < 0)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(by)}' < '{0}'"), (Exception)null);
+            }
 
             if (this.RowNumber - by < this.StartRowNumber)
             {
@@ -286,7 +304,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveRight(
             int by = 1)
         {
-            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
+            if (by < 0)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(by)}' < '{0}'"), (Exception)null);
+            }
 
             this.ColumnNumber = this.ColumnNumber + by;
             this.MaxColumnNumber = this.ColumnNumber > this.MaxColumnNumber ? this.ColumnNumber : this.MaxColumnNumber;
@@ -306,7 +327,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveLeft(
             int by = 1)
         {
-            new { by }.AsArg().Must().BeGreaterThanOrEqualTo(0);
+            if (by < 0)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(by)}' < '{0}'"), (Exception)null);
+            }
 
             if (this.ColumnNumber - by < this.StartColumnNumber)
             {
@@ -330,7 +354,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor AddMarker(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             if (!this.markerNameToCellsMap.ContainsKey(markerName))
             {
@@ -366,7 +398,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor RemoveMarker(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             if (this.markerNameToCellsMap.ContainsKey(markerName))
             {
@@ -388,7 +428,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public bool HasMarker(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             var result = this.markerNameToCellsMap.ContainsKey(markerName);
 
@@ -408,7 +456,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public Range GetMarkedRange(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             if (!this.HasMarker(markerName))
             {
@@ -440,7 +496,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public IReadOnlyList<Cell> GetMarkedCells(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             if (!this.HasMarker(markerName))
             {
@@ -466,7 +530,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public Cell GetMarkedCell(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             var markedCells = this.GetMarkedCells(markerName);
             if (markedCells.Count > 1)
@@ -519,7 +591,15 @@ namespace OBeautifulCode.Excel.AsposeCells
         public CellCursor MoveToMarkedCell(
             string markerName)
         {
-            new { markerName }.AsArg().Must().NotBeNullNorWhiteSpace();
+            if (markerName == null)
+            {
+                throw new ArgumentNullException(nameof(markerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(markerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
+            }
 
             var markedCell = this.GetMarkedCell(markerName);
 

@@ -11,8 +11,6 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Assertion.Recipes;
-
     using Range = Aspose.Cells.Range;
 
     /// <summary>
@@ -32,8 +30,15 @@ namespace OBeautifulCode.Excel.AsposeCells
             Style style,
             StyleFlag styleFlag)
         {
-            new { style }.AsArg().Must().NotBeNull();
-            new { styleFlag }.AsArg().Must().NotBeNull();
+            if (style == null)
+            {
+                throw new ArgumentNullException(nameof(style));
+            }
+
+            if (styleFlag == null)
+            {
+                throw new ArgumentNullException(nameof(styleFlag));
+            }
 
             this.Style = style;
             this.StyleFlag = styleFlag;
@@ -61,7 +66,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static StyleContainer BuildNew(
             Workbook workbook)
         {
-            new { workbook }.AsArg().Must().NotBeNull();
+            if (workbook == null)
+            {
+                throw new ArgumentNullException(nameof(workbook));
+            }
 
             var style = workbook.CreateStyle();
             var styleFlag = new StyleFlag();
@@ -82,7 +90,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public static StyleContainer BuildUsingExistingCellStyle(
             Cell cell)
         {
-            new { cell }.AsArg().Must().NotBeNull();
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
 
             var style = cell.GetStyle();
             var styleFlag = new StyleFlag();
@@ -100,7 +111,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public void ApplyToRange(
             Range range)
         {
-            new { range }.AsArg().Must().NotBeNull();
+            if (range == null)
+            {
+                throw new ArgumentNullException(nameof(range));
+            }
 
             range.ApplyStyle(this.Style, this.StyleFlag);
         }
@@ -113,7 +127,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         public void ApplyToCell(
             Cell cell)
         {
-            new { cell }.AsArg().Must().NotBeNull();
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
 
             cell.SetStyle(this.Style, this.StyleFlag);
         }

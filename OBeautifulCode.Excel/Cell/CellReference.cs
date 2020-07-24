@@ -11,7 +11,6 @@ namespace OBeautifulCode.Excel
     using System.Globalization;
     using System.Text.RegularExpressions;
 
-    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
 
     using static System.FormattableString;
@@ -42,9 +41,40 @@ namespace OBeautifulCode.Excel
             int rowNumber,
             int columnNumber)
         {
-            new { worksheetName }.AsArg().Must().NotBeNullNorWhiteSpace().And().BeMatchedByRegex(ValidWorksheetNameRegex, "Worksheet names must have >= 1 and <= 31 characters.  The first or last character cannot be a single quote (').  Otherwise, all characters are allowed except for the characters in this set: {\\, /, *, [, ], :, ?}.");
-            new { rowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumRowNumber);
-            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+            if (worksheetName == null)
+            {
+                throw new ArgumentNullException(nameof(worksheetName));
+            }
+
+            if (string.IsNullOrWhiteSpace(worksheetName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(worksheetName)}' is white space"));
+            }
+
+            if (!ValidWorksheetNameRegex.IsMatch(worksheetName))
+            {
+                throw new ArgumentException("Worksheet names must have >= 1 and <= 31 characters.  The first or last character cannot be a single quote (').  Otherwise, all characters are allowed except for the characters in this set: {\\, /, *, [, ], :, ?}.");
+            }
+
+            if (rowNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(rowNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (rowNumber > Constants.MaximumRowNumber)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(rowNumber)}' > '{Constants.MaximumRowNumber}'"), (Exception)null);
+            }
+
+            if (columnNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (columnNumber > Constants.MaximumColumnNumber)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' > '{Constants.MaximumColumnNumber}'"), (Exception)null);
+            }
 
             this.WorksheetName = worksheetName;
             this.RowNumber = rowNumber;
@@ -104,7 +134,20 @@ namespace OBeautifulCode.Excel
             string worksheetName,
             string a1Reference)
         {
-            new { a1Reference }.AsArg().Must().NotBeNullNorWhiteSpace().And().BeMatchedByRegex(ValidA1ReferenceRegex);
+            if (a1Reference == null)
+            {
+                throw new ArgumentNullException(nameof(a1Reference));
+            }
+
+            if (string.IsNullOrWhiteSpace(a1Reference))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(a1Reference)}' is white space"));
+            }
+
+            if (!ValidA1ReferenceRegex.IsMatch(a1Reference))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(a1Reference)}' is not matched by the specified regex: '{nameof(ValidA1ReferenceRegex)}'"));
+            }
 
             var columnNameInReference = ColumnNameInA1ReferenceRegex.Match(a1Reference).Value;
             var rowNumberInReference = RowNumberInA1ReferenceRegex.Match(a1Reference).Value;
@@ -128,20 +171,42 @@ namespace OBeautifulCode.Excel
         public static CellReference FromWorksheetQualifiedA1Reference(
             string worksheetQualifiedA1Reference)
         {
-            new { worksheetQualifiedA1Reference }.AsArg().Must().NotBeNullNorWhiteSpace().And().ContainString("!");
+            if (worksheetQualifiedA1Reference == null)
+            {
+                throw new ArgumentNullException(nameof(worksheetQualifiedA1Reference));
+            }
+
+            if (string.IsNullOrWhiteSpace(worksheetQualifiedA1Reference))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(worksheetQualifiedA1Reference)}' is white space"));
+            }
+
+            if (!worksheetQualifiedA1Reference.Contains("!"))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(worksheetQualifiedA1Reference)}' does not contain '!'"));
+            }
 
             var tokens = worksheetQualifiedA1Reference.Split(new[] { '!' }, 2);
 
             var worksheetNameToken = tokens[0];
 
             var worksheetNameTokenLength = worksheetNameToken.Length;
-            new { worksheetNameTokenLength }.AsArg().Must().BeGreaterThanOrEqualTo(3);
+            if (worksheetNameTokenLength < 3)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(worksheetNameTokenLength)}' < '{3}'"), (Exception)null);
+            }
 
             var worksheetNameTokenStartsWithApostrophe = worksheetNameToken.StartsWith("'", StringComparison.OrdinalIgnoreCase);
-            new { worksheetNameTokenStartsWithApostrophe }.AsArg().Must().BeTrue();
+            if (!worksheetNameTokenStartsWithApostrophe)
+            {
+                throw new ArgumentException(Invariant($"'{nameof(worksheetNameTokenStartsWithApostrophe)}' is false"));
+            }
 
             var worksheetNameTokenEndsWithApostrophe = worksheetNameToken.EndsWith("'", StringComparison.OrdinalIgnoreCase);
-            new { worksheetNameTokenEndsWithApostrophe }.AsArg().Must().BeTrue();
+            if (!worksheetNameTokenEndsWithApostrophe)
+            {
+                throw new ArgumentException(Invariant($"'{nameof(worksheetNameTokenEndsWithApostrophe)}' is false"));
+            }
 
             var worksheetName = worksheetNameToken.Remove(0, 1);
             worksheetName = worksheetName.Remove(worksheetName.Length - 1, 1);

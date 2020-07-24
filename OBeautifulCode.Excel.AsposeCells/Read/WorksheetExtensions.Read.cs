@@ -11,7 +11,7 @@ namespace OBeautifulCode.Excel.AsposeCells
 
     using Aspose.Cells;
 
-    using OBeautifulCode.Assertion.Recipes;
+    using static System.FormattableString;
 
     using Range = Aspose.Cells.Range;
 
@@ -45,11 +45,30 @@ namespace OBeautifulCode.Excel.AsposeCells
             int startColumnNumber,
             int endColumnNumber)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
-            new { startRowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
-            new { startColumnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
-            new { endRowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(startRowNumber);
-            new { endColumnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(startColumnNumber);
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
+
+            if (startRowNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(startRowNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (startColumnNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(startColumnNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (endRowNumber < startRowNumber)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(endRowNumber)}' < '{startRowNumber}'"), (Exception)null);
+            }
+
+            if (endColumnNumber < startColumnNumber)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(endColumnNumber)}' < '{startColumnNumber}'"), (Exception)null);
+            }
 
             var result = worksheet.Cells.CreateRange(startRowNumber - 1, startColumnNumber - 1, endRowNumber - startRowNumber + 1, endColumnNumber - startColumnNumber + 1);
             return result;
@@ -74,9 +93,20 @@ namespace OBeautifulCode.Excel.AsposeCells
             int rowNumber,
             int columnNumber)
         {
-            new { worksheet }.AsArg().Must().NotBeNull();
-            new { rowNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
-            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1);
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet));
+            }
+
+            if (rowNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(rowNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (columnNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' < '{1}'"), (Exception)null);
+            }
 
             var result = worksheet.Cells[rowNumber - 1, columnNumber - 1];
             return result;

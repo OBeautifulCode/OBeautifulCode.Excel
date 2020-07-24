@@ -6,7 +6,11 @@
 
 namespace OBeautifulCode.Excel
 {
-    using OBeautifulCode.Assertion.Recipes;
+    using System;
+
+    using OBeautifulCode.String.Recipes;
+
+    using static System.FormattableString;
 
     /// <summary>
     /// Helper methods related to cells.
@@ -23,7 +27,15 @@ namespace OBeautifulCode.Excel
         public static string GetColumnName(
             int columnNumber)
         {
-            new { columnNumber }.AsArg().Must().BeGreaterThanOrEqualTo(1).And().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+            if (columnNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' < '{1}'"), (Exception)null);
+            }
+
+            if (columnNumber > Constants.MaximumColumnNumber)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' > '{Constants.MaximumColumnNumber}'"), (Exception)null);
+            }
 
             var result = GetColumnNameInternal(columnNumber);
 
@@ -40,9 +52,26 @@ namespace OBeautifulCode.Excel
         public static int GetColumnNumber(
             string columnName)
         {
-            new { columnName }.AsArg().Must().NotBeNullNorWhiteSpace().And().BeAlphabetic();
+            if (columnName == null)
+            {
+                throw new ArgumentNullException(nameof(columnName));
+            }
+
+            if (string.IsNullOrWhiteSpace(columnName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(columnName)}' is white space"));
+            }
+
+            if (!columnName.IsAlphabetic())
+            {
+                throw new ArgumentException(Invariant($"'{nameof(columnName)}' is not alphabetic"));
+            }
+
             var columnNameLength = columnName.Length;
-            new { columnNameLength }.AsArg().Must().BeLessThanOrEqualTo(Constants.MaximumColumnName.Length);
+            if (columnNameLength > Constants.MaximumColumnName.Length)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNameLength)}' > '{Constants.MaximumColumnName.Length}'"), (Exception)null);
+            }
 
             columnName = columnName.ToUpperInvariant();
 
@@ -54,7 +83,10 @@ namespace OBeautifulCode.Excel
                 columnNumber += columnNameCharacter - 'A' + 1;
             }
 
-            new { columnNumber }.AsArg().Must().BeLessThanOrEqualTo(Constants.MaximumColumnNumber);
+            if (columnNumber > Constants.MaximumColumnNumber)
+            {
+                throw new ArgumentOutOfRangeException(Invariant($"'{nameof(columnNumber)}' > '{Constants.MaximumColumnNumber}'"), (Exception)null);
+            }
 
             var result = columnNumber;
 
