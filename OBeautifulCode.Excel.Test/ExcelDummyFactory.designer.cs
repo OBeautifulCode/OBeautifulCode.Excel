@@ -23,7 +23,7 @@ namespace OBeautifulCode.Excel.Test
     /// </summary>
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.CodeGen.ModelObject", "1.0.87.0")]
-#if !OBeautifulCodeExcelRecipesProject
+#if !OBeautifulCodeExcelSolution
     internal
 #else
     public

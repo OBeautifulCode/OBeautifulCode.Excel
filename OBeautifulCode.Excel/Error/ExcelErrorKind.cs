@@ -8,7 +8,7 @@ namespace OBeautifulCode.Excel
 {
     using System.Diagnostics.CodeAnalysis;
 
-    using OBeautifulCode.Excel.Internal;
+    using OBeautifulCode.CodeAnalysis.Recipes;
 
     /// <summary>
     /// Specifies a kind of Excel error.

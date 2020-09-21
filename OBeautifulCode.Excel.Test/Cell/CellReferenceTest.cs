@@ -15,8 +15,8 @@ namespace OBeautifulCode.Excel.Test
 
     using FluentAssertions;
 
+    using OBeautifulCode.CodeAnalysis.Recipes;
     using OBeautifulCode.CodeGen.ModelObject.Recipes;
-    using OBeautifulCode.Excel.Test.Internal;
 
     using Xunit;
 
