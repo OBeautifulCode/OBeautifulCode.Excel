@@ -6,27 +6,35 @@
 
 namespace OBeautifulCode.Excel.Serialization.Bson
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using OBeautifulCode.Serialization.Bson;
+    using OBeautifulCode.Type;
+    using OBeautifulCode.Type.Recipes;
 
     /// <inheritdoc />
     public class ExcelBsonSerializationConfiguration : BsonSerializationConfigurationBase
     {
         /// <inheritdoc />
-        protected override IReadOnlyCollection<TypeToRegisterForBson> TypesToRegisterForBson => new[]
-        {
-            typeof(Border).ToTypeToRegisterForBson(),
-            typeof(Comment).ToTypeToRegisterForBson(),
-            typeof(DataValidation).ToTypeToRegisterForBson(),
-            typeof(DocumentProperties).ToTypeToRegisterForBson(),
-            typeof(WorksheetProtection).ToTypeToRegisterForBson(),
-            typeof(WorkbookProtection).ToTypeToRegisterForBson(),
-            typeof(RangeStyle).ToTypeToRegisterForBson(),
-            typeof(CellValueConditionalFormattingRule).ToTypeToRegisterForBson(),
-            typeof(CellReference).ToTypeToRegisterForBson(),
-            typeof(NamedCell).ToTypeToRegisterForBson(),
-            typeof(ExcelErrorKind).ToTypeToRegisterForBson(),
-        };
+        protected override IReadOnlyCollection<string> TypeToRegisterNamespacePrefixFilters =>
+            new[]
+            {
+                OBeautifulCode.Excel.ProjectInfo.Namespace,
+            };
+
+        /// <inheritdoc />
+        protected override IReadOnlyCollection<BsonSerializationConfigurationType> DependentBsonSerializationConfigurationTypes =>
+            new BsonSerializationConfigurationType[]
+            {
+            };
+
+        /// <inheritdoc />
+        protected override IReadOnlyCollection<TypeToRegisterForBson> TypesToRegisterForBson => new Type[0]
+            .Concat(new[] { typeof(IModel) })
+            .Concat(OBeautifulCode.Excel.ProjectInfo.Assembly.GetPublicEnumTypes())
+            .Select(_ => _.ToTypeToRegisterForBson())
+            .ToList();
     }
 }

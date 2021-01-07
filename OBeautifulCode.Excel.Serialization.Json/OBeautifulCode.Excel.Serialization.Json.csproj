@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".recipes\OBeautifulCode.CodeAnalysis\ObcSuppressBecause.cs" />
+    <Compile Include=".recipes\OBeautifulCode.Type\AssemblyExtensions.cs" />
     <Compile Include="ExcelJsonSerializationConfiguration.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
