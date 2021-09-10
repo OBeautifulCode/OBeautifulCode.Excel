@@ -110,7 +110,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
 
             // Act
             var actual1 = Record.Exception(() => worksheet.GetRange(startRowNumber, endRowNumber, startColumnNumber, startColumnNumber - 1));
-            var actual2 = Record.Exception(() => worksheet.GetRange(startRowNumber, endRowNumber, startColumnNumber, A.Dummy<PositiveInteger>().ThatIs(_ => _ < startColumnNumber)));
+            var actual2 = Record.Exception(() => worksheet.GetRange(startRowNumber, endRowNumber, startColumnNumber, A.Dummy<PositiveInteger>().ThatIs(_ => _ < startColumnNumber, -1)));
 
             // Assert
             actual1.Should().BeOfType<ArgumentOutOfRangeException>();
