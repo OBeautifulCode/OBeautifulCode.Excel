@@ -40,8 +40,11 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// Removes the default worksheet.
         /// </summary>
         /// <param name="workbook">The workbook.</param>
+        /// <returns>
+        /// The specified workbook with the default worksheet removed.
+        /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="workbook"/> is null.</exception>
-        public static void RemoveDefaultWorksheet(
+        public static Workbook RemoveDefaultWorksheet(
             this Workbook workbook)
         {
             if (workbook == null)
@@ -49,16 +52,23 @@ namespace OBeautifulCode.Excel.AsposeCells
                 throw new ArgumentNullException(nameof(workbook));
             }
 
-            workbook.Worksheets.RemoveAt(0);
+            var result = workbook;
+
+            result.Worksheets.RemoveAt(0);
+
+            return result;
         }
 
         /// <summary>
         /// Sets workbook document properties.
         /// </summary>
         /// <param name="workbook">The workbook.</param>
+        /// <returns>
+        /// The specified workbook with document properties set.
+        /// </returns>
         /// <param name="documentProperties">The document properties to set.</param>
         /// <exception cref="ArgumentNullException"><paramref name="workbook"/> is null.</exception>
-        public static void SetDocumentProperties(
+        public static Workbook SetDocumentProperties(
             this Workbook workbook,
             DocumentProperties documentProperties)
         {
@@ -66,6 +76,8 @@ namespace OBeautifulCode.Excel.AsposeCells
             {
                 throw new ArgumentNullException(nameof(workbook));
             }
+
+            var result = workbook;
 
             if (documentProperties != null)
             {
@@ -78,11 +90,13 @@ namespace OBeautifulCode.Excel.AsposeCells
 
                         if (propertyValue != null)
                         {
-                            workbook.BuiltInDocumentProperties[propertyKind.ToBuiltInDocumentPropertyCollectionKey()].Value = propertyValue;
+                            result.BuiltInDocumentProperties[propertyKind.ToBuiltInDocumentPropertyCollectionKey()].Value = propertyValue;
                         }
                     }
                 }
             }
+
+            return result;
         }
 
         /// <summary>
@@ -90,7 +104,10 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// </summary>
         /// <param name="workbook">The workbook.</param>
         /// <param name="workbookProtection">The workbook protection.  If null then no protection is applied.</param>
-        public static void SetWorkbookProtection(
+        /// <returns>
+        /// The specified workbook with the specified workbook protection applied.
+        /// </returns>
+        public static Workbook SetWorkbookProtection(
             this Workbook workbook,
             WorkbookProtection workbookProtection)
         {
@@ -99,12 +116,16 @@ namespace OBeautifulCode.Excel.AsposeCells
                 throw new ArgumentNullException(nameof(workbook));
             }
 
+            var result = workbook;
+
             if (workbookProtection == null)
             {
-                return;
+                return result;
             }
 
-            workbook.Protect(ProtectionType.Structure, workbookProtection.ClearTextPassword);
+            result.Protect(ProtectionType.Structure, workbookProtection.ClearTextPassword);
+
+            return result;
         }
     }
 }
