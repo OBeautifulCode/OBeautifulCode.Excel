@@ -948,6 +948,145 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
         }
 
         [Fact]
+        public static void MergeMarkers___Should_throw_ArgumentNullException___When_parameter_sourceMarkerName_is_null()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellCursor>();
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.MergeMarkers(null, "target"));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("sourceMarkerName");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_throw_ArgumentException___When_parameter_sourceMarkerName_is_white_space()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellCursor>();
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.MergeMarkers("  \r\n  ", "target"));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentException>();
+            actual.Message.Should().Contain("sourceMarkerName");
+            actual.Message.Should().Contain("white space");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_throw_ArgumentNullException___When_parameter_targetMarkerName_is_null()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellCursor>();
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.MergeMarkers("source", null));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentNullException>();
+            actual.Message.Should().Contain("targetMarkerName");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_throw_ArgumentException___When_parameter_targetMarkerName_is_white_space()
+        {
+            // Arrange
+            var systemUnderTest = A.Dummy<CellCursor>();
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.MergeMarkers("source", "  \r\n  "));
+
+            // Assert
+            actual.Should().BeOfType<ArgumentException>();
+            actual.Message.Should().Contain("targetMarkerName");
+            actual.Message.Should().Contain("white space");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_throw_InvalidOperationException___When_sourceMarker_does_not_exist()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+            systemUnderTest.AddMarker("target");
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.MergeMarkers(A.Dummy<string>(), "target"));
+
+            // Assert
+            actual.Should().BeOfType<InvalidOperationException>();
+            actual.Message.Should().Contain("source marker does not exist");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_throw_InvalidOperationException___When_targetMarker_does_not_exist()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+            systemUnderTest.AddMarker("source");
+
+            // Act
+            var actual = Record.Exception(() => systemUnderTest.MergeMarkers("source", A.Dummy<string>()));
+
+            // Assert
+            actual.Should().BeOfType<InvalidOperationException>();
+            actual.Message.Should().Contain("target marker does not exist");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_merge_source_into_target___When_there_is_no_overlap_in_cells()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+
+            var sourceMarkerName = "source";
+            var targetMarkerName = "target";
+
+            systemUnderTest.Reset();
+            systemUnderTest.AddMarker(sourceMarkerName);
+            systemUnderTest.MoveDown().MoveRight();
+            systemUnderTest.AddMarker(sourceMarkerName);
+            systemUnderTest.MoveDown().MoveRight();
+            systemUnderTest.AddMarker(targetMarkerName);
+
+            // Act
+            var actual = systemUnderTest.MergeMarkers(sourceMarkerName, targetMarkerName);
+
+            // Assert
+            actual.Should().BeSameAs(systemUnderTest);
+            actual.HasMarker(sourceMarkerName).Should().BeFalse();
+            actual.GetMarkedCells(targetMarkerName).Select(_ => _.ToCellReference().A1Reference).Should().BeEquivalentTo("A1", "B2", "C3");
+        }
+
+        [Fact]
+        public static void MergeMarkers___Should_merge_source_into_target___When_there_is_overlap_in_cells()
+        {
+            // Arrange
+            var systemUnderTest = GetCursorWith3x3MarkedCanvas();
+
+            var sourceMarkerName = "source";
+            var targetMarkerName = "target";
+
+            systemUnderTest.Reset();
+            systemUnderTest.AddMarker(sourceMarkerName);
+            systemUnderTest.MoveDown().MoveRight();
+            systemUnderTest.AddMarker(sourceMarkerName);
+            systemUnderTest.AddMarker(targetMarkerName);
+            systemUnderTest.MoveDown().MoveRight();
+            systemUnderTest.AddMarker(targetMarkerName);
+
+            // Act
+            var actual = systemUnderTest.MergeMarkers(sourceMarkerName, targetMarkerName);
+
+            // Assert
+            actual.Should().BeSameAs(systemUnderTest);
+            actual.HasMarker(sourceMarkerName).Should().BeFalse();
+            actual.GetMarkedCells(targetMarkerName).Select(_ => _.ToCellReference().A1Reference).Should().BeEquivalentTo("A1", "B2", "C3");
+        }
+
+        [Fact]
         public static void RemoveAllMarkers___Should_remove_all_markers___When_called()
         {
             // Arrange

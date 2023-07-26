@@ -364,15 +364,65 @@ namespace OBeautifulCode.Excel.AsposeCells
                 throw new ArgumentException(Invariant($"'{nameof(markerName)}' is white space"));
             }
 
-            if (!this.markerNameToCellsMap.ContainsKey(markerName))
+            this.AddMarker(markerName, this.Cell);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Merges markers by moving all of the cell marked with a source marker name
+        /// into the set of cells marked with with a destination marker name.
+        /// </summary>
+        /// <param name="sourceMarkerName">The source marker name.</param>
+        /// <param name="targetMarkerName">The target marker name.</param>
+        /// <returns>
+        /// This cursor, no longer having <paramref name="targetMarkerName"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="sourceMarkerName"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="sourceMarkerName"/> is white space.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="targetMarkerName"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="targetMarkerName"/> is white space.</exception>
+        public CellCursor MergeMarkers(
+            string sourceMarkerName,
+            string targetMarkerName)
+        {
+            if (sourceMarkerName == null)
             {
-                this.markerNameToCellsMap.Add(markerName, new List<Cell>());
+                throw new ArgumentNullException(nameof(sourceMarkerName));
             }
 
-            var cells = this.markerNameToCellsMap[markerName];
-            if (!cells.Select(_ => _.Name).Contains(this.Cell.Name))
+            if (string.IsNullOrWhiteSpace(sourceMarkerName))
             {
-                cells.Add(this.Cell);
+                throw new ArgumentException(Invariant($"'{nameof(sourceMarkerName)}' is white space"));
+            }
+
+            if (targetMarkerName == null)
+            {
+                throw new ArgumentNullException(nameof(targetMarkerName));
+            }
+
+            if (string.IsNullOrWhiteSpace(targetMarkerName))
+            {
+                throw new ArgumentException(Invariant($"'{nameof(targetMarkerName)}' is white space"));
+            }
+
+            if (!this.HasMarker(sourceMarkerName))
+            {
+                throw new InvalidOperationException(Invariant($"source marker does not exist: {sourceMarkerName}."));
+            }
+
+            if (!this.HasMarker(targetMarkerName))
+            {
+                throw new InvalidOperationException(Invariant($"target marker does not exist: {targetMarkerName}."));
+            }
+
+            var sourceCells = this.GetMarkedCells(sourceMarkerName);
+
+            this.RemoveMarker(sourceMarkerName);
+
+            foreach (var sourceCell in sourceCells)
+            {
+                this.AddMarker(targetMarkerName, sourceCell);
             }
 
             return this;
@@ -607,6 +657,23 @@ namespace OBeautifulCode.Excel.AsposeCells
             this.ColumnNumber = markedCell.GetColumnNumber();
 
             return this;
+        }
+
+        private void AddMarker(
+            string markerName,
+            Cell cell)
+        {
+            if (!this.markerNameToCellsMap.ContainsKey(markerName))
+            {
+                this.markerNameToCellsMap.Add(markerName, new List<Cell>());
+            }
+
+            var cells = this.markerNameToCellsMap[markerName];
+
+            if (!cells.Select(_ => _.Name).Contains(cell.Name))
+            {
+                cells.Add(cell);
+            }
         }
     }
 }
