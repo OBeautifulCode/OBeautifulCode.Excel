@@ -841,7 +841,7 @@ namespace OBeautifulCode.Excel.AsposeCells
                 throw new ArgumentOutOfRangeException(nameof(range), "There are too few rows specified in the range.  To group rows, at least 2 rows must be specified.");
             }
 
-            range.Worksheet.Cells.GroupRows(rowNumbers.First() - 1, rowNumbers.Last() - 1 - 1, collapseGroup);
+            range.Worksheet.Cells.GroupRows(rowNumbers.First() - 1, rowNumbers.Last() - 1, collapseGroup);
         }
 
         private static void SetStyle(
