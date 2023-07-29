@@ -60,6 +60,7 @@
     <Compile Include="Read\CellReferenceExtensions.Read.cs" />
     <Compile Include="Read\RangeExtensions.Read.cs" />
     <Compile Include="General.cs" />
+    <Compile Include="Result\InsertImagesResult.cs" />
     <Compile Include="Write\WorkbookExtensions.Write.cs" />
     <Compile Include="Read\WorksheetExtensions.Read.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -90,6 +91,7 @@
   <ItemGroup>
     <Content Include=".analyzers\dictionary.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\OBeautifulCode.Build.Analyzers.1.1.139\build\OBeautifulCode.Build.Analyzers.targets" Condition="Exists('..\packages\OBeautifulCode.Build.Analyzers.1.1.139\build\OBeautifulCode.Build.Analyzers.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

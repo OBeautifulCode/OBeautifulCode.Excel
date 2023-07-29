@@ -40,7 +40,7 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <param name="columnWidthInPixels">Optional fixed width to use for all columns that the image overlaps with, when <paramref name="cellSizeChanges"/> is <see cref="ImagesCellSizeChanges.ResizeColumnsToFixedWidth"/>.  Default is <see cref="Constants.DefaultColumnWidthInPixels"/>.</param>
         /// <param name="autoLayoutProcedures">Optional specification of the automatic layout procedures to apply to the images.  Default is to auto-space and auto-align the images.</param>
         /// <returns>
-        /// The range of cells that the images overlap with.
+        /// An object containing the results of inserting the images.
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="imageUrls"/> is null.</exception>
@@ -53,9 +53,9 @@ namespace OBeautifulCode.Excel.AsposeCells
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="columnWidthInPixels"/> is less than 1.</exception>
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex.")]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This is not excessively coupled.")]
-        public static Range InsertImages(
+        public static InsertImagesResult InsertImages(
             this Cell cell,
-            IReadOnlyCollection<string> imageUrls,
+            IReadOnlyList<string> imageUrls,
             int imageWidthScale = 100,
             int imageHeightScale = 100,
             ImagesRelativeOrientation relativeOrientation = ImagesRelativeOrientation.Horizontal,
@@ -64,11 +64,6 @@ namespace OBeautifulCode.Excel.AsposeCells
             int columnWidthInPixels = Constants.DefaultColumnWidthInPixels,
             ImagesAutoLayoutProcedures autoLayoutProcedures = ImagesAutoLayoutProcedures.AutoSpaceAndAutoAlign)
         {
-            if (cell == null)
-            {
-                throw new ArgumentNullException(nameof(cell));
-            }
-
             if (imageUrls == null)
             {
                 throw new ArgumentNullException(nameof(imageUrls));
@@ -82,6 +77,93 @@ namespace OBeautifulCode.Excel.AsposeCells
             if (imageUrls.Any(string.IsNullOrWhiteSpace))
             {
                 throw new ArgumentException(Invariant($"{nameof(imageUrls)} contains an element that is null or white space"));
+            }
+
+            var imagesBytes = new List<byte[]>();
+
+            using (var webClient = new WebClient())
+            {
+                foreach (var imageUrl in imageUrls)
+                {
+                    var imageBytes = webClient.DownloadData(imageUrl);
+
+                    imagesBytes.Add(imageBytes);
+                }
+            }
+
+            var result = cell.InsertImages(
+                imagesBytes,
+                imageWidthScale,
+                imageHeightScale,
+                relativeOrientation,
+                cellSizeChanges,
+                rowHeightInPixels,
+                columnWidthInPixels,
+                autoLayoutProcedures);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Inserts a set of images into a cell.
+        /// </summary>
+        /// <param name="cell">The cell.</param>
+        /// <param name="imagesBytes">The bytes of the images to insert.</param>
+        /// <param name="imageWidthScale">Optional scale to use for the image width.  Default is 100 which maintains the image's original width.  Lower is smaller; higher is larger.</param>
+        /// <param name="imageHeightScale">Optional scale to use for the image height.  Default is 100 which maintains the image's original height.  Lower is smaller; higher is larger.</param>
+        /// <param name="relativeOrientation">Optional specification of the orientation of images relative to each other.  Default is horizontal.  Doesn't matter if there is only one image.</param>
+        /// <param name="cellSizeChanges">Optional specification of the changes to make to the size of a cell to fit the images.  Default is to expand both the row and column to fit the images.</param>
+        /// <param name="rowHeightInPixels">Optional fixed height to use for all rows that the image overlaps with, when <paramref name="cellSizeChanges"/> is <see cref="ImagesCellSizeChanges.ResizeRowsToFixedHeight"/>.  Default is <see cref="Constants.DefaultRowHeightInPixels"/>.</param>
+        /// <param name="columnWidthInPixels">Optional fixed width to use for all columns that the image overlaps with, when <paramref name="cellSizeChanges"/> is <see cref="ImagesCellSizeChanges.ResizeColumnsToFixedWidth"/>.  Default is <see cref="Constants.DefaultColumnWidthInPixels"/>.</param>
+        /// <param name="autoLayoutProcedures">Optional specification of the automatic layout procedures to apply to the images.  Default is to auto-space and auto-align the images.</param>
+        /// <returns>
+        /// An object containing the results of inserting the images.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="cell"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="imagesBytes"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imagesBytes"/> is empty.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imagesBytes"/> contains a null or empty element.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imageWidthScale"/> is less than 1 or greater than 500.</exception>
+        /// <exception cref="ArgumentException"><paramref name="imageHeightScale"/> is less than 1 or greater than 500.</exception>
+        /// <exception cref="ArgumentException"><paramref name="relativeOrientation"/> is <see cref="ImagesRelativeOrientation.Unknown"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="rowHeightInPixels"/> is less than 1.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="columnWidthInPixels"/> is less than 1.</exception>
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "This is not excessively complex.")]
+        [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This is not excessively coupled.")]
+        public static InsertImagesResult InsertImages(
+            this Cell cell,
+            IReadOnlyList<byte[]> imagesBytes,
+            int imageWidthScale = 100,
+            int imageHeightScale = 100,
+            ImagesRelativeOrientation relativeOrientation = ImagesRelativeOrientation.Horizontal,
+            ImagesCellSizeChanges cellSizeChanges = ImagesCellSizeChanges.ExpandRowAndColumnToFitImages,
+            int rowHeightInPixels = Constants.DefaultRowHeightInPixels,
+            int columnWidthInPixels = Constants.DefaultColumnWidthInPixels,
+            ImagesAutoLayoutProcedures autoLayoutProcedures = ImagesAutoLayoutProcedures.AutoSpaceAndAutoAlign)
+        {
+            if (cell == null)
+            {
+                throw new ArgumentNullException(nameof(cell));
+            }
+
+            if (imagesBytes == null)
+            {
+                throw new ArgumentNullException(nameof(imagesBytes));
+            }
+
+            if (!imagesBytes.Any())
+            {
+                throw new ArgumentException(Invariant($"'{nameof(imagesBytes)}' is an empty enumerable"));
+            }
+
+            if (imagesBytes.Any(_ => _ == null))
+            {
+                throw new ArgumentException(Invariant($"{nameof(imagesBytes)} contains an element that is null"));
+            }
+
+            if (imagesBytes.Any(_ => _.Length == 0))
+            {
+                throw new ArgumentException(Invariant($"{nameof(imagesBytes)} contains an element that is empty"));
             }
 
             if (imageWidthScale < 1)
@@ -128,27 +210,27 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             var pictures = new List<Picture>();
 
-            using (var webClient = new WebClient())
+            var pictureIndices = new List<int>();
+
+            foreach (var imageBytes in imagesBytes)
             {
-                foreach (var imageUrl in imageUrls)
+                using (var imageStream = new MemoryStream(imageBytes))
                 {
-                    var imageBytes = webClient.DownloadData(imageUrl);
-                    using (var imageStream = new MemoryStream(imageBytes))
-                    {
-                        var pictureIndex = worksheet.Pictures.Add(cell.Row, cell.Column, imageStream);
+                    var pictureIndex = worksheet.Pictures.Add(cell.Row, cell.Column, imageStream);
 
-                        var picture = worksheet.Pictures[pictureIndex];
+                    pictureIndices.Add(pictureIndex);
 
-                        var imageBitmap = new Bitmap(imageStream);
-                        var imageHeightInPixels = imageBitmap.Height;
-                        var imageWidthInPixels = imageBitmap.Width;
+                    var picture = worksheet.Pictures[pictureIndex];
 
-                        picture.Height = imageHeightInPixels;
-                        picture.Width = imageWidthInPixels;
-                        picture.HeightScale = imageHeightScale;
-                        picture.WidthScale = imageWidthScale;
-                        pictures.Add(picture);
-                    }
+                    var imageBitmap = new Bitmap(imageStream);
+                    var imageHeightInPixels = imageBitmap.Height;
+                    var imageWidthInPixels = imageBitmap.Width;
+
+                    picture.Height = imageHeightInPixels;
+                    picture.Width = imageWidthInPixels;
+                    picture.HeightScale = imageHeightScale;
+                    picture.WidthScale = imageWidthScale;
+                    pictures.Add(picture);
                 }
             }
 
@@ -251,7 +333,10 @@ namespace OBeautifulCode.Excel.AsposeCells
                 }
             }
 
-            var result = worksheet.GetRange(resultStartRow, resultEndRow, resultStartColumn, resultEndColumn);
+            var range = worksheet.GetRange(resultStartRow, resultEndRow, resultStartColumn, resultEndColumn);
+
+            var result = new InsertImagesResult(range, pictureIndices);
+
             return result;
         }
 
