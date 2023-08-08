@@ -812,10 +812,6 @@ namespace OBeautifulCode.Excel.AsposeCells
             }
 
             var columnNumbers = range.GetColumnNumbers();
-            if (columnNumbers.Count == 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(range), "There are too few columns specified in the range.  To group columns, at least 2 columns must be specified.");
-            }
 
             range.Worksheet.Cells.GroupColumns(columnNumbers.First() - 1, columnNumbers.Last() - 1 - 1, collapseGroup);
         }
@@ -836,10 +832,6 @@ namespace OBeautifulCode.Excel.AsposeCells
             }
 
             var rowNumbers = range.GetRowNumbers();
-            if (rowNumbers.Count == 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(range), "There are too few rows specified in the range.  To group rows, at least 2 rows must be specified.");
-            }
 
             range.Worksheet.Cells.GroupRows(rowNumbers.First() - 1, rowNumbers.Last() - 1, collapseGroup);
         }
