@@ -88,7 +88,7 @@ namespace OBeautifulCode.Excel.AsposeCells
                     {
                         var propertyValue = builtInPropertyKindToValueMap[propertyKind];
 
-                        if (propertyValue != null)
+                        if (!string.IsNullOrWhiteSpace(propertyValue))
                         {
                             result.BuiltInDocumentProperties[propertyKind.ToBuiltInDocumentPropertyCollectionKey()].Value = propertyValue;
                         }
@@ -102,7 +102,7 @@ namespace OBeautifulCode.Excel.AsposeCells
                     {
                         var propertyValue = customPropertyNameToValueMap[propertyName];
 
-                        if (propertyValue != null)
+                        if (!string.IsNullOrWhiteSpace(propertyValue))
                         {
                             result.CustomDocumentProperties.Add(propertyName, propertyValue);
                         }
