@@ -581,6 +581,8 @@ namespace OBeautifulCode.Excel.AsposeCells
                     return "Number of Hidden Slides";
                 case BuiltInDocumentPropertyKind.NumberOfMultimediaClips:
                     return "Number of Multimedia Clips";
+                case BuiltInDocumentPropertyKind.Status:
+                    return "ContentStatus";
                 default:
                     throw new NotSupportedException(Invariant($"This {nameof(BuiltInDocumentPropertyKind)} is not supported: {builtInDocumentPropertyKind}"));
             }

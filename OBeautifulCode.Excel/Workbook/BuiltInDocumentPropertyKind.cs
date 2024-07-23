@@ -155,5 +155,10 @@ namespace OBeautifulCode.Excel
         /// The number of multimedia clips.
         /// </summary>
         NumberOfMultimediaClips,
+
+        /// <summary>
+        /// The status of the document.
+        /// </summary>
+        Status,
     }
 }

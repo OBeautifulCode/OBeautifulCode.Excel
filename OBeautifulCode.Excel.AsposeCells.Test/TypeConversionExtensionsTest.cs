@@ -357,6 +357,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
                 BuiltInDocumentPropertyKind.NumberOfNotes,
                 BuiltInDocumentPropertyKind.NumberOfHiddenSlides,
                 BuiltInDocumentPropertyKind.NumberOfMultimediaClips,
+                BuiltInDocumentPropertyKind.Status,
             };
 
             var expected = new[]
@@ -389,6 +390,7 @@ namespace OBeautifulCode.Excel.AsposeCells.Test
                 "Number of Notes",
                 "Number of Hidden Slides",
                 "Number of Multimedia Clips",
+                "ContentStatus",
             };
 
             // Act
