@@ -81,16 +81,30 @@ namespace OBeautifulCode.Excel.AsposeCells
 
             if (documentProperties != null)
             {
-                var propertyKindToValueMap = documentProperties.BuiltInDocumentPropertyKindToValueMap;
-                if (propertyKindToValueMap != null)
+                var builtInPropertyKindToValueMap = documentProperties.BuiltInDocumentPropertyKindToValueMap;
+                if (builtInPropertyKindToValueMap != null)
                 {
-                    foreach (var propertyKind in propertyKindToValueMap.Keys)
+                    foreach (var propertyKind in builtInPropertyKindToValueMap.Keys)
                     {
-                        var propertyValue = propertyKindToValueMap[propertyKind];
+                        var propertyValue = builtInPropertyKindToValueMap[propertyKind];
 
                         if (propertyValue != null)
                         {
                             result.BuiltInDocumentProperties[propertyKind.ToBuiltInDocumentPropertyCollectionKey()].Value = propertyValue;
+                        }
+                    }
+                }
+
+                var customPropertyNameToValueMap = documentProperties.CustomPropertyNameToValueMap;
+                if (customPropertyNameToValueMap != null)
+                {
+                    foreach (var propertyName in customPropertyNameToValueMap.Keys)
+                    {
+                        var propertyValue = customPropertyNameToValueMap[propertyName];
+
+                        if (propertyValue != null)
+                        {
+                            result.CustomDocumentProperties.Add(propertyName, propertyValue);
                         }
                     }
                 }

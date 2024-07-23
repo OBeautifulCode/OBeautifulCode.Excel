@@ -16,8 +16,13 @@ namespace OBeautifulCode.Excel
     public partial class DocumentProperties : IModelViaCodeGen
     {
         /// <summary>
-        /// Gets or sets a map of property kind to it's value.
+        /// Gets or sets a map of built-in property kind to it's value.
         /// </summary>
         public IReadOnlyDictionary<BuiltInDocumentPropertyKind, string> BuiltInDocumentPropertyKindToValueMap { get; set; }
+
+        /// <summary>
+        /// Gets or sets a map of custom property name to it's value.
+        /// </summary>
+        public IReadOnlyDictionary<string, string> CustomPropertyNameToValueMap { get; set; }
     }
 }
