@@ -7,13 +7,11 @@
 namespace OBeautifulCode.Excel.Test
 {
     using System;
-
     using FakeItEasy;
-
     using FluentAssertions;
-
+    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.AutoFakeItEasy;
-
+    using OBeautifulCode.Type;
     using Xunit;
 
     public static class CustomFormatStringTest
@@ -62,6 +60,28 @@ namespace OBeautifulCode.Excel.Test
             // Assert
             actual1.Should().Be(expected1);
             actual2.Should().Be(expected2);
+        }
+
+        [Fact]
+        public static void ToExcelCustomFormatString___Should_throw_ArgumentException___When_parameter_dateTimeFormatKind_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => DateTimeFormatKind.Unknown.ToExcelCustomFormatString());
+
+            // Assert
+            actual.AsTest().Must().BeOfType<ArgumentException>();
+            actual.Message.AsTest().Must().ContainString("dateTimeFormatKind is DateTimeFormatKind.Unknown");
+        }
+
+        [Fact]
+        public static void ToExcelCustomFormatString___Should_throw_ArgumentException___When_parameter_cultureKind_is_Unknown()
+        {
+            // Arrange, Act
+            var actual = Record.Exception(() => A.Dummy<DateTimeFormatKind>().ToExcelCustomFormatString(CultureKind.Unknown));
+
+            // Assert
+            actual.AsTest().Must().BeOfType<ArgumentException>();
+            actual.Message.AsTest().Must().ContainString("cultureKind is CultureKind.Unknown");
         }
     }
 }

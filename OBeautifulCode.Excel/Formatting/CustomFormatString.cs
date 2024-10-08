@@ -7,7 +7,7 @@
 namespace OBeautifulCode.Excel
 {
     using System;
-
+    using OBeautifulCode.Type;
     using static System.FormattableString;
 
     /// <summary>
@@ -58,6 +58,83 @@ namespace OBeautifulCode.Excel
             }
 
             var result = "#,##0." + new string('0', numberOfDecimalPlaces);
+            return result;
+        }
+
+        /// <summary>
+        /// Converts a <see cref="DateTimeFormatKind"/> to it's equivalent Excel custom format string.
+        /// </summary>
+        /// <param name="dateTimeFormatKind">The format kind to use.</param>
+        /// <param name="cultureKind">The culture kind to use.</param>
+        /// <returns>
+        /// The Excel custom format string that's equivalent to the the specified <see cref="DateTimeFormatKind"/>.
+        /// </returns>
+        public static string ToExcelCustomFormatString(
+            this DateTimeFormatKind dateTimeFormatKind,
+            CultureKind cultureKind = CultureKind.EnglishUnitedStates)
+        {
+            if (dateTimeFormatKind == DateTimeFormatKind.Unknown)
+            {
+                throw new ArgumentException(Invariant($"{nameof(dateTimeFormatKind)} is {nameof(DateTimeFormatKind)}.{nameof(DateTimeFormatKind.Unknown)}."));
+            }
+
+            if (cultureKind == CultureKind.Unknown)
+            {
+                throw new ArgumentException(Invariant($"{nameof(cultureKind)} is {nameof(CultureKind)}.{nameof(CultureKind.Unknown)}."));
+            }
+
+            if (cultureKind != CultureKind.EnglishUnitedStates)
+            {
+                throw new NotImplementedException(Invariant($"This {nameof(CultureKind)} is not yet implemented: {cultureKind}."));
+            }
+
+            string result;
+
+            switch (dateTimeFormatKind)
+            {
+                case DateTimeFormatKind.ShortDatePattern:
+                    result = "m/d/yyyy";
+                    break;
+                case DateTimeFormatKind.LongDatePattern:
+                    result = "dddd, mmmm d, yyyy";
+                    break;
+                case DateTimeFormatKind.FullDateTimePatternShortTime:
+                    result = "dddd, mmmm d, yyyy h:mm AM/PM";
+                    break;
+                case DateTimeFormatKind.FullDateTimePatternLongTime:
+                    result = "dddd, mmmm d, yyyy h:mm:ss AM/PM";
+                    break;
+                case DateTimeFormatKind.GeneralDateTimePatternShortTime:
+                    result = "m/d/yyyy h:mm AM/PM";
+                    break;
+                case DateTimeFormatKind.GeneralDateTimePatternLongTime:
+                    result = "m/d/yyyy h:mm:ss AM/PM";
+                    break;
+                case DateTimeFormatKind.MonthDayPattern:
+                    result = "mmmm d";
+                    break;
+                case DateTimeFormatKind.SortableDateTimePattern:
+                    result = "yyyy-mm-dd\"T\"hh:mm:ss";
+                    break;
+                case DateTimeFormatKind.ShortTimePattern:
+                    result = "h:mm AM/PM";
+                    break;
+                case DateTimeFormatKind.LongTimePattern:
+                    result = "h:mm:ss AM/PM";
+                    break;
+                case DateTimeFormatKind.UniversalSortableDateTimePattern:
+                    result = "yyyy-mm-dd hh:mm:ss\"Z\"";
+                    break;
+                case DateTimeFormatKind.UniversalFullDateTimePattern:
+                    result = "dddd, mmmm d, yyyy h:mm:ss AM/PM";
+                    break;
+                case DateTimeFormatKind.YearMonthPattern:
+                    result = "mmmm yyyy";
+                    break;
+                default:
+                    throw new NotSupportedException(Invariant($"This {nameof(DateTimeFormatKind)} is not supported: {dateTimeFormatKind}."));
+            }
+
             return result;
         }
     }
